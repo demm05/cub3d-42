@@ -1,5 +1,4 @@
 AlignConsecutiveDeclarations: true
-SpaceBeforeParens: Keyword
 AlignEscapedNewlinesLeft: true
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: false
