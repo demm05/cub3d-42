@@ -21,7 +21,7 @@ CFLAGS				+=	-I$(LIBFT_DIR)/include
 SRCS				:=	$(shell find $(SDIR) -name "*.c")
 OBJS				:=	$(patsubst $(SDIR)/%.c,$(ODIR)/%.o, $(SRCS))
 
-all: $(NAME)
+all: compiledb $(NAME)
 
 $(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS)
 	$(Q)$(CC) $(CFLAGS) -c -o $@ $<

@@ -1,0 +1,6 @@
+inc/libft
+inc/minilibx
+obj
+.*cache*
+compile_commands.json
+cub3d
