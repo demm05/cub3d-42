@@ -2,16 +2,15 @@
 #include "window_private.h"
 #include <X11/X.h>
 
-void mlx_enable_window_resize(t_mlx_data *mlx)
+void	mlx_enable_window_resize(t_mlx_data *mlx)
 {
-	XSizeHints hints;
-	long       toto;
-	t_xvar    *xvar;
-	Window    *win;
+	XSizeHints	hints;
+	long		toto;
+	t_xvar		*xvar;
+	Window		*win;
 
 	xvar = mlx->mlx;
 	win = mlx->win;
-
 	XGetWMNormalHints(xvar->display, *win, &hints, &toto);
 	hints.width = WIDTH;
 	hints.height = HEIGHT;
