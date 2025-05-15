@@ -1,12 +1,12 @@
 #include "cube.h"
 #include "window_private.h"
 
-void mlx_free(t_mlx_data **arg)
+void	mlx_free(t_mlx_data **arg)
 {
-	t_mlx_data *data;
+	t_mlx_data	*data;
 
 	if (!arg || !*arg)
-		return;
+		return ;
 	data = *arg;
 	if (data->mlx)
 	{
