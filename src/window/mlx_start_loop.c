@@ -10,18 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
 #include "window_private.h"
-
-void	hook_events(t_cube *cube)
-{
-	if (!cube)
-		return ;
-	mlx_hook(cube->mlx->win, 17, 0, mlx_stop_loop, cube->mlx);
-	mlx_key_hook(cube->mlx->win, mlx_handle_keyboard, cube);
-	mlx_mouse_hook(cube->mlx->win, mlx_handle_mouse_press, cube);
-	mlx_hook(cube->mlx->win, 6, 1L << 6, mlx_handle_mouse_move, cube);
-}
 
 void	mlx_start_loop(t_cube *cube)
 {
@@ -33,12 +22,18 @@ void	mlx_start_loop(t_cube *cube)
 	hook_events(cube);
 	if (ENABLE_RESIZE)
 		mlx_enable_window_resize(cube->mlx);
+	if (DO_KEY_AUTOREPEAT)
+		mlx_do_key_autorepeatoff(cube->mlx->mlx);
 	mlx_loop(cube->mlx->mlx);
 	mlx_free(&cube->mlx);
 }
 
 int	mlx_stop_loop(t_mlx_data *mlx)
 {
+	if (DEBUG)
+		printf("mlx_stop_loop is called\n");
+	if (DO_KEY_AUTOREPEAT)
+		mlx_do_key_autorepeaton(mlx->mlx);
 	mlx_loop_end(mlx->mlx);
 	return (0);
 }
