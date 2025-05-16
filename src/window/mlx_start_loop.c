@@ -14,11 +14,15 @@
 
 void	mlx_start_loop(t_cube *cube)
 {
+	FPS_Counter fps_counter;
+
 	if (!cube)
 		return ;
 	cube->mlx = create_window(&cube->window);
 	if (!cube->mlx)
 		return ;
+	fps_counter_init(&fps_counter, 1.0);
+	cube->window.fps = &fps_counter;
 	game_hook(cube);
 	mlx_loop(cube->mlx->mlx);
 	mlx_free(&cube->mlx);

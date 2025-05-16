@@ -15,6 +15,7 @@
 
 #include <stdbool.h>
 
+typedef struct s_FPS_Counter FPS_Counter;
 typedef struct s_mlx_data	t_mlx_data;
 
 typedef struct s_player
@@ -25,12 +26,15 @@ typedef struct s_player
 	bool	moving_right;
 	int		x;
 	int		y;
+	int		prev_x;
+	int		prev_y;
 }	t_player;
 
 typedef struct s_window
 {
 	int	width;
 	int	height;
+	FPS_Counter	*fps;
 }	t_window;
 
 typedef struct s_cube

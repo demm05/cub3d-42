@@ -13,8 +13,8 @@
 #ifndef CUBE_H
 # define CUBE_H
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1920
+# define HEIGHT 1080
 # define WINDOW_NAME "CUB3D"
 # define ENABLE_RESIZE 1
 # define DO_KEY_AUTOREPEAT 1

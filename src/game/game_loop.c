@@ -15,6 +15,8 @@
 #include "mlx.h"
 #include "types.h"
 #include "unistd.h"
+#include <strings.h>
+#include <string.h>
 
 static inline void    update_movements(t_player *player, t_window *win)
 {
@@ -33,6 +35,7 @@ static inline void draw_player_with_img(t_cube *cube)
     int x;
     int y;
 
+	memset(cube->mlx->img.buffer, 0, cube->window.height * cube->mlx->img.line_size);
     x = 0;
     while (x < 100 && cube->player.x + x < cube->window.width)
     {
@@ -45,8 +48,6 @@ static inline void draw_player_with_img(t_cube *cube)
     	x++;
     }
     mlx_put_image_to_window(cube->mlx->mlx, cube->mlx->win, cube->mlx->img.img, 0, 0);
-    mlx_destroy_image(cube->mlx->mlx, cube->mlx->img.img);
-	cube->mlx->img.img = mlx_new_image(cube->mlx->mlx, cube->window.width, cube->window.height);
 }
 
 static inline void draw_player_with_x11(t_cube *cube)
@@ -55,8 +56,6 @@ static inline void draw_player_with_x11(t_cube *cube)
     int y;
 
     mlx_clear_window(cube->mlx->mlx, cube->mlx->win);
-    //It get's the size of the whole screen
-    // mlx_get_screen_size(cube->mlx->mlx, &cube->window.width, &cube->window.height);
     x = 0;
     while (x < 100 && cube->player.x + x < cube->window.width)
     {
@@ -73,8 +72,15 @@ static inline void draw_player_with_x11(t_cube *cube)
 
 int	game_loop(t_cube *cube)
 {
+    int frames;
+
     update_movements(&cube->player, &cube->window);
-    // draw_player_with_img(cube);
-    draw_player_with_x11(cube);
+    draw_player_with_img(cube);
+    // draw_player_with_x11(cube);
+    if (fps_counter_tick(cube->window.fps))
+    {
+        frames = fps_counter_get_fps(cube->window.fps);
+        printf("%d\n", frames);
+    }
 	return (0);
 }
