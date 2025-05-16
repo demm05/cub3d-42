@@ -55,6 +55,12 @@ r run: $(NAME)
 	@clear
 	$(Q)./$(NAME)
 
+d debug: CFLAGS+=-DDEBUG=1
+
+d debug: clean $(NAME)
+	@clear
+	$(Q)./$(NAME)
+
 c clean:
 	$(Q)rm -rf $(ODIR)
 	$(Q)$(MAKE_LIB) $(LIBFT_DIR) clean
