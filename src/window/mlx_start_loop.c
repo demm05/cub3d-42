@@ -19,11 +19,7 @@ void	mlx_start_loop(t_cube *cube)
 	cube->mlx = create_window(&cube->window);
 	if (!cube->mlx)
 		return ;
-	hook_events(cube);
-	if (ENABLE_RESIZE)
-		mlx_enable_window_resize(cube->mlx);
-	if (DO_KEY_AUTOREPEAT)
-		mlx_do_key_autorepeatoff(cube->mlx->mlx);
+	game_hook(cube);
 	mlx_loop(cube->mlx->mlx);
 	mlx_free(&cube->mlx);
 }

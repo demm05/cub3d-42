@@ -40,4 +40,6 @@ void	mlx_start_loop(t_cube *cube);
 // mlx_data is freed automatically
 int		mlx_stop_loop(t_mlx_data *mlx);
 
+void	mlx_enable_window_resize(t_mlx_data *mlx);
+
 #endif

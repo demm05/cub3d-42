@@ -34,4 +34,8 @@
 #  include "../src/window/window.h"
 # endif
 
+# ifndef GAME_H 
+#  include "../src/game/game.h"
+# endif
+
 #endif

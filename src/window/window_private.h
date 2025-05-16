@@ -18,13 +18,5 @@
 
 t_mlx_data	*create_window(t_window *win);
 void		mlx_free(t_mlx_data **arg);
-void		mlx_enable_window_resize(t_mlx_data *mlx);
-
-int			destroy_event(t_cube *cube);
-void		hook_events(t_cube *cube);
-int			mlx_handle_keyboard_press(int keycode, t_cube *cube);
-int			mlx_handle_keyboard_release(int keycode, t_cube *cube);
-int			mlx_handle_mouse_press(int key, int x, int y, t_cube *cube);
-int			mlx_handle_mouse_move(int x, int y, t_cube *cube);
 
 #endif
