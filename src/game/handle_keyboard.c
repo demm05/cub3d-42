@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_keyboard.c                                  :+:      :+:    :+:   */
+/*   handle_keyboard.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:16:03 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/15 17:16:03 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/16 16:15:44 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/16 16:15:57 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window_private.h"
+#include "game_private.h"
 #include <X11/keysym.h>
 
-int	mlx_handle_keyboard_press(int keycode, t_cube *cube)
+int	game_handle_keyboard_press(int keycode, t_cube *cube)
 {
 	(void) cube;
 	if (DEBUG)
@@ -21,7 +21,7 @@ int	mlx_handle_keyboard_press(int keycode, t_cube *cube)
 	return (0);
 }
 
-int	mlx_handle_keyboard_release(int keycode, t_cube *cube)
+int	game_handle_keyboard_release(int keycode, t_cube *cube)
 {
 	(void) cube;
 	if (DEBUG)

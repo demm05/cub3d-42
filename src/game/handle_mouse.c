@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_start_loop.c                                   :+:      :+:    :+:   */
+/*   handle_mouse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:16:24 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/15 17:16:29 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/16 16:15:47 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/16 16:15:57 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window_private.h"
+#include "game_private.h"
 
-void	mlx_start_loop(t_cube *cube)
+int	game_handle_mouse_press(int key, int x, int y, t_cube *cube)
 {
-	if (!cube)
-		return ;
-	cube->mlx = create_window(&cube->window);
-	if (!cube->mlx)
-		return ;
-	game_hook(cube);
-	mlx_loop(cube->mlx->mlx);
-	mlx_free(&cube->mlx);
+	(void) cube;
+	(void) key;
+	(void) x;
+	(void) y;
+	return (0);
 }
 
-int	mlx_stop_loop(t_mlx_data *mlx)
+int	game_handle_mouse_move(int x, int y, t_cube *cube)
 {
-	if (DEBUG)
-		printf("mlx_stop_loop is called\n");
-	if (DO_KEY_AUTOREPEAT)
-		mlx_do_key_autorepeaton(mlx->mlx);
-	mlx_loop_end(mlx->mlx);
+	(void) cube;
+	(void) x;
+	(void) y;
 	return (0);
 }

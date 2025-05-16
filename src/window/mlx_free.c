@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
 #include "window_private.h"
 
 void	mlx_free(t_mlx_data **arg)
