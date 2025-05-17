@@ -11,17 +11,30 @@
 /* ************************************************************************** */
 
 #include "game_private.h"
+#include "mlx.h"
 
 static inline void	update_movements(t_player *player, t_window *win)
 {
+	double move_amount;
+
+	move_amount = player->speed * win->timing.delta;
 	if (player->moving_up && player->y > 0)
-		player->y -= 1;
-	else if (player->moving_down && player->y < win->height - 10)
-		player->y += 1;
+		player->y -= move_amount;
+	if (player->moving_down && player->y < win->height - PLAYER_2D_SIZE)
+		player->y += move_amount;
 	if (player->moving_left && player->x > 0)
-		player->x -= 1;
-	else if (player->moving_right && player->x < win->width - 10)
-		player->x += 1;
+		player->x -= move_amount;
+	if (player->moving_right && player->x < win->width - PLAYER_2D_SIZE)
+		player->x += move_amount;
+
+	if (player->y < 0)
+		player->y = 0;
+	if (player->y > (double)win->height - PLAYER_2D_SIZE)
+		player->y = (double)win->height - PLAYER_2D_SIZE;
+	if (player->x < 0)
+		player->x = 0;
+	if (player->x > (double)win->width - PLAYER_2D_SIZE)
+		player->x = (double)win->width - PLAYER_2D_SIZE;
 }
 
 static inline void	draw_player(t_window *window, t_player *player)
@@ -30,10 +43,10 @@ static inline void	draw_player(t_window *window, t_player *player)
 	int	y;
 
 	x = 0;
-	while (x < 10 && player->x + x < window->width)
+	while (x < PLAYER_2D_SIZE && player->x + (double)x < (double)window->width)
 	{
 		y = 0;
-		while (y < 10 && player->y + y < window->height)
+		while (y < PLAYER_2D_SIZE && player->y + (double)y < (double)window->height)
 		{
 			win_pixel_put(window, player->x + x, y + player->y, 0xFFDDFF);
 			y++;
@@ -44,9 +57,12 @@ static inline void	draw_player(t_window *window, t_player *player)
 
 int	game_loop(t_cube *cube)
 {
+	set_delta(&cube->window);
 	win_clear_buffer(cube->mlx, &cube->window);
 	update_movements(&cube->player, &cube->window);
 	draw_player(&cube->window, &cube->player);
+	fps_win_tick(&cube->window);
 	win_flash_buffer(cube->mlx, &cube->window);
+	usleep(500);
 	return (0);
 }

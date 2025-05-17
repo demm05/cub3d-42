@@ -4,7 +4,7 @@ ODIR				=	obj
 NAME				=	cub3d
 
 CC					=	gcc
-CFLAGS				=	-g -Wall -Wextra -I$(HDIR)
+CFLAGS				=	-g -pg -O3 -Wall -Wextra -I$(HDIR) -flto
 MAKE_LIB			=	@make --no-print-directory -C
 DIRS				=	$(sort $(dir $(OBJS)))
 
@@ -25,9 +25,14 @@ ifeq ($(D), 1)
 	CFLAGS+=-DDEBUG=1
 endif
 
-ifeq ($(A), 1)
+ifneq ($(A), 1)
 	CFLAGS+=-DENABLE_MLX_PUT=1
 endif
+
+ifneq ($(I), 1)
+	CFLAGS+=-DENABLE_CUSTOM_INLINING=1
+endif
+
 
 all: $(NAME)
 
@@ -52,13 +57,18 @@ $(MLX_DIR) $(LIBFT_DIR):
 compiledb:
 	@compiledb make -n all > /dev/null 2>&1
 
+g gprof: all
+	@echo "Generating profiling report (prof.pdf)..."
+	@gprof ./$(NAME) gmon.out | gprof2dot | dot -Tpdf -o prof.pdf && open prof.pdf
+	@rm -pf gmon.out
+
 i init:
 	@git submodule update --init --remote --recursive
 
 n norm:
 	@norminette $(SDIR) $(HDIR)/*.h $(LIBFT_DIR) \
 		| grep Error | grep -v "INVALID_HEADER" | grep -v "PREPROC_BAD_INDENT" \
-		| grep -v "PREPOC_ONLY_GLOBAL" | grep -v "NL_AFTER_PREPROC"
+		| grep -v "PREPOC_ONLY_GLOBAL" | grep -v "NL_AFTER_PREPROC" | grep -v "PREPROC_CONSTANT"
 
 r run: all
 	@clear
@@ -94,6 +104,7 @@ help:
 	@echo "  V=1         Enable verbose output (e.g., make V=1 all)."
 	@echo "  D=1         Adds a DEBUG=1 flag"
 	@echo "  A=1         Adds ENABLE_MLX_PUT=1 flag (alternative rendering)."
+	@echo "  I=1         Disable inline optimization flag."
 	@echo ""
 	@echo "Examples:"
 	@echo "    make D=1 A=1 rr (runs a project with optional flags)"

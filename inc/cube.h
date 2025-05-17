@@ -18,6 +18,8 @@
 # define WINDOW_NAME "CUB3D"
 # define ENABLE_RESIZE 0
 # define DISABLE_AUTOREPEAT_KEY 1
+# define PLAYER_2D_SIZE 50
+# define MAX_DELTA_TIME 1.0 / 15.0
 
 # ifndef DEBUG
 #  define DEBUG 0
@@ -25,6 +27,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 # include "libft/include/libft.h"
 
@@ -36,6 +39,18 @@
 
 # ifndef GAME_H 
 #  include "../src/game/game.h"
+# endif
+
+# ifdef ENABLE_CUSTOM_INLINING
+#  ifdef __GNUC__ // For GCC/Clang
+#   define MAYBE_INLINE __attribute__((always_inline)) inline
+#  elif defined(_MSC_VER) // For MSVC
+#   define MAYBE_INLINE __forceinline
+#  else // Standard C inline hint
+#   define MAYBE_INLINE inline
+#  endif
+# else
+#  define MAYBE_INLINE // Expands to nothing, so function is "normal"
 # endif
 
 #endif

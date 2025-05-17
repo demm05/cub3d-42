@@ -34,8 +34,9 @@ void	mlx_start_loop(t_cube *cube)
 
 int	mlx_stop_loop(void *mlx)
 {
-	if (DEBUG)
+	#if DEBUG
 		printf("mlx_stop_loop is called\n");
+	#endif
 	if (DISABLE_AUTOREPEAT_KEY)
 		mlx_do_key_autorepeaton(mlx);
 	mlx_loop_end(mlx);

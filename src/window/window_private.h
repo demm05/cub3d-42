@@ -13,6 +13,8 @@
 #ifndef WINDOW_PRIVATE_H
 # define WINDOW_PRIVATE_H
 
+# define FPS_COUNTER_MSC_UPDATE 1000
+
 # include "mlx.h"
 # include "window.h"
 

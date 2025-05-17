@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cube.h"
 #include "window_private.h"
+#include <string.h>
 
-void	win_pixel_put(t_window *win, int x, int y, int color)
+MAYBE_INLINE void	win_pixel_put(t_window *win, int x, int y, int color)
 {
 #ifdef ENABLE_MLX_PUT
 	mlx_pixel_put(win->mlx, win->win, x, y, color);
@@ -22,7 +24,7 @@ void	win_pixel_put(t_window *win, int x, int y, int color)
 #endif
 }
 
-void	win_clear_buffer(void *mlx, t_window *win)
+MAYBE_INLINE void	win_clear_buffer(void *mlx, t_window *win)
 {
 #ifdef ENABLE_MLX_PUT
 	mlx_clear_window(mlx, win->win);
@@ -31,7 +33,7 @@ void	win_clear_buffer(void *mlx, t_window *win)
 #endif
 }
 
-void	win_flash_buffer(void *mlx, t_window *win)
+MAYBE_INLINE void	win_flash_buffer(void *mlx, t_window *win)
 {
 #ifdef ENABLE_MLX_PUT
 	mlx_do_sync(mlx);
