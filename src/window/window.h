@@ -32,5 +32,6 @@ t_fps	*win_fps_init(void);
 void	fps_win_tick(t_window *win);
 void	win_fps_destroy(t_window *win);
 size_t	get_current_time(void);
+long long get_current_time_microseconds(void);
 
 #endif

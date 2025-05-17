@@ -19,6 +19,7 @@ int	main(void)
 	ft_bzero(&cube, sizeof(t_cube));
 	cube.window.width = WIDTH;
 	cube.window.height = HEIGHT;
+	cube.player.speed = 1700.0;
 	mlx_start_loop(&cube);
 	return (0);
 }

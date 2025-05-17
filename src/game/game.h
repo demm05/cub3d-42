@@ -17,5 +17,6 @@
 
 int		game_loop(t_cube *cube);
 void	game_hook(t_cube *cube);
+void	set_delta(t_window *window);
 
 #endif

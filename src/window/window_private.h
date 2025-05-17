@@ -18,12 +18,6 @@
 # include "mlx.h"
 # include "window.h"
 
-typedef struct s_fps
-{
-	unsigned int	frame_count;
-	size_t			start_time;
-}	t_fps;
-
 bool	create_window(void *mlx, t_window *win);
 void	mlx_free(t_cube *cube);
 

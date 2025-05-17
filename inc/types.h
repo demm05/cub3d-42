@@ -18,19 +18,26 @@
 
 typedef struct s_fps t_fps;
 
+typedef struct s_timing
+{
+	long long	last_frame_time;
+	double		delta;
+}	t_timing;
+
 typedef struct s_window
 {
-	void	*mlx; // Just a pointer to t_cube->mlx
-	void	*win;
-	void	*img;
-	char	*buffer;
-	size_t	frame_start_time;
-	int		depth;
-	int		line_size;
-	int		endian;
-	int		width;
-	int		height;
-	int		frames;
+	void		*mlx; // Just a pointer to t_cube->mlx
+	void		*win;
+	void		*img;
+	char		*buffer;
+	size_t		frame_zero_time;
+	int			frames;
+	int			depth;
+	int			line_size;
+	int			endian;
+	int			width;
+	int			height;
+	t_timing	timing;
 }	t_window;
 
 typedef struct s_player
@@ -39,8 +46,9 @@ typedef struct s_player
 	bool	moving_down;
 	bool	moving_left;
 	bool	moving_right;
-	int		x;
-	int		y;
+	double	x;
+	double	y;
+	double	speed;
 }	t_player;
 
 typedef struct s_cube

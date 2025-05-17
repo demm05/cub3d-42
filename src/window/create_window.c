@@ -24,6 +24,6 @@ bool	create_window(void *mlx, t_window *win)
 			&win->endian);
 	if (!win->buffer)
 		return (0);
-	win->frame_start_time = get_current_time();
+	win->frame_zero_time = get_current_time();
 	return (1);
 }
