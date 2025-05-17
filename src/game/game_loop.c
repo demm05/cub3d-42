@@ -12,8 +12,41 @@
 
 #include "game_private.h"
 
+static inline void	update_movements(t_player *player, t_window *win)
+{
+	if (player->moving_up && player->y > 0)
+		player->y -= 1;
+	else if (player->moving_down && player->y < win->height - 10)
+		player->y += 1;
+	if (player->moving_left && player->x > 0)
+		player->x -= 1;
+	else if (player->moving_right && player->x < win->width - 10)
+		player->x += 1;
+}
+
+static inline void	draw_player(t_window *window, t_player *player)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x < 10 && player->x + x < window->width)
+	{
+		y = 0;
+		while (y < 10 && player->y + y < window->height)
+		{
+			win_pixel_put(window, player->x + x, y + player->y, 0xFFDDFF);
+			y++;
+		}
+		x++;
+	}
+}
+
 int	game_loop(t_cube *cube)
 {
-	(void)cube;
+	win_clear_buffer(cube->mlx, &cube->window);
+	update_movements(&cube->player, &cube->window);
+	draw_player(&cube->window, &cube->player);
+	win_flash_buffer(cube->mlx, &cube->window);
 	return (0);
 }

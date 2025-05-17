@@ -15,31 +15,17 @@
 
 # include "cube.h"
 
-typedef struct s_mlx_img
-{
-	void	*img;
-	char	*buffer;
-	int		depth;
-	int		line_size;
-	int		endian;
-}	t_mlx_img;
-
-typedef struct s_mlx_data
-{
-	void		*mlx;
-	void		*win;
-	t_mlx_img	img;
-}	t_mlx_data;
-
-void	mlx_put_pixel(t_mlx_img *img, int x, int y, int color);
-
 // This function creates a window and start's a loop
 void	mlx_start_loop(t_cube *cube);
 
 // This function stop's the loop of the window and memory of 
 // mlx_data is freed automatically
-int		mlx_stop_loop(t_mlx_data *mlx);
+int		mlx_stop_loop(void *mlx);
 
-void	mlx_enable_window_resize(t_mlx_data *mlx);
+void	mlx_enable_window_resize(void *mlx, t_window *window);
+
+void	win_pixel_put(t_window *win, int x, int y, int color);
+void	win_clear_buffer(void *mlx, t_window *win);
+void	win_flash_buffer(void *mlx, t_window *win);
 
 #endif

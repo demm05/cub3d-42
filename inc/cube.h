@@ -17,7 +17,7 @@
 # define HEIGHT 720
 # define WINDOW_NAME "CUB3D"
 # define ENABLE_RESIZE 0
-# define DO_KEY_AUTOREPEAT 1
+# define DISABLE_AUTOREPEAT_KEY 1
 
 # ifndef DEBUG
 #  define DEBUG 0

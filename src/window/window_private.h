@@ -16,7 +16,7 @@
 # include "mlx.h"
 # include "window.h"
 
-t_mlx_data	*create_window(t_window *win);
-void		mlx_free(t_mlx_data **arg);
+bool	create_window(void *mlx, t_window *win);
+void	mlx_free(t_cube *cube);
 
 #endif
