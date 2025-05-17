@@ -14,6 +14,9 @@
 # define TYPES_H
 
 # include <stdbool.h>
+# include <aio.h>
+
+typedef struct s_fps t_fps;
 
 typedef struct s_window
 {
@@ -21,11 +24,13 @@ typedef struct s_window
 	void	*win;
 	void	*img;
 	char	*buffer;
+	size_t	frame_start_time;
 	int		depth;
 	int		line_size;
 	int		endian;
 	int		width;
 	int		height;
+	int		frames;
 }	t_window;
 
 typedef struct s_player
