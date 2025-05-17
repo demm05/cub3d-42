@@ -12,29 +12,26 @@
 
 #include "window_private.h"
 
-t_mlx_data	*create_window(t_window *win)
+bool	create_window(void *mlx, t_window *win)
 {
-	t_mlx_data	*data;
-
-	data = ft_calloc(1, sizeof(t_mlx_data));
-	if (!data)
-		return (NULL);
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		return (NULL);
-	data->win = mlx_new_window(data->mlx, win->width, win->height, WINDOW_NAME);
-	if (!data->win)
+	win->win = mlx_new_window(mlx, win->width, win->height, WINDOW_NAME);
+	if (!win->win)
 	{
-		mlx_free(&data);
-		return (NULL);
+		ft_fprintf(2, "error: create_window: mlx_new_window\n");
+		return (0);
 	}
-	data->img.img = mlx_new_image(data->mlx, win->width, win->height);
-	if (!data->img.img)
+	win->img = mlx_new_image(mlx, win->width, win->height);
+	if (!win->img)
 	{
-		mlx_free(&data);
-		return (NULL);
+		ft_fprintf(2, "error: create_window: mlx_new_image\n");
+		return (0);
 	}
-	data->img.buffer = mlx_get_data_addr(data->img.img, &data->img.depth,
-			&data->img.line_size, &data->img.endian);
-	return (data);
+	win->buffer = mlx_get_data_addr(win->img, &win->depth, &win->line_size,
+			&win->endian);
+	if (!win->buffer)
+	{
+		ft_fprintf(2, "error: create_window: mlx_get_data_addr\n");
+		return (0);
+	}
+	return (1);
 }

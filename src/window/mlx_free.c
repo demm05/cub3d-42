@@ -12,22 +12,19 @@
 
 #include "window_private.h"
 
-void	mlx_free(t_mlx_data **arg)
+static inline void	for_each_window(void *mlx, t_window *win)
 {
-	t_mlx_data	*data;
+	if (win->win)
+		mlx_destroy_window(mlx, win->win);
+	if (win->img)
+		mlx_destroy_image(mlx, win->img);
+}
 
-	if (!arg || !*arg)
+void	mlx_free(t_cube *cube)
+{
+	if (!cube || !cube->mlx)
 		return ;
-	data = *arg;
-	if (data->mlx)
-	{
-		if (data->win)
-			mlx_destroy_window(data->mlx, data->win);
-		if (data->img.img)
-			mlx_destroy_image(data->mlx, data->img.img);
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
-	}
-	free(data);
-	*arg = NULL;
+	for_each_window(cube->mlx, &cube->window);
+	mlx_destroy_display(cube->mlx);
+	free(cube->mlx);
 }

@@ -16,20 +16,28 @@ void	mlx_start_loop(t_cube *cube)
 {
 	if (!cube)
 		return ;
-	cube->mlx = create_window(&cube->window);
+	cube->mlx = mlx_init();
 	if (!cube->mlx)
 		return ;
+	if (!create_window(cube->mlx, &cube->window))
+	{
+		mlx_free(cube);
+		return ;
+	}
+	cube->window.mlx = cube->mlx;
+	if (DO_KEY_AUTOREPEAT)
+		mlx_do_key_autorepeatoff(cube->mlx);
 	game_hook(cube);
-	mlx_loop(cube->mlx->mlx);
-	mlx_free(&cube->mlx);
+	mlx_loop(cube->mlx);
+	mlx_free(cube);
 }
 
-int	mlx_stop_loop(t_mlx_data *mlx)
+int	mlx_stop_loop(void *mlx)
 {
 	if (DEBUG)
 		printf("mlx_stop_loop is called\n");
 	if (DO_KEY_AUTOREPEAT)
-		mlx_do_key_autorepeaton(mlx->mlx);
-	mlx_loop_end(mlx->mlx);
+		mlx_do_key_autorepeaton(mlx);
+	mlx_loop_end(mlx);
 	return (0);
 }

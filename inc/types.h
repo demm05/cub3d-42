@@ -13,9 +13,20 @@
 #ifndef TYPES_H
 # define TYPES_H
 
-#include <stdbool.h>
+# include <stdbool.h>
 
-typedef struct s_mlx_data	t_mlx_data;
+typedef struct s_window
+{
+	void	*mlx; // Just a pointer to t_cube->mlx
+	void	*win;
+	void	*img;
+	char	*buffer;
+	int		depth;
+	int		line_size;
+	int		endian;
+	int		width;
+	int		height;
+}	t_window;
 
 typedef struct s_player
 {
@@ -27,17 +38,11 @@ typedef struct s_player
 	int		y;
 }	t_player;
 
-typedef struct s_window
-{
-	int	width;
-	int	height;
-}	t_window;
-
 typedef struct s_cube
 {
 	t_player	player;
 	t_window	window;
-	t_mlx_data	*mlx;
+	void		*mlx;
 }	t_cube;
 
 #endif

@@ -10,12 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window.h"
+#include "window_private.h"
 
-void	mlx_put_pixel(t_mlx_img *img, int x, int y, int color)
+void	win_pixel_put(t_window *win, int x, int y, int color)
 {
-	int	offset;
+#ifdef ENABLE_MLX_PUT
+	mlx_pixel_put(win->mlx, win->win, x, y, color);
+#else
+	*((unsigned int *)((y * win->line_size) + (x * (win->depth / 8)) \
+		+ win->buffer)) = color;
+#endif
+}
 
-	offset = (y * img->line_size) + (x * (img->depth / 8));
-	*((unsigned int *)(offset + img->buffer)) = color;
+void	win_clear_buffer(void *mlx, t_window *win)
+{
+#ifdef ENABLE_MLX_PUT
+	mlx_clear_window(mlx, win->win);
+#else
+	ft_memset(win->buffer, 0, win->height * win->line_size);
+#endif
+}
+
+void	win_flash_buffer(void *mlx, t_window *win)
+{
+#ifdef ENABLE_MLX_PUT
+	mlx_do_sync(mlx);
+#else
+	mlx_put_image_to_window(mlx, win->win, win->img, 0, 0);
+#endif
 }
