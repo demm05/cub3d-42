@@ -16,8 +16,9 @@
 int	game_handle_keyboard_press(int keycode, t_cube *cube)
 {
 	(void) cube;
-	if (DEBUG)
-		printf("press: %d\n", keycode);
+#if DEBUG
+	printf("press: %d\n", keycode);
+#endif
 	if (keycode == XK_w)
 		cube->player.moving_up = 1;
 	else if (keycode == XK_a)
@@ -32,8 +33,9 @@ int	game_handle_keyboard_press(int keycode, t_cube *cube)
 int	game_handle_keyboard_release(int keycode, t_cube *cube)
 {
 	(void) cube;
-	if (DEBUG)
-		printf("release: %d\n", keycode);
+#if DEBUG
+	printf("release: %d\n", keycode);
+#endif
 	if (keycode == XK_w)
 		cube->player.moving_up = 0;
 	else if (keycode == XK_a)

@@ -25,7 +25,7 @@ void	mlx_start_loop(t_cube *cube)
 		return ;
 	}
 	cube->window.mlx = cube->mlx;
-	if (DO_KEY_AUTOREPEAT)
+	if (DISABLE_AUTOREPEAT_KEY)
 		mlx_do_key_autorepeatoff(cube->mlx);
 	game_hook(cube);
 	mlx_loop(cube->mlx);
@@ -36,7 +36,7 @@ int	mlx_stop_loop(void *mlx)
 {
 	if (DEBUG)
 		printf("mlx_stop_loop is called\n");
-	if (DO_KEY_AUTOREPEAT)
+	if (DISABLE_AUTOREPEAT_KEY)
 		mlx_do_key_autorepeaton(mlx);
 	mlx_loop_end(mlx);
 	return (0);
