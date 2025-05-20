@@ -4,7 +4,7 @@ ODIR				=	obj
 NAME				=	cub3d
 
 CC					=	gcc
-CFLAGS				=	-g -pg -O3 -Wall -Wextra -I$(HDIR) -flto
+CFLAGS				=	-pg -O3 -Wall -Wextra -I$(HDIR) -flto
 MAKE_LIB			=	@make --no-print-directory -C
 DIRS				=	$(sort $(dir $(OBJS)))
 
@@ -18,6 +18,8 @@ LIBFT_DIR			=	$(HDIR)/libft
 LIBFT				=	$(LIBFT_DIR)/$(LIBFT_FILE)
 CFLAGS				+=	-I$(LIBFT_DIR)/include
 
+LIB_FLAGS			=	-L$(MLX_DIR) -lmlx -lX11 -lXext -lm -L$(LIBFT_DIR) -lft
+
 SRCS				:=	$(shell find $(SDIR) -name "*.c")
 OBJS				:=	$(patsubst $(SDIR)/%.c,$(ODIR)/%.o, $(SRCS))
 
@@ -25,7 +27,7 @@ ifeq ($(D), 1)
 	CFLAGS+=-DDEBUG=1
 endif
 
-ifneq ($(A), 1)
+ifeq ($(A), 1)
 	CFLAGS+=-DENABLE_MLX_PUT=1
 endif
 
@@ -33,14 +35,13 @@ ifneq ($(I), 1)
 	CFLAGS+=-DENABLE_CUSTOM_INLINING=1
 endif
 
+all: $(NAME) 
 
-all: $(NAME)
-
-$(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS)
+$(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS) $(MLX) $(LIBFT)
 	$(Q)$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(OBJS) $(MLX) $(LIBFT)
-	$(Q)$(CC) $(CFLAGS) $^ -o $@ -L$(MLX_PATH) -lmlx -lX11 -lXext -lm
+$(NAME): $(OBJS) 
+	$(Q)$(CC) $(CFLAGS) $^ -o $@ $(LIB_FLAGS)
 
 $(DIRS):
 	$(Q)mkdir -p $@
@@ -49,7 +50,7 @@ $(MLX): | $(MLX_DIR)
 	$(Q)$(MAKE_LIB) $(MLX_DIR) > /dev/null 2>&1
 
 $(LIBFT): | $(LIBFT_DIR)
-	$(Q)$(MAKE_LIB) $(LIBFT_DIR)
+	$(Q)$(MAKE_LIB) $(LIBFT_DIR) > /dev/null 2>&1
 
 $(MLX_DIR) $(LIBFT_DIR):
 	$(Q)$(MAKE_LIB) ./ init
@@ -60,7 +61,7 @@ compiledb:
 g gprof: all
 	@echo "Generating profiling report (prof.pdf)..."
 	@gprof ./$(NAME) gmon.out | gprof2dot | dot -Tpdf -o prof.pdf && open prof.pdf
-	@rm -pf gmon.out
+	# @rm -f gmon.out
 
 i init:
 	@git submodule update --init --remote --recursive

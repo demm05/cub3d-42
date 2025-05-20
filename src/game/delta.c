@@ -8,9 +8,6 @@ MAYBE_INLINE void	set_delta(t_window *window)
 	window->timing.delta = (double)(current_time - window->timing.last_frame_time) / 1000000.0;
 	window->timing.last_frame_time = current_time;
 	if (window->timing.delta > MAX_DELTA_TIME)
-	{
 		window->timing.delta = MAX_DELTA_TIME;
-		puts("HELLO");
-	}
 }
 

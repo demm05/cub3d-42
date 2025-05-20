@@ -24,7 +24,7 @@ MAYBE_INLINE void	fps_win_tick(t_window *win)
 	current_time = get_current_time();
 	if (current_time - win->frame_zero_time >= 1000)
 	{
-		printf("%d\n", win->frames);
+		win->fps = win->frames;
 		win->frame_zero_time = current_time;
 		win->frames = 0;
 	}
