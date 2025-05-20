@@ -16,9 +16,9 @@
 # define WIDTH 1280
 # define HEIGHT 720
 # define WINDOW_NAME "CUB3D"
-# define ENABLE_RESIZE 0
+# define ENABLE_RESIZE 1
 # define DISABLE_AUTOREPEAT_KEY 1
-# define PLAYER_2D_SIZE 50
+# define PLAYER_2D_SIZE 20
 # define MAX_DELTA_TIME 1.0 / 15.0
 
 # ifndef DEBUG
@@ -39,6 +39,10 @@
 
 # ifndef GAME_H 
 #  include "../src/game/game.h"
+# endif
+
+# ifndef PLAYER_H
+#  include "../src/player/player.h"
 # endif
 
 # ifdef ENABLE_CUSTOM_INLINING

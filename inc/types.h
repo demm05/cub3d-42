@@ -24,6 +24,15 @@ typedef struct s_timing
 	double		delta;
 }	t_timing;
 
+typedef struct s_map
+{
+	int	cols;
+	int	rows;
+	int	wall_width;
+	int	wall_height;
+	int	*arr;
+}	t_map;
+
 typedef struct s_window
 {
 	void		*mlx; // Just a pointer to t_cube->mlx
@@ -32,6 +41,7 @@ typedef struct s_window
 	char		*buffer;
 	size_t		frame_zero_time;
 	int			frames;
+	int			fps;
 	int			depth;
 	int			line_size;
 	int			endian;
@@ -55,6 +65,7 @@ typedef struct s_cube
 {
 	t_player	player;
 	t_window	window;
+	t_map		map;
 	void		*mlx;
 }	t_cube;
 

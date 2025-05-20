@@ -29,7 +29,7 @@ MAYBE_INLINE void	win_clear_buffer(void *mlx, t_window *win)
 #ifdef ENABLE_MLX_PUT
 	mlx_clear_window(mlx, win->win);
 #else
-	ft_memset(win->buffer, 0, win->height * win->line_size);
+	// ft_memset(win->buffer, 0x808080, win->height * win->line_size);
 #endif
 }
 
