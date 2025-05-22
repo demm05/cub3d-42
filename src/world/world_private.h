@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_mouse.c                                     :+:      :+:    :+:   */
+/*   world_private.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/16 16:15:47 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/16 16:15:57 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/22 09:56:33 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/22 10:39:57 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game_private.h"
+#ifndef WORLD_PRIVATE_H
+# define WORLD_PRIVATE_H
 
-int	game_handle_mouse_press(int key, int x, int y, t_cube *cube)
-{
-	(void) cube;
-	(void) key;
-	(void) x;
-	(void) y;
-	return (0);
-}
+# include "cube.h"
 
-int	game_handle_mouse_move(int x, int y, t_cube *cube)
-{
-	(void) cube;
-	(void) x;
-	(void) y;
-	return (0);
-}
+#endif

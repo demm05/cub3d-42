@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:16:43 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 11:46:22 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/22 10:25:37 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/22 12:38:19 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "engine_private.h"
 
-int	main(void)
-{
-	t_engine	eng;
+void	mlx_destroy(t_engine *eng);
 
-	if (engine_init(&eng))
-		engine_loop(&eng);
-	engine_destroy(&eng);
-	return (0);
-}
-
-void	set_defaults(t_engine *eng)
+void	engine_destroy(t_engine *eng)
 {
 	if (!eng)
 		return ;
-	eng->window.height = INITIAL_WINDOW_HEIGHT;
-	eng->window.width = INITIAL_WINDOW_WIDTH;
-	eng->window.title = WINDOW_TITLE;
+	mlx_destroy(eng);
+}
+
+void	mlx_destroy(t_engine *eng)
+{
+	if (!eng->mlx)
+		return ;
+	if (DISABLE_AUTOREPEAT_KEY)
+		mlx_do_key_autorepeaton(eng->mlx);
+	if (eng->window.win)
+		mlx_destroy_window(eng->mlx, eng->window.win);
+	buffer_destroy(eng->mlx, &eng->main_buffer);
+	mlx_destroy_display(eng->mlx);
+	free(eng->mlx);
 }

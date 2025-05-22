@@ -1,24 +1,27 @@
 HDIR				=	inc
 SDIR				=	src
 ODIR				=	obj
+LDIR				=	lib
 NAME				=	cub3d
 
 CC					=	gcc
-CFLAGS				=	-pg -O3 -Wall -Wextra -I$(HDIR) -flto
+CFLAGS				=	-g -O3 -Wall -Wextra -Werror -I$(HDIR) -flto
+LIB_FLAGS			=	-lmlx -lX11 -lXext -lm -lft
+
 MAKE_LIB			=	@make --no-print-directory -C
 DIRS				=	$(sort $(dir $(OBJS)))
 
-MLX_DIR				=	$(HDIR)/minilibx
-MLX_FILE			=	libmlx.a
-MLX					=	$(MLX_DIR)/$(MLX_FILE)
+MLX_DIR				=	$(LDIR)/minilibx
+MLX					=	$(MLX_DIR)/libmlx.a
 CFLAGS				+=	-I$(MLX_DIR)
+LIBS				+=	$(MLX)
+LIB_FLAGS			+=	-L$(MLX_DIR)
 
-LIBFT_FILE			=	libft.a
-LIBFT_DIR			=	$(HDIR)/libft
-LIBFT				=	$(LIBFT_DIR)/$(LIBFT_FILE)
+LIBFT_DIR			=	$(LDIR)/libft
+LIBFT				=	$(LIBFT_DIR)/libft.a
 CFLAGS				+=	-I$(LIBFT_DIR)/include
-
-LIB_FLAGS			=	-L$(MLX_DIR) -lmlx -lX11 -lXext -lm -L$(LIBFT_DIR) -lft
+LIBS				+=	$(LIBFT)
+LIB_FLAGS			+=	-L$(LIBFT_DIR)
 
 SRCS				:=	$(shell find $(SDIR) -name "*.c")
 OBJS				:=	$(patsubst $(SDIR)/%.c,$(ODIR)/%.o, $(SRCS))
@@ -37,7 +40,7 @@ endif
 
 all: $(NAME) 
 
-$(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS) $(MLX) $(LIBFT)
+$(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS) $(LIBS)
 	$(Q)$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS) 
@@ -46,13 +49,13 @@ $(NAME): $(OBJS)
 $(DIRS):
 	$(Q)mkdir -p $@
 
-$(MLX): | $(MLX_DIR)
+$(MLX): | $(MLX_DIR) $(MLX_DIR)/Makefile
 	$(Q)$(MAKE_LIB) $(MLX_DIR) > /dev/null 2>&1
 
-$(LIBFT): | $(LIBFT_DIR)
+$(LIBFT): | $(LIBFT_DIR) $(MLX_DIR)/Makefile
 	$(Q)$(MAKE_LIB) $(LIBFT_DIR) > /dev/null 2>&1
 
-$(MLX_DIR) $(LIBFT_DIR):
+$(MLX_DIR) $(MLX_DIR)/Makefile $(LIBFT_DIR) $(LIBFT_DIR)/Makefile:
 	$(Q)$(MAKE_LIB) ./ init
 
 compiledb:
