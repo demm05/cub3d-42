@@ -3,3 +3,4 @@ obj
 .*cache*
 compile_commands.json
 cub3d
+.direnv
