@@ -17,7 +17,7 @@ int	main(void)
 	t_engine	eng;
 
 	if (engine_init(&eng))
-		engine_loop(&eng);
+		mlx_loop(eng.mlx);
 	engine_destroy(&eng);
 	return (0);
 }
@@ -29,4 +29,10 @@ void	set_defaults(t_engine *eng)
 	eng->window.height = INITIAL_WINDOW_HEIGHT;
 	eng->window.width = INITIAL_WINDOW_WIDTH;
 	eng->window.title = WINDOW_TITLE;
+	eng->camera.dir.x = -1;
+	eng->camera.dir.y = 0;
+	eng->camera.plane.x = 0;
+	eng->camera.plane.y = 0.66;
+	eng->camera.pos.x = 22;
+	eng->camera.pos.y = 12;
 }

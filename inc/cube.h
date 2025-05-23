@@ -13,11 +13,11 @@
 #ifndef CUBE_H
 # define CUBE_H
 
-# define INITIAL_WINDOW_WIDTH 1280
-# define INITIAL_WINDOW_HEIGHT 720
+# define INITIAL_WINDOW_WIDTH 1580
+# define INITIAL_WINDOW_HEIGHT 1000
 # define WINDOW_TITLE "CUBE 3D"
 
-# define ENABLE_RESIZE 0
+# define ENABLE_RESIZE 1
 # define DISABLE_AUTOREPEAT_KEY 1
 
 # ifndef DEBUG
@@ -34,9 +34,9 @@
 
 # include "render.h"
 # include "assets.h"
-# include "camera.h"
 # include "world.h"
 # include "input.h"
+# include "camera.h"
 # include "engine.h"
 # include "raycaster.h"
 # include "utils.h"

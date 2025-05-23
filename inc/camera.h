@@ -15,12 +15,21 @@
 
 # include "cube.h"
 
+typedef struct s_vec2_double
+{
+    double x;
+    double y;
+} t_vec2_double;
+
 typedef struct s_camera
 {
-    double  x;
-    double  y;
-    double  move_speed;
-    double  rotation_speed;
+    t_vec2_double   pos;
+    t_vec2_double   dir;
+    t_vec2_double   plane;
+    double          move_speed;
+    double          rotation_speed;
 }   t_camera;
+
+void	update_movements(t_camera *cam, t_input *inp);
 
 #endif

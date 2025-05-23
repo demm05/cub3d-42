@@ -21,6 +21,11 @@ bool    buffer_create(void *mlx, t_frame_buf *buf, int width, int height)
 			&buf->endian);
 	if (!buf->buffer)
 		return (0);
+	buf->width = width;
+	buf->height = height;
+# if DEBUG
+	printf("New buffer was created: w:%d\th:%d\td:%d\tl:%d\n", width, height, buf->depth, buf->line_size);
+#endif
     return (1);
 }
 
