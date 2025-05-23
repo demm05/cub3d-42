@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_mouse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:16:43 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 11:46:22 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/22 12:28:35 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/22 12:29:59 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "input_private.h"
 
-int	main(void)
+int	input_handle_mouse_press(int key, int x, int y, t_engine *eng)
 {
-	t_engine	eng;
-
-	if (engine_init(&eng))
-		engine_loop(&eng);
-	engine_destroy(&eng);
+	(void) eng;
+	(void) key;
+	(void) x;
+	(void) y;
 	return (0);
 }
 
-void	set_defaults(t_engine *eng)
+int	input_handle_mouse_move(int x, int y, t_engine *eng)
 {
-	if (!eng)
-		return ;
-	eng->window.height = INITIAL_WINDOW_HEIGHT;
-	eng->window.width = INITIAL_WINDOW_WIDTH;
-	eng->window.title = WINDOW_TITLE;
+	(void) eng;
+	(void) x;
+	(void) y;
+	return (0);
 }

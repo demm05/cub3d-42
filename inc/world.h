@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_private.h                                   :+:      :+:    :+:   */
+/*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:16:34 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/15 17:16:35 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/22 09:56:15 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/22 11:50:59 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_PRIVATE_H
-# define WINDOW_PRIVATE_H
+#ifndef WORLD_H
+# define WORLD_H
 
-# define FPS_COUNTER_MSC_UPDATE 1000
+# include "cube.h"
 
-# include "mlx.h"
-# include "window.h"
-
-bool	create_window(void *mlx, t_window *win);
-void	mlx_free(t_cube *cube);
+typedef struct s_world
+{
+}   t_world;
 
 #endif

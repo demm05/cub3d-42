@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:16:43 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 11:46:22 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/22 09:59:38 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/22 13:10:37 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#ifndef CAMERA_H
+# define CAMERA_H
 
-int	main(void)
+# include "cube.h"
+
+typedef struct s_camera
 {
-	t_engine	eng;
+    double  x;
+    double  y;
+    double  move_speed;
+    double  rotation_speed;
+}   t_camera;
 
-	if (engine_init(&eng))
-		engine_loop(&eng);
-	engine_destroy(&eng);
-	return (0);
-}
-
-void	set_defaults(t_engine *eng)
-{
-	if (!eng)
-		return ;
-	eng->window.height = INITIAL_WINDOW_HEIGHT;
-	eng->window.width = INITIAL_WINDOW_WIDTH;
-	eng->window.title = WINDOW_TITLE;
-}
+#endif

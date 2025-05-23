@@ -1,5 +1,4 @@
-inc/libft
-inc/minilibx
+lib
 obj
 .*cache*
 compile_commands.json

@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:16:43 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 11:46:22 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/22 09:57:10 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/22 11:38:02 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#ifndef RENDER_H
+# define RENDER_H
 
-int	main(void)
+# include "cube.h"
+
+typedef struct s_frame_buf
 {
-	t_engine	eng;
+	void	*mlx;	// Pointer to mlx instance
+	void	*img;
+	char	*buffer;
+	int		depth;
+	int		line_size;
+	int		endian;
+}	t_frame_buf;
 
-	if (engine_init(&eng))
-		engine_loop(&eng);
-	engine_destroy(&eng);
-	return (0);
-}
+bool    buffer_create(void *mlx, t_frame_buf *buf, int width, int height);
+void	buffer_destroy(void *mlx, t_frame_buf *buf);
 
-void	set_defaults(t_engine *eng)
-{
-	if (!eng)
-		return ;
-	eng->window.height = INITIAL_WINDOW_HEIGHT;
-	eng->window.width = INITIAL_WINDOW_WIDTH;
-	eng->window.title = WINDOW_TITLE;
-}
+#endif

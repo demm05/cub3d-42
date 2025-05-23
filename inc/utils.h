@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_free.c                                         :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:16:22 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/15 17:16:23 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/22 12:35:33 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window_private.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-static inline void	for_each_window(void *mlx, t_window *win)
-{
-	if (win->win)
-		mlx_destroy_window(mlx, win->win);
-	if (win->img)
-		mlx_destroy_image(mlx, win->img);
-}
+# include "cube.h"
 
-void	mlx_free(t_cube *cube)
-{
-	if (!cube || !cube->mlx)
-		return ;
-	for_each_window(cube->mlx, &cube->window);
-	mlx_destroy_display(cube->mlx);
-	free(cube->mlx);
-}
+bool	init_mlx_and_window(t_engine *eng);
+void	mlx_enable_window_resize(void *mlx, t_window *window);
+
+#endif

@@ -6,20 +6,19 @@
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:17:02 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/15 17:17:03 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/22 13:12:42 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# define WIDTH 1280
-# define HEIGHT 720
-# define WINDOW_NAME "CUB3D"
-# define ENABLE_RESIZE 1
+# define INITIAL_WINDOW_WIDTH 1280
+# define INITIAL_WINDOW_HEIGHT 720
+# define WINDOW_TITLE "CUBE 3D"
+
+# define ENABLE_RESIZE 0
 # define DISABLE_AUTOREPEAT_KEY 1
-# define PLAYER_2D_SIZE 20
-# define MAX_DELTA_TIME 1.0 / 15.0
 
 # ifndef DEBUG
 #  define DEBUG 0
@@ -28,22 +27,21 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
-# include "libft/include/libft.h"
+# include "../lib/libft/include/libft.h"
+# include "../lib/minilibx/mlx.h"
 
-# include "types.h"
+# include "render.h"
+# include "assets.h"
+# include "camera.h"
+# include "world.h"
+# include "input.h"
+# include "engine.h"
+# include "raycaster.h"
+# include "utils.h"
 
-# ifndef WINDOW_H
-#  include "../src/window/window.h"
-# endif
-
-# ifndef GAME_H 
-#  include "../src/game/game.h"
-# endif
-
-# ifndef PLAYER_H
-#  include "../src/player/player.h"
-# endif
+void	set_defaults(t_engine *eng);
 
 # ifdef ENABLE_CUSTOM_INLINING
 #  ifdef __GNUC__ // For GCC/Clang
