@@ -21,6 +21,8 @@ typedef struct s_window
 	void	*win;
 	int		width;
 	int		height;
+	int		max_width;
+	int		max_height;
 	char	*title;
 }	t_window;
 

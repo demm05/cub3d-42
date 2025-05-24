@@ -7,7 +7,7 @@ MAYBE_INLINE void	update_movements(t_camera *cam, t_input *inp)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	move_amount = 0.01;
+	move_amount = 0.1;
 	if (inp->moving_up)
 	{
 		cam->pos.y += cam->dir.y * move_amount;
