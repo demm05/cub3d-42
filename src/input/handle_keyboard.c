@@ -13,7 +13,7 @@
 #include "input_private.h"
 #include <X11/keysym.h>
 
-int input_keyboard_press(int keycode, t_engine *eng)
+int	input_keyboard_press(int keycode, t_engine *eng)
 {
 #if DEBUG
 	printf("press: %d\n", keycode);
@@ -34,8 +34,8 @@ int	input_keyboard_release(int keycode, t_engine *eng)
 #if DEBUG
 	printf("release: %d\n", keycode);
 #endif
-    if (keycode == XK_Escape)
-        mlx_loop_end(eng->mlx);
+	if (keycode == XK_Escape)
+		mlx_loop_end(eng->mlx);
 	else if (keycode == XK_w)
 		eng->input.moving_up = 0;
 	else if (keycode == XK_a)

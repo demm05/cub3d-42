@@ -14,7 +14,6 @@
 #include "mlx_int.h"
 #include <X11/X.h>
 
-
 bool	init_mlx_and_window(t_engine *eng)
 {
 	int	x;
@@ -25,7 +24,8 @@ bool	init_mlx_and_window(t_engine *eng)
 	eng->mlx = mlx_init();
 	if (!eng->mlx)
 		return (0);
-	eng->window.win = mlx_new_window(eng->mlx, eng->window.width, eng->window.height, eng->window.title);
+	eng->window.win = mlx_new_window(eng->mlx, eng->window.width,
+			eng->window.height, eng->window.title);
 	if (!eng->window.win)
 		return (0);
 	mlx_get_screen_size(eng->mlx, &x, &y);

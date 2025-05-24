@@ -22,8 +22,8 @@ bool	engine_init(t_engine *eng)
 	set_defaults(eng);
 	if (!init_mlx_and_window(eng))
 		return (0);
+	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);
-	mlx_loop(eng->mlx);
 	return (1);
 }
 

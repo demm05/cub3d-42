@@ -11,9 +11,14 @@
 /* ************************************************************************** */
 
 #include "engine_private.h"
+#include "render.h"
+#include <math.h>
 
 int	engine_loop(t_engine *eng)
 {
-	(void)eng;
+	update_movements(&eng->camera, &eng->input);
+	draw_walls(eng, &eng->ray);
+	buffer_flash(&eng->main_buffer, &eng->window, 0, 0);
+	usleep(100);
 	return (0);
 }
