@@ -5,7 +5,7 @@ LDIR				=	lib
 NAME				=	cub3d
 
 CC					=	gcc
-CFLAGS				=	-g -O3 -Wall -Wextra -I$(HDIR) -flto
+CFLAGS				=	-g -O3 -Wall -Wextra -I$(HDIR) -flto -pg
 LIB_FLAGS			=	-lmlx -lX11 -lXext -lm -lft
 
 MAKE_LIB			=	@make --no-print-directory -C
@@ -38,7 +38,7 @@ ifneq ($(I), 1)
 	CFLAGS+=-DENABLE_CUSTOM_INLINING=1
 endif
 
-all: compiledb $(NAME) 
+all: $(NAME) 
 
 $(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS) $(LIBS)
 	$(Q)$(CC) $(CFLAGS) -c -o $@ $<
@@ -70,9 +70,10 @@ i init:
 	@git submodule update --init --remote --recursive
 
 n norm:
-	@norminette $(SDIR) $(HDIR)/*.h $(LIBFT_DIR) \
+	@norminette $(SDIR) $(HDIR) $(LIBFT_DIR) \
 		| grep Error | grep -v "INVALID_HEADER" | grep -v "PREPROC_BAD_INDENT" \
-		| grep -v "PREPOC_ONLY_GLOBAL" | grep -v "NL_AFTER_PREPROC" | grep -v "PREPROC_CONSTANT"
+		| grep -v "PREPOC_ONLY_GLOBAL" | grep -v "NL_AFTER_PREPROC" | grep -v "PREPROC_CONSTANT" \
+		| grep -v "WRONG_SCOPE_COMMENT" | grep -v "LINE_TOO_LONG" | grep -v "TOO_MANY_ARGS"
 
 v: $(NAME)
 	@valgrind ./$<

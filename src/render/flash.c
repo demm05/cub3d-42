@@ -1,4 +1,5 @@
 #include "render_private.h"
+#include <string.h>
 
 MAYBE_INLINE void	buffer_flash(t_frame_buf *buf, t_window *win, int x, int y)
 {

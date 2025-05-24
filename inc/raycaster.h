@@ -15,4 +15,17 @@
 
 # include "cube.h"
 
+typedef struct s_ray
+{
+	t_vec2_double	direction;
+	t_vec2_double	side_dist;
+	t_vec2_double	delta;
+	t_vec2_int		step;
+	t_vec2_int		map;
+	double			wall_dist;
+	bool			side;
+}	t_ray;
+
+void	draw_walls(t_engine *eng, t_ray *ray);
+
 #endif

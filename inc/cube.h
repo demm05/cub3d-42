@@ -29,7 +29,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 
-# include "../lib/libft/include/libft.h"
+# include "../lib/libft/libft.h"
 # include "../lib/minilibx/mlx.h"
 
 # include "render.h"
@@ -37,8 +37,8 @@
 # include "world.h"
 # include "input.h"
 # include "camera.h"
-# include "engine.h"
 # include "raycaster.h"
+# include "engine.h"
 # include "utils.h"
 
 void	set_defaults(t_engine *eng);

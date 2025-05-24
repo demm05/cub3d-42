@@ -22,6 +22,6 @@ typedef struct s_world
 {
 	int	width;
 	int	height;
-}   t_world;
+}	t_world;
 
 #endif

@@ -1,6 +1,7 @@
 #include "render_private.h"
 
-MAYBE_INLINE void	draw_vert_line(t_frame_buf *buf, int x, int start, int end, int color)
+MAYBE_INLINE void	draw_vert_line(t_frame_buf *buf, int x, int start, int end,
+						int color)
 {
 	if (start > end)
 		return ;
@@ -11,12 +12,12 @@ MAYBE_INLINE void	draw_vert_line(t_frame_buf *buf, int x, int start, int end, in
 	}
 	if (end > buf->height)
 		end = buf->height;
-	// printf("%d %d %d\n", x, start, end);
 	while (start < end)
 		draw_pixel(buf, x, start++, color);
 }
 
-MAYBE_INLINE void	draw_rectangle(t_frame_buf *buf, int x, int y, int width, int height, int color)
+MAYBE_INLINE void	draw_rectangle(t_frame_buf *buf, int x, int y, int width,
+						int height, int color)
 {
 	int	x_start;
 	int	y_start;
@@ -47,5 +48,6 @@ MAYBE_INLINE void	draw_rectangle(t_frame_buf *buf, int x, int y, int width, int 
 
 MAYBE_INLINE void	draw_pixel(t_frame_buf *buf, int x, int y, int color)
 {
-	*((unsigned int *)((y * buf->line_size) + (x * (buf->depth / 8)) + buf->buffer)) = color;
+	*((unsigned int *)((y * buf->line_size) + \
+				(x * (buf->depth / 8)) + buf->buffer)) = color;
 }

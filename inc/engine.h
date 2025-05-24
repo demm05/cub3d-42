@@ -32,6 +32,7 @@ typedef struct s_engine
 	t_frame_buf	main_buffer;
 	t_world		world;
 	t_camera	camera;
+	t_ray		ray;
 }	t_engine;
 
 bool	engine_init(t_engine *eng);
