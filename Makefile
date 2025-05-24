@@ -19,7 +19,7 @@ LIB_FLAGS			+=	-L$(MLX_DIR)
 
 LIBFT_DIR			=	$(LDIR)/libft
 LIBFT				=	$(LIBFT_DIR)/libft.a
-CFLAGS				+=	-I$(LIBFT_DIR)/include
+CFLAGS				+=	-I$(LIBFT_DIR)
 LIBS				+=	$(LIBFT)
 LIB_FLAGS			+=	-L$(LIBFT_DIR)
 
