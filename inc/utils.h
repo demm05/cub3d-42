@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 12:35:33 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/23 14:36:44 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,30 @@
 
 # include "cube.h"
 
-bool	init_mlx_and_window(t_engine *eng);
-void	mlx_enable_window_resize(void *mlx, t_window *window);
+/*----------------String----------------*/
+
+typedef struct string
+{
+	char	*str;
+	size_t	len;
+}	t_string;
+
+t_string	*t_str_init(const char *value);
+
+size_t		t_strappend_cstr(t_string *dest, const char *src);
+size_t		t_strappend_t_str(t_string *dest, t_string *src);
+
+t_string	*t_strcpy(t_string *src);
+t_string	*t_strlcpy(t_string *src, size_t size);
+
+int			t_strcmp(t_string *str1, t_string *str2);
+
+void		t_str_free(void *t_str);
+
+/*----------------End string----------------*/
+
+
+bool		init_mlx_and_window(t_engine *eng);
+void		mlx_enable_window_resize(void *mlx, t_window *window);
 
 #endif
