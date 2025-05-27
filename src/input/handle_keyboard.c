@@ -16,33 +16,41 @@
 int	input_keyboard_press(int keycode, t_engine *eng)
 {
 #if DEBUG
-	printf("press: %d\n", keycode);
+	printf("press: %d\tup: %d\tdown: %d\n", keycode, eng->input.moving_up, eng->input.moving_down);
 #endif
-	if (keycode == XK_w)
-		eng->input.moving_up = 1;
+	if (keycode == XK_w || keycode == XK_Up)
+		eng->input.moving_up++;
 	else if (keycode == XK_a)
 		eng->input.moving_left = 1;
-	else if (keycode == XK_s)
-		eng->input.moving_down = 1;
+	else if (keycode == XK_s || keycode == XK_Down)
+		eng->input.moving_down++;
 	else if (keycode == XK_d)
 		eng->input.moving_right = 1;
+	else if (keycode == XK_Left)
+		eng->input.look_left= 1;
+	else if (keycode == XK_Right)
+		eng->input.look_right = 1;
 	return (0);
 }
 
 int	input_keyboard_release(int keycode, t_engine *eng)
 {
 #if DEBUG
-	printf("release: %d\n", keycode);
+	printf("release: %d\tup: %d\tdown: %d\n", keycode, eng->input.moving_up, eng->input.moving_down);
 #endif
 	if (keycode == XK_Escape)
 		mlx_loop_end(eng->mlx);
-	else if (keycode == XK_w)
-		eng->input.moving_up = 0;
+	if ((keycode == XK_w || keycode == XK_Up) && eng->input.moving_up > 0)
+		eng->input.moving_up--;
+	else if ((keycode == XK_s || keycode == XK_Down) && eng->input.moving_down > 0)
+		eng->input.moving_down--;
 	else if (keycode == XK_a)
 		eng->input.moving_left = 0;
-	else if (keycode == XK_s)
-		eng->input.moving_down = 0;
 	else if (keycode == XK_d)
 		eng->input.moving_right = 0;
+	else if (keycode == XK_Left)
+		eng->input.look_left = 0;
+	else if (keycode == XK_Right)
+		eng->input.look_right = 0;
 	return (0);
 }
