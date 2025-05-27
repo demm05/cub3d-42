@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:57:10 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/24 15:56:17 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/27 12:53:41 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ typedef struct s_image
 	int		width;
 	int		height;
 	int		endian;
-	int		width;
-	int		height;
-  }	t_image;
+}	t_image;
 
 typedef struct s_image	t_frame_buf;
 
