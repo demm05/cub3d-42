@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world_private.h                                    :+:      :+:    :+:   */
+/*   free_str_arr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 09:56:33 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 11:07:18 by ogrativ          ###   ########.fr       */
+/*   Created: 2025/05/24 15:03:54 by ogrativ           #+#    #+#             */
+/*   Updated: 2025/05/27 12:06:06 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WORLD_PRIVATE_H
-# define WORLD_PRIVATE_H
+#include "utils_private.h"
 
-# include "cube.h"
+void	free_str_arr(char **arr)
+{
+	size_t	i;
 
-t_list	*read_file(const char *path);
-
-// int		init_world(void *mlx_ptr, t_world *world, const char *path);
-
-int		parse_textures(void *mlx_ptr, t_world *world, t_list **lst);
-
-#endif
+	if (!arr || !*arr)
+		return ;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i++]);
+	}
+	free(arr);
+}

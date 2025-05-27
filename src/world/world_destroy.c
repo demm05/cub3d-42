@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world_private.h                                    :+:      :+:    :+:   */
+/*   world_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 09:56:33 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 11:07:18 by ogrativ          ###   ########.fr       */
+/*   Created: 2025/05/27 10:58:56 by ogrativ           #+#    #+#             */
+/*   Updated: 2025/05/27 11:07:09 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WORLD_PRIVATE_H
-# define WORLD_PRIVATE_H
+#include "world_private.h"
 
-# include "cube.h"
-
-t_list	*read_file(const char *path);
-
-// int		init_world(void *mlx_ptr, t_world *world, const char *path);
-
-int		parse_textures(void *mlx_ptr, t_world *world, t_list **lst);
-
-#endif
+void	world_destroy(void *mlx_ptr, t_world *world)
+{
+	if (!world)
+		return ;
+	buffer_destroy(mlx_ptr, &world->ea);
+	buffer_destroy(mlx_ptr, &world->no);
+	buffer_destroy(mlx_ptr, &world->so);
+	buffer_destroy(mlx_ptr, &world->we);
+	destroy_map(world->map);
+}

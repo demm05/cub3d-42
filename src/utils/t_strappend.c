@@ -6,11 +6,11 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:57:51 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/23 14:26:52 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/24 15:04:27 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "utils_private.h"
 
 size_t	t_strappend_cstr(t_string *dest, const char *src)
 {
