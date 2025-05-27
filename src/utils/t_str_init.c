@@ -6,11 +6,11 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:49:47 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/23 13:54:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/24 15:04:22 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "utils_private.h"
 
 t_string	*t_str_init(const char *value)
 {

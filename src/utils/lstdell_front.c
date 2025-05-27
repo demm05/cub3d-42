@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world_private.h                                    :+:      :+:    :+:   */
+/*   lstdell_front.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 09:56:33 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 11:07:18 by ogrativ          ###   ########.fr       */
+/*   Created: 2025/05/24 15:13:46 by ogrativ           #+#    #+#             */
+/*   Updated: 2025/05/24 15:22:28 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WORLD_PRIVATE_H
-# define WORLD_PRIVATE_H
+#include "utils_private.h"
 
-# include "cube.h"
+void	lstdell_front(t_list **lst, void (*del)(void *))
+{
+	t_list	*tmp_head;
 
-t_list	*read_file(const char *path);
-
-// int		init_world(void *mlx_ptr, t_world *world, const char *path);
-
-int		parse_textures(void *mlx_ptr, t_world *world, t_list **lst);
-
-#endif
+	if (!lst || !*lst)
+		return ;
+	tmp_head = (*lst)->next;
+	ft_lstdelone(*lst, del);
+	*lst = tmp_head;
+}

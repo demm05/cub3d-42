@@ -6,11 +6,11 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 14:31:01 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/23 14:34:45 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/24 15:04:30 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "utils_private.h"
 
 int	t_strcmp(t_string *str1, t_string *str2)
 {

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world_private.h                                    :+:      :+:    :+:   */
+/*   destroy_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 09:56:33 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 11:07:18 by ogrativ          ###   ########.fr       */
+/*   Created: 2025/05/23 16:59:15 by ogrativ           #+#    #+#             */
+/*   Updated: 2025/05/24 13:02:05 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WORLD_PRIVATE_H
-# define WORLD_PRIVATE_H
+#include "render_private.h"
 
-# include "cube.h"
-
-t_list	*read_file(const char *path);
-
-// int		init_world(void *mlx_ptr, t_world *world, const char *path);
-
-int		parse_textures(void *mlx_ptr, t_world *world, t_list **lst);
-
-#endif
+void	destroy_image(t_image *img)
+{
+	if (!img)
+		return ;
+	// if (img->buffer)
+	// 	free(img->buffer);
+	if (img->img)
+		mlx_destroy_image(img->mlx, img->img);
+	free(img);
+}
