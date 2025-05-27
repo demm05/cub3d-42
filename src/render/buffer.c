@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buffer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:32:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 12:45:02 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/24 13:08:19 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	buffer_create(void *mlx, t_frame_buf *buf, int width, int height)
 	return (1);
 }
 
-void	buffer_destroy(void *mlx, t_frame_buf *buf)
+void	buffer_destroy(void *mlx, t_image *buf)
 {
 	if (!mlx || !buf || !buf->img)
 		return ;

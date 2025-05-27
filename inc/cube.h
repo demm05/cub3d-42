@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:17:02 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 13:12:42 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/26 14:22:36 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 # include "raycaster.h"
 # include "engine.h"
 # include "utils.h"
+
+# include "ft_color_utils.h"
 
 void	set_defaults(t_engine *eng);
 

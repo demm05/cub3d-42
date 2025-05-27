@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/23 14:36:44 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/24 15:14:20 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int			t_strcmp(t_string *str1, t_string *str2);
 void		t_str_free(void *t_str);
 
 /*----------------End string----------------*/
+
+void		free_str_arr(char **arr);
+void		lstdell_front(t_list **lst, void (*del)(void *));
 
 bool		init_mlx_and_window(t_engine *eng);
 void		mlx_enable_window_resize(void *mlx, t_window *window);

@@ -6,11 +6,11 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 14:14:43 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/23 14:27:31 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/24 15:04:34 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "utils_private.h"
 
 t_string	*t_strcpy(t_string *src)
 {
