@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:17:02 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 13:12:42 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/26 14:22:36 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 
-# include "../lib/libft/include/libft.h"
+# include "../lib/libft/libft.h"
 # include "../lib/minilibx/mlx.h"
 
 # include "render.h"
@@ -40,6 +40,8 @@
 # include "engine.h"
 # include "raycaster.h"
 # include "utils.h"
+
+# include "ft_color_utils.h"
 
 void	set_defaults(t_engine *eng);
 
