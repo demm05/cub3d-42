@@ -16,6 +16,7 @@
 # define INITIAL_WINDOW_WIDTH 1580
 # define INITIAL_WINDOW_HEIGHT 1000
 # define WINDOW_TITLE "CUBE 3D"
+# define MAX_DELTA_TIME 1.0 / 15.0 // 60 limit movement to FPS
 
 # define ENABLE_RESIZE 1
 # define DISABLE_AUTOREPEAT_KEY 1
