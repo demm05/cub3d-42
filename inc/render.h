@@ -15,6 +15,8 @@
 
 # include "cube.h"
 
+typedef struct s_window	t_window;
+
 # define IMG_WIDTH 32
 # define IMG_HEIGHT 32
 
@@ -35,9 +37,21 @@ typedef struct s_image
 	int		width;
 	int		height;
 	int		endian;
-}	t_image;
+	int		width;
+	int		height;
+  }	t_image;
 
 typedef struct s_image	t_frame_buf;
+
+bool	buffer_create(void *mlx, t_frame_buf *buf, int width, int height);
+void	buffer_destroy(void *mlx, t_frame_buf *buf);
+void	buffer_flash(t_frame_buf *buf, t_window *win, int x, int y);
+void	buffer_clear(t_frame_buf *buf);
+
+void	draw_vert_line(t_frame_buf *buf, int x, int start, int end, int color);
+void	draw_rectangle(t_frame_buf *buf, int x, int y,
+			int width, int height, int color);
+void	draw_pixel(t_frame_buf *buf, int x, int y, int color);
 
 t_image	*xpm_new_image(void *mlx_ptr, char *path);
 int		xpm_image_init(void *mlx_ptr, char *path, t_image *img);

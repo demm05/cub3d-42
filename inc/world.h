@@ -13,6 +13,9 @@
 #ifndef WORLD_H
 # define WORLD_H
 
+# define MAP_WIDTH 24
+# define MAP_HEIGHT 24
+
 # include "cube.h"
 
 typedef struct s_map

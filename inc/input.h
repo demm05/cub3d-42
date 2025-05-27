@@ -15,7 +15,7 @@
 
 # include "cube.h"
 
-typedef struct s_engine t_engine;
+typedef struct s_engine	t_engine;
 
 typedef struct s_input
 {
@@ -23,9 +23,9 @@ typedef struct s_input
 	bool	moving_down;
 	bool	moving_left;
 	bool	moving_right;
-}   t_input;
+}	t_input;
 
-int input_keyboard_press(int keycode, t_engine *eng);
+int	input_keyboard_press(int keycode, t_engine *eng);
 int	input_keyboard_release(int keycode, t_engine *eng);
 int	input_handle_mouse_press(int key, int x, int y, t_engine *eng);
 int	input_handle_mouse_move(int x, int y, t_engine *eng);

@@ -12,7 +12,7 @@
 
 #include "render_private.h"
 
-bool	buffer_create(void *mlx, t_image *buf, int width, int height)
+bool	buffer_create(void *mlx, t_frame_buf *buf, int width, int height)
 {
 	buf->img = mlx_new_image(mlx, width, height);
 	if (!buf->img)
@@ -23,6 +23,10 @@ bool	buffer_create(void *mlx, t_image *buf, int width, int height)
 		return (0);
 	buf->width = width;
 	buf->height = height;
+#if DEBUG
+	printf("New buffer was created: w:%d\th:%d\td:%d\tl:%d\n",
+		width, height, buf->depth, buf->line_size);
+#endif
 	return (1);
 }
 

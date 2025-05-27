@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "engine_private.h"
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include "mlx_int.h"
 
 void	hook_inputs(t_engine *eng);
 
@@ -22,8 +25,8 @@ bool	engine_init(t_engine *eng)
 	set_defaults(eng);
 	if (!init_mlx_and_window(eng))
 		return (0);
+	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);
-	mlx_loop(eng->mlx);
 	return (1);
 }
 
@@ -39,4 +42,5 @@ void	hook_inputs(t_engine *eng)
 	mlx_hook(eng->window.win, 6, 1L << 6, input_handle_mouse_move, eng);
 	mlx_hook(eng->window.win, 2, 1L << 0, input_keyboard_press, eng);
 	mlx_hook(eng->window.win, 3, 1L << 1, input_keyboard_release, eng);
+	mlx_hook(eng->window.win, ConfigureNotify, StructureNotifyMask, input_event_resize, eng);
 }
