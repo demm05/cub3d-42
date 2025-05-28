@@ -12,6 +12,14 @@
 
 #include "world_private.h"
 
+void	destroy_map(t_map *map)
+{
+	if (!map)
+		return ;
+	if (map->matrix)
+		free_str_arr(map->matrix);
+}
+
 void	world_destroy(void *mlx_ptr, t_world *world)
 {
 	if (!world)

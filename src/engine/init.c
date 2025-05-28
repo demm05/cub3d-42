@@ -23,7 +23,7 @@ bool	engine_init(t_engine *eng)
 	set_defaults(eng);
 	if (!init_mlx_and_window(eng))
 		return (0);
-	if (!init_world(eng->mlx, &eng->world, "map1.cub"))
+	if (world_init(eng->mlx, &eng->world, "map1.cub") == -1)
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);

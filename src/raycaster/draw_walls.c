@@ -1,7 +1,7 @@
 #include "raycaster_private.h"
 #include <math.h>
 
-static inline void	set_values(t_ray *ray, t_camera *cam, int x, double w)
+static MAYBE_INLINE void	set_values(t_ray *ray, t_camera *cam, int x, double w)
 {
 	double	camera_x;
 
@@ -25,7 +25,7 @@ static inline void	set_values(t_ray *ray, t_camera *cam, int x, double w)
 }
 
 // Sets in what direction ray should step in x or y direction
-static inline void	set_direction(t_ray *ray, t_camera *cam)
+static MAYBE_INLINE void	set_direction(t_ray *ray, t_camera *cam)
 {
 	if (ray->direction.x < 0)
 	{
@@ -49,7 +49,7 @@ static inline void	set_direction(t_ray *ray, t_camera *cam)
 	}
 }
 
-static inline void	perform_dda(t_ray *ray, t_world *wrd)
+static MAYBE_INLINE void	perform_dda(t_ray *ray, t_world *wrd)
 {
 	while (1)
 	{
@@ -65,17 +65,17 @@ static inline void	perform_dda(t_ray *ray, t_world *wrd)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (map_get(wrd, ray->map.x, ray->map.y) >= '0')
-			return ;
-		// if (ray->map.y < (int)g_world.map->height && ray->map.x < (int)g_world.map->width
-		// 	&& g_world.map->matrix[ray->map.y][ray->map.x] > '0' && g_world.map->matrix[ray->map.y][ray->map.x] < '9')
-		// 	break ;
-		// else if (ray->map.y >= (int)g_world.map->height && ray->map.x >= (int)g_world.map->width)
-		// 	break ;
+		// if (map_get(wrd, ray->map.x, ray->map.y) >= '0')
+		// 	return ;
+		if (ray->map.y < (int)wrd->map.height && ray->map.x < (int)wrd->map.width
+			&& map_get(wrd, ray->map.x, ray->map.y) > '0' && map_get(wrd, ray->map.x, ray->map.y) < '9')
+			break ;
+		else if (ray->map.y >= (int)wrd->map.height && ray->map.x >= (int)wrd->map.width)
+			break ;
 	}
 }
 
-int	get_pixel_color(t_image *img, int x, int y)
+static MAYBE_INLINE int	get_pixel_color(t_image *img, int x, int y)
 {
 	char	*pixel_addr;
 	int		color;
@@ -85,7 +85,7 @@ int	get_pixel_color(t_image *img, int x, int y)
 	return (color);
 }
 
-static inline void	draw(t_frame_buf *buf, t_ray *ray, t_image *tex, t_engine *eng, int x, int h)
+static MAYBE_INLINE void	draw(t_frame_buf *buf, t_ray *ray, t_image *tex, t_engine *eng, int x, int h)
 {
 	int		line_height;
 	int		draw_start;

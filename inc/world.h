@@ -47,24 +47,9 @@ typedef struct s_world
 	t_map	map;
 }	t_world;
 
-/**
- * @brief Parses a map from a file.
- * 
- * @param lst A list containing the lines read from the map file.
- * @return Pointer to a t_map structure allocated with malloc.
- */
-bool	init_map(t_map *map, t_list *lst);
-
-bool	init_world(void *mlx_ptr, t_world *world, const char *path);
-
-/**
- * @brief Frees the memory allocated for the map.
- * 
- * @param map Pointer to the t_map structure to be freed.
- */
-void	destroy_map(t_map *map);
-
+int		world_init(void *mlx_ptr, t_world *world, const char *path);
 void	world_destroy(void *mlx_ptr, t_world *world);
+
 char	map_get(t_world *wrd, int x, int y);
 
 #endif

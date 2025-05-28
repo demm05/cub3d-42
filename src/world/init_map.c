@@ -63,15 +63,15 @@ static void	fill_matrix(t_map *map, t_list *lst)
 	map->matrix[j] = NULL;
 }
 
-bool	init_map(t_map *map, t_list *lst)
+int	init_map(t_map *map, t_list *lst)
 {
 	if (!lst)
-		return (0);
+		return (-1);
 	map->width = find_max_len(lst);
 	map->height = ft_lstsize(lst);
 	map->matrix = (char **)malloc(sizeof(char *) * (map->height + 1));
 	if (!map->matrix)
-		return (0);
+		return (-1);
 	fill_matrix(map, lst);
-	return (1);
+	return (0);
 }

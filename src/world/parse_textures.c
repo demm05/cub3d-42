@@ -110,7 +110,7 @@ int	parse_textures(void *mlx_ptr, t_world *world, t_list **lst)
 	int			status;
 
 	#if DEBUG
-		printf("Null check\n");
+		printf("parse_textures: Null check\n");
 	#endif
 	if (!mlx_ptr || !world || !lst || !*lst)
 		return (-1);
@@ -124,7 +124,7 @@ int	parse_textures(void *mlx_ptr, t_world *world, t_list **lst)
 		return (parse_textures(mlx_ptr, world, lst));
 	}
 	#if DEBUG
-		printf("parse_texture\n");
+		printf("parse_texture: parsing\n");
 	#endif
 	status = parse_texture(mlx_ptr, world, str);
 	if (status == -1)
