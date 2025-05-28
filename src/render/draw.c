@@ -41,7 +41,11 @@ MAYBE_INLINE void	draw_rectangle(t_frame_buf *buf, int x, int y, int width,
 	{
 		x = x_start;
 		while (x < x_end)
+		{
 			draw_pixel(buf, x++, y, color);
+			// draw_pixel(buf, x, y, get_pixel_color(buf, x, y));
+			x++;
+		}
 		y++;
 	}
 }

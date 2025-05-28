@@ -8,13 +8,25 @@ MAYBE_INLINE void	update_keyboard_events(t_camera *cam, t_input *inp, t_timing *
 	move_amount = cam->move_speed * tm->delta_time;
 	if (inp->moving_up)
 	{
-		cam->pos.y += cam->dir.y * move_amount;
-		cam->pos.x += cam->dir.x * move_amount;
+		pos_y = cam->pos.y + cam->dir.y * move_amount;
+		pos_x = cam->pos.x + cam->dir.x * move_amount;
+		if (pos_x > 0 && pos_y >0  && g_world.map->matrix[(int)pos_y][(int)pos_x] != '1')
+		{
+			cam->pos.y = pos_y;
+			cam->pos.x = pos_x;
+		}
 	}
 	if (inp->moving_down)
 	{
-		cam->pos.y -= cam->dir.y * move_amount;
-		cam->pos.x -= cam->dir.x * move_amount;
+		pos_y = cam->pos.y - cam->dir.y * move_amount;
+		pos_x = cam->pos.x - cam->dir.x * move_amount;
+		if (pos_x > 0 && pos_y > 0 && g_world.map->matrix[(int)pos_y][(int)pos_x] != '1')
+		{
+			cam->pos.y = pos_y;
+			cam->pos.x = pos_x;
+		}
+		// cam->pos.y -= cam->dir.y * move_amount;
+		// cam->pos.x -= cam->dir.x * move_amount;
 	}
 	if (inp->moving_left)
 	{

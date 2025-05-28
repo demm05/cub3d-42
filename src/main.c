@@ -3,21 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:16:43 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 11:46:22 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/27 14:50:44 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+t_world	g_world;
 
 int	main(void)
 {
 	t_engine	eng;
 
 	if (engine_init(&eng))
-		mlx_loop(eng.mlx);
+	{
+		if (init_world(eng.mlx, &g_world, "/home/ogrativ/student_projects/cub3d-42/map1.cub") != -1)
+			mlx_loop(eng.mlx);
+		world_destroy(eng.mlx, &g_world);
+	}
 	engine_destroy(&eng);
 	return (0);
 }
@@ -33,8 +39,8 @@ void	set_defaults(t_engine *eng)
 	eng->camera.dir.y = 0;
 	eng->camera.plane.x = 0;
 	eng->camera.plane.y = 0.66;
-	eng->camera.pos.x = 22;
-	eng->camera.pos.y = 12;
+	eng->camera.pos.x = 27;
+	eng->camera.pos.y = 11;
 	eng->camera.move_speed = 3;
 	eng->camera.rotation_speed = 3;
 }
