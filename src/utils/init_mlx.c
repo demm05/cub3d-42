@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:26:24 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 12:35:22 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/27 14:03:27 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 
 bool	init_mlx_and_window(t_engine *eng)
 {
-	int	x;
-	int	y;
-
 	if (!eng)
 		return (0);
 	eng->mlx = mlx_init();

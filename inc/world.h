@@ -6,15 +6,15 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:56:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 11:07:28 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/27 14:41:49 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WORLD_H
 # define WORLD_H
 
-# define MAP_WIDTH 24
-# define MAP_HEIGHT 24
+// # define MAP_WIDTH 24
+// # define MAP_HEIGHT 24
 
 # include "cube.h"
 

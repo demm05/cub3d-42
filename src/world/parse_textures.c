@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/27 12:22:57 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/27 16:07:12 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static int	parse_texture(void *mlx_ptr, t_world *world, t_string *str)
 		printf("assigne_texture\n");
 	#endif
 	space_idx = assigne_texture(mlx_ptr, world, path, tex_name);
+	printf("texture: %s   PATH: %s\n", tex_name, path);
 	free(tex_name);
 	return (space_idx);
 }
