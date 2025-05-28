@@ -44,7 +44,7 @@ typedef struct s_world
 	t_image	ea;
 	int		f;
 	int		c;
-	t_map	*map;
+	t_map	map;
 }	t_world;
 
 /**
@@ -53,9 +53,9 @@ typedef struct s_world
  * @param lst A list containing the lines read from the map file.
  * @return Pointer to a t_map structure allocated with malloc.
  */
-t_map	*init_map(t_list *lst);
+bool	init_map(t_map *map, t_list *lst);
 
-int		init_world(void *mlx_ptr, t_world *world, const char *path);
+bool	init_world(void *mlx_ptr, t_world *world, const char *path);
 
 /**
  * @brief Frees the memory allocated for the map.
@@ -65,5 +65,6 @@ int		init_world(void *mlx_ptr, t_world *world, const char *path);
 void	destroy_map(t_map *map);
 
 void	world_destroy(void *mlx_ptr, t_world *world);
+char	map_get(t_world *wrd, int x, int y);
 
 #endif

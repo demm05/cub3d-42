@@ -44,8 +44,6 @@
 
 # include "ft_color_utils.h"
 
-extern t_world	g_world;
-
 void	set_defaults(t_engine *eng);
 
 # ifdef ENABLE_CUSTOM_INLINING

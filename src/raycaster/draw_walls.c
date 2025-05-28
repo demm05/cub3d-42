@@ -1,33 +1,6 @@
 #include "raycaster_private.h"
 #include <math.h>
 
-// char	g_world_map[MAP_HEIGHT][MAP_WIDTH] = {
-// {'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '2', '2', '2', '2', '2', '0', '0', '0', '0', '3', '0', '3', '0', '3', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '2', '0', '0', '0', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '2', '0', '0', '0', '2', '0', '0', '0', '0', '3', '0', '0', '0', '3', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '2', '0', '0', '0', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '2', '2', '0', '2', '2', '0', '0', '0', '0', '3', '0', '3', '0', '3', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '4', '4', '4', '4', '4', '4', '4', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '4', '0', '4', '0', '0', '0', '0', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '4', '0', '0', '0', '0', '5', '0', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '4', '0', '4', '0', '0', '0', '0', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '4', '0', '4', '4', '4', '4', '4', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '4', '4', '4', '4', '4', '4', '4', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-// {'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'}
-// };
-
 static inline void	set_values(t_ray *ray, t_camera *cam, int x, double w)
 {
 	double	camera_x;
@@ -76,7 +49,7 @@ static inline void	set_direction(t_ray *ray, t_camera *cam)
 	}
 }
 
-static inline void	perform_dda(t_ray *ray)
+static inline void	perform_dda(t_ray *ray, t_world *wrd)
 {
 	while (1)
 	{
@@ -92,11 +65,13 @@ static inline void	perform_dda(t_ray *ray)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (ray->map.y < (int)g_world.map->height && ray->map.x < (int)g_world.map->width
-			&& g_world.map->matrix[ray->map.y][ray->map.x] > '0' && g_world.map->matrix[ray->map.y][ray->map.x] < '9')
-			break ;
-		else if (ray->map.y >= (int)g_world.map->height && ray->map.x >= (int)g_world.map->width)
-			break ;
+		if (map_get(wrd, ray->map.x, ray->map.y) >= '0')
+			return ;
+		// if (ray->map.y < (int)g_world.map->height && ray->map.x < (int)g_world.map->width
+		// 	&& g_world.map->matrix[ray->map.y][ray->map.x] > '0' && g_world.map->matrix[ray->map.y][ray->map.x] < '9')
+		// 	break ;
+		// else if (ray->map.y >= (int)g_world.map->height && ray->map.x >= (int)g_world.map->width)
+		// 	break ;
 	}
 }
 
@@ -108,25 +83,6 @@ int	get_pixel_color(t_image *img, int x, int y)
 	pixel_addr = img->buffer + (y * img->line_size) + (x * (img->depth / 8));
 	color = *(int *)pixel_addr;
 	return (color);
-}
-
-MAYBE_INLINE void	draw_vert_img_line(t_frame_buf *buf, t_image *img,
-		int x, int start, int end)
-{
-	if (start > end)
-		return ;
-	if (start < 0)
-	{
-		end += start;
-		start = 0;
-	}
-	if (end > buf->height)
-		end = buf->height;
-	while (start < end)
-	{
-		draw_pixel(buf, x, start, get_pixel_color(img, x, start));
-		start++;
-	}
 }
 
 static inline void	draw(t_frame_buf *buf, t_ray *ray, t_image *tex, t_engine *eng, int x, int h)
@@ -158,7 +114,7 @@ static inline void	draw(t_frame_buf *buf, t_ray *ray, t_image *tex, t_engine *en
 		tex_x = tex->width - tex_x - 1;
 
 	// СТЕЛЯ
-	draw_vert_line(buf, x, 0, draw_start, g_world.c);
+	draw_vert_line(buf, x, 0, draw_start, eng->world.c);
 
 	// СТІНА (з правильним tex_x!)
 	for (int y = draw_start; y < draw_end; y++)
@@ -171,83 +127,8 @@ static inline void	draw(t_frame_buf *buf, t_ray *ray, t_image *tex, t_engine *en
 	}
 
 	// ПІДЛОГА
-	draw_vert_line(buf, x, draw_end, h, g_world.f);
+	draw_vert_line(buf, x, draw_end, h, eng->world.f);
 }
-
-
-// static inline void	draw(t_frame_buf *buf, t_ray *ray, t_image *tex, int x, int h)
-// {
-// 	int	line_height = h / ray->wall_dist;
-// 	int	draw_start = -line_height / 2 + h / 2;
-// 	int	draw_end = line_height / 2 + h / 2;
-// 	if (draw_start < 0)
-// 		draw_start = 0;
-// 	if (draw_end > h)
-// 		draw_end = h;
-
-// 	// 🟢 Спочатку малюємо СТЕЛЮ
-// 	draw_vert_line(buf, x, 0, draw_start, g_world.c);
-
-// 	// 🔵 Потім малюємо СТІНУ (з текстури)
-// 	int tex_x = (int)( (double)x / (double)buf->width * tex->width );
-// 	for (int y = draw_start; y < draw_end; y++)
-// 	{
-// 		int d = y * 256 - h * 128 + line_height * 128;
-// 		int tex_y = ((d * tex->height) / line_height) / 256;
-
-// 		int color = get_pixel_color(tex, tex_x, tex_y);
-// 		draw_pixel(buf, x, y, color);
-// 	}
-
-// 	// 🔴 Нарешті малюємо ПІДЛОГУ
-// 	draw_vert_line(buf, x, draw_end, h, g_world.f);
-// }
-
-
-
-// static inline void	draw(t_frame_buf *buf, t_ray *ray, int x, int h)
-// {
-// 	int	line_height;
-// 	int	draw_start;
-// 	int	draw_end;
-// 	int	color;
-
-// 	line_height = h / ray->wall_dist;
-// 	draw_start = -line_height / 2 + h / 2;
-// 	draw_end = line_height / 2 + h / 2;
-// 	if (draw_start < 0)
-// 		draw_start = 0;
-// 	if (draw_end > h)
-// 		draw_end = h;
-// 	color = 0xD2B48C;
-// 	if (ray->side)
-// 		color = color / 2;
-// 	draw_vert_line(buf, x, 0, draw_start, 0x6490E0);
-// 	draw_vert_line(buf, x, draw_start, draw_end, color);
-// 	// draw_rectangle(buf, x, draw_start, 32, 32, 0);
-// 	draw_vert_line(buf, x, draw_end, h, 0x804000);
-// }
-
-// MAYBE_INLINE void	draw_walls(t_engine *eng, t_ray *ray)
-// {
-// 	int	x;
-// 	int	w;
-
-// 	x = -1;
-// 	w = eng->window.width;
-// 	while (++x < w)
-// 	{
-// 		set_values(ray, &eng->camera, x, w);
-// 		set_direction(ray, &eng->camera);
-// 		perform_dda(ray);
-// 		if (!ray->side)
-// 			ray->wall_dist = ray->side_dist.x - ray->delta.x;
-// 		else
-// 			ray->wall_dist = ray->side_dist.y - ray->delta.y;
-// 		draw(&eng->main_buffer, ray, x, eng->window.height);
-// 	}
-// }
-
 
 MAYBE_INLINE void	draw_walls(t_engine *eng, t_ray *ray)
 {
@@ -261,19 +142,19 @@ MAYBE_INLINE void	draw_walls(t_engine *eng, t_ray *ray)
 	{
 		set_values(ray, &eng->camera, x, w);
 		set_direction(ray, &eng->camera);
-		perform_dda(ray);
+		perform_dda(ray, &eng->world);
 		if (!ray->side)
 			ray->wall_dist = ray->side_dist.x - ray->delta.x;
 		else
 			ray->wall_dist = ray->side_dist.y - ray->delta.y;
 		if (ray->side == 0 && ray->direction.x > 0)
-			tex = &g_world.ea;
+			tex = &eng->world.ea;
 		else if (ray->side == 0 && ray->direction.x < 0)
-			tex = &g_world.we;
+			tex = &eng->world.we;
 		else if (ray->side == 1 && ray->direction.y > 0)
-			tex = &g_world.so;
+			tex = &eng->world.so;
 		else
-			tex = &g_world.no;
+			tex = &eng->world.no;
 		draw(&eng->main_buffer, ray, tex, eng, x, eng->window.height);
 	}
 }

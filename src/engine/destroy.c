@@ -19,6 +19,7 @@ void	engine_destroy(t_engine *eng)
 	if (!eng)
 		return ;
 	mlx_destroy(eng);
+	world_destroy(eng->mlx, &eng->world);
 }
 
 void	mlx_destroy(t_engine *eng)

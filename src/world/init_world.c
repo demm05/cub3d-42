@@ -12,33 +12,34 @@
 
 #include "world_private.h"
 
-int	init_world(void *mlx_ptr, t_world *world, const char *path)
+bool	init_world(void *mlx_ptr, t_world *world, const char *path)
 {
 	t_list	*lst;
 
 	if (!world || !path)
-		return (-1);
-	ft_memset(world, 0, sizeof(t_world));
+		return (0);
 	lst = read_file(path);
 	if (!lst)
-		return (-1);
+		return (0);
 	#if DEBUG
 	printf("\nparse_textures\n");
 	#endif
 	if (parse_textures(mlx_ptr, world, &lst) == -1)
 	{
 		ft_lstclear(&lst, t_str_free);
-		return (-1);
+		return (0);
 	}
 	#if DEBUG
 	printf("\ninit_map start\n");
 	#endif
-	world->map = init_map(lst);
+	if (!init_map(&world->map, lst))
+	{
+		ft_lstclear(&lst, t_str_free);
+		return (0);
+	}
 	ft_lstclear(&lst, t_str_free);
-	if (!world->map)
-		return (-1);
 	#if DEBUG
 	printf("\ninit_map end\n");
 	#endif
-	return (0);
+	return (1);
 }

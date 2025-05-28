@@ -1,0 +1,6 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+AccessModifierOffset: -4
+ContinuationIndentWidth: 4
+UseTab: true
+Standard: c++03
