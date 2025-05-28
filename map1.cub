@@ -1,10 +1,10 @@
-NO assets/north_texture.xpm
-SO assets/south_texture.xpm
-WE assets/west_texture.xpm
-EA assets/east_texture.xpm
+NO ./assets/Layer-2_sprite_dark1.xpm
+SO ./assets/Layer-2_sprite_dark2.xpm
+WE ./assets/Layer-2_sprite_dark5.xpm
+EA ./assets/Layer-2_sprite_dark4_1.xpm
 
-C 100,10,20
-F 225,50,0
+C 0,160, 250
+F 52,55,12
 
         1111111111111111111111111
         1000000000110000000000001
