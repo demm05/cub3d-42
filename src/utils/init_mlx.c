@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:26:24 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 14:03:27 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/28 16:02:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ bool	init_mlx_and_window(t_engine *eng)
 		return (0);
 	mlx_get_screen_size(eng->mlx, &eng->window.max_width,
 		&eng->window.max_height);
-#if DEBUG
-	printf("Screen properties: (width)%d;(height)%d\n", x, y);
-#endif
+// #if DEBUG
+// 	printf("Screen properties: (width)%d;(height)%d\n", x, y);
+// #endif
 	if (!buffer_create(eng->mlx, &eng->main_buffer, eng->window.max_width, eng->window.max_height))
 		return (0);
 	return (1);

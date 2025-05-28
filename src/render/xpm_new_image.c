@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:41:48 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/27 12:33:13 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/28 15:16:12 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@ static void	print_err(char *path)
 	ft_putstr_fd(RED "Error" RESET ": faild to open file ", STDERR_FILENO);
 	ft_putstr_fd(path, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
+}
+
+void	set_default_img_values(t_image *img)
+{
+	if (!img)
+		return ;
+	img->buffer = NULL;
+	img->img = NULL;
 }
 
 int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)

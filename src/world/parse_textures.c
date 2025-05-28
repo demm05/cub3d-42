@@ -6,22 +6,19 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/27 16:07:12 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/28 16:16:18 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world_private.h"
 
-static size_t	split_len(char **split)
+bool	is_rgb(int color)
 {
-	size_t	i;
-
-	i = 0;
-	if (!split)
-		return (i);
-	while (split[i])
-		i++;
-	return (i);
+	if (color >= 0 && color < 256)
+	{
+		return (1);
+	}
+	return (0);
 }
 
 static int	parse_color(const char *path)
@@ -45,7 +42,12 @@ static int	parse_color(const char *path)
 	rgb.green = ft_atoi(numbers[1]);
 	rgb.blue = ft_atoi(numbers[2]);
 	free_str_arr(numbers);
-	return ((rgb.red << 16) | (rgb.green << 8) | rgb.blue);
+	if (is_rgb(rgb.blue) && is_rgb(rgb.green) && is_rgb(rgb.red))
+		return ((rgb.red << 16) | (rgb.green << 8) | rgb.blue);
+	ft_putstr_fd(RED "Error" RESET
+		": Incorrect RGB format: Values must be beetwen 0-255\n",
+		STDERR_FILENO);
+	return (-1);
 }
 
 static int	assigne_texture(void *mlx_ptr, t_world *world,
@@ -94,9 +96,6 @@ static int	parse_texture(void *mlx_ptr, t_world *world, t_string *str)
 		free(tex_name);
 		return (-1);
 	}
-	#if DEBUG
-		printf("assigne_texture\n");
-	#endif
 	space_idx = assigne_texture(mlx_ptr, world, path, tex_name);
 	printf("texture: %s   PATH: %s\n", tex_name, path);
 	free(tex_name);
@@ -109,9 +108,6 @@ int	parse_textures(void *mlx_ptr, t_world *world, t_list **lst)
 	size_t		i;
 	int			status;
 
-	#if DEBUG
-		printf("Null check\n");
-	#endif
 	if (!mlx_ptr || !world || !lst || !*lst)
 		return (-1);
 	str = (t_string *)(*lst)->content;
@@ -123,9 +119,6 @@ int	parse_textures(void *mlx_ptr, t_world *world, t_list **lst)
 		lstdell_front(lst, t_str_free);
 		return (parse_textures(mlx_ptr, world, lst));
 	}
-	#if DEBUG
-		printf("parse_texture\n");
-	#endif
 	status = parse_texture(mlx_ptr, world, str);
 	if (status == -1)
 		return (-1);
