@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   timing.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 17:05:21 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/28 17:05:22 by dmelnyk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "engine_private.h"
 #include "sys/time.h"
 
-inline size_t	get_current_time_microseconds(void)
+static inline size_t	get_current_time_microseconds(void)
 {
     struct timeval tv;
 

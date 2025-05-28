@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world_destroy.c                                    :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 10:58:56 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/27 11:07:09 by ogrativ          ###   ########.fr       */
+/*   Created: 2025/05/28 17:04:15 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/28 17:04:15 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world_private.h"
 
-void	world_destroy(void *mlx_ptr, t_world *world)
+MAYBE_INLINE char	map_get(t_world *wrd, int x, int y)
 {
-	if (!world)
-		return ;
-	buffer_destroy(mlx_ptr, &world->ea);
-	buffer_destroy(mlx_ptr, &world->no);
-	buffer_destroy(mlx_ptr, &world->so);
-	buffer_destroy(mlx_ptr, &world->we);
-	destroy_map(world->map);
+	return (wrd->map.matrix[y][x]);
 }
