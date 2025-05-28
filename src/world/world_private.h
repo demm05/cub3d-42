@@ -34,6 +34,6 @@ void	destroy_map(t_map *map);
  * @param lst A list containing the lines read from the map file.
  * @return Pointer to a t_map structure allocated with malloc.
  */
-int		init_map(t_map *map, t_list *lst);
+t_map	*init_map(t_list *lst);
 
 #endif
