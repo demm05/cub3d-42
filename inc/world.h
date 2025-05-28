@@ -44,7 +44,7 @@ typedef struct s_world
 	t_image	ea;
 	int		f;
 	int		c;
-	t_map	map;
+	t_map	*map;
 }	t_world;
 
 int		world_init(void *mlx_ptr, t_world *world, const char *path);
