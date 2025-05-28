@@ -12,7 +12,7 @@
 
 #include "input_private.h"
 
-int	input_handle_mouse_press(int key, int x, int y, t_engine *eng)
+int	input_mouse_press(int key, int x, int y, t_engine *eng)
 {
 	(void) eng;
 	(void) key;
@@ -21,7 +21,7 @@ int	input_handle_mouse_press(int key, int x, int y, t_engine *eng)
 	return (0);
 }
 
-int	input_handle_mouse_move(int x, int y, t_engine *eng)
+int	input_mouse_move(int x, int y, t_engine *eng)
 {
 	(void) eng;
 	(void) x;

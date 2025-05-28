@@ -12,8 +12,6 @@
 
 #include "engine_private.h"
 #include <X11/X.h>
-#include <X11/Xlib.h>
-#include "mlx_int.h"
 
 void	hook_inputs(t_engine *eng);
 
@@ -23,7 +21,12 @@ bool	engine_init(t_engine *eng)
 		return (0);
 	ft_bzero(eng, sizeof(t_engine));
 	set_defaults(eng);
+	eng->mlx = mlx_init();
+	if (!eng->mlx)
+		return (0);
 	if (!init_mlx_and_window(eng))
+		return (0);
+	if (world_init(eng->mlx, &eng->world, "map1.cub") == -1)
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);
@@ -36,11 +39,14 @@ void	hook_inputs(t_engine *eng)
 		mlx_enable_window_resize(eng->mlx, &eng->window);
 	if (DISABLE_AUTOREPEAT_KEY)
 		mlx_do_key_autorepeatoff(eng->mlx);
+	mlx_mouse_hide(eng->mlx, eng->window.win);
 	mlx_loop_hook(eng->mlx, engine_loop, eng);
-	mlx_hook(eng->window.win, 17, 0, mlx_loop_end, eng->mlx);
-	mlx_mouse_hook(eng->window.win, input_handle_mouse_press, eng);
-	mlx_hook(eng->window.win, 6, 1L << 6, input_handle_mouse_move, eng);
-	mlx_hook(eng->window.win, 2, 1L << 0, input_keyboard_press, eng);
-	mlx_hook(eng->window.win, 3, 1L << 1, input_keyboard_release, eng);
+	mlx_mouse_hook(eng->window.win, input_mouse_press, eng);
+	mlx_hook(eng->window.win, DestroyNotify, NoEventMask, mlx_loop_end, eng->mlx);
+	mlx_hook(eng->window.win, MotionNotify, PointerMotionMask, input_mouse_move, eng);
+	mlx_hook(eng->window.win, KeyPress, KeyPressMask, input_keyboard_press, eng);
+	mlx_hook(eng->window.win, KeyRelease, KeyReleaseMask, input_keyboard_release, eng);
 	mlx_hook(eng->window.win, ConfigureNotify, StructureNotifyMask, input_event_resize, eng);
+	mlx_hook(eng->window.win, FocusIn, FocusChangeMask, input_focus_in, eng);
+	mlx_hook(eng->window.win, FocusOut, FocusChangeMask, input_focus_out, eng);
 }

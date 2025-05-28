@@ -52,6 +52,9 @@ t_list	*read_file(const char *path)
 	char	*str;
 	int		fd;
 
+#if DEBUG
+	printf("Reading the file: %s\n", path);
+#endif
 	if (!path)
 		return (NULL);
 	lst = NULL;

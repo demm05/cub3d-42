@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.h                                        :+:      :+:    :+:   */
+/*   focus_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 10:01:24 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 10:09:17 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/28 17:05:12 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/28 17:05:13 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAYCASTER_H
-# define RAYCASTER_H
+#include "input_private.h"
 
-# include "cube.h"
-
-typedef struct s_ray
+int	input_focus_in(t_engine *eng)
 {
-	t_vec2_double	direction;
-	t_vec2_double	side_dist;
-	t_vec2_double	delta;
-	t_vec2_int		step;
-	t_vec2_int		map;
-	double			wall_dist;
-	double			wall_x_cord;
-	int				wall_face_hit;
-	int				line_height;
-	int				draw_start;
-	int				draw_end;
-	bool			side;
-}	t_ray;
-
-void	cast_walls(t_engine *eng, t_ray *ray);
-
+	(void)eng;
+#if DEBUG
+	printf("Focus change: in\n");
 #endif
+	mlx_mouse_hide(eng->mlx, eng->window.win);
+	return (0);
+}
+
+int	input_focus_out(t_engine *eng)
+{
+#if DEBUG
+	printf("Focus change: out\n");
+#endif
+	ft_bzero(&eng->input, sizeof(t_input));
+	return (0);
+}
+

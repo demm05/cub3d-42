@@ -44,9 +44,19 @@ static void	set_default_values(t_world *world)
 	world->map = NULL;
 }
 
-int	init_world(void *mlx_ptr, t_world *world, const char *path)
+static inline int	wrapper(void *mlx, t_world *world, t_list **lst)
+{
+	if (parse_textures(mlx, world, lst) == -1)
+		return (-1);
+	if (init_map(&world->map, *lst) == -1)
+		return (-1);
+	return (0);
+}
+
+int	world_init(void *mlx_ptr, t_world *world, const char *path)
 {
 	t_list	*lst;
+	int		status;
 
 	if (!world || !path || !check_path(path))
 		return (-1);
@@ -66,4 +76,5 @@ int	init_world(void *mlx_ptr, t_world *world, const char *path)
 	if (!check_world(world))
 		return (world_destroy(mlx_ptr, world), -1);
 	return (0);
+
 }

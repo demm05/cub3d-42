@@ -12,18 +12,12 @@
 
 #include "cube.h"
 
-t_world	g_world;
-
 int	main(void)
 {
 	t_engine	eng;
 
 	if (engine_init(&eng))
-	{
-		if (init_world(eng.mlx, &g_world, "/home/ogrativ/student_projects/cub3d-42/map1.cub") != -1)
-			mlx_loop(eng.mlx);
-		world_destroy(eng.mlx, &g_world);
-	}
+		mlx_loop(eng.mlx);
 	engine_destroy(&eng);
 	return (0);
 }
@@ -40,5 +34,7 @@ void	set_defaults(t_engine *eng)
 	eng->camera.plane.x = 0;
 	eng->camera.plane.y = 0.66;
 	eng->camera.pos.x = 27;
-	eng->camera.pos.y = 11;
+	eng->camera.pos.y = 10;
+	eng->camera.move_speed = 2;
+	eng->camera.rotation_speed = 3;
 }
