@@ -5,7 +5,7 @@ LDIR				=	lib
 NAME				=	cub3d
 
 CC					=	gcc
-CFLAGS				=	-g -Wall -Wextra -I$(HDIR) -flto
+CFLAGS				=	-g -O3 -Wall -Wextra -I$(HDIR) -flto
 LIB_FLAGS			=	-lmlx -lX11 -lXext -lm -lft
 
 MAKE_LIB			=	@make --no-print-directory -C
@@ -38,7 +38,7 @@ ifneq ($(I), 1)
 	CFLAGS+=-DENABLE_CUSTOM_INLINING=1
 endif
 
-all:compiledb $(NAME) 
+all: $(NAME) 
 
 $(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS) $(LIBS)
 	$(Q)$(CC) $(CFLAGS) -c -o $@ $<
