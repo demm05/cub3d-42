@@ -28,7 +28,7 @@ bool	init_mlx_and_window(t_engine *eng)
 	mlx_get_screen_size(eng->mlx, &eng->window.max_width,
 		&eng->window.max_height);
 #if DEBUG
-	printf("Screen properties: (width)%d;(height)%d\n", x, y);
+	printf("Screen properties: (width)%d;(height)%d\n", eng->window.max_width, eng->window.max_height);
 #endif
 	if (!buffer_create(eng->mlx, &eng->main_buffer, eng->window.max_width, eng->window.max_height))
 		return (0);

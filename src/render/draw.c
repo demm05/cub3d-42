@@ -53,5 +53,5 @@ MAYBE_INLINE void	draw_rectangle(t_frame_buf *buf, int x, int y, int width,
 MAYBE_INLINE void	draw_pixel(t_frame_buf *buf, int x, int y, int color)
 {
 	*((unsigned int *)((y * buf->line_size) + \
-				(x * (buf->depth / 8)) + buf->buffer)) = color;
+			(x * (buf->depth / 8)) + buf->buffer)) = color;
 }

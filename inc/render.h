@@ -41,6 +41,15 @@ typedef struct s_image
 
 typedef struct s_image	t_frame_buf;
 
+typedef struct s_timing
+{
+	size_t	last_frame_time_us;
+	size_t	frame_start;
+	double	delta_time;
+	int		frame_count;
+	int		current_fps;
+}	t_timing;
+
 bool	buffer_create(void *mlx, t_frame_buf *buf, int width, int height);
 void	buffer_destroy(void *mlx, t_frame_buf *buf);
 void	buffer_flash(t_frame_buf *buf, t_window *win, int x, int y);
@@ -50,6 +59,7 @@ void	draw_vert_line(t_frame_buf *buf, int x, int start, int end, int color);
 void	draw_rectangle(t_frame_buf *buf, int x, int y,
 			int width, int height, int color);
 void	draw_pixel(t_frame_buf *buf, int x, int y, int color);
+void	draw_fps_counter(t_timing *tm, t_window *win);
 
 t_image	*xpm_new_image(void *mlx_ptr, char *path);
 int		xpm_image_init(void *mlx_ptr, char *path, t_image *img);

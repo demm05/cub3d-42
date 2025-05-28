@@ -41,4 +41,6 @@ void	set_defaults(t_engine *eng)
 	eng->camera.plane.y = 0.66;
 	eng->camera.pos.x = 27;
 	eng->camera.pos.y = 11;
+	eng->camera.move_speed = 3;
+	eng->camera.rotation_speed = 3;
 }
