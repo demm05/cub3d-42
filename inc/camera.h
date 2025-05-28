@@ -36,7 +36,7 @@ typedef struct s_camera
 	double			rotation_speed;
 }	t_camera;
 
-void	update_keyboard_events(t_camera *cam, t_input *inp, t_timing *timing);
+void	update_keyboard_events(t_camera *cam, t_input *inp, t_timing *timing, t_world *world);
 void	update_mouse_event(t_camera *cam, t_input *inp, t_timing *timing);
 
 #endif

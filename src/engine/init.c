@@ -21,6 +21,9 @@ bool	engine_init(t_engine *eng)
 		return (0);
 	ft_bzero(eng, sizeof(t_engine));
 	set_defaults(eng);
+	eng->mlx = mlx_init();
+	if (!eng->mlx)
+		return (0);
 	if (!init_mlx_and_window(eng))
 		return (0);
 	if (world_init(eng->mlx, &eng->world, "map1.cub") == -1)

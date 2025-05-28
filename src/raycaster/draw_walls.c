@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_walls.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 17:05:07 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/28 17:05:08 by dmelnyk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "raycaster_private.h"
 #include <math.h>
 
-static MAYBE_INLINE void	set_values(t_ray *ray, t_camera *cam, int x, double w)
+static MAYBE_INLINE void	set_values(t_ray *ray, t_camera *cam, double w)
 {
 	double	camera_x;
 
-	camera_x = 2 * x / w - 1;
+	camera_x = 2 * ray->wall_x_cord / w - 1;
 	// Calculates a direction of ray
 	ray->direction.x = cam->dir.x + cam->plane.x * camera_x;
 	ray->direction.y = cam->dir.y + cam->plane.y * camera_x;
@@ -65,14 +77,36 @@ static MAYBE_INLINE void	perform_dda(t_ray *ray, t_world *wrd)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		// if (map_get(wrd, ray->map.x, ray->map.y) >= '0')
-		// 	return ;
-		if (ray->map.y < (int)wrd->map.height && ray->map.x < (int)wrd->map.width
-			&& map_get(wrd, ray->map.x, ray->map.y) > '0' && map_get(wrd, ray->map.x, ray->map.y) < '9')
-			break ;
-		else if (ray->map.y >= (int)wrd->map.height && ray->map.x >= (int)wrd->map.width)
-			break ;
+		if (map_get(wrd, ray->map.x, ray->map.y) > '0')
+			return ;
 	}
+}
+
+static MAYBE_INLINE t_image	*get_texture(t_ray *ray, t_world *world, int h)
+{
+	if (!ray->side)
+		ray->wall_dist = ray->side_dist.x - ray->delta.x;
+	else
+		ray->wall_dist = ray->side_dist.y - ray->delta.y;
+	ray->line_height = h / ray->wall_dist;
+	ray->draw_start = -ray->line_height / 2 + h / 2;
+	ray->draw_end = ray->line_height / 2 + h / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	if (ray->draw_end > h)
+		ray->draw_end = h;
+	if (ray->side == 0 && ray->direction.x > 0)
+		// ray->wall_face_hit = 0;
+		return (&world->ea);
+	else if (ray->side == 0 && ray->direction.x < 0)
+		// ray->wall_face_hit = 1;
+		return (&world->we);
+	else if (ray->side == 1 && ray->direction.y > 0)
+		// ray->wall_face_hit = 2;
+		return (&world->so);
+	else
+		// ray->wall_face_hit = 3;
+		return (&world->no);
 }
 
 static MAYBE_INLINE int	get_pixel_color(t_image *img, int x, int y)
@@ -85,76 +119,73 @@ static MAYBE_INLINE int	get_pixel_color(t_image *img, int x, int y)
 	return (color);
 }
 
-static MAYBE_INLINE void	draw(t_frame_buf *buf, t_ray *ray, t_image *tex, t_engine *eng, int x, int h)
+/* Like from guide
+static MAYBE_INLINE void	draw_textured_wall(t_engine *eng, t_ray *ray, t_image *tex, int h)
 {
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
+	double	wall_x;
+	double	step;
+	double	tex_pos;
+	int		tex_x;
+	int		y;
 
-	line_height = h / ray->wall_dist;
-	draw_start = -line_height / 2 + h / 2;
-	draw_end = line_height / 2 + h / 2;
-	if (draw_start < 0)
-		draw_start = 0;
-	if (draw_end > h)
-		draw_end = h;
+	if (!ray->side)
+		wall_x = eng->camera.pos.y + ray->wall_dist * ray->direction.y;
+	else
+		wall_x = eng->camera.pos.x + ray->wall_dist * ray->direction.x;
+	wall_x -= floor((wall_x));
+	tex_x = (int)(wall_x * (double)tex->width);
+	if ((ray->side == 0 && ray->direction.x > 0) || (ray->side == 1 && ray->direction.y < 0))
+		tex_x = tex->width - tex_x - 1;
+	step = 1.0 * tex->height / ray->line_height;
+	tex_pos = (ray->draw_start - h / 2.0 + ray->line_height / 2.0) * step;
+	y = -1;
+	while (++y < ray->draw_end)
+		draw_pixel(&eng->main_buffer, ray->wall_x_cord, y,
+			get_pixel_color(tex, tex_x, tex->height * (int)tex_pos & (tex->height - 1)));
+}
+*/
 
-	// Коректне обчислення, який "кусок" текстури (tex_x) брати
+static MAYBE_INLINE void	draw_textured_wall(t_engine *eng, t_ray *ray, t_image *tex, int h)
+{
 	double	wall_hit;
+	int		tex_x;
+	int		y;
+
 	if (ray->side == 0)
 		wall_hit = eng->camera.pos.y + ray->wall_dist * ray->direction.y;
 	else
 		wall_hit = eng->camera.pos.x + ray->wall_dist * ray->direction.x;
-
 	wall_hit -= floor(wall_hit);
-	int tex_x = (int)(wall_hit * (double)tex->width);
-
-	// Трохи "дзеркальне" відображення для правих/верхніх стін
+	tex_x = (int)(wall_hit * (double)tex->width);
 	if ((ray->side == 0 && ray->direction.x > 0) || (ray->side == 1 && ray->direction.y < 0))
 		tex_x = tex->width - tex_x - 1;
-
-	// СТЕЛЯ
-	draw_vert_line(buf, x, 0, draw_start, eng->world.c);
-
-	// СТІНА (з правильним tex_x!)
-	for (int y = draw_start; y < draw_end; y++)
+	y = ray->draw_start -1;
+	while (++y < ray->draw_end)
 	{
-		int d = y * 256 - h * 128 + line_height * 128;
-		int tex_y = ((d * tex->height) / line_height) / 256;
-
+		int d = y * 256 - h * 128 + ray->line_height * 128;
+		int tex_y = ((d * tex->height) / ray->line_height) / 256;
 		int color = get_pixel_color(tex, tex_x, tex_y);
-		draw_pixel(buf, x, y, color);
+		draw_pixel(&eng->main_buffer, ray->wall_x_cord, y, color);
 	}
-
-	// ПІДЛОГА
-	draw_vert_line(buf, x, draw_end, h, eng->world.f);
 }
 
-MAYBE_INLINE void	draw_walls(t_engine *eng, t_ray *ray)
+MAYBE_INLINE void	cast_walls(t_engine *eng, t_ray *ray)
 {
-	int		x;
 	int		w;
+	int		h;
 	t_image	*tex;
 
-	x = -1;
+	ray->wall_x_cord = -1;
+	h = eng->window.height;
 	w = eng->window.width;
-	while (++x < w)
+	while (++ray->wall_x_cord < w)
 	{
-		set_values(ray, &eng->camera, x, w);
+		set_values(ray, &eng->camera, w);
 		set_direction(ray, &eng->camera);
 		perform_dda(ray, &eng->world);
-		if (!ray->side)
-			ray->wall_dist = ray->side_dist.x - ray->delta.x;
-		else
-			ray->wall_dist = ray->side_dist.y - ray->delta.y;
-		if (ray->side == 0 && ray->direction.x > 0)
-			tex = &eng->world.ea;
-		else if (ray->side == 0 && ray->direction.x < 0)
-			tex = &eng->world.we;
-		else if (ray->side == 1 && ray->direction.y > 0)
-			tex = &eng->world.so;
-		else
-			tex = &eng->world.no;
-		draw(&eng->main_buffer, ray, tex, eng, x, eng->window.height);
+		tex = get_texture(ray, &eng->world, h);
+		draw_textured_wall(eng, &eng->ray, tex, h);
+		draw_vert_line(&eng->main_buffer, ray->wall_x_cord, 0, ray->draw_start, eng->world.c);
+		draw_vert_line(&eng->main_buffer, ray->wall_x_cord, ray->draw_end, h, eng->world.f);
 	}
 }

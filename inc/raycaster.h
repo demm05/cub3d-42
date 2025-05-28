@@ -23,9 +23,14 @@ typedef struct s_ray
 	t_vec2_int		step;
 	t_vec2_int		map;
 	double			wall_dist;
+	double			wall_x_cord;
+	int				wall_face_hit;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
 	bool			side;
 }	t_ray;
 
-void	draw_walls(t_engine *eng, t_ray *ray);
+void	cast_walls(t_engine *eng, t_ray *ray);
 
 #endif
