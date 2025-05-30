@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (ft_fprintf(2, RED"Error"RESET": Please provide map\n"));
 	if (argc > 2)
-		return (ft_fprintf(2, RED"Error"RESET": To many arguments\n"RESET));
+		return (ft_fprintf(2, RED"Error"RESET": Too many arguments\n"));
 	if (engine_init(&eng, argv[1]))
 		mlx_loop(eng.mlx);
 	engine_destroy(&eng);
@@ -39,6 +39,7 @@ void	set_defaults(t_engine *eng)
 	eng->camera.plane.y = 0.66;
 	eng->camera.pos.x = 27;
 	eng->camera.pos.y = 10;
-	eng->camera.move_speed = 2;
-	eng->camera.rotation_speed = 3;
+	eng->camera.move_speed = 3;
+	eng->camera.rotation_speed = 2;
+	eng->camera.mouse_speed = 0.2;
 }
