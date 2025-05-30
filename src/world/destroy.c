@@ -28,5 +28,5 @@ void	world_destroy(void *mlx_ptr, t_world *world)
 	buffer_destroy(mlx_ptr, &world->no);
 	buffer_destroy(mlx_ptr, &world->so);
 	buffer_destroy(mlx_ptr, &world->we);
-	destroy_map(&world->map);
+	destroy_map(world->map);
 }
