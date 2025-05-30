@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:28:23 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/27 12:35:40 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/28 14:32:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,15 @@ t_list	*read_file(const char *path)
 	char	*str;
 	int		fd;
 
+#if DEBUG
+	printf("Reading the file: %s\n", path);
+#endif
 	if (!path)
 		return (NULL);
 	lst = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
-	// str = get_next_line(fd);
 	str = get_line_without_endl(fd);
 	while (str)
 	{

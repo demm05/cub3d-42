@@ -6,15 +6,15 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:56:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 11:07:28 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/27 14:41:49 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WORLD_H
 # define WORLD_H
 
-# define MAP_WIDTH 24
-# define MAP_HEIGHT 24
+// # define MAP_WIDTH 24
+// # define MAP_HEIGHT 24
 
 # include "cube.h"
 
@@ -47,23 +47,9 @@ typedef struct s_world
 	t_map	*map;
 }	t_world;
 
-/**
- * @brief Parses a map from a file.
- * 
- * @param lst A list containing the lines read from the map file.
- * @return Pointer to a t_map structure allocated with malloc.
- */
-t_map	*init_map(t_list *lst);
-
-int		init_world(void *mlx_ptr, t_world *world, const char *path);
-
-/**
- * @brief Frees the memory allocated for the map.
- * 
- * @param map Pointer to the t_map structure to be freed.
- */
-void	destroy_map(t_map *map);
-
+int		world_init(void *mlx_ptr, t_world *world, const char *path);
 void	world_destroy(void *mlx_ptr, t_world *world);
+
+char	map_get(t_world *wrd, int x, int y);
 
 #endif

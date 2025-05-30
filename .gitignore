@@ -5,3 +5,5 @@ obj
 compile_commands.json
 cub3d
 .direnv
+prof.pdf
+gmon.out

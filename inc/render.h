@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:57:10 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 12:53:41 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/28 15:16:46 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	draw_fps_counter(t_timing *tm, t_window *win);
 
 t_image	*xpm_new_image(void *mlx_ptr, char *path);
 int		xpm_image_init(void *mlx_ptr, char *path, t_image *img);
+
+void	set_default_img_values(t_image *img);
 
 void	destroy_image(t_image *img);
 void	buffer_destroy(void *mlx, t_image *buf);

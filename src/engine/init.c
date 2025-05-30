@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:14:48 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 12:55:06 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/27 12:54:55 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ bool	engine_init(t_engine *eng)
 		return (0);
 	ft_bzero(eng, sizeof(t_engine));
 	set_defaults(eng);
+	eng->mlx = mlx_init();
+	if (!eng->mlx)
+		return (0);
 	if (!init_mlx_and_window(eng))
+		return (0);
+	if (world_init(eng->mlx, &eng->world, "map1.cub") == -1)
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);

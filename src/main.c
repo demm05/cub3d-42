@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:16:43 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 11:46:22 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/27 14:50:44 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	set_defaults(t_engine *eng)
 	eng->camera.dir.y = 0;
 	eng->camera.plane.x = 0;
 	eng->camera.plane.y = 0.66;
-	eng->camera.pos.x = 22;
-	eng->camera.pos.y = 12;
-	eng->camera.move_speed = 3;
+	eng->camera.pos.x = 27;
+	eng->camera.pos.y = 10;
+	eng->camera.move_speed = 2;
 	eng->camera.rotation_speed = 3;
 }
