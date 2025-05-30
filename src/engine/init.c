@@ -15,7 +15,7 @@
 
 void	hook_inputs(t_engine *eng);
 
-bool	engine_init(t_engine *eng)
+bool	engine_init(t_engine *eng, char *map_path)
 {
 	if (!eng)
 		return (0);
@@ -24,9 +24,9 @@ bool	engine_init(t_engine *eng)
 	eng->mlx = mlx_init();
 	if (!eng->mlx)
 		return (0);
-	if (!init_mlx_and_window(eng))
+	if (world_init(eng->mlx, &eng->world, map_path) == -1)
 		return (0);
-	if (world_init(eng->mlx, &eng->world, "map1.cub") == -1)
+	if (!init_mlx_and_window(eng))
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);
