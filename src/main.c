@@ -17,7 +17,9 @@ int	main(int argc, char **argv)
 	t_engine	eng;
 
 	if (argc < 2)
-		return (ft_fprintf(2, "Please provide map\n"));
+		return (ft_fprintf(2, RED"Error"RESET": Please provide map\n"));
+	if (argc > 2)
+		return (ft_fprintf(2, RED"Error"RESET": To many arguments\n"RESET));
 	if (engine_init(&eng, argv[1]))
 		mlx_loop(eng.mlx);
 	engine_destroy(&eng);
