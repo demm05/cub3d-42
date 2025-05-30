@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:56:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 15:19:08 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/30 16:25:42 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 typedef struct s_map
 {
 	char		**matrix;
-	size_t		width;
-	size_t		height;
+	int			width;
+	int			height;
 	t_point		player_pos;
 }	t_map;
 

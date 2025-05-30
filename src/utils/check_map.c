@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:34:09 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/30 15:12:13 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/30 16:25:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static char	**coppy_matrix(char	**matrix, int height)
 	char	**coppy;
 	int		i;
 
+	if (!matrix)
+		return (NULL);
 	coppy = (char **)malloc(sizeof(char *) * (height + 1));
 	if (!coppy)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/30 14:25:13 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/30 16:38:33 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,13 @@ static void	fill_line(t_map *map, t_string *str, size_t j)
 			map->matrix[j][i] = str->str[i];
 		i++;
 	}
+	map->matrix[j][i] = '\0';
 }
 
 static void	fill_matrix(t_map *map, t_list *lst)
 {
 	t_string	*str;
-	size_t		j;
+	int			j;
 
 	j = 0;
 	while (j < map->height)
