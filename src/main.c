@@ -12,11 +12,13 @@
 
 #include "cube.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_engine	eng;
 
-	if (engine_init(&eng))
+	if (argc < 2)
+		return (ft_fprintf(2, "Please provide map\n"));
+	if (engine_init(&eng, argv[1]))
 		mlx_loop(eng.mlx);
 	engine_destroy(&eng);
 	return (0);

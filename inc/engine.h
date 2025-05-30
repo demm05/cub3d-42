@@ -38,7 +38,7 @@ typedef struct s_engine
 	t_timing	timing;
 }	t_engine;
 
-bool	engine_init(t_engine *eng);
+bool	engine_init(t_engine *eng, char *map_path);
 int		engine_loop(t_engine *eng);
 void	engine_destroy(t_engine *eng);
 void	eng_new_frame(t_timing *timing);

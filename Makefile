@@ -80,7 +80,7 @@ v: $(NAME)
 
 r run: all
 	@clear
-	$(Q)./$(NAME)
+	$(Q)./$(NAME) map1.cub
 
 rr: clean r
 
