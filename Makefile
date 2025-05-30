@@ -5,7 +5,7 @@ LDIR				=	lib
 NAME				=	cub3d
 
 CC					=	gcc
-CFLAGS				=	-g -O3 -Wall -Wextra -I$(HDIR) -flto
+CFLAGS				=	-g -Wall -Wextra -I$(HDIR) -flto
 LIB_FLAGS			=	-lmlx -lX11 -lXext -lm -lft
 
 MAKE_LIB			=	@make --no-print-directory -C

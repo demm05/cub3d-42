@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/28 16:16:18 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/30 12:06:29 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	parse_texture(void *mlx_ptr, t_world *world, t_string *str)
 	char	*space_ptr;
 	int		space_idx;
 
-	space_ptr = ft_strchr(str->str, ' ');
+	space_ptr = ft_strchr(str->str, ' '); //to do fix space
 	if (!space_ptr)
 		return (-1);
 	space_idx = space_ptr - str->str;
@@ -109,7 +109,10 @@ int	parse_textures(void *mlx_ptr, t_world *world, t_list **lst)
 	int			status;
 
 	if (!mlx_ptr || !world || !lst || !*lst)
+	{
+		ft_putendl_fd(RED "Error" RESET ": some arguments is null", STDERR_FILENO);
 		return (-1);
+	}
 	str = (t_string *)(*lst)->content;
 	i = 0;
 	while (ft_isspace(str->str[i]))

@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:56:33 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 11:07:18 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/30 12:32:48 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ t_list	*read_file(const char *path);
 // int		init_world(void *mlx_ptr, t_world *world, const char *path);
 
 int		parse_textures(void *mlx_ptr, t_world *world, t_list **lst);
-
-/**
- * @brief Frees the memory allocated for the map.
- * 
- * @param map Pointer to the t_map structure to be freed.
- */
-void	destroy_map(t_map *map);
 
 /**
  * @brief Parses a map from a file.

@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:56:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 14:41:49 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/30 15:19:08 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 
 typedef struct s_map
 {
-	char	**matrix;
-	size_t	width;
-	size_t	height;
+	char		**matrix;
+	size_t		width;
+	size_t		height;
+	t_point		player_pos;
 }	t_map;
 
 
@@ -51,5 +52,12 @@ int		world_init(void *mlx_ptr, t_world *world, const char *path);
 void	world_destroy(void *mlx_ptr, t_world *world);
 
 char	map_get(t_world *wrd, int x, int y);
+
+/**
+ * @brief Frees the memory allocated for the map.
+ * 
+ * @param map Pointer to the t_map structure to be freed.
+ */
+void	destroy_map(t_map *map);
 
 #endif

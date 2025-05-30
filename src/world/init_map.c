@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/28 11:23:21 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/30 14:25:13 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,18 @@ t_map	*init_map(t_list *lst)
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (0);
+	map->player_pos.x = 0;
+	map->player_pos.y = 0;
 	map->width = find_max_len(lst);
 	map->height = ft_lstsize(lst);
 	map->matrix = (char **)malloc(sizeof(char *) * (map->height + 1));
 	if (!map->matrix)
 		return (0);
 	fill_matrix(map, lst);
+	if (!check_map(map))
+	{
+		destroy_map(map);
+		return (0);
+	}
 	return (map);
 }

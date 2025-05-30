@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 09:59:38 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 15:09:46 by ogrativ          ###   ########.fr       */
+/*   Created: 2025/05/30 15:08:07 by ogrativ           #+#    #+#             */
+/*   Updated: 2025/05/30 15:19:13 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#ifndef VECTOR_H
+# define VECTOR_H
 
-# include "cube.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdbool.h>
 
-typedef struct s_camera
+typedef struct s_vec2_double
 {
-	t_vec2_double	pos;
-	t_vec2_double	dir;
-	t_vec2_double	plane;
-	double			move_speed;
-	double			rotation_speed;
-}	t_camera;
+	double	x;
+	double	y;
+}	t_vec2_double;
 
-void	update_keyboard_events(t_camera *cam, t_input *inp, t_timing *timing, t_world *world);
-void	update_mouse_event(t_camera *cam, t_input *inp, t_timing *timing);
+typedef struct s_vec2_int
+{
+	int	x;
+	int	y;
+}	t_vec2_int;
+
+typedef struct s_vec2_int	t_point;
 
 #endif
