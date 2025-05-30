@@ -72,4 +72,6 @@ bool	buffer_create(void *mlx, t_image *buf, int width, int height);
 // bool    buffer_create(void *mlx, t_frame_buf *buf, int width, int height);
 // void	buffer_destroy(void *mlx, t_frame_buf *buf);
 
+void	draw_for_each_pixel(t_image *img, void *param, int x_end, int y_end, int foo(int x, int y, void *param));
+
 #endif
