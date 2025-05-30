@@ -39,7 +39,6 @@ void	hook_inputs(t_engine *eng)
 		mlx_enable_window_resize(eng->mlx, &eng->window);
 	if (DISABLE_AUTOREPEAT_KEY)
 		mlx_do_key_autorepeatoff(eng->mlx);
-	mlx_mouse_hide(eng->mlx, eng->window.win);
 	mlx_loop_hook(eng->mlx, engine_loop, eng);
 	mlx_mouse_hook(eng->window.win, input_mouse_press, eng);
 	mlx_hook(eng->window.win, DestroyNotify, NoEventMask, mlx_loop_end, eng->mlx);

@@ -21,10 +21,27 @@ int	input_mouse_press(int key, int x, int y, t_engine *eng)
 	return (0);
 }
 
+// TODO: if in menu this function should return 0
+// TODO: if there was a change of focus we should do nothing
 int	input_mouse_move(int x, int y, t_engine *eng)
 {
-	(void) eng;
-	(void) x;
-	(void) y;
+	static t_vec2_int	prev;
+
+#if DEBUG
+	printf("mouse_move: %dx%d\n", x, y);
+#endif
+	y = eng->window.height / 2;
+	if (!prev.x && !prev.y)
+	{
+		x = eng->window.width / 2;
+		prev.x = x;
+		prev.y = y;
+		mlx_mouse_move(eng->mlx, eng->window.win, x, y);
+	}
+	if (x - prev.x == 0)
+		return (0);
+	eng->input.mouse_move = prev.x - x;
+	x = prev.x;
+	mlx_mouse_move(eng->mlx, eng->window.win, x, y);
 	return (0);
 }
