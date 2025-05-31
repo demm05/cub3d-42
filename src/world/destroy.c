@@ -18,6 +18,7 @@ void	destroy_map(t_map *map)
 		return ;
 	if (map->matrix)
 		free_str_arr(map->matrix);
+	free(map);
 }
 
 void	world_destroy(void *mlx_ptr, t_world *world)
