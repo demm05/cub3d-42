@@ -54,17 +54,3 @@ void	mlx_enable_window_resize(void *mlx, t_window *window)
 	hints.flags = PPosition | PSize | PMinSize | PMaxSize;
 	XSetWMNormalHints(xvar->display, *win, &hints);
 }
-
-int	input_event_resize(t_engine *eng)
-{
-	XWindowAttributes	attr;
-	Window				*win;
-	t_xvar				*xvar;
-
-	xvar = eng->mlx;
-	win = eng->window.win;
-	XGetWindowAttributes(xvar->display, *win, &attr);
-	eng->window.width = attr.width;
-	eng->window.height = attr.height;
-	return (0);
-}

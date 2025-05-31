@@ -30,6 +30,8 @@ int	input_keyboard_press(int keycode, t_engine *eng)
 		eng->input.look_left= 1;
 	else if (keycode == XK_Right)
 		eng->input.look_right = 1;
+	else if (keycode == XK_Shift_L)
+		eng->camera.move_speed *= 1.5;
 	return (0);
 }
 
@@ -52,5 +54,7 @@ int	input_keyboard_release(int keycode, t_engine *eng)
 		eng->input.look_left = 0;
 	else if (keycode == XK_Right)
 		eng->input.look_right = 0;
+	else if (keycode == XK_Shift_L)
+		eng->camera.move_speed /= 1.5;
 	return (0);
 }
