@@ -28,6 +28,8 @@ bool	engine_init(t_engine *eng, char *map_path)
 		return (0);
 	if (!init_mlx_and_window(eng))
 		return (0);
+	if (!allocate_rays(eng))
+		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);
 	return (1);

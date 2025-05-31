@@ -34,7 +34,7 @@ typedef struct s_engine
 	t_frame_buf	main_buffer;
 	t_world		world;
 	t_camera	camera;
-	t_ray		ray;
+	t_ray		*rays;
 	t_timing	timing;
 }	t_engine;
 
