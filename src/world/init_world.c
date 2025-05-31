@@ -61,9 +61,7 @@ int	world_init(void *mlx_ptr, t_world *world, const char *path)
 	}
 	world->map = init_map(lst);
 	ft_lstclear(&lst, t_str_free);
-	if (!world->map)
-		return (world_destroy(mlx_ptr, world), -1);
-	if (!check_world(world))
-		return (world_destroy(mlx_ptr, world), -1);
+	if (!world->map || !check_world(world))
+		return (-1);
 	return (0);
 }
