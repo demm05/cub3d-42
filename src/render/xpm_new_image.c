@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:41:48 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/28 15:16:12 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/02 12:09:55 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,3 @@ t_image	*xpm_new_image(void *mlx_ptr, char *path)
 	}
 	return (img);
 }
-

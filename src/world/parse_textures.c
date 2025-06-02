@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/02 11:07:51 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/02 12:08:13 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,7 @@ static int	parse_texture(void *mlx_ptr, t_world *world, t_string *str)
 	char	*space_ptr;
 	int		space_idx;
 
-	space_ptr = ft_strchr(str->str, ' '); //to do fix space
-	// if (!space_ptr)
-	// 	return (-1);
+	space_ptr = ft_strchr(str->str, ' ');
 	if (space_ptr && space_ptr[0] > '\0')
 		space_idx = space_ptr - str->str;
 	else
@@ -113,8 +111,8 @@ int	parse_textures(void *mlx_ptr, t_world *world, t_list **lst)
 
 	if (!mlx_ptr || !world || !lst || !*lst)
 	{
-		ft_putendl_fd(RED "Error" RESET ": some arguments is null", STDERR_FILENO);
-		return (-1);
+		return (ft_putendl_fd(RED "Error" RESET
+				": some arguments is null", STDERR_FILENO), -1);
 	}
 	str = (t_string *)(*lst)->content;
 	i = 0;
