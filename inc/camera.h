@@ -22,9 +22,11 @@ typedef struct s_camera
 	t_vec2_double	plane;
 	double			move_speed;
 	double			rotation_speed;
+	float			mouse_speed;
 }	t_camera;
 
-void	update_keyboard_events(t_camera *cam, t_input *inp, t_timing *timing, t_world *world);
-void	update_mouse_event(t_camera *cam, t_input *inp, t_timing *timing);
+void	camera_keyboard_move_event(t_engine *eng, t_camera *cam);
+void	camera_keyboard_rotate_event(t_engine *eng);
+void	camera_mouse_move_event(t_engine *eng);
 
 #endif

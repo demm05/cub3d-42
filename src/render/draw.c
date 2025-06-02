@@ -67,3 +67,25 @@ MAYBE_INLINE void	draw_pixel(t_frame_buf *buf, int x, int y, int color)
 	*((unsigned int *)((y * buf->line_size) + \
 			(x * (buf->depth / 8)) + buf->buffer)) = color;
 }
+
+MAYBE_INLINE void	draw_for_each_pixel(t_image *img, void *param, int x_end, int y_end, int foo(int x, int y, void *param))
+{
+	char	*pixel_addr; // Using int * improves performance
+	int		step;
+	int		x;
+	int		y;
+
+	step = img->depth / 8;
+	y = -1;
+	while (++y < y_end)
+	{
+		x = -1;
+		pixel_addr = img->buffer + y * img->line_size;
+		while (++x < x_end)
+		{
+			*(int *)pixel_addr = foo(x, y, param);
+			pixel_addr += step;
+		}
+	}
+}
+

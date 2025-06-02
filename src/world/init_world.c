@@ -25,7 +25,7 @@ static bool	check_path(const char *path)
 	if (str && !ft_strcmp(str, ".cub"))
 		return (1);
 	ft_putendl_fd(RED "Error" RESET
-		": Invalid file extension. Expected '.cup' file", STDERR_FILENO);
+		": Invalid file extension. Expected '.cub' file", STDERR_FILENO);
 	return (0);
 }
 
@@ -60,10 +60,7 @@ int	world_init(void *mlx_ptr, t_world *world, const char *path)
 	}
 	world->map = init_map(lst);
 	ft_lstclear(&lst, t_str_free);
-	if (!world->map)
-		return (world_destroy(mlx_ptr, world), -1);
-	if (!check_world(world))
-		return (world_destroy(mlx_ptr, world), -1);
+	if (!world->map || !check_world(world))
+		return (-1);
 	return (0);
-
 }

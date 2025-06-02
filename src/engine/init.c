@@ -15,7 +15,7 @@
 
 void	hook_inputs(t_engine *eng);
 
-bool	engine_init(t_engine *eng)
+bool	engine_init(t_engine *eng, char *map_path)
 {
 	if (!eng)
 		return (0);
@@ -24,9 +24,11 @@ bool	engine_init(t_engine *eng)
 	eng->mlx = mlx_init();
 	if (!eng->mlx)
 		return (0);
+	if (world_init(eng->mlx, &eng->world, map_path) == -1)
+		return (0);
 	if (!init_mlx_and_window(eng))
 		return (0);
-	if (world_init(eng->mlx, &eng->world, "map1.cub") == -1)
+	if (!allocate_rays(eng))
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);
@@ -39,7 +41,6 @@ void	hook_inputs(t_engine *eng)
 		mlx_enable_window_resize(eng->mlx, &eng->window);
 	if (DISABLE_AUTOREPEAT_KEY)
 		mlx_do_key_autorepeatoff(eng->mlx);
-	mlx_mouse_hide(eng->mlx, eng->window.win);
 	mlx_loop_hook(eng->mlx, engine_loop, eng);
 	mlx_mouse_hook(eng->window.win, input_mouse_press, eng);
 	mlx_hook(eng->window.win, DestroyNotify, NoEventMask, mlx_loop_end, eng->mlx);

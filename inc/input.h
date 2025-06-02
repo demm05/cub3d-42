@@ -25,6 +25,7 @@ typedef struct s_input
 	bool	moving_right;
 	bool	look_left;
 	bool	look_right;
+	int		mouse_move;
 }	t_input;
 
 int	input_keyboard_press(int keycode, t_engine *eng);

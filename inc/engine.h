@@ -34,11 +34,11 @@ typedef struct s_engine
 	t_frame_buf	main_buffer;
 	t_world		world;
 	t_camera	camera;
-	t_ray		ray;
+	t_ray		*rays;
 	t_timing	timing;
 }	t_engine;
 
-bool	engine_init(t_engine *eng);
+bool	engine_init(t_engine *eng, char *map_path);
 int		engine_loop(t_engine *eng);
 void	engine_destroy(t_engine *eng);
 void	eng_new_frame(t_timing *timing);
