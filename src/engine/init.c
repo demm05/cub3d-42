@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:14:48 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 12:54:55 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/02 13:37:57 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ bool	engine_init(t_engine *eng, char *map_path)
 	if (!init_mlx_and_window(eng))
 		return (0);
 	if (!allocate_rays(eng))
+		return (0);
+	if (!camera_set_start_pos(eng))
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);

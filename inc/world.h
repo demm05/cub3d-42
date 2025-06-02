@@ -53,11 +53,6 @@ void	world_destroy(void *mlx_ptr, t_world *world);
 
 char	map_get(t_world *wrd, int x, int y);
 
-/**
- * @brief Frees the memory allocated for the map.
- * 
- * @param map Pointer to the t_map structure to be freed.
- */
-void	destroy_map(t_map *map);
+void	map_set(t_world *wrd, int x, int y, int c);
 
 #endif

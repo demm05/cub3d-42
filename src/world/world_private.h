@@ -29,4 +29,11 @@ int		parse_textures(void *mlx_ptr, t_world *world, t_list **lst);
  */
 t_map	*init_map(t_list *lst);
 
+/**
+ * @brief Frees the memory allocated for the map.
+ * 
+ * @param map Pointer to the t_map structure to be freed.
+ */
+void	destroy_map(t_map *map);
+
 #endif
