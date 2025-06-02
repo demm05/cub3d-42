@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:57:10 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/28 15:16:46 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/02 16:00:09 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct s_window	t_window;
 
-# define IMG_WIDTH 32
-# define IMG_HEIGHT 32
+# define IMG_WIDTH 64
+# define IMG_HEIGHT 64
 
 typedef struct s_rgb
 {
