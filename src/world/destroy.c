@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world_destroy.c                                    :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:58:56 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/27 11:07:09 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/30 16:36:54 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	destroy_map(t_map *map)
 		return ;
 	if (map->matrix)
 		free_str_arr(map->matrix);
+	map->matrix = NULL;
 	free(map);
 }
 
@@ -30,4 +31,5 @@ void	world_destroy(void *mlx_ptr, t_world *world)
 	buffer_destroy(mlx_ptr, &world->so);
 	buffer_destroy(mlx_ptr, &world->we);
 	destroy_map(world->map);
+	world->map = NULL;
 }

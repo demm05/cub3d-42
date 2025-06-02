@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:59:38 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/24 14:22:53 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/05/30 15:09:46 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 # define CAMERA_H
 
 # include "cube.h"
-
-typedef struct s_vec2_double
-{
-	double	x;
-	double	y;
-}	t_vec2_double;
-
-typedef struct s_vec2_int
-{
-	int	x;
-	int	y;
-}	t_vec2_int;
 
 typedef struct s_camera
 {

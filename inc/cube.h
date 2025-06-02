@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:17:02 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 14:14:43 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/05/30 15:09:58 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # include "../lib/libft/libft.h"
 # include "../lib/minilibx/mlx.h"
 
+# include "vector.h"
 # include "render.h"
 # include "assets.h"
 # include "world.h"

@@ -5,7 +5,7 @@ LDIR				=	lib
 NAME				=	cub3d
 
 CC					=	gcc
-CFLAGS				=	-g -O3 -Wall -Wextra -I$(HDIR) -flto
+CFLAGS				=	-g -Wall -Wextra -I$(HDIR) -flto
 LIB_FLAGS			=	-lmlx -lX11 -lXext -lm -lft
 
 MAKE_LIB			=	@make --no-print-directory -C
@@ -76,7 +76,7 @@ n norm:
 		| grep -v "WRONG_SCOPE_COMMENT" | grep -v "LINE_TOO_LONG" | grep -v "TOO_MANY_ARGS"
 
 v: $(NAME)
-	@valgrind ./$<
+	@valgrind --leak-check=full --show-leak-kinds=all ./$<
 
 r run: all
 	@clear

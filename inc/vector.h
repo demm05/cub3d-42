@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_image.c                                    :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 16:59:15 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/30 12:48:25 by ogrativ          ###   ########.fr       */
+/*   Created: 2025/05/30 15:08:07 by ogrativ           #+#    #+#             */
+/*   Updated: 2025/05/30 15:19:13 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render_private.h"
+#ifndef VECTOR_H
+# define VECTOR_H
 
-void	destroy_image(t_image *img)
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdbool.h>
+
+typedef struct s_vec2_double
 {
-	if (!img)
-		return ;
-	// if (img->buffer)
-	// 	free(img->buffer);
-	if (img->img)
-		mlx_destroy_image(img->mlx, img->img);
-	free(img);
-	img = NULL;
-}
+	double	x;
+	double	y;
+}	t_vec2_double;
+
+typedef struct s_vec2_int
+{
+	int	x;
+	int	y;
+}	t_vec2_int;
+
+typedef struct s_vec2_int	t_point;
+
+#endif
