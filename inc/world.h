@@ -55,4 +55,11 @@ char	map_get(t_world *wrd, int x, int y);
 
 void	map_set(t_world *wrd, int x, int y, int c);
 
+/**
+ * @brief Frees the memory allocated for the map.
+ * 
+ * @param map Pointer to the t_map structure to be freed.
+ */
+void	destroy_map(t_map *map);
+
 #endif
