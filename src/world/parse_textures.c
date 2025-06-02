@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/30 12:06:29 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/02 11:07:51 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,12 @@ static int	parse_texture(void *mlx_ptr, t_world *world, t_string *str)
 	int		space_idx;
 
 	space_ptr = ft_strchr(str->str, ' '); //to do fix space
-	if (!space_ptr)
-		return (-1);
-	space_idx = space_ptr - str->str;
+	// if (!space_ptr)
+	// 	return (-1);
+	if (space_ptr && space_ptr[0] > '\0')
+		space_idx = space_ptr - str->str;
+	else
+		return (1);
 	tex_name = ft_substr(str->str, 0, space_idx);
 	path = space_ptr + 1;
 	if (!tex_name || !path || path[0] == '\0')
