@@ -87,7 +87,8 @@ static MAYBE_INLINE void	set_ray_prop(t_engine *eng, t_ray *ray)
 		wall_hit = eng->camera.pos.x + ray->wall_dist * ray->direction.x;
 	wall_hit -= floor(wall_hit);
 	ray->x_on_tex = (int)(wall_hit * (double)ray->texture->width);
-    if ((ray->side == 0 && ray->direction.x < 0) || (ray->side == 1 && ray->direction.y < 0))
+	// y > 0 it's fine
+    if ((ray->side == 0 && ray->direction.x < 0) || (ray->side == 1 && ray->direction.y > 0))
         ray->x_on_tex = ray->texture->width - ray->x_on_tex - 1;
     if (ray->x_on_tex < 0)
     	ray->x_on_tex = 0;

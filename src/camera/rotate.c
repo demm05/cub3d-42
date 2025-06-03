@@ -44,6 +44,6 @@ MAYBE_INLINE void	camera_mouse_move_event(t_engine *eng)
 	if (!eng->input.mouse_move)
 		return ;
 	move_amount = eng->camera.mouse_speed * eng->timing.delta_time * eng->input.mouse_move;
-	rotate(&eng->camera, move_amount);
+	rotate(&eng->camera, -move_amount);
 	eng->input.mouse_move = 0;
 }
