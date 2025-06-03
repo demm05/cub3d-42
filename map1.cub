@@ -1,7 +1,7 @@
-NO ./assets/Layer-2_sprite_dark1.xpm
-SO ./assets/Layer-2_sprite_dark2.xpm
-WE ./assets/Layer-2_sprite_dark5.xpm
-EA ./assets/Layer-2_sprite_dark4_1.xpm
+NO ./assets/test_wall_0.xpm
+SO ./assets/last_green_1.xpm
+WE ./assets/test_wall_2.xpm
+EA ./assets/test_wall_3.xpm
 
 C 0,160, 250
 F 52,55,12
