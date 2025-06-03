@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:04:26 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/28 17:04:27 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/03 15:33:18 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,7 @@ MAYBE_INLINE void	draw_rectangle(t_frame_buf *buf, int x, int y, int width,
 	{
 		x = x_start;
 		while (x < x_end)
-		{
 			draw_pixel(buf, x++, y, color);
-			// draw_pixel(buf, x, y, get_pixel_color(buf, x, y));
-			x++;
-		}
 		y++;
 	}
 }
