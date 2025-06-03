@@ -43,8 +43,8 @@ MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
 	if (eng->input.moving_down)
 		move_camera(cam, &eng->world, cam->pos.x - dir_x, cam->pos.y - dir_y);
 	if (eng->input.moving_left)
-		move_camera(cam, &eng->world, cam->pos.x - dir_y, cam->pos.y + dir_x);
-	if (eng->input.moving_right)
 		move_camera(cam, &eng->world, cam->pos.x + dir_y, cam->pos.y - dir_x);
+	if (eng->input.moving_right)
+		move_camera(cam, &eng->world, cam->pos.x - dir_y, cam->pos.y + dir_x);
 }
 

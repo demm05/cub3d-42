@@ -49,8 +49,8 @@ bool	camera_set_start_pos(t_engine *eng)
 	cam = &eng->camera;
 	x = eng->world.map->player_pos.x;
 	y = eng->world.map->player_pos.y;
-	cam->pos.x = x;
-	cam->pos.y = y;
+	cam->pos.x = x + 0.5;
+	cam->pos.y = y + 0.5;
 	d = map_get(&eng->world, x, y);
 	map_set(&eng->world, x, y, '0');
 	return (set_pos(cam, d));
