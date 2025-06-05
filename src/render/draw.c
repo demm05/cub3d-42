@@ -64,24 +64,49 @@ MAYBE_INLINE void	draw_pixel(t_frame_buf *buf, int x, int y, int color)
 			(x * (buf->depth / 8)) + buf->buffer)) = color;
 }
 
-MAYBE_INLINE void	draw_for_each_pixel(t_image *img, void *param, int x_end, int y_end, int foo(int x, int y, void *param))
+MAYBE_INLINE void	draw_for_each_pixel(t_engine *eng, t_point end,
+				unsigned int foo(t_engine *eng, int x, int y,
+					unsigned int color))
 {
-	char	*pixel_addr; // Using int * improves performance
-	int		step;
-	int		x;
-	int		y;
+	unsigned int	*pixel_addr;
+	int				x;
+	int				y;
 
-	step = img->depth / 8;
 	y = -1;
-	while (++y < y_end)
+	while (++y < end.y)
 	{
 		x = -1;
-		pixel_addr = img->buffer + y * img->line_size;
-		while (++x < x_end)
-		{
-			*(int *)pixel_addr = foo(x, y, param);
-			pixel_addr += step;
-		}
+		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + y * \
+			eng->main_buffer.line_size);
+		while (++x < end.x)
+			pixel_addr[x] = foo(eng, x, y, pixel_addr[x]);
 	}
+}
+
+MAYBE_INLINE void	draw_from_to_each(t_engine *eng, t_point start, t_point size, unsigned int foo(t_engine *eng, int x, int y, unsigned int color))
+{
+	unsigned int	*pixel_addr;
+	int				x;
+	int				y;
+
+	y = -1;
+	while (++y < size.y)
+	{
+		x = -1;
+		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + (y + start.y) *
+			eng->main_buffer.line_size + (start.x * 4));
+		while (++x < size.x)
+			pixel_addr[x] = foo(eng, x, y, pixel_addr[x]);
+	}
+}
+
+MAYBE_INLINE int	get_pixel_color(t_image *img, int x, int y)
+{
+	char	*pixel_addr;
+	int		color;
+
+	pixel_addr = img->buffer + (y * img->line_size) + (x * (img->depth / 8));
+	color = *(int *)pixel_addr;
+	return (color);
 }
 

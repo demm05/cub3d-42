@@ -36,6 +36,7 @@ typedef struct s_ray
 void	cast_walls(t_engine *eng, t_ray *ray);
 bool	allocate_rays(t_engine *eng);
 void	destroy_rays(t_engine *eng);
-void	render(t_engine *eng);
+void	render_frame(t_engine *eng);
+void	cast_ray(t_engine *eng, t_ray *ray, int h, int w);
 
 #endif

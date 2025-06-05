@@ -12,21 +12,6 @@
 
 #include "render_private.h"
 
-static void	print_err(char *path)
-{
-	ft_putstr_fd(RED "Error" RESET ": faild to open file ", STDERR_FILENO);
-	ft_putstr_fd(path, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
-}
-
-void	set_default_img_values(t_image *img)
-{
-	if (!img)
-		return ;
-	img->buffer = NULL;
-	img->img = NULL;
-}
-
 int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)
 {
 	if (!img || !path)
@@ -35,10 +20,7 @@ int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)
 	img->img = mlx_xpm_file_to_image(mlx_ptr, path,
 			&img->depth, &img->line_size);
 	if (!img->img)
-	{
-		print_err(path);
-		return (-1);
-	}
+		return (ft_fprintf(STDERR_FILENO, RED"Error" RESET ": failed to open file: %s\n", path), -1);
 	img->buffer = mlx_get_data_addr(img->img, &img->depth,
 			&img->line_size, &img->endian);
 	img->height = IMG_HEIGHT;

@@ -36,6 +36,7 @@ typedef struct s_engine
 	t_camera	camera;
 	t_ray		*rays;
 	t_timing	timing;
+	t_minimap	map;
 }	t_engine;
 
 bool	engine_init(t_engine *eng, char *map_path);

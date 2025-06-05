@@ -36,4 +36,7 @@ void	set_defaults(t_engine *eng)
 	eng->camera.move_speed = 3;
 	eng->camera.rotation_speed = 2;
 	eng->camera.mouse_speed = 0.2;
+	eng->map.border_offset = 10;
+	eng->map.cube_gap = 1;
+	eng->map.size_on_window = 4;
 }
