@@ -8,5 +8,7 @@ pkgs.mkShell {
     xorg.libXext
     gnumake
     clang-tools
+    gdb
+    norminette
   ];
 }

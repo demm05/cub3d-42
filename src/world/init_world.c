@@ -33,11 +33,7 @@ static void	set_default_values(t_world *world)
 {
 	if (!world)
 		return ;
-	ft_memset(world, 0, sizeof(t_world));
-	set_default_img_values(&world->ea);
-	set_default_img_values(&world->we);
-	set_default_img_values(&world->so);
-	set_default_img_values(&world->no);
+	ft_bzero(world, sizeof(t_world));
 	world->c = -1;
 	world->f = -1;
 	world->map = NULL;

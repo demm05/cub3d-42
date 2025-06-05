@@ -1,24 +1,13 @@
-#include "raycaster_private.h"
+#include "render_private.h"
 
-MAYBE_INLINE int	get_pixel_color(t_image *img, int x, int y)
+MAYBE_INLINE unsigned int	color_background(t_engine *eng, int x, int y, unsigned int color)
 {
-	char	*pixel_addr;
-	int		color;
-
-	pixel_addr = img->buffer + (y * img->line_size) + (x * (img->depth / 8));
-	color = *(int *)pixel_addr;
-	return (color);
-}
-
-inline int	color_vertical(int x, int y, void *param)
-{
-	t_engine	*eng;
-	t_image		*tex;
+	t_image		*tex; 
+	t_ray		*ray;
 	int			tex_x;
 	int			tex_y;
-	t_ray		*ray;
 
-	eng = param;
+	(void)color;
 	ray = &eng->rays[x];
 	if (y < ray->draw_start)
 		return (eng->world.c);
@@ -37,7 +26,7 @@ inline int	color_vertical(int x, int y, void *param)
 	return (get_pixel_color(tex, tex_x, tex_y));
 }
 
-void	render(t_engine *eng)
+void	render_frame(t_engine *eng)
 {
 	int	w;
 	int	h;
@@ -48,5 +37,7 @@ void	render(t_engine *eng)
 	x = -1;
 	while (++x < w)
 		cast_ray(eng, &eng->rays[x], h, w);
-	draw_for_each_pixel(&eng->main_buffer, eng, w, h, color_vertical);
+	draw_for_each_pixel(eng, (t_point){w, h}, color_background);
+	if (eng->map.is_player_displayable)
+		draw_from_to_each(eng, eng->map.draw_start, eng->map.draw_size, minimap_draw);
 }
