@@ -38,5 +38,6 @@ void	render_frame(t_engine *eng)
 	while (++x < w)
 		cast_ray(eng, &eng->rays[x], h, w);
 	draw_for_each_pixel(eng, (t_point){w, h}, color_background);
-	draw_from_to_each(eng, eng->map.draw_start, eng->map.draw_size, minimap_draw);
+	if (eng->map.is_player_displayable)
+		draw_from_to_each(eng, eng->map.draw_start, eng->map.draw_size, minimap_draw);
 }
