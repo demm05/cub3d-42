@@ -14,6 +14,12 @@
 
 int	engine_loop(t_engine *eng)
 {
+	if (eng->input.resizing)
+	{
+		usleep(50000);
+		eng->input.resizing = 0;
+		return (0);
+	}
 	eng_new_frame(&eng->timing);
 	camera_keyboard_move_event(eng, &eng->camera);
 	camera_keyboard_rotate_event(eng);
