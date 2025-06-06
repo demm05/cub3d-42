@@ -32,8 +32,6 @@ typedef struct s_minimap
 	t_vec2_int		cubes;
 	t_point			draw_start;
 	t_point			draw_size;
-	t_point			border_end_start;
-	unsigned int	border_color;
 	bool			is_player_displayable;
 }	t_minimap;
 
