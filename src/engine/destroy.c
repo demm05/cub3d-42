@@ -21,6 +21,7 @@ void	engine_destroy(t_engine *eng)
 	world_destroy(eng->mlx, &eng->world);
 	mlx_destroy(eng);
 	destroy_rays(eng);
+	free(eng->map);
 }
 
 void	mlx_destroy(t_engine *eng)

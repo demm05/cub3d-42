@@ -28,40 +28,29 @@ MAYBE_INLINE void	draw_vert_line(t_frame_buf *buf, int x, int start, int end,
 		draw_pixel(buf, x, start++, color);
 }
 
-MAYBE_INLINE void	draw_rectangle(t_frame_buf *buf, int x, int y, int width,
-						int height, int color)
+MAYBE_INLINE void	draw_rectangle(t_engine *eng, t_point start, t_point size, unsigned int color)
 {
-	int	x_start;
-	int	y_start;
-	int	x_end;
-	int	y_end;
+	unsigned int	*pixel_addr;
+	int				x;
+	int				y;
 
-	x_start = x;
-	y_start = y;
-	x_end = x + width;
-	y_end = y + height;
-	if (x_start < 0)
-		x_start = 0;
-	if (y_start < 0)
-		y_start = 0;
-	if (x_end > buf->width)
-		x_end = buf->width;
-	if (y_end > buf->height)
-		y_end = buf->height;
-	y = y_start;
-	while (y < y_end)
+	y = -1;
+	if (start.x < 0)
+		start.x = 0;
+	if (start.y < 0)
+		start.y = y;
+	if (start.x + size.x > eng->main_buffer.width)
+		size.x = start.x + size.x - eng->main_buffer.width;
+	if (start.y + size.y > eng->main_buffer.height)
+		size.y = start.y + size.y - eng->main_buffer.height;
+	while (++y < size.y)
 	{
-		x = x_start;
-		while (x < x_end)
-			draw_pixel(buf, x++, y, color);
-		y++;
+		x = -1;
+		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + (y + start.y) *
+			eng->main_buffer.line_size + (start.x * 4));
+		while (++x < size.x)
+			pixel_addr[x] = color;
 	}
-}
-
-MAYBE_INLINE void	draw_pixel(t_frame_buf *buf, int x, int y, int color)
-{
-	*((unsigned int *)((y * buf->line_size) + \
-			(x * (buf->depth / 8)) + buf->buffer)) = color;
 }
 
 MAYBE_INLINE void	draw_for_each_pixel(t_engine *eng, t_point end,
@@ -98,15 +87,5 @@ MAYBE_INLINE void	draw_from_to_each(t_engine *eng, t_point start, t_point size, 
 		while (++x < size.x)
 			pixel_addr[x] = foo(eng, x, y, pixel_addr[x]);
 	}
-}
-
-MAYBE_INLINE int	get_pixel_color(t_image *img, int x, int y)
-{
-	char	*pixel_addr;
-	int		color;
-
-	pixel_addr = img->buffer + (y * img->line_size) + (x * (img->depth / 8));
-	color = *(int *)pixel_addr;
-	return (color);
 }
 

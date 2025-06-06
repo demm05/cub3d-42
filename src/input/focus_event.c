@@ -24,10 +24,14 @@ int	input_focus_in(t_engine *eng)
 
 int	input_focus_out(t_engine *eng)
 {
+	bool	minimap_toggle;
+
 #if DEBUG
 	printf("Focus change: out\n");
 #endif
+	minimap_toggle = eng->input.minimap_toggle;
 	ft_bzero(&eng->input, sizeof(t_input));
+	eng->input.minimap_toggle = minimap_toggle;
 	return (0);
 }
 
