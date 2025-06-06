@@ -17,9 +17,6 @@
 
 typedef struct s_window	t_window;
 
-# define IMG_WIDTH 64
-# define IMG_HEIGHT 64
-
 typedef struct s_rgb
 {
 	unsigned int	red;
