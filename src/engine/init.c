@@ -26,11 +26,8 @@ bool	engine_init(t_engine *eng, char *map_path)
 		return (0);
 	if (world_init(eng->mlx, &eng->world, map_path) == -1)
 		return (0);
-	if (!init_mlx_and_window(eng))
-		return (0);
-	if (!allocate_rays(eng))
-		return (0);
-	if (!camera_set_start_pos(eng))
+	if (!init_mlx_and_window(eng) || !allocate_rays(eng) || \
+		!camera_set_start_pos(eng) || !minimap_create(eng))
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);

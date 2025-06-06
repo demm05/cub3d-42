@@ -34,7 +34,7 @@ static inline char	*int_to_static_s(unsigned int num)
 	return (s);
 }
 
-void	draw_fps_counter(t_timing *tm, t_window *win)
+void	display_fps_counter(t_timing *tm, t_window *win)
 {
 	static int	last_fps;
 	static char	*s = "0";

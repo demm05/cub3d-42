@@ -3,8 +3,8 @@ SO ./assets/last_green_1.xpm
 WE ./assets/test_wall_2.xpm
 EA ./assets/test_wall_3.xpm
 
-C 0,160, 250
-F 52,55,12
+C 76,88,101
+F 80,72,64
 
         1111111111111111111111111
         1000000000110000000000001
