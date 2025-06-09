@@ -1,7 +1,7 @@
-NO ./assets/test_wall_0.xpm
-SO ./assets/last_green_1.xpm
-WE ./assets/test_wall_2.xpm
-EA ./assets/test_wall_3.xpm
+NO ./assets/north.xpm
+SO ./assets/south.xpm
+WE ./assets/west.xpm
+EA ./assets/east.xpm
 
 C 76,88,101
 F 80,72,64
