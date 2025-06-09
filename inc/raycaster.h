@@ -37,9 +37,6 @@ typedef struct s_ray
 	{
 		t_vec2_int	step;
 		t_point		pos;
-		double		row_distance;
-		t_image		*f_tex;
-		t_image		*c_tex;
 	}	floor;
 }	t_ray;
 
