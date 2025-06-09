@@ -18,6 +18,8 @@ int	input_focus_in(t_engine *eng)
 #if DEBUG
 	printf("Focus change: in\n");
 #endif
+	eng->input.prev_mouse_pos.x = eng->window.width >> 1;
+	eng->input.prev_mouse_pos.y = eng->window.height >> 1;
 	mlx_mouse_hide(eng->mlx, eng->window.win);
 	return (0);
 }

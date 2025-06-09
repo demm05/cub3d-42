@@ -79,4 +79,6 @@ bool	minimap_create(t_engine *eng);
 
 t_ui	blend_normal(t_ui source, t_ui dest);
 
+void	render_frame(t_engine *eng);
+
 #endif
