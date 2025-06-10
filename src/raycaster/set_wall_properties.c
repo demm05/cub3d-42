@@ -13,25 +13,25 @@ MAYBE_INLINE void	ray_set_wall_prop(t_engine *eng, t_ray *ray)
 	if (ray->side == 0 && ray->direction.x > 0)
 	{
 		ray->texture = &eng->world.ea;
-		ray->floor_x_wall = ray->map.x;
-		ray->floor_y_wall = ray->map.y + wall_hit;
+		ray->floor_wall.x = ray->map.x;
+		ray->floor_wall.y = ray->map.y + wall_hit;
 	}
 	else if (ray->side == 0 && ray->direction.x < 0)
 	{
-		ray->floor_x_wall = ray->map.x + 1.0;
-		ray->floor_y_wall = ray->map.y + wall_hit;
+		ray->floor_wall.x = ray->map.x + 1.0;
+		ray->floor_wall.y = ray->map.y + wall_hit;
 		ray->texture = &eng->world.we;
 	}
 	else if (ray->side == 1 && ray->direction.y > 0)
 	{
-		ray->floor_x_wall = ray->map.x + wall_hit;
-		ray->floor_y_wall = ray->map.y;
+		ray->floor_wall.x = ray->map.x + wall_hit;
+		ray->floor_wall.y = ray->map.y;
 		ray->texture = &eng->world.so;
 	}
 	else
 	{
-		ray->floor_x_wall = ray->map.x + wall_hit;
-		ray->floor_y_wall = ray->map.y + 1.0;
+		ray->floor_wall.x = ray->map.x + wall_hit;
+		ray->floor_wall.y = ray->map.y + 1.0;
 		ray->texture = &eng->world.no;
 	}
 	ray->x_on_tex = (int)(wall_hit * (double)ray->texture->width);

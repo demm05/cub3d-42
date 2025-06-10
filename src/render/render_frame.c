@@ -27,9 +27,10 @@ MAYBE_INLINE t_ui	color_cf(t_ray *ray, t_engine *eng, int h, int y)
 	t_point			floor_tex;
 	double			weight;
 
+	(void)h;
 	weight = eng->table.y[y].floor_dist / ray->wall_dist;
-	floor_pos.x = weight * ray->floor_x_wall + (1.0 - weight) * eng->camera.pos.x;
-	floor_pos.y = weight * ray->floor_y_wall + (1.0 - weight) * eng->camera.pos.y;
+	floor_pos.x = weight * ray->floor_wall.x + (1.0 - weight) * eng->camera.pos.x;
+	floor_pos.y = weight * ray->floor_wall.y + (1.0 - weight) * eng->camera.pos.y;
 	floor_tex.x = (int)(floor_pos.x * eng->world.ea.width) & (eng->world.ea.width - 1);
 	floor_tex.y = (int)(floor_pos.y * eng->world.ea.height) & (eng->world.ea.height - 1);
 	return (get_pixel_color(&eng->world.ea, floor_tex.x, floor_tex.y));
