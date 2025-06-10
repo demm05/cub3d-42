@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 12:09:37 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 13:59:17 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	parse_sprites(void *mlx_ptr, t_textures *textures)
 	int			i;
 
 	i = 0;
-	if (init_sprites_arr(sprites, textures) == -1
+	if (init_sprites_arr(sprites, textures, 1) == -1
 		|| init_sprites_dir_arr(directories) == -1)
 		return (-1);
 	while (sprites[i])
@@ -90,7 +90,7 @@ static int	parse_textures(void *mlx_ptr, t_textures *textures)
 	char	*path[_TEXTURE_COUNT];
 	int		i;
 
-	if (init_texture_arr(textures_arr, textures) == -1
+	if (init_texture_arr(textures_arr, textures, 1) == -1
 		|| init_texture_path_arr(path) == -1)
 		return (-1);
 	i = 0;

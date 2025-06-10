@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:37:40 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 14:37:41 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:18:24 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ MAYBE_INLINE void	camera_keyboard_rotate_event(t_engine *eng)
 
 	move_amount = eng->camera.rotation_speed * eng->timing.delta_time;
 	if (eng->input.look_left)
-		rotate(&eng->camera, move_amount);
-	if (eng->input.look_right)
 		rotate(&eng->camera, -move_amount);
+	if (eng->input.look_right)
+		rotate(&eng->camera, move_amount);
 }
 
 MAYBE_INLINE void	camera_mouse_move_event(t_engine *eng)

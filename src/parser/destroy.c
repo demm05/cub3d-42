@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 15:50:24 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 11:58:37 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:02:35 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	destroy_textures(void *mlx_ptr, t_textures *textures)
 	t_sprite	*sprites[_SPRITE_COUNT];
 
 	i = 0;
-	init_texture_arr(textures_arr, textures);
-	init_sprites_arr(sprites, textures);
+	init_texture_arr(textures_arr, textures, 0);
+	init_sprites_arr(sprites, textures, 0);
 	while (textures_arr[i] && textures_arr[i]->img)
 		buffer_destroy(mlx_ptr, textures_arr[i++]);
 	i = 0;

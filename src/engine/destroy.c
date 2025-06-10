@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:25:37 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 12:38:19 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:38:50 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	engine_destroy(t_engine *eng)
 {
 	if (!eng)
 		return ;
-	world_destroy(eng->mlx, &eng->world);
+	destroy_map(eng->map);
+	destroy_textures(eng->mlx, &eng->textures);
 	mlx_destroy(eng);
 	destroy_rays(eng);
 }

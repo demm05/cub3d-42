@@ -5,7 +5,7 @@ static MAYBE_INLINE void	set_values(t_ray *ray, t_camera *cam, double w)
 {
 	double	camera_x;
 
-	camera_x = 2 * ray->index / w - 1;
+	 camera_x = 2 * (w - ray->index) / w - 1;
 	// Calculates a direction of ray
 	ray->direction.x = cam->dir.x + cam->plane.x * camera_x;
 	ray->direction.y = cam->dir.y + cam->plane.y * camera_x;
@@ -48,7 +48,7 @@ static MAYBE_INLINE void	set_direction(t_ray *ray, t_camera *cam)
 	}
 }
 
-static MAYBE_INLINE void	perform_dda(t_ray *ray, t_world *wrd)
+static MAYBE_INLINE void	perform_dda(t_ray *ray, t_map *wrd)
 {
 	while (1)
 	{
@@ -74,13 +74,13 @@ static MAYBE_INLINE void	set_ray_prop(t_engine *eng, t_ray *ray)
 	double	wall_hit;
 
 	if (ray->side == 0 && ray->direction.x > 0)
-		ray->texture = &eng->world.ea;
+		ray->texture = &eng->textures.walls.img_arr[0];
 	else if (ray->side == 0 && ray->direction.x < 0)
-		ray->texture = &eng->world.we;
+		ray->texture = &eng->textures.walls.img_arr[1];
 	else if (ray->side == 1 && ray->direction.y > 0)
-		ray->texture = &eng->world.so;
+		ray->texture = &eng->textures.walls.img_arr[2];
 	else
-		ray->texture = &eng->world.no;
+		ray->texture = &eng->textures.walls.img_arr[3];
 	if (ray->side == 0)
 		wall_hit = eng->camera.pos.y + ray->wall_dist * ray->direction.y;
 	else
@@ -99,7 +99,7 @@ MAYBE_INLINE void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
 {
 	set_values(ray, &eng->camera, w);
 	set_direction(ray, &eng->camera);
-	perform_dda(ray, &eng->world);
+	perform_dda(ray, eng->map);
 	if (!ray->side)
 		ray->wall_dist = ray->side_dist.x - ray->delta.x;
 	else

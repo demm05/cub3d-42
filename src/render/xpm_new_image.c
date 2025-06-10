@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:41:48 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/09 17:02:29 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:27:45 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)
 		return (-1);
 	img->mlx = mlx_ptr;
 	img->img = mlx_xpm_file_to_image(mlx_ptr, path,
-			&img->depth, &img->line_size);
+			&img->width, &img->height);
 	if (!img->img)
 	{
 		print_err(path);
@@ -42,8 +42,6 @@ int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)
 	img->buffer = mlx_get_data_addr(img->img, &img->depth,
 			&img->line_size, &img->endian);
 	img->path = ft_strdup(path);
-	img->height = IMG_HEIGHT;
-	img->width = IMG_WIDTH;
 	return (0);
 }
 

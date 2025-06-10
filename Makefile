@@ -76,7 +76,7 @@ n norm:
 		| grep -v "WRONG_SCOPE_COMMENT" | grep -v "LINE_TOO_LONG" | grep -v "TOO_MANY_ARGS"
 
 v: $(NAME)
-	@valgrind --leak-check=full --show-leak-kinds=all ./$<
+	@valgrind --leak-check=full --show-leak-kinds=all ./$< map1.cub
 
 r run: all
 	@clear

@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 12:23:14 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:04:56 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ t_map	*init_map(const char *path)
 	if (!map->matrix)
 		return (0);
 	fill_matrix(map, lst);
+	ft_lstclear(&lst, t_str_free);
 	if (!check_map(map))
 	{
 		destroy_map(map);

@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:14:48 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 12:54:55 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:37:36 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ bool	engine_init(t_engine *eng, char *map_path)
 	eng->mlx = mlx_init();
 	if (!eng->mlx)
 		return (0);
-	if (world_init(eng->mlx, &eng->world, map_path) == -1)
+	eng->map = init_map(map_path);
+	if (!eng->map)
+		return (0);
+	if (init_textures(eng->mlx, &eng->textures) == -1)
 		return (0);
 	if (!init_mlx_and_window(eng))
 		return (0);

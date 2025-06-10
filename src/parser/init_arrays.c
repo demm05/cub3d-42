@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 11:23:06 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 12:10:10 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 13:59:57 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser_private.h"
 
-int	init_sprites_arr(t_sprite **sprites, t_textures *textures)
+int	init_sprites_arr(t_sprite **sprites, t_textures *textures, bool mode)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	init_sprites_arr(t_sprite **sprites, t_textures *textures)
 	sprites[_E_DOOR] = &textures->door;
 	sprites[_E_WALLS] = &textures->walls;
 	sprites[_E_NULL] = NULL;
-	while (sprites[i])
+	while (sprites[i] && mode)
 		sprites[i++]->img_arr = NULL;
 	return (0);
 }
@@ -37,7 +37,7 @@ int	init_sprites_dir_arr(char **dir_path)
 	return (0);
 }
 
-int	init_texture_arr(t_image **textures_arr, t_textures *textures)
+int	init_texture_arr(t_image **textures_arr, t_textures *textures, bool mode)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ int	init_texture_arr(t_image **textures_arr, t_textures *textures)
 	textures_arr[_E_PORTAL_IN] = &textures->portal_in;
 	textures_arr[_E_PORTAL_OUT] = &textures->portal_out;
 	textures_arr[_E_NULL_T] = NULL;
-	while (textures_arr[i])
+	while (textures_arr[i] && mode)
 		textures_arr[i++]->img = NULL;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/10 12:18:56 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:44:29 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,6 @@ int			input_event_resize(t_engine *eng);
 
 int			sort_str_lst(t_list **lst);
 
+char		map_get(t_map *map, int x, int y);
+void		map_set(t_map *map, int x, int y, int c);
 #endif

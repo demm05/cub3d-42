@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 15:54:05 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 12:25:49 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:58:16 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PARSER_H
 
 # include "cube.h"
+# include "dirent.h"
 
 typedef struct s_map
 {
@@ -29,7 +30,7 @@ typedef struct s_map
  * @param path A path to the map file.
  * @return Pointer to a t_map structure allocated with malloc.
  */
-t_map	*init_map(char *path);
+t_map	*init_map(const char *path);
 
 /**
  * @brief Initialise textures from image files.
@@ -58,5 +59,7 @@ void	destroy_map(t_map *map);
  * @param textures A pointer to the t_textures structure containing all textures.
  */
 void	destroy_textures(void *mlx_ptr, t_textures *textures);
+
+t_list	*readdirectory(DIR *dir, const char *path);
 
 #endif  //!__PARSER__H__

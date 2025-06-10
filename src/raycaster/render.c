@@ -21,9 +21,9 @@ inline int	color_vertical(int x, int y, void *param)
 	eng = param;
 	ray = &eng->rays[x];
 	if (y < ray->draw_start)
-		return (eng->world.c);
+		return (5003365);
 	if (y >= ray->draw_end)
-		return (eng->world.f);
+		return (5261376);
 	tex = ray->texture;
     tex_x = ray->x_on_tex;
 	if (ray->line_height <= 0)
