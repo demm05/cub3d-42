@@ -31,6 +31,7 @@ bool	engine_init(t_engine *eng, char *map_path)
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);
+	update_lookup_table(eng);
 	return (1);
 }
 

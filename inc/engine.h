@@ -15,6 +15,11 @@
 
 # include "cube.h"
 
+typedef struct s_lookup
+{
+	double	*floor_dist;
+}	t_lookup;
+
 typedef struct s_window
 {
 	void	*mlx;	// Pointer to mlx instance
@@ -37,11 +42,13 @@ typedef struct s_engine
 	t_ray		*rays;
 	t_timing	timing;
 	t_minimap	*map;
+	t_lookup	table;
 }	t_engine;
 
 bool	engine_init(t_engine *eng, char *map_path);
 int		engine_loop(t_engine *eng);
 void	engine_destroy(t_engine *eng);
 void	eng_new_frame(t_timing *timing);
+void	update_lookup_table(t_engine *eng);
 
 #endif
