@@ -1,4 +1,5 @@
 #include "render_private.h"
+#include <math.h>
 
 t_ui	color_background(t_engine *eng, int x, int y, unsigned int color);
 
@@ -27,7 +28,7 @@ MAYBE_INLINE t_ui	color_cf(t_ray *ray, t_engine *eng, int h, int y)
 	t_point			floor_tex;
 	double			weight;
 
-	weight = (h / (2.0 * y - h)) / ray->wall_dist;
+	weight = fabs((h / (2.0 * y - h)) / ray->wall_dist);
 	floor_pos.x = weight * ray->floor_x_wall + (1.0 - weight) * eng->camera.pos.x;
 	floor_pos.y = weight * ray->floor_y_wall + (1.0 - weight) * eng->camera.pos.y;
 	floor_tex.x = (int)(floor_pos.x * eng->world.ea.width) & (eng->world.ea.width - 1);
