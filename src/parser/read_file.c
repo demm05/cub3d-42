@@ -6,11 +6,11 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:28:23 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/28 14:32:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:10:01 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world_private.h"
+#include "parser_private.h"
 #include <sys/stat.h>
 #include <fcntl.h>
 
@@ -33,7 +33,6 @@ char	*get_line_without_endl(int fd)
 	char	*tmp;
 	char	*newline;
 
-
 	str = get_next_line(fd);
 	if (!str)
 		return (NULL);
@@ -52,9 +51,6 @@ t_list	*read_file(const char *path)
 	char	*str;
 	int		fd;
 
-#if DEBUG
-	printf("Reading the file: %s\n", path);
-#endif
 	if (!path)
 		return (NULL);
 	lst = NULL;

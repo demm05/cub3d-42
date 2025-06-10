@@ -32,7 +32,7 @@ typedef struct s_engine
 	t_window	window;
 	t_input		input;
 	t_frame_buf	main_buffer;
-	t_world		world;
+	// t_world		world;
 	t_camera	camera;
 	t_ray		*rays;
 	t_timing	timing;

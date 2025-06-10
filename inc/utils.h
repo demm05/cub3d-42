@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 11:30:29 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/09 14:37:20 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,25 @@ size_t		split_len(char **split);
 void		free_str_arr(char **arr);
 void		lstdell_front(t_list **lst, void (*del)(void *));
 
-bool		check_world(t_world *world);
+/**
+ * @brief Check if a file path ends with the expected file extension.
+ * 
+ * @note This function assumes that `ext` includes the dot (e.g., ".xpm"),
+ * and it uses the last '.' in the string to detect the extension.
+ * It is intended for use in parsers or controlled file input cases.
+ * 
+ * @param path The file path to check.
+ * @param ext The expected extension (e.g., ".xpm").
+ * @return true if the extension matches, false otherwise.
+ */
+bool		check_file_ext(const char *path, const char *ext);
+
 bool		check_map(t_map *map);
 
 bool		init_mlx_and_window(t_engine *eng);
 void		mlx_enable_window_resize(void *mlx, t_window *window);
 int			input_event_resize(t_engine *eng);
+
+int			sort_str_lst(t_list **lst);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/30 16:38:33 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/04 15:53:02 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world_private.h"
+#include "parser_private.h"
 
 static size_t	find_max_len(t_list *lst)
 {

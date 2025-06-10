@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:56:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 16:25:42 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/04 15:57:55 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,6 @@
 // # define MAP_HEIGHT 24
 
 # include "cube.h"
-
-typedef struct s_map
-{
-	char		**matrix;
-	int			width;
-	int			height;
-	t_point		player_pos;
-}	t_map;
-
 
 /**
  * @param no path to the north texture
@@ -39,12 +30,6 @@ typedef struct s_map
  */
 typedef struct s_world
 {
-	t_image	no;
-	t_image	so;
-	t_image	we;
-	t_image	ea;
-	int		f;
-	int		c;
 	t_map	*map;
 }	t_world;
 
