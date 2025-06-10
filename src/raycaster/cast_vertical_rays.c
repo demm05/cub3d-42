@@ -69,33 +69,6 @@ static MAYBE_INLINE void	perform_dda(t_ray *ray, t_world *wrd)
 	}
 }
 
-static MAYBE_INLINE void	set_ray_prop(t_engine *eng, t_ray *ray)
-{
-	double	wall_hit;
-
-	if (ray->side == 0 && ray->direction.x > 0)
-		ray->texture = &eng->world.ea;
-	else if (ray->side == 0 && ray->direction.x < 0)
-		ray->texture = &eng->world.we;
-	else if (ray->side == 1 && ray->direction.y > 0)
-		ray->texture = &eng->world.so;
-	else
-		ray->texture = &eng->world.no;
-	if (ray->side == 0)
-		wall_hit = eng->camera.pos.y + ray->wall_dist * ray->direction.y;
-	else
-		wall_hit = eng->camera.pos.x + ray->wall_dist * ray->direction.x;
-	wall_hit -= floor(wall_hit);
-	ray->x_on_tex = (int)(wall_hit * (double)ray->texture->width);
-	// y > 0 it's fine
-    if ((ray->side == 0 && ray->direction.x < 0) || (ray->side == 1 && ray->direction.y > 0))
-        ray->x_on_tex = ray->texture->width - ray->x_on_tex - 1;
-    if (ray->x_on_tex < 0)
-    	ray->x_on_tex = 0;
-    if (ray->x_on_tex >= ray->texture->width)
-    	ray->x_on_tex = ray->texture->width - 1;
-}
-
 MAYBE_INLINE void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
 {
 	set_values(ray, &eng->camera, w);
@@ -112,5 +85,7 @@ MAYBE_INLINE void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
 		ray->draw_start = 0;
 	if (ray->draw_end > h)
 		ray->draw_end = h;
-	set_ray_prop(eng, ray);
+	ray->brightness = 1.0 - (ray->wall_dist / FOG_DISTANCE);
+	if (ray->brightness < 0)
+		ray->brightness = 0;
 }

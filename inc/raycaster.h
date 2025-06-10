@@ -20,12 +20,14 @@ typedef struct s_ray
 	t_vec2_double	direction;
 	t_vec2_double	side_dist;
 	t_vec2_double	delta;
+	t_vec2_double	floor_wall;
 	t_vec2_int		step;
 	t_vec2_int		map;
 	double			wall_dist;
 	int				wall_face_hit;
 	int				index;
 	int				line_height;
+	float			brightness;
 	int				draw_start;
 	int				draw_end;
 	int				x_on_tex;
@@ -33,10 +35,9 @@ typedef struct s_ray
 	bool			side;
 }	t_ray;
 
-void	cast_walls(t_engine *eng, t_ray *ray);
 bool	allocate_rays(t_engine *eng);
 void	destroy_rays(t_engine *eng);
-void	render_frame(t_engine *eng);
 void	cast_ray(t_engine *eng, t_ray *ray, int h, int w);
+void	ray_set_wall_prop(t_engine *eng, t_ray *ray);
 
 #endif

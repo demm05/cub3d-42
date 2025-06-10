@@ -28,6 +28,7 @@ typedef struct s_input
 	bool	look_right;
 	bool	minimap_toggle;
 	bool	resizing;
+	t_vec2_int	prev_mouse_pos;
 }	t_input;
 
 int	input_keyboard_press(int keycode, t_engine *eng);

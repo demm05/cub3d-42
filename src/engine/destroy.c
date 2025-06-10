@@ -22,6 +22,7 @@ void	engine_destroy(t_engine *eng)
 	mlx_destroy(eng);
 	destroy_rays(eng);
 	free(eng->map);
+	free(eng->table.y);
 }
 
 void	mlx_destroy(t_engine *eng)
