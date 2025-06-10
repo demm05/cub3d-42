@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 12:34:22 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/09 17:37:12 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:18:33 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils_private.h"
 
-bool	check_file_ext(const char *path, const char *ext)
+bool	check_file_ext(const char *path, const char *ext, bool mode)
 {
 	char	*str;
 
@@ -24,7 +24,8 @@ bool	check_file_ext(const char *path, const char *ext)
 	str = ft_strrchr(path, '.');
 	if (str && !ft_strcmp(str, ext))
 		return (1);
-	// ft_fprintf(STDERR_FILENO, RED "Error" RESET
-	// 	": Invalid file extension. Expected a '%s' file.\n", ext);
+	if (mode == 1)
+		ft_fprintf(STDERR_FILENO, RED "Error" RESET
+			": Invalid file extension. Expected a '%s' file.\n", ext);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 12:08:48 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 12:09:24 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:19:47 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	add_file(struct dirent *directory,
 
 	if (!lst || !directory)
 		return (-1);
-	if (check_file_ext(directory->d_name, ".xpm"))
+	if (check_file_ext(directory->d_name, ".xpm", 0))
 	{
 		coppy = ft_strjoin(dir_path, directory->d_name);
 		new = ft_lstnew(coppy);

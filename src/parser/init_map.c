@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/04 15:53:02 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:23:14 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,12 @@ static void	fill_matrix(t_map *map, t_list *lst)
 	map->matrix[j] = NULL;
 }
 
-t_map	*init_map(t_list *lst)
+t_map	*init_map(const char *path)
 {
 	t_map	*map;
+	t_list	*lst;
 
+	lst = read_file(path);
 	if (!lst)
 		return (0);
 	map = malloc(sizeof(t_map));

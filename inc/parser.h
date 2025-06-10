@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 15:54:05 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/06 14:52:19 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:25:49 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef struct s_map
 /**
  * @brief Parses a map from a file.
  * 
- * @param lst A list containing the lines read from the map file.
+ * @param path A path to the map file.
  * @return Pointer to a t_map structure allocated with malloc.
  */
-t_map	*init_map(t_list *lst);
+t_map	*init_map(char *path);
 
 /**
  * @brief Initialise textures from image files.

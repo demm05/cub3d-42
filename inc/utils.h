@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/09 14:37:20 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 12:18:56 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,14 @@ void		lstdell_front(t_list **lst, void (*del)(void *));
  * @note This function assumes that `ext` includes the dot (e.g., ".xpm"),
  * and it uses the last '.' in the string to detect the extension.
  * It is intended for use in parsers or controlled file input cases.
+ * If mode equal 1 function will print error message
  * 
  * @param path The file path to check.
  * @param ext The expected extension (e.g., ".xpm").
+ * @param mode The mode of use for print error message
  * @return true if the extension matches, false otherwise.
  */
-bool		check_file_ext(const char *path, const char *ext);
+bool		check_file_ext(const char *path, const char *ext, bool mode);
 
 bool		check_map(t_map *map);
 
