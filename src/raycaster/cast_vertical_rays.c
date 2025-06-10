@@ -85,4 +85,7 @@ MAYBE_INLINE void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
 		ray->draw_start = 0;
 	if (ray->draw_end > h)
 		ray->draw_end = h;
+	ray->brightness = 1.0 - (ray->wall_dist / FOG_DISTANCE);
+	if (ray->brightness < 0)
+		ray->brightness = 0;
 }

@@ -18,6 +18,8 @@ int	engine_loop(t_engine *eng)
 	{
 		usleep(50000);
 		eng->input.resizing = 0;
+		if (!update_lookup_table(eng))
+			enging_loop_stop(eng);
 		return (0);
 	}
 	eng_new_frame(&eng->timing);
@@ -28,4 +30,9 @@ int	engine_loop(t_engine *eng)
 	buffer_flash(&eng->main_buffer, &eng->window, 0, 0);
 	display_fps_counter(&eng->timing, &eng->window);
 	return (0);
+}
+
+void	enging_loop_stop(t_engine *eng)
+{
+	mlx_loop_end(eng->mlx);
 }

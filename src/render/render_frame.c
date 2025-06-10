@@ -27,7 +27,7 @@ MAYBE_INLINE t_ui	color_cf(t_ray *ray, t_engine *eng, int h, int y)
 	t_point			floor_tex;
 	double			weight;
 
-	weight = eng->table.floor_dist[y] / ray->wall_dist;
+	weight = eng->table.y[y].floor_dist / ray->wall_dist;
 	floor_pos.x = weight * ray->floor_x_wall + (1.0 - weight) * eng->camera.pos.x;
 	floor_pos.y = weight * ray->floor_y_wall + (1.0 - weight) * eng->camera.pos.y;
 	floor_tex.x = (int)(floor_pos.x * eng->world.ea.width) & (eng->world.ea.width - 1);
@@ -61,8 +61,16 @@ MAYBE_INLINE t_ui	color_background(t_engine *eng, int x, int y, t_ui color)
 	(void)color;
 	ray = &eng->rays[x];
 	if (y < ray->draw_start || y >= ray->draw_end)
+	#if ENABLE_FOG
+		return (blend_brightness(color_cf(ray, eng, eng->window.height, y), eng->table.y[y].brightness));
+	#else
 		return (color_cf(ray, eng, eng->window.height, y));
+	#endif
 	else
+	#if ENABLE_FOG
+		return (blend_brightness(color_wall(ray, eng->window.height, y), ray->brightness));
+	#else
 		return (color_wall(ray, eng->window.height, y));
+	#endif
 }
 

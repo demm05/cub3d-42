@@ -17,7 +17,6 @@ int	input_event_resize(t_engine *eng)
 #if DEBUG
 	printf("New window dimensions: %dx%d\n", attr.width, attr.height);
 #endif
-	update_lookup_table(eng);
 	return (0);
 }
 

@@ -26,6 +26,7 @@ typedef struct s_ray
 	int				wall_face_hit;
 	int				index;
 	int				line_height;
+	float			brightness;
 	int				draw_start;
 	int				draw_end;
 	int				x_on_tex;

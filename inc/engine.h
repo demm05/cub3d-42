@@ -17,7 +17,11 @@
 
 typedef struct s_lookup
 {
-	double	*floor_dist;
+	struct s_cord_y
+	{
+		double	floor_dist;
+		double	brightness;
+	}	*y;
 }	t_lookup;
 
 typedef struct s_window
@@ -49,6 +53,7 @@ bool	engine_init(t_engine *eng, char *map_path);
 int		engine_loop(t_engine *eng);
 void	engine_destroy(t_engine *eng);
 void	eng_new_frame(t_timing *timing);
-void	update_lookup_table(t_engine *eng);
+bool	update_lookup_table(t_engine *eng);
+void	enging_loop_stop(t_engine *eng);
 
 #endif
