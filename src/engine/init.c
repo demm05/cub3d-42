@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:14:48 by dmelnyk           #+#    #+#             */
 /*   Updated: 2025/06/10 12:37:36 by ogrativ          ###   ########.fr       */
@@ -29,9 +29,9 @@ bool	engine_init(t_engine *eng, char *map_path)
 		return (0);
 	if (init_textures(eng->mlx, &eng->textures) == -1)
 		return (0);
-	if (!init_mlx_and_window(eng))
-		return (0);
-	if (!allocate_rays(eng))
+	if (!init_mlx_and_window(eng) || !allocate_rays(eng) || \
+		!camera_set_start_pos(eng) || !minimap_create(eng) || \
+		!update_lookup_table(eng))
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);

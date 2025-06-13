@@ -21,6 +21,14 @@
 # define ENABLE_RESIZE 1
 # define DISABLE_AUTOREPEAT_KEY 1
 
+# define FOV 0.66
+# define MAP_BORDER_OFFSET 5
+# define MAP_CUBE_GAP 1
+# define MAP_SIZEOF_MINIMAP 5
+# define MAP_BORDER_SIZE 3
+# define ENABLE_FOG 1
+# define FOG_DISTANCE 22.0
+
 # ifndef DEBUG
 #  define DEBUG 0
 # endif

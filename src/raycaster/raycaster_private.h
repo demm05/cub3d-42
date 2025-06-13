@@ -15,6 +15,4 @@
 
 # include "cube.h"
 
-void	cast_ray(t_engine *eng, t_ray *ray, int h, int w);
-
 #endif

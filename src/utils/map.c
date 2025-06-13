@@ -21,3 +21,8 @@ MAYBE_INLINE void	map_set(t_map *map, int x, int y, int c)
 {
 	map->matrix[y][x] = c;
 }
+
+MAYBE_INLINE void	map_set(t_world *wrd, int x, int y, int c)
+{
+	wrd->map->matrix[y][x] = c;
+}
