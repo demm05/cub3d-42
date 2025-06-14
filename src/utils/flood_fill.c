@@ -21,7 +21,7 @@ bool	flood_fill(t_map *map, int y, int x)
 #endif
 		return (0);
 	}
-	if (map->matrix[y][x] == '1' || map->matrix[y][x] == 'V')
+	if ((map->matrix[y][x] >= '1' && map->matrix[y][x] <= '9') || map->matrix[y][x] == 'V')
 		return (1);
 	map->matrix[y][x] = 'V';
 	if (!flood_fill(map, y + 1, x)
