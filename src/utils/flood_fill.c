@@ -15,7 +15,12 @@
 bool	flood_fill(t_map *map, int y, int x)
 {
 	if (y < 0 || y >= map->height || x < 0 || x >= map->width)
+	{
+#if DEBUG
+		printf("flood_fill: not met initial check: x(%d) y(%d)\n", x, y);
+#endif
 		return (0);
+	}
 	if (map->matrix[y][x] == '1' || map->matrix[y][x] == 'V')
 		return (1);
 	map->matrix[y][x] = 'V';

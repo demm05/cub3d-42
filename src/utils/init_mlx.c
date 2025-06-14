@@ -26,6 +26,10 @@ bool	init_mlx_and_window(t_engine *eng)
 		&eng->window.max_height);
 	if (!buffer_create(eng->mlx, &eng->main_buffer, eng->window.max_width, eng->window.max_height))
 		return (0);
+#if DEBUG
+	printf("init_mlx_and_wi: New window was created: w(%d) h(%d) mw(%d) mh(%d)\n",
+		eng->window.width, eng->window.height, eng->window.max_width, eng->window.max_height);
+#endif
 	return (1);
 }
 

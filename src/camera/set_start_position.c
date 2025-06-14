@@ -35,7 +35,12 @@ static inline bool	set_pos(t_camera *cam, int d)
 		cam->plane.y = FOV;
 	}
 	else
+	{
+#if DEBUG
+		puts("camera_set_start_pos: Player start direction isn't found\n");
+#endif
 		return (0);
+	}
 	return (1);
 }
 
@@ -44,14 +49,11 @@ bool	camera_set_start_pos(t_engine *eng)
 	t_camera	*cam;
 	int			x;
 	int 		y;
-	char		d;
 
 	cam = &eng->camera;
-	x = eng->world.map->player_pos.x;
-	y = eng->world.map->player_pos.y;
+	x = eng->map->player_pos.x;
+	y = eng->map->player_pos.y;
 	cam->pos.x = x + 0.5;
 	cam->pos.y = y + 0.5;
-	d = map_get(&eng->world, x, y);
-	map_set(&eng->world, x, y, '0');
-	return (set_pos(cam, d));
+	return (set_pos(cam, eng->map->player_dir));
 }

@@ -58,7 +58,9 @@ static int	parse_sprite_from_dir(void *mlx_ptr,
 	{
 		if (xpm_image_init(mlx_ptr, names[i], &sprite->img_arr[i]) == -1)
 			return (free_str_arr(names), -1);
+#if DEBUG
 		printf("sprite path: %s\n", sprite->img_arr[i].path);
+#endif
 		i++;
 	}
 	free_str_arr(names);
@@ -101,7 +103,9 @@ static int	parse_textures(void *mlx_ptr, t_textures *textures)
 			destroy_textures(mlx_ptr, textures);
 			return (-1);
 		}
+#if DEBUG
 		printf("texture path: %s\n", textures_arr[i]->path);
+#endif
 		i++;
 	}
 	if (parse_sprites(mlx_ptr, textures) == -1)

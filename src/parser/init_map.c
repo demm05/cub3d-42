@@ -67,6 +67,19 @@ static void	fill_matrix(t_map *map, t_list *lst)
 	map->matrix[j] = NULL;
 }
 
+static void print_matrix(t_map *map)
+{
+	int	i;
+
+	if (!map)
+		return;
+	i = -1;
+	while (++i < map->height)
+		printf("%s\n", map->matrix[i]);
+	printf("print_matrix: Map properties: width(%d)  height(%d)\n", map->width, map->height);
+	puts("\n\n\n");
+}
+
 t_map	*init_map(const char *path)
 {
 	t_map	*map;
@@ -75,11 +88,9 @@ t_map	*init_map(const char *path)
 	lst = read_file(path);
 	if (!lst)
 		return (0);
-	map = malloc(sizeof(t_map));
+	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		return (0);
-	map->player_pos.x = 0;
-	map->player_pos.y = 0;
 	map->width = find_max_len(lst);
 	map->height = ft_lstsize(lst);
 	map->matrix = (char **)malloc(sizeof(char *) * (map->height + 1));
@@ -92,5 +103,8 @@ t_map	*init_map(const char *path)
 		destroy_map(map);
 		return (0);
 	}
+#if DEBUG
+	print_matrix(map);
+#endif
 	return (map);
 }

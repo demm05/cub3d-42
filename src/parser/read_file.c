@@ -69,6 +69,5 @@ t_list	*read_file(const char *path)
 	}
 	free(str);
 	close(fd);
-	print_lst(lst);
 	return (lst);
 }

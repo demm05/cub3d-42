@@ -12,6 +12,9 @@ bool	allocate_rays(t_engine *eng)
 	while (++x < eng->window.max_width)
 		rays[x].index = x;
 	eng->rays = rays;
+#if DEBUG
+	puts("allocate_rays: Successfully allocated\n");
+#endif
 	return (1);
 }
 

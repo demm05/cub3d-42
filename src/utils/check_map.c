@@ -64,9 +64,14 @@ static bool	check_line(t_map *map, int j)
 		{
 			if (map->player_pos.x != 0 && map->player_pos.y != 0)
 				return (ft_putendl_fd(RED "Error" RESET
-						": To many players", STDERR_FILENO), 0);
+						": Too many players", STDERR_FILENO), 0);
 			map->player_pos.x = i;
 			map->player_pos.y = j;
+			map->player_dir = map->matrix[j][i];
+			map->matrix[j][i] = '0';
+#if DEBUG
+			printf("Player pos on map: %dx%d\n", map->player_pos.x, map->player_pos.y);
+#endif
 		}
 		i++;
 	}
@@ -99,14 +104,17 @@ bool	check_map(t_map *map)
 
 	if (!map)
 		return (0);
+#if DEBUG
+	printf("check_map: Map properties: width(%d)  height(%d)\n", map->width, map->height);
+#endif
+	if (!check_player(map))
+		return (0);
 	tmp = coppy_map(map);
 	if (!tmp)
 		return (0);
-	status = flood_fill(tmp, 10, 27);
+	status = flood_fill(tmp, map->player_pos.y, map->player_pos.x);
 	destroy_map(tmp);
 	if (!status)
 		ft_putendl_fd(RED "Error" RESET ": Map not closed", STDERR_FILENO);
-	if (!check_player(map))
-		return (0);
 	return (status);
 }
