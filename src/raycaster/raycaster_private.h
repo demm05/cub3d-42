@@ -15,4 +15,7 @@
 
 # include "cube.h"
 
+void	ray_set_wall_prop(t_engine *eng, t_ray *ray);
+void	ray_set_floor_prop(t_engine *eng, t_ray *ray);
+
 #endif

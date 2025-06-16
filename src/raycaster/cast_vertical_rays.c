@@ -64,7 +64,7 @@ static MAYBE_INLINE void	perform_dda(t_ray *ray, t_map *wrd)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (map_get(wrd, ray->map.x, ray->map.y) > '0')
+		if (map_get(wrd, ray->map.x, ray->map.y) > 0)
 			return ;
 	}
 }
@@ -88,4 +88,6 @@ MAYBE_INLINE void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
 	ray->brightness = 1.0 - (ray->wall_dist / FOG_DISTANCE);
 	if (ray->brightness < 0)
 		ray->brightness = 0;
+	ray_set_wall_prop(eng, ray);
+	ray_set_floor_prop(eng, ray);
 }
