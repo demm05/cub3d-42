@@ -104,9 +104,6 @@ bool	check_map(t_map *map)
 
 	if (!map)
 		return (0);
-#if DEBUG
-	printf("check_map: Map properties: width(%d)  height(%d)\n", map->width, map->height);
-#endif
 	if (!check_player(map))
 		return (0);
 	tmp = coppy_map(map);

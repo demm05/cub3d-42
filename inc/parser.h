@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 15:54:05 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 12:58:16 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/13 16:31:48 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_map
  * @param path A path to the map file.
  * @return Pointer to a t_map structure allocated with malloc.
  */
-t_map	*init_map(const char *path);
+t_map	*init_map(t_list *lst);
 
 /**
  * @brief Initialise textures from image files.
@@ -41,7 +41,7 @@ t_map	*init_map(const char *path);
  * 
  * @return 0 on success, -1 on failure.
  */
-int		init_textures(void *mlx_ptr, t_textures *textures);
+int		init_textures(void *mlx_ptr, t_textures *textures, t_list **lst);
 
 /**
  * @brief Free all memory allocated for the map.
@@ -62,5 +62,7 @@ void	destroy_map(t_map *map);
 void	destroy_textures(void *mlx_ptr, t_textures *textures);
 
 t_list	*readdirectory(DIR *dir, const char *path);
+
+int		parse_file(void *mlx_ptr, t_textures *textures, t_map **map, char *path);
 
 #endif  //!__PARSER__H__

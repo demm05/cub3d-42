@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 13:59:17 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/16 13:06:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,58 +67,115 @@ static int	parse_sprite_from_dir(void *mlx_ptr,
 	return (0);
 }
 
-static int	parse_sprites(void *mlx_ptr, t_textures *textures)
+static int	init_raw_texture(t_list *lst, t_raw_textrure *tex)
 {
-	t_sprite	*sprites[_SPRITE_COUNT];
-	char		*directories[_SPRITE_COUNT];
-	int			i;
+	t_string		*str;
+	char			*space_ptr;
+	int				space_idx;
+	int				space;
 
-	i = 0;
-	if (init_sprites_arr(sprites, textures, 1) == -1
-		|| init_sprites_dir_arr(directories) == -1)
+	if (!lst || !tex)
 		return (-1);
-	while (sprites[i])
+	space = 0;
+	ft_bzero(tex, sizeof(t_raw_textrure));
+	str = (t_string *)lst->content;
+	while (str->str[space] == ' ')
+		space++;
+	space_ptr = ft_strchr(str->str + space, ' ');
+	if (space_ptr && space_ptr[0] > '\0')
+		space_idx = space_ptr - str->str;
+	else
+		return (-2);
+	tex->name = ft_substr(str->str + space, 0, space_idx);
+	tex->path = space_ptr + 1;
+	if (!tex->name || !tex->path || tex->path[0] == '\0')
 	{
-		if (parse_sprite_from_dir(mlx_ptr, sprites[i], directories[i]) == -1)
-			return (-1);
-		i++;
+		free(tex->name);
+		return (-1);
 	}
-	return (0);
+	return (space_idx);
 }
 
-static int	parse_textures(void *mlx_ptr, t_textures *textures)
+static int	parse_texture(void *mlx_ptr,
+	t_textures *textures, t_raw_textrure *rt)
 {
-	t_image	*textures_arr[_TEXTURE_COUNT];
-	char	*path[_TEXTURE_COUNT];
-	int		i;
+	int	i;
 
-	if (init_texture_arr(textures_arr, textures, 1) == -1
-		|| init_texture_path_arr(path) == -1)
-		return (-1);
 	i = 0;
-	while (i < _TEXTURE_COUNT - 1)
+	printf("rt.name: %s\n", rt->name);
+	while (textures->tp.tex_names[i])
 	{
-		if (xpm_image_init(mlx_ptr, path[i], textures_arr[i]) == -1)
+		if (ft_strcmp(rt->name, textures->tp.tex_names[i]) == 0)
 		{
-			destroy_textures(mlx_ptr, textures);
-			return (-1);
+			if (xpm_image_init(mlx_ptr, rt->path,
+					textures->tp.textures_arr[i]) == -1)
+				return (-1);
+			return (1);
 		}
-#if DEBUG
-		printf("texture path: %s\n", textures_arr[i]->path);
-#endif
 		i++;
-	}
-	if (parse_sprites(mlx_ptr, textures) == -1)
-	{
-		destroy_textures(mlx_ptr, textures);
-		return (-1);
 	}
 	return (0);
 }
 
-int	init_textures(void *mlx_ptr, t_textures *textures)
+static int	parse_sprite(void *mlx_ptr,
+	t_textures *textures, t_raw_textrure *rt)
 {
-	if (!textures || !mlx_ptr)
+	int	i;
+
+	i = 0;
+	while (textures->tp.sp_names[i])
+	{
+		if (ft_strcmp(rt->name, textures->tp.sp_names[i]) == 0)
+		{
+			if (parse_sprite_from_dir(mlx_ptr,
+					textures->tp.sprites[i], rt->path) == -1)
+				return (-1);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+static void	free_rt(t_raw_textrure *rt)
+{
+	if (!rt)
+		return ;
+	free(rt->name);
+	rt->name = NULL;
+}
+
+static int	parse_textures(void *mlx_ptr, t_textures *textures, t_list **lst)
+{
+	t_raw_textrure		rt;
+	int					sprite_res;
+	int					tex_res;
+	int					status;
+
+	if (init_texture_pointers(textures, 1) == -1)
 		return (-1);
-	return (parse_textures(mlx_ptr, textures));
+	ft_bzero(&rt, sizeof(t_raw_textrure));
+	status = init_raw_texture(*lst, &rt);
+	while (status != -1 && status != -2)
+	{
+		sprite_res = parse_sprite(mlx_ptr, textures, &rt);
+		tex_res = parse_texture(mlx_ptr, textures, &rt);
+		free_rt(&rt);
+		if (sprite_res == -1 || tex_res == -1)
+			return (-1);
+		lstdell_front(lst, t_str_free);
+		status = init_raw_texture(*lst, &rt);
+		printf("rt.name: %s status: %i\n", rt.name, status);
+	}
+	if (status == -1)
+		return (-1);
+	free_rt(&rt);
+	return (0);
+}
+
+int	init_textures(void *mlx_ptr, t_textures *textures, t_list **lst)
+{
+	if (!textures || !mlx_ptr || !lst)
+		return (-1);
+	return (parse_textures(mlx_ptr, textures, lst));
 }

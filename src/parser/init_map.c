@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 14:04:56 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/16 12:15:17 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,12 @@ static void print_matrix(t_map *map)
 	while (++i < map->height)
 		printf("%s\n", map->matrix[i]);
 	printf("print_matrix: Map properties: width(%d)  height(%d)\n", map->width, map->height);
-	puts("\n\n\n");
 }
 
-t_map	*init_map(const char *path)
+t_map	*init_map(t_list *lst)
 {
 	t_map	*map;
-	t_list	*lst;
 
-	lst = read_file(path);
-	if (!lst)
-		return (0);
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		return (0);
@@ -97,14 +92,10 @@ t_map	*init_map(const char *path)
 	if (!map->matrix)
 		return (0);
 	fill_matrix(map, lst);
-	ft_lstclear(&lst, t_str_free);
-	if (!check_map(map))
-	{
-		destroy_map(map);
-		return (0);
-	}
 #if DEBUG
 	print_matrix(map);
 #endif
+	if (!check_map(map))
+		return (0);
 	return (map);
 }
