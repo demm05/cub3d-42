@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:32:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/09 17:06:08 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/16 14:56:45 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	buffer_destroy(void *mlx, t_image *buf)
 {
 	if (!mlx || !buf || !buf->img)
 		return ;
-	free(buf->path);
 	mlx_destroy_image(mlx, buf->img);
 	buf->img = NULL;
 }

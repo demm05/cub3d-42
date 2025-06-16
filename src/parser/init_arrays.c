@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 11:23:06 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/16 12:27:56 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/16 15:28:23 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ int	init_sprites_arr(t_sprite **sprites, t_textures *textures, bool mode)
 	int	i;
 
 	i = 0;
+	(void)mode;
 	if (_SPRITE_COUNT < 3)
 		return (-1);
 	sprites[_E_DOOR] = &textures->door;
 	sprites[_E_WALLS] = &textures->walls;
 	sprites[_E_NULL] = NULL;
-	while (sprites[i] && mode)
-		sprites[i++]->img_arr = NULL;
 	return (0);
 }
 
@@ -42,6 +41,7 @@ int	init_texture_arr(t_image **textures_arr, t_textures *textures, bool mode)
 	int	i;
 
 	i = 0;
+	(void)mode;
 	if (_TEXTURE_COUNT < 5)
 		return (-1);
 	textures_arr[_E_CEILING] = &textures->ceiling;
@@ -49,8 +49,6 @@ int	init_texture_arr(t_image **textures_arr, t_textures *textures, bool mode)
 	textures_arr[_E_PORTAL_IN] = &textures->portal_in;
 	textures_arr[_E_PORTAL_OUT] = &textures->portal_out;
 	textures_arr[_E_NULL_T] = NULL;
-	while (textures_arr[i] && mode)
-		textures_arr[i++]->img = NULL;
 	return (0);
 }
 
