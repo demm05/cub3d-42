@@ -6,11 +6,24 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/10 14:04:56 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/16 12:15:17 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser_private.h"
+
+static void	print_lst(t_list *lst)
+{
+	t_string	*str;
+
+	while (lst)
+	{
+		str = (t_string *)lst->content;
+		printf("%s\n", str->str);
+		lst = lst->next;
+	}
+	printf("\n\n\n");
+}
 
 static size_t	find_max_len(t_list *lst)
 {
@@ -67,14 +80,10 @@ static void	fill_matrix(t_map *map, t_list *lst)
 	map->matrix[j] = NULL;
 }
 
-t_map	*init_map(const char *path)
+t_map	*init_map(t_list *lst)
 {
 	t_map	*map;
-	t_list	*lst;
 
-	lst = read_file(path);
-	if (!lst)
-		return (0);
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (0);
@@ -86,11 +95,8 @@ t_map	*init_map(const char *path)
 	if (!map->matrix)
 		return (0);
 	fill_matrix(map, lst);
-	ft_lstclear(&lst, t_str_free);
+	print_lst(lst);
 	if (!check_map(map))
-	{
-		destroy_map(map);
 		return (0);
-	}
 	return (map);
 }

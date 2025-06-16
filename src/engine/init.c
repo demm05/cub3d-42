@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:14:48 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/10 12:37:36 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/16 12:18:02 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ bool	engine_init(t_engine *eng, char *map_path)
 	eng->mlx = mlx_init();
 	if (!eng->mlx)
 		return (0);
-	eng->map = init_map(map_path);
-	if (!eng->map)
-		return (0);
-	if (init_textures(eng->mlx, &eng->textures) == -1)
+	if (!parse_file(eng->mlx, &eng->textures, eng->map, map_path))
 		return (0);
 	if (!init_mlx_and_window(eng))
 		return (0);
