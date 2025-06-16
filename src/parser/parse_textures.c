@@ -58,9 +58,6 @@ static int	parse_sprite_from_dir(void *mlx_ptr,
 	{
 		if (xpm_image_init(mlx_ptr, names[i], &sprite->img_arr[i]) == -1)
 			return (free_str_arr(names), -1);
-#if DEBUG
-		printf("sprite path: %s\n", sprite->img_arr[i].path);
-#endif
 		i++;
 	}
 	free_str_arr(names);
@@ -102,7 +99,9 @@ static int	parse_texture(void *mlx_ptr,
 	int	i;
 
 	i = 0;
+#if DEBUG
 	printf("rt.name: %s\n", rt->name);
+#endif
 	while (textures->tp.tex_names[i])
 	{
 		if (ft_strcmp(rt->name, textures->tp.tex_names[i]) == 0)
@@ -165,7 +164,9 @@ static int	parse_textures(void *mlx_ptr, t_textures *textures, t_list **lst)
 			return (-1);
 		lstdell_front(lst, t_str_free);
 		status = init_raw_texture(*lst, &rt);
+#if DEBUG
 		printf("rt.name: %s status: %i\n", rt.name, status);
+#endif
 	}
 	if (status == -1)
 		return (-1);

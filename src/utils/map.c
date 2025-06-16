@@ -12,12 +12,12 @@
 
 #include "utils_private.h"
 
-MAYBE_INLINE char	map_get(t_map *map, int x, int y)
+MAYBE_INLINE int map_get(t_map *map, int x, int y)
 {
-	return (map->matrix[y][x]);
+	return (map->matrix[y % map->height][x % map->width] - '0');
 }
 
 MAYBE_INLINE void	map_set(t_map *map, int x, int y, int c)
 {
-	map->matrix[y][x] = c;
+	map->matrix[y][x] = c + '0';
 }

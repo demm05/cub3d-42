@@ -85,17 +85,17 @@ t_map	*init_map(t_list *lst)
 
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
-		return (0);
+		return (NULL);
 	map->width = find_max_len(lst);
 	map->height = ft_lstsize(lst);
 	map->matrix = (char **)malloc(sizeof(char *) * (map->height + 1));
 	if (!map->matrix)
-		return (0);
+		return (NULL);
 	fill_matrix(map, lst);
 #if DEBUG
 	print_matrix(map);
 #endif
 	if (!check_map(map))
-		return (0);
+		return (NULL);
 	return (map);
 }

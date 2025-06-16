@@ -18,15 +18,15 @@ static inline void	move_camera(t_camera *cam, t_map *map,
 {
 	const double	padding = 0.1;
 
-	if (map_get(map, new_x - padding, cam->pos.y - padding) <= '0' && \
-		map_get(map, new_x + padding, cam->pos.y - padding) <= '0' && \
-		map_get(map, new_x - padding, cam->pos.y + padding) <= '0' && \
-		map_get(map, new_x + padding, cam->pos.y + padding) <= '0')
+	if (map_get(map, new_x - padding, cam->pos.y - padding) <= 0 && \
+		map_get(map, new_x + padding, cam->pos.y - padding) <= 0 && \
+		map_get(map, new_x - padding, cam->pos.y + padding) <= 0 && \
+		map_get(map, new_x + padding, cam->pos.y + padding) <= 0)
 		cam->pos.x = new_x;
-	if (map_get(map, cam->pos.x - padding, new_y - padding) <= '0' && \
-		map_get(map, cam->pos.x - padding, new_y + padding) <= '0' && \
-		map_get(map, cam->pos.x + padding, new_y - padding) <= '0' && \
-		map_get(map, cam->pos.x + padding, new_y + padding) <= '0')
+	if (map_get(map, cam->pos.x - padding, new_y - padding) <= 0 && \
+		map_get(map, cam->pos.x - padding, new_y + padding) <= 0 && \
+		map_get(map, cam->pos.x + padding, new_y - padding) <= 0 && \
+		map_get(map, cam->pos.x + padding, new_y + padding) <= 0)
 		cam->pos.y = new_y;
 }
 
