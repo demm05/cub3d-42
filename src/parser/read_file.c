@@ -88,6 +88,5 @@ t_list	*read_file(const char *path)
 		str = get_line_without_endl(fd);
 	}
 	close(fd);
-	print_lst(lst);
 	return (lst);
 }

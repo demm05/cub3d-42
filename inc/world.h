@@ -38,6 +38,8 @@ void	world_destroy(void *mlx_ptr, t_world *world);
 
 char	map_get(t_world *wrd, int x, int y);
 
+void	map_set(t_world *wrd, int x, int y, int c);
+
 /**
  * @brief Frees the memory allocated for the map.
  * 

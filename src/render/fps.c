@@ -34,7 +34,7 @@ static inline char	*int_to_static_s(unsigned int num)
 	return (s);
 }
 
-void	draw_fps_counter(t_timing *tm, t_window *win)
+void	display_fps_counter(t_timing *tm, t_window *win)
 {
 	static int	last_fps;
 	static char	*s = "0";
@@ -44,7 +44,7 @@ void	draw_fps_counter(t_timing *tm, t_window *win)
 		last_fps = tm->current_fps;
 		s = int_to_static_s(last_fps);
 	}
-	mlx_string_put(win->mlx, win->win, 10, 10, 0x000000, s);
+	mlx_string_put(win->mlx, win->win, 10, 10, 0xFF00FF, s);
 	if (tm->frame_start - tm->last_frame_time_us < 1000000)
 		return ;
 	tm->last_frame_time_us = tm->frame_start;

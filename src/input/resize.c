@@ -10,14 +10,13 @@ int	input_event_resize(t_engine *eng)
 	xvar = eng->mlx;
 	win = eng->window.win;
 	XGetWindowAttributes(xvar->display, *win, &attr);
-	if (attr.width <= eng->window.max_width)
-		eng->window.width = attr.width;
-	else
-		eng->window.width = eng->window.max_width;
-	if (attr.height <= eng->window.height)
-		eng->window.height = attr.height;
-	else
-		eng->window.height = eng->window.max_height;
+	eng->window.width = attr.width;
+	eng->window.height = attr.height;
+	eng->input.resizing = 1;
+	minimap_update_properties(eng);
+#if DEBUG
+	printf("New window dimensions: %dx%d\n", attr.width, attr.height);
+#endif
 	return (0);
 }
 

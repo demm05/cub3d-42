@@ -12,10 +12,12 @@
 
 #include "parser_private.h"
 
-int	parse_file(void *mlx_ptr, t_textures *textures, t_map *map, char *path)
+int	parse_file(void *mlx_ptr, t_textures *textures, t_map **map, char *path)
 {
 	t_list	*lst;
 
+	if (!map)
+		return (0);
 	lst = read_file(path);
 	if (!lst)
 		return (0);
@@ -26,9 +28,9 @@ int	parse_file(void *mlx_ptr, t_textures *textures, t_map *map, char *path)
 		ft_lstclear(&lst, t_str_free);
 		return (0);
 	}
-	map = init_map(lst);
+	*map = init_map(lst);
 	ft_lstclear(&lst, t_str_free);
-	if (!map)
+	if (!*map)
 		return (0);
 	return (1);
 }

@@ -33,12 +33,6 @@ void	set_defaults(t_engine *eng)
 	eng->window.height = INITIAL_WINDOW_HEIGHT;
 	eng->window.width = INITIAL_WINDOW_WIDTH;
 	eng->window.title = WINDOW_TITLE;
-	eng->camera.dir.x = -1;
-	eng->camera.dir.y = 0;
-	eng->camera.plane.x = 0;
-	eng->camera.plane.y = 0.66;
-	eng->camera.pos.x = 27;
-	eng->camera.pos.y = 10;
 	eng->camera.move_speed = 3;
 	eng->camera.rotation_speed = 2;
 	eng->camera.mouse_speed = 0.2;

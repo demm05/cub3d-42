@@ -19,13 +19,16 @@ typedef struct s_engine	t_engine;
 
 typedef struct s_input
 {
+	int		mouse_move;
 	char	moving_up;
 	char	moving_down;
 	bool	moving_left;
 	bool	moving_right;
 	bool	look_left;
 	bool	look_right;
-	int		mouse_move;
+	bool	minimap_toggle;
+	bool	resizing;
+	t_vec2_int	prev_mouse_pos;
 }	t_input;
 
 int	input_keyboard_press(int keycode, t_engine *eng);

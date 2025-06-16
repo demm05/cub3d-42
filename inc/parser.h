@@ -22,6 +22,7 @@ typedef struct s_map
 	int			width;
 	int			height;
 	t_point		player_pos;
+	char		player_dir;
 }	t_map;
 
 /**
@@ -62,6 +63,6 @@ void	destroy_textures(void *mlx_ptr, t_textures *textures);
 
 t_list	*readdirectory(DIR *dir, const char *path);
 
-int		parse_file(void *mlx_ptr, t_textures *textures, t_map *map, char *path);
+int		parse_file(void *mlx_ptr, t_textures *textures, t_map **map, char *path);
 
 #endif  //!__PARSER__H__

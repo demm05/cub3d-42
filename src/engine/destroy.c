@@ -22,6 +22,8 @@ void	engine_destroy(t_engine *eng)
 	destroy_textures(eng->mlx, &eng->textures);
 	mlx_destroy(eng);
 	destroy_rays(eng);
+	free(eng->minimap);
+	free(eng->table.y);
 }
 
 void	mlx_destroy(t_engine *eng)
