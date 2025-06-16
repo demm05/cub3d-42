@@ -6,50 +6,17 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:34:09 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/30 16:25:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/16 18:09:29 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils_private.h"
 
-static char	**coppy_matrix(char	**matrix, int height)
+static bool	is_avaible_char(char c)
 {
-	char	**coppy;
-	int		i;
-
-	if (!matrix)
-		return (NULL);
-	coppy = (char **)malloc(sizeof(char *) * (height + 1));
-	if (!coppy)
-		return (NULL);
-	i = 0;
-	while (matrix[i])
-	{
-		coppy[i] = ft_strdup(matrix[i]);
-		i++;
-	}
-	coppy[i] = NULL;
-	return (coppy);
-}
-
-static t_map	*coppy_map(t_map *map)
-{
-	t_map	*coppy;
-
-	if (!map)
-		return (NULL);
-	coppy = malloc(sizeof(t_map));
-	if (!coppy)
-		return (NULL);
-	coppy->matrix = coppy_matrix(map->matrix, map->height);
-	if (!coppy->matrix)
-	{
-		free(coppy);
-		return (NULL);
-	}
-	coppy->width = map->width;
-	coppy->height = map->height;
-	return (coppy);
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == '1' || c == '0')
+		return (1);
+	return (0);
 }
 
 static bool	check_line(t_map *map, int j)
@@ -68,6 +35,9 @@ static bool	check_line(t_map *map, int j)
 			map->player_pos.x = i;
 			map->player_pos.y = j;
 		}
+		if (!is_avaible_char(map->matrix[j][i]))
+			return (ft_putendl_fd(RED "Error" RESET
+					": found unsupported character", STDERR_FILENO), 0);
 		i++;
 	}
 	return (1);
