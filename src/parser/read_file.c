@@ -6,11 +6,11 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:28:23 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/02 12:08:45 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/13 16:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world_private.h"
+#include "parser_private.h"
 #include <sys/stat.h>
 #include <fcntl.h>
 
@@ -45,11 +45,31 @@ char	*get_line_without_endl(int fd)
 	return (tmp);
 }
 
+static int	add_node(t_list **lst, t_list *new, t_string *new_str)
+{
+	if (!new || !new_str)
+	{
+		ft_putendl_fd(RED "Error" RESET
+			": fail to allocate memory", STDERR_FILENO);
+		if (!new)
+			free(new_str);
+		ft_lstdelone(new, free);
+		return (-1);
+	}
+	if (!lst)
+		*lst = new;
+	else
+		ft_lstadd_back(lst, new);
+	return (0);
+}
+
 t_list	*read_file(const char *path)
 {
-	t_list	*lst;
-	char	*str;
-	int		fd;
+	t_list		*lst;
+	t_list		*new;
+	t_string	*new_str;
+	char		*str;
+	int			fd;
 
 	if (!path)
 		return (NULL);
@@ -60,15 +80,13 @@ t_list	*read_file(const char *path)
 	str = get_line_without_endl(fd);
 	while (str)
 	{
-		if (!lst)
-			lst = ft_lstnew(t_str_init(str));
-		else
-			ft_lstadd_back(&lst, ft_lstnew(t_str_init(str)));
+		new_str = t_str_init(str);
+		new = ft_lstnew(new_str);
+		if (add_node(&lst, new, new_str) == -1)
+			return (ft_lstclear(&lst, t_str_free), NULL);
 		free(str);
 		str = get_line_without_endl(fd);
 	}
-	free(str);
 	close(fd);
-	print_lst(lst);
 	return (lst);
 }

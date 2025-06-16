@@ -41,11 +41,12 @@ typedef struct s_engine
 	t_window	window;
 	t_input		input;
 	t_frame_buf	main_buffer;
-	t_world		world;
+	t_textures	textures;
+	t_map		*map;
 	t_camera	camera;
 	t_ray		*rays;
 	t_timing	timing;
-	t_minimap	*map;
+	t_minimap	*minimap;
 	t_lookup	table;
 }	t_engine;
 

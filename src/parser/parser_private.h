@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world_private.h                                    :+:      :+:    :+:   */
+/*   parser_private.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 09:56:33 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 12:32:48 by ogrativ          ###   ########.fr       */
+/*   Created: 2025/06/04 15:51:00 by ogrativ           #+#    #+#             */
+/*   Updated: 2025/06/16 12:27:36 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WORLD_PRIVATE_H
-# define WORLD_PRIVATE_H
+#ifndef PARSER_PRIVATE_H
+# define PARSER_PRIVATE_H
 
 # include "cube.h"
+# include "dirent.h"
+
+typedef struct s_raw_texture
+{
+	char	*name;
+	char	*path;
+}	t_raw_textrure;
 
 t_list	*read_file(const char *path);
 
 // int		init_world(void *mlx_ptr, t_world *world, const char *path);
 
-int		parse_textures(void *mlx_ptr, t_world *world, t_list **lst);
+char	**get_names(t_list *lst);
 
-/**
- * @brief Parses a map from a file.
- * 
- * @param lst A list containing the lines read from the map file.
- * @return Pointer to a t_map structure allocated with malloc.
- */
-t_map	*init_map(t_list *lst);
+int		init_texture_arr(t_image **textures_arr,
+			t_textures *textures, bool mode);
+int		init_texture_names_arr(char **textures_path);
 
-/**
- * @brief Frees the memory allocated for the map.
- * 
- * @param map Pointer to the t_map structure to be freed.
- */
-void	destroy_map(t_map *map);
+int		init_texture_pointers(t_textures *textures, bool mode);
+
+int		init_sprites_arr(t_sprite **sprites, t_textures *textures, bool mode);
+int		init_sprites_dir_names_arr(char **dir_path);
 
 #endif

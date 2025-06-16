@@ -1,10 +1,8 @@
-NO ./assets/north.xpm
-SO ./assets/south.xpm
-WE ./assets/west.xpm
-EA ./assets/east.xpm
-
-C 76,88,101
-F 80,72,64
+WALLS ./assets/walls/
+F ./assets/south.xpm
+C ./assets/west.xpm
+P_IN ./assets/west.xpm
+P_OUT ./assets/west.xpm
 
         1111111111111111111111111
         1000000000110000000000001

@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:17:02 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 15:09:58 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/09 17:12:20 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # include "vector.h"
 # include "render.h"
 # include "assets.h"
-# include "world.h"
+# include "parser.h"
 # include "input.h"
 # include "camera.h"
 # include "raycaster.h"

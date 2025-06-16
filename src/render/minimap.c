@@ -5,9 +5,9 @@ MAYBE_INLINE void	minimap_update_properties(t_engine *eng)
 {
 	t_minimap	*map;
 
-	map = eng->map;
-	map->cubes.x = eng->world.map->width;
-	map->cubes.y = eng->world.map->height;
+	map = eng->minimap;
+	map->cubes.x = eng->map->width;
+	map->cubes.y = eng->map->height;
 	map->cub_size.x = eng->window.width / map->cubes.x / MAP_SIZEOF_MINIMAP;
 	map->cub_size.y = eng->window.height / map->cubes.y / MAP_SIZEOF_MINIMAP;
 	map->draw_size.x = map->cubes.x * map->cub_size.x;
@@ -31,8 +31,8 @@ MAYBE_INLINE void	minimap_update_properties(t_engine *eng)
 
 bool	minimap_create(t_engine *eng)
 {
-	eng->map = malloc(sizeof(t_minimap));
-	if (!eng->map)
+	eng->minimap = malloc(sizeof(t_minimap));
+	if (!eng->minimap)
 		return (0);
 	return (1);
 }
@@ -42,12 +42,12 @@ MAYBE_INLINE t_ui	minimap_draw(t_engine *eng, int x, int y, t_ui color)
 	t_minimap	*m;
 
 	(void)color;
-	m = eng->map;
+	m = eng->minimap;
 	if (MAP_CUBE_GAP > 0 && \
 		(x % m->cub_size.x >= m->cub_size.x - MAP_CUBE_GAP || \
 		y % m->cub_size.y >= m->cub_size.y - MAP_CUBE_GAP))
 		return (blend_normal(color, MAP_CUBE_EMPTY_COLOR));
-	if (map_get(&eng->world, x / m->cub_size.x, y / m->cub_size.y) < '1')
+	if (map_get(eng->map, x / m->cub_size.x, y / m->cub_size.y) < '1')
 		return (blend_normal(color, MAP_CUBE_EMPTY_COLOR));
 	return (MAP_CUBE_FULL_COLOR);
 }
@@ -89,10 +89,10 @@ MAYBE_INLINE void	minimap_draw_player(t_engine *eng, t_minimap *map)
 
 MAYBE_INLINE void	draw_minimap(t_engine *eng)
 {
-	if (!eng->map->is_player_displayable)
+	if (!eng->minimap->is_player_displayable)
 		return ;
-	draw_from_to_each(eng, eng->map->draw_start, eng->map->draw_size,
+	draw_from_to_each(eng, eng->minimap->draw_start, eng->minimap->draw_size,
 		minimap_draw);
-	minimap_draw_borders(eng, eng->map);
-	minimap_draw_player(eng, eng->map);
+	minimap_draw_borders(eng, eng->minimap);
+	minimap_draw_player(eng, eng->minimap);
 }

@@ -22,6 +22,7 @@ int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)
 		return (ft_fprintf(STDERR_FILENO, RED"Error" RESET ": failed to open file: %s\n", path), -1);
 	img->buffer = mlx_get_data_addr(img->img, &img->depth,
 			&img->line_size, &img->endian);
+	img->path = ft_strdup(path);
 #if DEBUG
 	printf("New xpm image: (%s)\t%dx%d\n", path, img->width, img->height);
 #endif

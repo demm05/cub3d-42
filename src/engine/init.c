@@ -6,7 +6,7 @@
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:14:48 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/02 13:37:57 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/16 12:18:02 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	engine_init(t_engine *eng, char *map_path)
 	eng->mlx = mlx_init();
 	if (!eng->mlx)
 		return (0);
-	if (world_init(eng->mlx, &eng->world, map_path) == -1)
+	if (!parse_file(eng->mlx, &eng->textures, &eng->map, map_path))
 		return (0);
 	if (!init_mlx_and_window(eng) || !allocate_rays(eng) || \
 		!camera_set_start_pos(eng) || !minimap_create(eng) || \

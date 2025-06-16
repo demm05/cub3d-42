@@ -48,7 +48,7 @@ static MAYBE_INLINE void	set_direction(t_ray *ray, t_camera *cam)
 	}
 }
 
-static MAYBE_INLINE void	perform_dda(t_ray *ray, t_world *wrd)
+static MAYBE_INLINE void	perform_dda(t_ray *ray, t_map *wrd)
 {
 	while (1)
 	{
@@ -73,7 +73,7 @@ MAYBE_INLINE void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
 {
 	set_values(ray, &eng->camera, w);
 	set_direction(ray, &eng->camera);
-	perform_dda(ray, &eng->world);
+	perform_dda(ray, eng->map);
 	if (!ray->side)
 		ray->wall_dist = ray->side_dist.x - ray->delta.x;
 	else

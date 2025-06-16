@@ -10,5 +10,6 @@ pkgs.mkShell {
     clang-tools
     gdb
     norminette
+    compiledb
   ];
 }
