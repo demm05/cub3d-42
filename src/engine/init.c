@@ -22,7 +22,7 @@ bool	engine_init(t_engine *eng, char *map_path)
 	ft_bzero(eng, sizeof(t_engine));
 	set_defaults(eng);
 	eng->mlx = mlx_init();
-	if (!eng->mlx)
+	if (!eng->mlx || !text_init(eng))
 		return (0);
 	if (!parse_file(eng->mlx, &eng->textures, &eng->map, map_path))
 		return (0);

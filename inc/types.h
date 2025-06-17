@@ -34,5 +34,8 @@ typedef struct s_vec2_int	t_point;
 typedef struct s_engine		t_engine;
 typedef unsigned int		t_ui;
 typedef struct s_minimap	t_minimap;
+typedef struct s_freetype	t_freetype;
+
+# define FF ft_fprintf
 
 #endif
