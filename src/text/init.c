@@ -13,6 +13,7 @@ bool	text_init(t_engine *eng)
 		return (0);
 	if (text_load_fonts(eng->freetype, FONTS_DIR) == FAILURE)
 		return (0);
+    FT_Set_Pixel_Sizes(eng->freetype->matrix[0], 0, 28);
 	return (1);
 }
 

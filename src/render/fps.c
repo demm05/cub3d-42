@@ -12,39 +12,9 @@
 
 #include "render_private.h"
 
-static inline char	*int_to_static_s(unsigned int num)
+void	display_fps_counter(t_timing *tm, t_engine *eng)
 {
-	static char		s[11];
-	unsigned int	temp;
-	int				len;
-
-	len = 1;
-	temp = num;
-	while (temp > 9)
-	{
-		len++;
-		temp /= 10;
-	}
-	s[len--] = 0;
-	while (len >= 0)
-	{
-		s[len--] = num % 10 + '0';
-		num /= 10;
-	}
-	return (s);
-}
-
-void	display_fps_counter(t_timing *tm, t_window *win)
-{
-	static int	last_fps;
-	static char	*s = "0";
-
-	if (last_fps != tm->current_fps)
-	{
-		last_fps = tm->current_fps;
-		s = int_to_static_s(last_fps);
-	}
-	mlx_string_put(win->mlx, win->win, 10, 10, 0xFF00FF, s);
+	text_put_int(eng, (t_point){0, 0}, tm->current_fps, 0xFF00FF);
 	if (tm->frame_start - tm->last_frame_time_us < 1000000)
 		return ;
 	tm->last_frame_time_us = tm->frame_start;
