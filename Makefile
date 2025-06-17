@@ -43,7 +43,7 @@ ifneq ($(I), 1)
 	CFLAGS+=-DENABLE_CUSTOM_INLINING=1
 endif
 
-all: compiledb $(NAME) 
+all: $(NAME) 
 
 $(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS) $(LIBS)
 	$(Q)$(CC) $(CFLAGS) -c -o $@ $<

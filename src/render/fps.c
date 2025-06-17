@@ -14,7 +14,7 @@
 
 void	display_fps_counter(t_timing *tm, t_engine *eng)
 {
-	text_put_int(eng, (t_point){0, 0}, tm->current_fps, 0xFF00FF);
+	text_put_int(eng, (t_point){2, 2}, tm->current_fps, 0xFF00FF);
 	if (tm->frame_start - tm->last_frame_time_us < 1000000)
 		return ;
 	tm->last_frame_time_us = tm->frame_start;
