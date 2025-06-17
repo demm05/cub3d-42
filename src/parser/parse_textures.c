@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/16 13:06:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/17 14:32:53 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,16 @@ static int	init_raw_texture(t_list *lst, t_raw_textrure *tex)
 		space++;
 	space_ptr = ft_strchr(str->str + space, ' ');
 	if (space_ptr && space_ptr[0] > '\0')
-		space_idx = space_ptr - str->str;
+		space_idx = space_ptr - (str->str + space);
 	else
 		return (-2);
 	tex->name = ft_substr(str->str + space, 0, space_idx);
-	tex->path = space_ptr + 1;
+	space = 0;
+	while (space_ptr[space] == ' ')
+		space++;
+	tex->path = space_ptr + space;
 	if (!tex->name || !tex->path || tex->path[0] == '\0')
-	{
-		free(tex->name);
-		return (-1);
-	}
+		return (free(tex->name), -1);
 	return (space_idx);
 }
 
