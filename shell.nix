@@ -1,5 +1,5 @@
 {
-  pkgs ,...
+  pkgs ? import <nixpkgs> { },
 }:
 pkgs.mkShell {
   packages = with pkgs; [
@@ -11,6 +11,7 @@ pkgs.mkShell {
     gdb
     norminette
     compiledb
-    freetype2
+    freetype
+    pkg-config
   ];
 }
