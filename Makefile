@@ -16,11 +16,11 @@ LIB_FLAGS			+=	$(shell pkg-config --libs freetype2)
 MAKE_LIB			=	@make --no-print-directory -C
 DIRS				=	$(sort $(dir $(OBJS)))
 
-MLX_DIR				=	$(LDIR)/minilibx
-MLX					=	$(MLX_DIR)/libmlx.a
-CFLAGS				+=	-I$(MLX_DIR)
-LIBS				+=	$(MLX)
-LIB_FLAGS			+=	-L$(MLX_DIR)
+# MLX_DIR				=	$(LDIR)/minilibx
+# MLX					=	$(MLX_DIR)/libmlx.a
+# CFLAGS				+=	-I$(MLX_DIR)
+# LIBS				+=	$(MLX)
+# LIB_FLAGS			+=	-L$(MLX_DIR)
 
 LIBFT_DIR			=	$(LDIR)/libft
 LIBFT				=	$(LIBFT_DIR)/libft.a
@@ -43,7 +43,7 @@ ifneq ($(I), 1)
 	CFLAGS+=-DENABLE_CUSTOM_INLINING=1
 endif
 
-all: $(NAME) 
+all: compiledb $(NAME) 
 
 $(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS) $(LIBS)
 	$(Q)$(CC) $(CFLAGS) -c -o $@ $<
@@ -92,7 +92,7 @@ rr: clean r
 c clean:
 	$(Q)rm -rf $(ODIR)
 	$(Q)$(MAKE_LIB) $(LIBFT_DIR) clean
-	$(Q)$(MAKE_LIB) $(MLX_DIR) clean > /dev/null
+	# $(Q)$(MAKE_LIB) $(MLX_DIR) clean > /dev/null
 
 f fclean: clean
 	$(Q)rm -rf $(NAME)

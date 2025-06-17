@@ -49,6 +49,7 @@ typedef struct s_engine
 	t_minimap	*minimap;
 	t_lookup	table;
 	t_freetype	*freetype;
+	float		test;
 }	t_engine;
 
 bool	engine_init(t_engine *eng, char *map_path);

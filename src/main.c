@@ -36,4 +36,5 @@ void	set_defaults(t_engine *eng)
 	eng->camera.move_speed = 3;
 	eng->camera.rotation_speed = 2;
 	eng->camera.mouse_speed = 0.2;
+	eng->test = 0.6;
 }

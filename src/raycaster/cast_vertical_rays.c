@@ -48,8 +48,25 @@ static MAYBE_INLINE void	set_direction(t_ray *ray, t_camera *cam)
 	}
 }
 
-static MAYBE_INLINE void	perform_dda(t_ray *ray, t_map *wrd)
+static inline void	set_wall_hit(t_engine *eng, t_ray *ray)
 {
+	if (ray->side == 0)
+	{
+		ray->wall_dist = ray->side_dist.x - ray->delta.x;
+		ray->wall_hit = eng->camera.pos.y + ray->wall_dist * ray->direction.y;
+	}
+	else
+	{
+		ray->wall_dist = ray->side_dist.y - ray->delta.y;
+		ray->wall_hit = eng->camera.pos.x + ray->wall_dist * ray->direction.x;
+	}
+	ray->wall_hit -= floor(ray->wall_hit);
+}
+
+static MAYBE_INLINE void	perform_dda(t_ray *ray, t_engine *eng)
+{
+	int	wall;
+
 	while (1)
 	{
 		if (ray->side_dist.x < ray->side_dist.y)
@@ -64,8 +81,13 @@ static MAYBE_INLINE void	perform_dda(t_ray *ray, t_map *wrd)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (map_get(wrd, ray->map.x, ray->map.y) > 0)
-			return ;
+		wall = map_get(eng->map, ray->map.x, ray->map.y);
+		if (wall == 0)
+			continue ;
+		set_wall_hit(eng, ray);
+		if (wall == 5 && ray->wall_hit > eng->test) 
+			continue ;
+		return ;
 	}
 }
 
@@ -73,11 +95,7 @@ MAYBE_INLINE void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
 {
 	set_values(ray, &eng->camera, w);
 	set_direction(ray, &eng->camera);
-	perform_dda(ray, eng->map);
-	if (!ray->side)
-		ray->wall_dist = ray->side_dist.x - ray->delta.x;
-	else
-		ray->wall_dist = ray->side_dist.y - ray->delta.y;
+	perform_dda(ray, eng);
 	ray->line_height = h / ray->wall_dist;
 	ray->draw_start = -ray->line_height / 2 + h / 2;
 	ray->draw_end = ray->line_height / 2 + h / 2;

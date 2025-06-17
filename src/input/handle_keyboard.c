@@ -34,6 +34,10 @@ int	input_keyboard_press(int keycode, t_engine *eng)
 		eng->camera.move_speed *= 1.5;
 	else if (keycode == XK_m)
 		eng->input.minimap_toggle = !eng->input.minimap_toggle;
+	else if (keycode == XK_q)
+		eng->test += 0.1;
+	else if (keycode == XK_e)
+		eng->test -= 0.1;
 	return (0);
 }
 

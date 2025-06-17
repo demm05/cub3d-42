@@ -27,6 +27,8 @@ int	engine_loop(t_engine *eng)
 	camera_keyboard_rotate_event(eng);
 	camera_mouse_move_event(eng);
 	render_frame(eng);
+	text_put_str(eng, (t_point){10, eng->window.height - 100}, "doors is 5", 0xacF0a);
+	text_put_str(eng, (t_point){10, eng->window.height - 50}, "q or e: to close or open doors", 0xacF0a);
 	buffer_flash(&eng->main_buffer, &eng->window, 0, 0);
 	display_fps_counter(&eng->timing, eng);
 	return (0);
