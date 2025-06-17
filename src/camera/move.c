@@ -30,22 +30,42 @@ static inline void	move_camera(t_camera *cam, t_map *map,
 		cam->pos.y = new_y;
 }
 
-MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
+static inline void	set_new(t_input *input, t_vec2_double *new, t_vec2_double dir)
 {
-	double	move_amount;
-	double	dir_x;
-	double	dir_y;
-
-	move_amount = cam->move_speed * eng->timing.delta_time;
-	dir_x = cam->dir.x * move_amount;
-	dir_y = cam->dir.y * move_amount;
-	if (eng->input.moving_up)
-		move_camera(cam, eng->map, cam->pos.x + dir_x, cam->pos.y + dir_y);
-	if (eng->input.moving_down)
-		move_camera(cam, eng->map, cam->pos.x - dir_x, cam->pos.y - dir_y);
-	if (eng->input.moving_left)
-		move_camera(cam, eng->map, cam->pos.x + dir_y, cam->pos.y - dir_x);
-	if (eng->input.moving_right)
-		move_camera(cam, eng->map, cam->pos.x - dir_y, cam->pos.y + dir_x);
+	if (input->moving_up)
+	{
+		new->x += dir.x;
+		new->y += dir.y;
+	}
+	if (input->moving_down)
+	{
+		new->x -= dir.x;
+		new->y -= dir.y;
+	}
+	if (input->moving_left)
+	{
+		new->x += dir.y;
+		new->y -= dir.x;
+	}
+	if (input->moving_right)
+	{
+		new->x -= dir.y;
+		new->y += dir.x;
+	}
 }
 
+MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
+{
+	double			move_amount;
+	t_vec2_double	new;
+
+	move_amount = cam->move_speed * eng->timing.delta_time;
+	if ((eng->input.moving_left || eng->input.moving_right) &&
+		(eng->input.moving_up || eng->input.moving_down))
+		move_amount *= 0.8;
+	new.x = cam->pos.x;
+	new.y = cam->pos.y;
+	set_new(&eng->input, &new, (t_vec2_double){cam->dir.x * move_amount,
+		cam->dir.y * move_amount});
+	move_camera(cam, eng->map, new.x, new.y);
+}
