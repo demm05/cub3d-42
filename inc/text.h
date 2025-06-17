@@ -2,7 +2,7 @@
 # define TEXT_H
 
 # define EXPECTED_NUM_OF_FONTS 1
-# define FONTS_DIR "./assets/fonts"
+# define FONTS_DIR "./assets/fonts/"
 
 # include "cube.h"
 
