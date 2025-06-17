@@ -68,7 +68,7 @@ void	draw_for_each_pixel(t_engine *eng, t_point end,
 				unsigned int foo(t_engine *eng, int x, int y, unsigned int color));
 void	draw_from_to_each(t_engine *eng, t_point start, t_point size,
 				unsigned int foo(t_engine *eng, int x, int y, unsigned int color));
-void	display_fps_counter(t_timing *tm, t_window *win);
+void	display_fps_counter(t_timing *tm, t_engine *eng);
 // DRAWING
 
 // MINIMAP

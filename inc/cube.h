@@ -29,6 +29,9 @@
 # define ENABLE_FOG 1
 # define FOG_DISTANCE 22.0
 
+# define SUCCESS 1
+# define FAILURE 0
+
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
@@ -41,7 +44,7 @@
 # include "../lib/libft/libft.h"
 # include "../lib/minilibx/mlx.h"
 
-# include "vector.h"
+# include "types.h"
 # include "render.h"
 # include "assets.h"
 # include "parser.h"
@@ -50,6 +53,7 @@
 # include "raycaster.h"
 # include "engine.h"
 # include "utils.h"
+# include "text.h"
 
 # include "ft_color_utils.h"
 

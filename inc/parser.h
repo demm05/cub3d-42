@@ -61,8 +61,10 @@ void	destroy_map(t_map *map);
  */
 void	destroy_textures(void *mlx_ptr, t_textures *textures);
 
-t_list	*readdirectory(DIR *dir, const char *path);
+t_list	*readdirectory(DIR *dir, const char *path, const char *ext);
 
 int		parse_file(void *mlx_ptr, t_textures *textures, t_map **map, char *path);
+
+char	**get_files_from_dir(const char *dir_path, const char *ext);
 
 #endif  //!__PARSER__H__

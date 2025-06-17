@@ -15,14 +15,6 @@
 
 # include "cube.h"
 
-// # define _CEILING_PATH "assets/north.xpm"
-// # define _FLOOR_PATH "assets/south.xpm"
-// # define _PORTAL_IN_PATH "assets/west.xpm"
-// # define _PORTAL_OUT_PATH "assets/west.xpm"
-
-// # define _WALLS_DIR_PATH "assets/walls/"
-// # define _DOOR_DIR_PATH "assets/door/"
-
 # define _CEILING_NAME "C"
 # define _FLOOR_NAME "F"
 # define _PORTAL_IN_NAME "P_IN"

@@ -28,7 +28,7 @@ bool	engine_init(t_engine *eng, char *map_path)
 		return (0);
 	if (!init_mlx_and_window(eng) || !allocate_rays(eng) || \
 		!camera_set_start_pos(eng) || !minimap_create(eng) || \
-		!update_lookup_table(eng))
+		!update_lookup_table(eng) || !text_init(eng))
 		return (0);
 	eng->window.mlx = eng->mlx;
 	hook_inputs(eng);
