@@ -14,9 +14,6 @@
 
 int	init_sprites_arr(t_sprite **sprites, t_textures *textures, bool mode)
 {
-	int	i;
-
-	i = 0;
 	(void)mode;
 	if (_SPRITE_COUNT < 3)
 		return (-1);
@@ -38,9 +35,6 @@ int	init_sprites_dir_names_arr(char **dir_path)
 
 int	init_texture_arr(t_image **textures_arr, t_textures *textures, bool mode)
 {
-	int	i;
-
-	i = 0;
 	(void)mode;
 	if (_TEXTURE_COUNT < 5)
 		return (-1);

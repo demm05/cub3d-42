@@ -12,10 +12,7 @@ MAYBE_INLINE void	render_frame(t_engine *eng)
 	w = eng->window.width;
 	x = -1;
 	while (++x < w)
-	{
 		cast_ray(eng, &eng->rays[x], h, w);
-		ray_set_wall_prop(eng, &eng->rays[x]);
-	}
 	draw_for_each_pixel(eng, (t_point){w, h}, color_background);
 	if (eng->input.minimap_toggle)
 		draw_minimap(eng);

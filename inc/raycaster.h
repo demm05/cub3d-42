@@ -24,6 +24,7 @@ typedef struct s_ray
 	t_vec2_int		step;
 	t_vec2_int		map;
 	double			wall_dist;
+	double			wall_hit;
 	int				wall_face_hit;
 	int				index;
 	int				line_height;
@@ -38,6 +39,5 @@ typedef struct s_ray
 bool	allocate_rays(t_engine *eng);
 void	destroy_rays(t_engine *eng);
 void	cast_ray(t_engine *eng, t_ray *ray, int h, int w);
-void	ray_set_wall_prop(t_engine *eng, t_ray *ray);
 
 #endif
