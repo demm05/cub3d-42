@@ -14,14 +14,14 @@
 #include "errno.h"
 
 static int	add_file(struct dirent *directory,
-	t_list **lst, const char *dir_path)
+	t_list **lst, const char *dir_path, const char *ext)
 {
 	t_list	*new;
 	char	*coppy;
 
 	if (!lst || !directory)
 		return (-1);
-	if (check_file_ext(directory->d_name, ".xpm", 0))
+	if (check_file_ext(directory->d_name, ext, 0))
 	{
 		coppy = ft_strjoin(dir_path, directory->d_name);
 		new = ft_lstnew(coppy);
@@ -42,7 +42,7 @@ static int	add_file(struct dirent *directory,
 	return (0);
 }
 
-t_list	*readdirectory(DIR *dir, const char *path)
+t_list	*readdirectory(DIR *dir, const char *path, const char *ext)
 {
 	struct dirent	*directory;
 	t_list			*lst;
@@ -52,13 +52,10 @@ t_list	*readdirectory(DIR *dir, const char *path)
 	directory = readdir(dir);
 	while (directory)
 	{
-		if (add_file(directory, &lst, path) == -1)
+		if (add_file(directory, &lst, path, ext) == -1)
 			return (ft_lstclear(&lst, free), NULL);
 		directory = readdir(dir);
 	}
-	if (!lst)
-		ft_fprintf(STDERR_FILENO, RED "Error" RESET
-			": cannot parse texture from \"%s\"\n", path);
 	if (errno != 0)
 	{
 		ft_fprintf(STDERR_FILENO, RED "Error" RESET

@@ -35,17 +35,37 @@ MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
 	double	move_amount;
 	double	dir_x;
 	double	dir_y;
+	t_vec2_double	new;
 
 	move_amount = cam->move_speed * eng->timing.delta_time;
 	dir_x = cam->dir.x * move_amount;
 	dir_y = cam->dir.y * move_amount;
+	new.x = cam->pos.x;
+	new.y = cam->pos.y;
 	if (eng->input.moving_up)
-		move_camera(cam, eng->map, cam->pos.x + dir_x, cam->pos.y + dir_y);
+	{
+		new.x += dir_x;
+		new.y += dir_y;
+		// move_camera(cam, eng->map, cam->pos.x + dir_x, cam->pos.y + dir_y);
+	}
 	if (eng->input.moving_down)
-		move_camera(cam, eng->map, cam->pos.x - dir_x, cam->pos.y - dir_y);
+	{
+		new.x -= dir_x;
+		new.y -= dir_y;
+		// move_camera(cam, eng->map, cam->pos.x - dir_x, cam->pos.y - dir_y);
+	}
 	if (eng->input.moving_left)
-		move_camera(cam, eng->map, cam->pos.x + dir_y, cam->pos.y - dir_x);
+	{
+		new.x += dir_y;
+		new.y -= dir_y;
+		// move_camera(cam, eng->map, cam->pos.x + dir_y, cam->pos.y - dir_x);
+	}
 	if (eng->input.moving_right)
-		move_camera(cam, eng->map, cam->pos.x - dir_y, cam->pos.y + dir_x);
+	{
+		new.x -= dir_y;
+		new.y += dir_y;
+		// move_camera(cam, eng->map, cam->pos.x - dir_y, cam->pos.y + dir_x);
+	}
+	move_camera(cam, eng->map, new.x, new.y);
 }
 
