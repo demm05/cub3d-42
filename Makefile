@@ -8,6 +8,11 @@ CC					=	gcc
 CFLAGS				=	-g -O3 -Wall -Wextra -I$(HDIR) -flto
 LIB_FLAGS			=	-lmlx -lX11 -lXext -lm -lft
 
+#FREETYPE
+CFLAGS				+=	$(shell pkg-config --cflags freetype2)
+LIB_FLAGS			+=	$(shell pkg-config --libs freetype2)
+#FREETYPE
+
 MAKE_LIB			=	@make --no-print-directory -C
 DIRS				=	$(sort $(dir $(OBJS)))
 
@@ -38,7 +43,7 @@ ifneq ($(I), 1)
 	CFLAGS+=-DENABLE_CUSTOM_INLINING=1
 endif
 
-all: $(NAME) 
+all: compiledb $(NAME) 
 
 $(OBJS): $(ODIR)/%.o: $(SDIR)/%.c | $(DIRS) $(LIBS)
 	$(Q)$(CC) $(CFLAGS) -c -o $@ $<
