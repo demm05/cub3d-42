@@ -56,3 +56,23 @@ MAYBE_INLINE t_ui	blend_brightness(t_ui color, float brightness)
 	b = (b * brightness_fixed) >> 8;
 	return ((r << 16) | (g << 8) | b);
 }
+
+MAYBE_INLINE void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned char alpha)
+{
+	t_ui	*source;
+	t_rgb	s;
+	t_rgb	d;
+	t_rgb	r;
+
+	source = get_pixel_address(&eng->main_buffer, p.x, p.y);
+	s.red = (*source >> 16) & 0xFF;
+	s.green = (*source >> 8) & 0xFF;
+	s.blue = *source & 0xFF;
+	d.red = (dest >> 16) & 0xFF;
+	d.green = (dest >> 8) & 0xFF;
+	d.blue = dest & 0xFF;
+	r.red = blend_channel_fast(d.red, s.red, alpha) & 0xFF;
+	r.green = blend_channel_fast(d.green, s.green, alpha) & 0xFF;
+	r.blue = blend_channel_fast(d.blue, s.blue, alpha) & 0xFF;
+	*source = r.red << 16 | r.green << 8 | r.blue;
+}

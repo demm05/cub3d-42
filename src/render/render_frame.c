@@ -77,13 +77,13 @@ MAYBE_INLINE t_ui	color_background(t_engine *eng, int x, int y, t_ui color)
 	#if ENABLE_FOG
 		return (blend_brightness(color_c(ray, eng, eng->window.height, y), eng->table.y[y].brightness));
 	#else
-		return (color_cf(ray, eng, eng->window.height, y));
+		return (color_c(ray, eng, eng->window.height, y));
 	#endif
 	else if (y >= ray->draw_end)
 	#if ENABLE_FOG
 		return (blend_brightness(color_f(ray, eng, eng->window.height, y), eng->table.y[y].brightness));
 	#else
-		return (color_cf(ray, eng, eng->window.height, y));
+		return (color_f(ray, eng, eng->window.height, y));
 	#endif
 	else
 	#if ENABLE_FOG

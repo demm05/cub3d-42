@@ -34,6 +34,7 @@ typedef struct s_image
 	int		width;
 	int		height;
 	int		endian;
+	int		depth8;
 }	t_image;
 
 typedef struct s_image	t_frame_buf;
@@ -60,6 +61,7 @@ void	destroy_image(t_image *img);
 
 // DRAWING
 int		get_pixel_color(t_image *img, int x, int y);
+t_ui	*get_pixel_address(t_image *img, int x, int y);
 void	draw_vert_line(t_frame_buf *buf, int x, int start, int end, int color);
 void	draw_rectangle(t_engine *eng, t_point start, t_point size, unsigned int color);
 void	draw_pixel(t_frame_buf *buf, int x, int y, int color);
@@ -81,5 +83,6 @@ t_ui	blend_normal(t_ui source, t_ui dest);
 
 void	render_frame(t_engine *eng);
 t_ui	blend_brightness(t_ui color, float br);
+void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned char alpha);
 
 #endif
