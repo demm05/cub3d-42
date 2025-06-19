@@ -7,3 +7,4 @@ cub3d
 .direnv
 prof.pdf
 gmon.out
+.help_shown.stamp
