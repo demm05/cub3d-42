@@ -2,16 +2,20 @@
   pkgs ? import <nixpkgs> { },
 }:
 pkgs.mkShell {
-  packages = with pkgs; [
-    minilibx
+  buildInputs = with pkgs; [
     xorg.libX11
     xorg.libXext
-    gnumake
+    freetype
+  ];
+  nativeBuildInputs = with pkgs; [
     clang-tools
+    pkg-config
+    gcc
+    gnumake
+  ];
+  packages = with pkgs; [
     gdb
     norminette
     compiledb
-    freetype
-    pkg-config
   ];
 }

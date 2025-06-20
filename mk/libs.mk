@@ -1,34 +1,31 @@
+export PKG_CONFIG_PATH := $(CURDIR)/lib:$(PKG_CONFIG_PATH)
+
 MAKE				=	@make --no-print-directory
 MAKE_LIB			=	$(MAKE) -C
 MAKE_FILE			=	$(MAKE_LIB) ./mk -f
 
-ifeq ($(shell pkg-config --exists mlx && echo 1), 1)
-	CFLAGS		+= $(shell pkg-config --cflags mlx)
-	LIB_FLAGS	+=  $(shell pkg-config --libs mlx)
-else
-	MLX_DIR		=	$(LDIR)/minilibx
-	MLX_CLEAN	=	$(MAKE_LIB) $(MLX_DIR) clean
-	MLX			=	$(MLX_DIR)/libmlx.a
-	LIBS		+=	$(MLX)
-	CFLAGS		+=	-I$(MLX_DIR)
-	LIB_FLAGS	+=	-L$(MLX_DIR) -lmlx
-endif
+REQUIRED_LIBS		:=	freetype2 x11 xext
+CFLAGS				+=	$(shell pkg-config --cflags $(REQUIRED_LIBS))
+LIB_FLAGS			+=	$(shell pkg-config --libs $(REQUIRED_LIBS))
 
-LIBFT_DIR		=	$(LDIR)/libft
-LIBFT			=	$(LIBFT_DIR)/libft.a
-CFLAGS			+=	-I$(LIBFT_DIR)/include
-LIB_FLAGS		+=	-L$(LIBFT_DIR) -lft
-LIBS			+=	$(LIBFT)
+MLX_DIR				=	$(LDIR)/minilibx
+MLX					=	$(MLX_DIR)/libmlx.a
+MLX_MAKE			=	$(MAKE_LIB) $(MLX_DIR) -f Makefile.mk
+CFLAGS				+=	$(shell pkg-config --cflags mlx)
+LIB_FLAGS			+=  $(shell pkg-config --libs mlx)
 
-REQUIRED_LIBS	:= freetype2 x11 xext
 
-CFLAGS			+=	$(shell pkg-config --cflags $(REQUIRED_LIBS))
-LIB_FLAGS		+=	$(shell pkg-config --libs $(REQUIRED_LIBS))
+LIBFT_DIR			=	$(LDIR)/libft
+LIBFT				=	$(LIBFT_DIR)/libft.a
+CFLAGS				+=	-I$(LIBFT_DIR)/include
+LIB_FLAGS			+=	-L$(LIBFT_DIR) -lft
+
+LIBS				=	$(MLX) $(LIBFT) 
 
 all: $(LIBS)
 
 $(MLX): $(MLX_DIR)/Makefile
-	$(Q)$(MAKE_LIB) $(MLX_DIR) > /dev/null
+	$(Q)$(MLX_MAKE) 'INC=$(shell pkg-config --cflags x11 xext)' > /dev/null
 
 $(LIBFT): $(LIBFT_DIR)/Makefile
 	$(Q)$(MAKE_LIB) $(LIBFT_DIR)
