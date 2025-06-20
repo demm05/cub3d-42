@@ -40,7 +40,7 @@ c clean:
 
 f fclean: clean
 	$(Q)rm -rf $(NAME)
-	$(Q)$(if $(MLX_CLEAN),$(MLX_CLEAN)) > /dev/null
+	$(Q)$(MLX_MAKE) clean > /dev/null
 	$(Q)$(MAKE_LIB) $(LIBFT_DIR) fclean
 
 rr: clean r
