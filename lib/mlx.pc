@@ -1,0 +1,11 @@
+prefix=${pcfiledir}/minilibx
+libdir=${prefix}
+includedir=${prefix}
+
+Name: mlx
+Description: A local build of the 42 minilibx
+Version: 0.1.0
+
+Cflags: -I${includedir}
+
+Libs: -L${libdir} -lmlx -lXext -lX11
