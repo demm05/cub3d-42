@@ -14,8 +14,7 @@ MAYBE_INLINE void	render_frame(t_engine *eng)
 	while (++x < w)
 		cast_ray(eng, &eng->rays[x], h, w);
 	draw_for_each_pixel(eng, (t_point){w, h}, color_background);
-	if (eng->input.minimap_toggle)
-		draw_minimap(eng);
+	render_minimap(eng);
 }
 
 MAYBE_INLINE t_ui	color_c(t_ray *ray, t_engine *eng, int h, int y)

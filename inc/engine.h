@@ -46,9 +46,10 @@ typedef struct s_engine
 	t_camera	camera;
 	t_ray		*rays;
 	t_timing	timing;
-	t_minimap	*minimap;
+	t_minimap	minimap;
 	t_lookup	table;
 	t_freetype	*freetype;
+	t_state		state;
 }	t_engine;
 
 bool	engine_init(t_engine *eng, char *map_path);

@@ -15,20 +15,5 @@
 
 # include "cube.h"
 
-# define MAP_PLAYER_PROPORTION 3.0
-# define MAP_BORDER_COLOR 0x303030u
-# define MAP_CUBE_FULL_COLOR 0xD3D3D3
-# define MAP_CUBE_EMPTY_COLOR 0x802F4F4F
-# define MAP_PLAYER_COLOR 0xFFA500
-
-typedef struct s_minimap
-{
-	t_vec2_int		entity_size;
-	t_vec2_int		cub_size;
-	t_vec2_int		cubes;
-	t_point			draw_start;
-	t_point			draw_size;
-	bool			is_player_displayable;
-}	t_minimap;
 
 #endif

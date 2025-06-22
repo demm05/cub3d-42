@@ -8,6 +8,10 @@ ifeq ($(BUILD_MODE), debug)
     LDFLAGS     += -fsanitize=address
 endif
 
+ifeq ($(BUILD_MODE), events)
+    CFLAGS      += -O3 -g -DDEBUG=1
+endif
+
 ifeq ($(BUILD_MODE), profile)
     CFLAGS      += -O0 -g3 -pg
     LDFLAGS     += -pg
@@ -17,7 +21,10 @@ ifeq ($(filter debug profile,$(BUILD_MODE)),)
     CFLAGS		 += -DENABLE_CUSTOM_INLINING=1 -flto
 endif
 
-debug d:
+debug:
 	@$(MAKE) re BUILD_MODE=debug
+
+d:
+	@$(MAKE) r BUILD_MODE=events
 
 .PHONY: d debug
