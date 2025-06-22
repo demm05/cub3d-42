@@ -7,9 +7,9 @@ void	menu_switch_state(t_engine *eng)
 #if DEBUG
 	printf("Switching from state %d\n", eng->state);
 #endif
+	ft_bzero(&eng->input, sizeof(t_input));
 	if (eng->state == MENU)
 	{
-		ft_bzero(&eng->input.prev_mouse_pos, sizeof(t_point));
 		eng->state = PLAYING;
 		mlx_mouse_hide(eng->mlx, eng->window.win);
 	}
@@ -18,4 +18,5 @@ void	menu_switch_state(t_engine *eng)
 		eng->state = MENU;
 		mlx_mouse_show(eng->mlx, eng->window.win);
 	}
+	eng->draw_new_frame = 1;
 }

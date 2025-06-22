@@ -26,5 +26,6 @@ typedef struct s_minimap
 
 void	minimap_update_properties(t_engine *eng);
 void	minimap_toggle(t_engine *eng);
+void	render_minimap(t_engine *eng);
 
 #endif

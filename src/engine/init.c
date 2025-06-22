@@ -31,6 +31,7 @@ bool	engine_init(t_engine *eng, char *map_path)
 		!text_init(eng))
 		return (0);
 	eng->window.mlx = eng->mlx;
+	set_items(eng);
 	hook_inputs(eng);
 	return (1);
 }

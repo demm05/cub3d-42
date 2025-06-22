@@ -76,9 +76,11 @@ void	display_fps_counter(t_timing *tm, t_engine *eng);
 t_ui	blend_normal(t_ui source, t_ui dest);
 
 void	render_frame(t_engine *eng);
-t_ui	blend_brightness(t_ui color, float br);
+t_ui	blend_brightness_f(t_ui color, float br);
+t_ui	blend_brightness(t_ui color, unsigned char brightness);
 void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned char alpha);
 
-void	render_minimap(t_engine *eng);
+void	render_rectangle_blend(t_engine *eng, t_point start, t_point size, unsigned int color);
+void	render_dimmed_screen(t_engine *eng, unsigned char dim);
 
 #endif

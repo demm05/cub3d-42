@@ -37,4 +37,5 @@ void	set_defaults(t_engine *eng)
 	eng->camera.rotation_speed = 2;
 	eng->camera.mouse_speed = 0.2;
 	eng->state = MENU;
+	eng->draw_new_frame = 1;
 }

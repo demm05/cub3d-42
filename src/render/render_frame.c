@@ -15,6 +15,12 @@ MAYBE_INLINE void	render_frame(t_engine *eng)
 		cast_ray(eng, &eng->rays[x], h, w);
 	draw_for_each_pixel(eng, (t_point){w, h}, color_background);
 	render_minimap(eng);
+	if (eng->state == MENU)
+	{
+		render_dimmed_screen(eng, MENU_DIM);
+		render_menu(eng);
+	}
+	display_fps_counter(&eng->timing, eng);
 }
 
 MAYBE_INLINE t_ui	color_c(t_ray *ray, t_engine *eng, int h, int y)
@@ -74,19 +80,19 @@ MAYBE_INLINE t_ui	color_background(t_engine *eng, int x, int y, t_ui color)
 	ray = &eng->rays[x];
 	if (y < ray->draw_start)
 	#if ENABLE_FOG
-		return (blend_brightness(color_c(ray, eng, eng->window.height, y), eng->table.y[y].brightness));
+		return (blend_brightness_f(color_c(ray, eng, eng->window.height, y), eng->table.y[y].brightness));
 	#else
 		return (color_c(ray, eng, eng->window.height, y));
 	#endif
 	else if (y >= ray->draw_end)
 	#if ENABLE_FOG
-		return (blend_brightness(color_f(ray, eng, eng->window.height, y), eng->table.y[y].brightness));
+		return (blend_brightness_f(color_f(ray, eng, eng->window.height, y), eng->table.y[y].brightness));
 	#else
 		return (color_f(ray, eng, eng->window.height, y));
 	#endif
 	else
 	#if ENABLE_FOG
-		return (blend_brightness(color_wall(ray, eng->window.height, y), ray->brightness));
+		return (blend_brightness_f(color_wall(ray, eng->window.height, y), ray->brightness));
 	#else
 		return (color_wall(ray, eng->window.height, y));
 	#endif

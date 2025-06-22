@@ -28,31 +28,6 @@ MAYBE_INLINE void	draw_vert_line(t_frame_buf *buf, int x, int start, int end,
 		draw_pixel(buf, x, start++, color);
 }
 
-MAYBE_INLINE void	draw_rectangle(t_engine *eng, t_point start, t_point size, unsigned int color)
-{
-	unsigned int	*pixel_addr;
-	int				x;
-	int				y;
-
-	y = -1;
-	if (start.x < 0)
-		start.x = 0;
-	if (start.y < 0)
-		start.y = y;
-	if (start.x + size.x > eng->main_buffer.width)
-		size.x = start.x + size.x - eng->main_buffer.width;
-	if (start.y + size.y > eng->main_buffer.height)
-		size.y = start.y + size.y - eng->main_buffer.height;
-	while (++y < size.y)
-	{
-		x = -1;
-		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + (y + start.y) *
-			eng->main_buffer.line_size + (start.x * 4));
-		while (++x < size.x)
-			pixel_addr[x] = color;
-	}
-}
-
 MAYBE_INLINE void	draw_for_each_pixel(t_engine *eng, t_point end,
 				unsigned int foo(t_engine *eng, int x, int y,
 					unsigned int color))
@@ -72,7 +47,8 @@ MAYBE_INLINE void	draw_for_each_pixel(t_engine *eng, t_point end,
 	}
 }
 
-MAYBE_INLINE void	draw_from_to_each(t_engine *eng, t_point start, t_point size, unsigned int foo(t_engine *eng, int x, int y, unsigned int color))
+MAYBE_INLINE void	draw_from_to_each(t_engine *eng, t_point start, t_point size,
+							t_ui foo(t_engine *eng, int x, int y, t_ui color))
 {
 	unsigned int	*pixel_addr;
 	int				x;

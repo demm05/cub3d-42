@@ -20,4 +20,5 @@ void	display_fps_counter(t_timing *tm, t_engine *eng)
 	tm->last_frame_time_us = tm->frame_start;
 	tm->current_fps = tm->frame_count;
 	tm->frame_count = 0;
+	eng->menu.is_drawn = 0;
 }
