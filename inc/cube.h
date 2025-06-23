@@ -22,13 +22,11 @@
 # define DISABLE_AUTOREPEAT_KEY 1
 
 # define FOV 0.66
-# define MAP_BORDER_OFFSET 5
-# define MAP_CUBE_GAP 1
-# define MAP_SIZEOF_MINIMAP 5
-# define MAP_BORDER_SIZE 3
 # define ENABLE_FOG 1
 # define FOG_DISTANCE 22.0
 
+# define SUCCESS 1
+# define FAILURE 0
 # define MEM_ALLOCATE_ERR ": fail to allocate memory"
 
 # ifndef DEBUG
@@ -43,7 +41,9 @@
 # include "../lib/libft/libft.h"
 # include "../lib/minilibx/mlx.h"
 
-# include "vector.h"
+# include "types.h"
+# include "menu.h"
+# include "minimap.h"
 # include "render.h"
 # include "assets.h"
 # include "parser.h"
@@ -53,6 +53,7 @@
 # include "door.h"
 # include "engine.h"
 # include "utils.h"
+# include "text.h"
 
 # include "ft_color_utils.h"
 

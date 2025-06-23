@@ -14,5 +14,6 @@
 # define INPUT_PRIVATE_H
 
 # include "cube.h"
+# include <X11/keysym.h>
 
 #endif

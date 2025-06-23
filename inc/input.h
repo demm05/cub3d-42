@@ -32,11 +32,12 @@ typedef struct s_input
 	t_vec2_int	prev_mouse_pos;
 }	t_input;
 
-int	input_keyboard_press(int keycode, t_engine *eng);
-int	input_keyboard_release(int keycode, t_engine *eng);
-int	input_mouse_press(int key, int x, int y, t_engine *eng);
-int	input_mouse_move(int x, int y, t_engine *eng);
-int	input_focus_in(t_engine *eng);
-int	input_focus_out(t_engine *eng);
+int		input_keyboard_press(int keycode, t_engine *eng);
+int		input_keyboard_release(int keycode, t_engine *eng);
+int		input_mouse_press(int key, int x, int y, t_engine *eng);
+int		input_mouse_move(int x, int y, t_engine *eng);
+int		input_focus_in(t_engine *eng);
+int		input_focus_out(t_engine *eng);
+void	minimap_toggle(t_engine *eng);
 
 #endif

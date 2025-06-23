@@ -13,7 +13,7 @@
 #include "parser_private.h"
 #include "errno.h"
 
-static char	**get_files_from_dir(const char *dir_path)
+char	**get_files_from_dir(const char *dir_path, const char *ext)
 {
 	DIR				*dir;
 	t_list			*lst;
@@ -26,11 +26,11 @@ static char	**get_files_from_dir(const char *dir_path)
 			": cannot access to directory with path: %s\n", dir_path);
 		return (NULL);
 	}
-	lst = readdirectory(dir, dir_path);
+	lst = readdirectory(dir, dir_path, ext);
 	closedir(dir);
 	if (!lst)
 	{
-		ft_fprintf(STDERR_FILENO, RED "Error" RESET ": directory is empty\n");
+		ft_fprintf(STDERR_FILENO, RED "Error" RESET ": %s is empty\n", dir_path);
 		return (NULL);
 	}
 	names = get_names(lst);
@@ -47,7 +47,7 @@ static int	parse_sprite_from_dir(void *mlx_ptr,
 	int		i;
 
 	i = 0;
-	names = get_files_from_dir(dir_path);
+	names = get_files_from_dir(dir_path, ".xpm");
 	if (!names)
 		return (-1);
 	sprite->len = split_len(names);

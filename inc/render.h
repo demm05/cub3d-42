@@ -34,6 +34,7 @@ typedef struct s_image
 	int		width;
 	int		height;
 	int		endian;
+	int		depth8;
 }	t_image;
 
 typedef struct s_image	t_frame_buf;
@@ -60,6 +61,7 @@ void	destroy_image(t_image *img);
 
 // DRAWING
 int		get_pixel_color(t_image *img, int x, int y);
+t_ui	*get_pixel_address(t_image *img, int x, int y);
 void	draw_vert_line(t_frame_buf *buf, int x, int start, int end, int color);
 void	draw_rectangle(t_engine *eng, t_point start, t_point size, unsigned int color);
 void	draw_pixel(t_frame_buf *buf, int x, int y, int color);
@@ -68,18 +70,17 @@ void	draw_for_each_pixel(t_engine *eng, t_point end,
 				unsigned int foo(t_engine *eng, int x, int y, unsigned int color));
 void	draw_from_to_each(t_engine *eng, t_point start, t_point size,
 				unsigned int foo(t_engine *eng, int x, int y, unsigned int color));
-void	display_fps_counter(t_timing *tm, t_window *win);
+void	display_fps_counter(t_timing *tm, t_engine *eng);
 // DRAWING
-
-// MINIMAP
-void	minimap_update_properties(t_engine *eng);
-void	draw_minimap(t_engine *eng);
-bool	minimap_create(t_engine *eng);
-// MINIMAP
 
 t_ui	blend_normal(t_ui source, t_ui dest);
 
 void	render_frame(t_engine *eng);
-t_ui	blend_brightness(t_ui color, float br);
+t_ui	blend_brightness_f(t_ui color, float br);
+t_ui	blend_brightness(t_ui color, unsigned char brightness);
+void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned char alpha);
+
+void	render_rectangle_blend(t_engine *eng, t_point start, t_point size, unsigned int color);
+void	render_dimmed_screen(t_engine *eng, unsigned char dim);
 
 #endif

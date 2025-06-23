@@ -46,15 +46,19 @@ typedef struct s_engine
 	t_camera	camera;
 	t_ray		*rays;
 	t_timing	timing;
-	t_minimap	*minimap;
+	t_minimap	minimap;
 	t_lookup	table;
+	t_freetype	*freetype;
+	t_state		state;
+	t_menu		menu;
+	bool		draw_new_frame;
 	t_doors		doors;
 }	t_engine;
 
 bool	engine_init(t_engine *eng, char *map_path);
 int		engine_loop(t_engine *eng);
 void	engine_destroy(t_engine *eng);
-void	eng_new_frame(t_timing *timing);
+void	eng_new_frame(t_engine *eng);
 bool	update_lookup_table(t_engine *eng);
 void	enging_loop_stop(t_engine *eng);
 

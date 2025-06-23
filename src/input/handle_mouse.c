@@ -12,27 +12,32 @@
 
 #include "input_private.h"
 
-int	input_mouse_press(int key, int x, int y, t_engine *eng)
-{
-	(void) eng;
-	(void) key;
-	(void) x;
-	(void) y;
-	return (0);
-}
-
 // TODO: if in menu this function should return 0
 // TODO: if there was a change of focus we should do nothing
-int	input_mouse_move(int x, int y, t_engine *eng)
+static void	mouse_move_game(int x, int y, t_engine *eng)
 {
-#if DEBUG
-	printf("mouse_move: %dx%d\n", x, y);
-#endif
-	(void)y;
+	if (!eng->input.prev_mouse_pos.x)
+	{
+		eng->input.prev_mouse_pos.x = (int [2]){100, x}[x > 100];
+		eng->input.prev_mouse_pos.y = (int [2]){100, y}[y > 100];
+	}
 	if (x - eng->input.prev_mouse_pos.x == 0)
-		return (0);
+		return ;
 	eng->input.mouse_move = eng->input.prev_mouse_pos.x - x;
 	x = eng->input.prev_mouse_pos.x;
 	mlx_mouse_move(eng->mlx, eng->window.win, x, eng->input.prev_mouse_pos.y);
+}
+
+int	input_mouse_press(int key, int x, int y, t_engine *eng)
+{
+	if (eng->state == MENU)
+		menu_mouse_press(eng, key, x, y);
+	return (0);
+}
+
+int	input_mouse_move(int x, int y, t_engine *eng)
+{
+	if (eng->state == PLAYING)
+		mouse_move_game(x, y, eng);
 	return (0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   blend.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/23 13:29:52 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/23 13:29:52 by dmelnyk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "render_private.h"
 
 /**
@@ -35,7 +47,7 @@ MAYBE_INLINE t_ui	blend_normal(t_ui source, t_ui dest)
 	return (((r.red & 0xFF) << 16) | ((r.green & 0xFF) << 8) | (r.blue & 0xFF));
 }
 
-MAYBE_INLINE t_ui	blend_brightness(t_ui color, float brightness)
+MAYBE_INLINE t_ui	blend_brightness_f(t_ui color, float brightness)
 {
 	int	r;
 	int	g;
@@ -55,4 +67,39 @@ MAYBE_INLINE t_ui	blend_brightness(t_ui color, float brightness)
 	g = (g * brightness_fixed) >> 8;
 	b = (b * brightness_fixed) >> 8;
 	return ((r << 16) | (g << 8) | b);
+}
+
+MAYBE_INLINE t_ui	blend_brightness(t_ui color, unsigned char brightness)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = (color >> 16) & 0xFF;
+	g = (color >> 8) & 0xFF;
+	b = color & 0xFF;
+	r = (r * brightness) >> 8;
+	g = (g * brightness) >> 8;
+	b = (b * brightness) >> 8;
+	return ((r << 16) | (g << 8) | b);
+}
+
+MAYBE_INLINE void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned char alpha)
+{
+	t_ui	*source;
+	t_rgb	s;
+	t_rgb	d;
+	t_rgb	r;
+
+	source = get_pixel_address(&eng->main_buffer, p.x, p.y);
+	s.red = (*source >> 16) & 0xFF;
+	s.green = (*source >> 8) & 0xFF;
+	s.blue = *source & 0xFF;
+	d.red = (dest >> 16) & 0xFF;
+	d.green = (dest >> 8) & 0xFF;
+	d.blue = dest & 0xFF;
+	r.red = blend_channel_fast(d.red, s.red, alpha) & 0xFF;
+	r.green = blend_channel_fast(d.green, s.green, alpha) & 0xFF;
+	r.blue = blend_channel_fast(d.blue, s.blue, alpha) & 0xFF;
+	*source = r.red << 16 | r.green << 8 | r.blue;
 }

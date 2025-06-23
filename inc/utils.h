@@ -69,4 +69,7 @@ char		map_get_c(t_map *map, int x, int y);
 int			map_get(t_map *map, int x, int y);
 void		map_set(t_map *map, int x, int y, int c);
 t_image		*sprite_get_img(t_images *sp, int i);
+
+int	error_log(const char *format, ...);
+
 #endif

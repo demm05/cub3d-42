@@ -45,8 +45,8 @@ void	mlx_enable_window_resize(void *mlx, t_window *window)
 	XGetWMNormalHints(xvar->display, *win, &hints, &toto);
 	hints.width = window->width;
 	hints.height = window->height;
-	hints.min_width = 100;
-	hints.min_height = 100;
+	hints.min_width = 500;
+	hints.min_height = 500;
 	hints.max_width = window->max_width;
 	hints.max_height = window->max_height;
 	hints.flags = PPosition | PSize | PMinSize | PMaxSize;
