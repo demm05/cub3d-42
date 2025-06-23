@@ -35,6 +35,8 @@ int	input_mouse_press(int key, int x, int y, t_engine *eng)
 #endif
 	if (eng->state == MENU)
 		menu_mouse_press(eng, key, x, y);
+	else
+		eng->health--;
 	return (0);
 }
 

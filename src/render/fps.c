@@ -14,8 +14,12 @@
 
 void	display_fps_counter(t_timing *tm, t_engine *eng)
 {
+	t_point	size;
+
 	text_set_font_size(eng, 20, 0);
-	text_put_int(eng, (t_point){2, 2}, tm->current_fps, 0xFF00FF);
+	size = text_ui_get_size(eng, tm->current_fps, 0);
+	text_put_int(eng, (t_point){eng->window.width - size.x,
+		eng->window.height - size.y}, tm->current_fps, 0xFF00FF);
 	if (tm->frame_start - tm->last_frame_time_us < 1000000)
 		return ;
 	tm->last_frame_time_us = tm->frame_start;

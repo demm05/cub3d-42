@@ -38,4 +38,6 @@ void	set_defaults(t_engine *eng)
 	eng->camera.mouse_speed = 0.2;
 	eng->state = MENU;
 	eng->draw_new_frame = 1;
+	eng->health = 100;
+	eng->setting.ui_scale = 0.6;
 }
