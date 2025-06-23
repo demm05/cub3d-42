@@ -27,6 +27,7 @@ MAYBE_INLINE void	render_frame(t_engine *eng)
 		cast_ray(eng, &eng->rays[x], h, w);
 	draw_for_each_pixel(eng, (t_point){w, h}, color_background);
 	render_minimap(eng);
+	render_crosshair(eng);
 	if (eng->state == MENU)
 	{
 		render_dimmed_screen(eng, MENU_DIM);
