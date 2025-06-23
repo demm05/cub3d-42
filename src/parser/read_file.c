@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:28:23 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/13 16:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/18 13:11:06 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ static int	add_node(t_list **lst, t_list *new, t_string *new_str)
 {
 	if (!new || !new_str)
 	{
-		ft_putendl_fd(RED "Error" RESET
-			": fail to allocate memory", STDERR_FILENO);
+		ft_putendl_fd(RED "Error" RESET MEM_ALLOCATE_ERR, STDERR_FILENO);
 		if (!new)
 			free(new_str);
 		ft_lstdelone(new, free);
