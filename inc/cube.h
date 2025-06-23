@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:17:02 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/09 17:12:20 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:54:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define ENABLE_FOG 1
 # define FOG_DISTANCE 22.0
 
+# define MEM_ALLOCATE_ERR ": fail to allocate memory"
+
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
@@ -48,6 +50,7 @@
 # include "input.h"
 # include "camera.h"
 # include "raycaster.h"
+# include "door.h"
 # include "engine.h"
 # include "utils.h"
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keyboard.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:20:00 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 13:09:46 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/23 16:31:19 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ int	input_keyboard_press(int keycode, t_engine *eng)
 	else if (keycode == XK_d)
 		eng->input.moving_right = 1;
 	else if (keycode == XK_Left)
-		eng->input.look_left= 1;
+		eng->input.look_left = 1;
 	else if (keycode == XK_Right)
 		eng->input.look_right = 1;
 	else if (keycode == XK_Shift_L)
 		eng->camera.move_speed *= 1.5;
 	else if (keycode == XK_m)
 		eng->input.minimap_toggle = !eng->input.minimap_toggle;
+	else if (keycode == XK_e)
+		eng->input.opening_door = 1;
 	return (0);
 }
 

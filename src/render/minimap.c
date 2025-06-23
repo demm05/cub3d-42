@@ -49,6 +49,8 @@ MAYBE_INLINE t_ui	minimap_draw(t_engine *eng, int x, int y, t_ui color)
 		return (blend_normal(color, MAP_CUBE_EMPTY_COLOR));
 	if (map_get(eng->map, x / m->cub_size.x, y / m->cub_size.y) < 1)
 		return (blend_normal(color, MAP_CUBE_EMPTY_COLOR));
+	if (map_get_c(eng->map, x / m->cub_size.x, y / m->cub_size.y) == 'd')
+		return (MAP_CUBE_DOOR_COLOR);
 	return (MAP_CUBE_FULL_COLOR);
 }
 

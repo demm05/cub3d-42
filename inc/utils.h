@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/10 12:44:29 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:36:27 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int			input_event_resize(t_engine *eng);
 
 int			sort_str_lst(t_list **lst);
 
+char		map_get_c(t_map *map, int x, int y);
 int			map_get(t_map *map, int x, int y);
 void		map_set(t_map *map, int x, int y, int c);
 t_image		*sprite_get_img(t_images *sp, int i);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:58:57 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 13:13:28 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/17 16:28:17 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@ typedef struct s_engine	t_engine;
 
 typedef struct s_input
 {
-	int		mouse_move;
-	char	moving_up;
-	char	moving_down;
-	bool	moving_left;
-	bool	moving_right;
-	bool	look_left;
-	bool	look_right;
-	bool	minimap_toggle;
-	bool	resizing;
+	int			mouse_move;
+	char		moving_up;
+	char		moving_down;
+	bool		moving_left;
+	bool		moving_right;
+	bool		look_left;
+	bool		look_right;
+	bool		minimap_toggle;
+	bool		resizing;
+	bool		opening_door;
 	t_vec2_int	prev_mouse_pos;
 }	t_input;
 

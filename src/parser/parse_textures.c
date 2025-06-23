@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/17 15:07:10 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/18 12:59:36 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,5 +197,11 @@ int	init_textures(void *mlx_ptr, t_textures *textures, t_list **lst)
 	if (!textures || !mlx_ptr || !lst)
 		return (-1);
 	ft_bzero(textures, sizeof(t_textures));
-	return (parse_textures(mlx_ptr, textures, lst));
+	if (parse_textures(mlx_ptr, textures, lst) == -1)
+	{
+		ft_fprintf(STDERR_FILENO, RED "Error" RESET
+			": textures not found\n");
+		return (-1);
+	}
+	return (0);
 }
