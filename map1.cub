@@ -2,8 +2,6 @@ WALLS   ./assets/walls/
 F       ./assets/floor/0.xpm
 C       ./assets/ceiling/0.xpm
 DOOR    ./assets/door/
-P_IN    ./assets/west.xpm
-P_OUT   ./assets/west.xpm
 
         1111111111124343434343431
         1000000000130000000000004
