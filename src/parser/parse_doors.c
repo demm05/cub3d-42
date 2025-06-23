@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:00:31 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/20 13:09:41 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:20:25 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	parse_doors(t_doors *doors, t_map *map)
 	if (!doors || !map)
 		return (-1);
 	doors->len = count_doors(map);
-	printf("doors len %i\n", doors->len);
 	if (doors->len == 0)
 		return (0);
 	doors->doors = ft_calloc(doors->len, sizeof(t_door));

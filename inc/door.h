@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:35:40 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/20 13:10:44 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:32:43 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ typedef struct s_doors
 
 t_door	*get_nearby_closed_door(t_camera *player, t_doors *doors);
 
-void	handle_door_interaction(t_camera *player, t_door *door,
-			bool *opening_door);
+void	handle_door_interaction(t_door *door, bool *opening_door);
 
 void	update_doors(t_doors *doors, t_map **map, t_camera *player, double dt);
 

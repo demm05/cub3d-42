@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:20:00 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 16:31:19 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:27:01 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ MAYBE_INLINE void	keyboard_press_game(int keycode, t_engine *eng)
 		minimap_toggle(eng);
 	else if (keycode == XK_e)
 		eng->input.opening_door = 1;
-	return (0);
 }
 
 MAYBE_INLINE void	keyboard_release_game(int keycode, t_engine *eng)

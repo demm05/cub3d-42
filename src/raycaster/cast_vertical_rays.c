@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_vertical_rays.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:32 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:29:33 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:37:34 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static MAYBE_INLINE void	set_direction(t_ray *ray, t_camera *cam)
 	}
 }
 
-static MAYBE_INLINE void	dda(t_ray *ray, t_engine *eng)
+static MAYBE_INLINE void	dda(t_ray *ray)
 {
 	if (ray->side_dist.x < ray->side_dist.y)
 	{
@@ -86,7 +86,7 @@ static MAYBE_INLINE void	perform_dda_door(t_ray *ray, t_engine *eng)
 
 	while (1)
 	{
-		dda(ray, eng);
+		dda(ray);
 
 		// Обчисли dist
 		if (!ray->side)
@@ -104,8 +104,7 @@ static MAYBE_INLINE void	perform_dda_door(t_ray *ray, t_engine *eng)
 		{
 			nearby = get_nearby_closed_door(&eng->camera, &eng->doors);
 			if (nearby == hit_door && eng->input.opening_door)
-				handle_door_interaction(&eng->camera, nearby,
-					&eng->input.opening_door);
+				handle_door_interaction(nearby, &eng->input.opening_door);
 			else
 				eng->input.opening_door = 0;
 		}
@@ -141,47 +140,6 @@ static MAYBE_INLINE void	perform_dda_door(t_ray *ray, t_engine *eng)
 		else if (tile >= '1' && tile <= '9')
 			return ;
 	}
-}
-
-static MAYBE_INLINE void	perform_dda(t_ray *ray, t_engine *eng)
-{
-	char	tile;
-
-	while (1)
-	{
-		dda(ray, eng);
-		tile = get_tile_with_doors(&eng->doors, ray->map.x,
-				ray->map.y, eng->map->matrix);
-		if (tile >= '1' && tile <= '9')
-			return ;
-	}
-}
-
-MAYBE_INLINE void	cast_door(t_engine *eng, t_ray *ray, int h, int w)
-{
-	set_values(ray, &eng->camera, w);
-	set_direction(ray, &eng->camera);
-	perform_dda_door(ray, eng);
-
-	if (!ray->side)
-		ray->wall_dist = ray->side_dist.x - ray->delta.x;
-	else
-		ray->wall_dist = ray->side_dist.y - ray->delta.y;
-
-	ray->line_height = h / ray->wall_dist;
-	ray->draw_start = -ray->line_height / 2 + h / 2;
-	ray->draw_end = ray->line_height / 2 + h / 2;
-	if (ray->draw_start < 0)
-		ray->draw_start = 0;
-	if (ray->draw_end > h)
-		ray->draw_end = h;
-
-	ray->brightness = 1.0 - (ray->wall_dist / FOG_DISTANCE);
-	if (ray->brightness < 0)
-		ray->brightness = 0;
-	// ray_set_door_prop(eng, ray);
-	ray_set_wall_prop(eng, ray);
-	// ray_set_floor_prop(eng, ray);
 }
 
 MAYBE_INLINE void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)

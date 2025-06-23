@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_door.c                                          :+:      :+:    :+:   */
+/*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:41:12 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/23 15:45:09 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 18:32:01 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "door_private.h"
-
-// bool	is_door(t_engine *eng)
-// {
-// 	if (eng->input.opening_door)
-// 	{
-// 		eng->input.opening_door = 0;
-// 		if (eng->camera.pos.x + 1 == eng->door.x
-// 			|| eng->camera.pos.y + 1 == eng->door.y
-// 			|| eng->camera.pos.x - 1 == eng->door.x
-// 			|| eng->camera.pos.y - 1 == eng->door.y
-// 		)
-// 		{
-// 			eng->door.ready_to_open = 1;
-// 			return (1);
-// 		}
-// 	}
-// 	return (0);
-// }
 
 void	print_door(t_door *door, char *state)
 {
@@ -37,21 +19,6 @@ void	print_door(t_door *door, char *state)
 		door->is_open, door->ready_to_open);
 }
 
-// t_door	*get_nearby_closed_door(t_camera *player, t_doors *doors)
-// {
-// 	for (int i = 0; i < doors->len; i++)
-// 	{
-// 		t_door *door = &doors->doors[i];
-// 		if (door->is_open)
-// 			continue ;
-// 		double dx = player->pos.x - (door->x + 0.5);
-// 		double dy = player->pos.y - (door->y + 0.5);
-// 		double dist = sqrt(dx * dx + dy * dy);
-// 		if (dist < 2)
-// 			return (door);
-// 	}
-// 	return (NULL);
-// }
 t_door	*get_nearby_closed_door(t_camera *player, t_doors *doors)
 {
 	const double max_dist = 2.5;
@@ -83,8 +50,6 @@ t_door	*get_nearby_closed_door(t_camera *player, t_doors *doors)
 		double offset = fabs(perp_x * dx + perp_y * dy);
 		if (offset > max_offset)
 			continue;
-
-		// Скалярний добуток для перевірки чи перед нами
 		double dot = door_vec_x * player->dir.x + door_vec_y * player->dir.y;
 		if (dot > best_dot)
 		{
@@ -92,12 +57,11 @@ t_door	*get_nearby_closed_door(t_camera *player, t_doors *doors)
 			nearest = door;
 		}
 	}
-	return nearest;
+	return (nearest);
 }
 
 
-void	handle_door_interaction(t_camera *player, t_door *door,
-	bool *opening_door)
+void	handle_door_interaction(t_door *door, bool *opening_door)
 {
 	if (!*opening_door)
 		return ;
@@ -113,7 +77,7 @@ void	handle_door_interaction(t_camera *player, t_door *door,
 void	update_doors(t_doors *doors, t_map **map,
 		t_camera *player, double dt)
 {
-	const double	door_speed = 0.009;
+	const double	door_speed = 0.008;
 
 	for (int i = 0; i < doors->len; i++)
 	{
