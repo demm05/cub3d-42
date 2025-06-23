@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keyboard.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:20:00 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 13:09:46 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/23 16:31:19 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ MAYBE_INLINE void	keyboard_press_game(int keycode, t_engine *eng)
 		eng->camera.move_speed *= 1.5;
 	else if (keycode == XK_m)
 		minimap_toggle(eng);
+	else if (keycode == XK_e)
+		eng->input.opening_door = 1;
+	return (0);
 }
 
 MAYBE_INLINE void	keyboard_release_game(int keycode, t_engine *eng)

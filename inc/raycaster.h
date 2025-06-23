@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:01:24 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 10:09:17 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:54:40 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define RAYCASTER_H
 
 # include "cube.h"
+
+typedef struct s_door	t_door;
 
 typedef struct s_ray
 {
@@ -34,10 +36,14 @@ typedef struct s_ray
 	int				x_on_tex;
 	t_image			*texture;
 	bool			side;
+	bool			skip_render;
+	bool			is_door;
+	t_door			*door_ptr;
 }	t_ray;
 
 bool	allocate_rays(t_engine *eng);
 void	destroy_rays(t_engine *eng);
 void	cast_ray(t_engine *eng, t_ray *ray, int h, int w);
+void	cast_door(t_engine *eng, t_ray *ray, int h, int w);
 
 #endif

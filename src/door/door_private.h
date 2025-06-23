@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_private.h                                   :+:      :+:    :+:   */
+/*   door_private.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 09:57:32 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 17:07:19 by ogrativ          ###   ########.fr       */
+/*   Created: 2025/06/18 11:34:18 by ogrativ           #+#    #+#             */
+/*   Updated: 2025/06/18 13:33:17 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_PRIVATE_H
-# define RENDER_PRIVATE_H
+#ifndef DOOR_PRIVATE_H
+# define DOOR_PRIVATE_H
 
 # include "cube.h"
 
-#endif
+
+
+#endif  //!DOOR_PRIVATE_H

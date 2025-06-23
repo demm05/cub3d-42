@@ -25,6 +25,7 @@ MAYBE_INLINE void	render_frame(t_engine *eng)
 	x = -1;
 	while (++x < w)
 		cast_ray(eng, &eng->rays[x], h, w);
+	update_doors(&eng->doors, &eng->map, &eng->camera, 1.0);
 	draw_for_each_pixel(eng, (t_point){w, h}, color_background);
 	render_minimap(eng);
 	if (eng->state == MENU)
