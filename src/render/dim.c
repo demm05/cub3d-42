@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   dim.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 13:30:40 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:30:40 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/06/23 13:29:56 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/23 13:29:57 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils_private.h"
-#include <stdarg.h>
+#include "render_private.h"
 
-int	error_log(const char *format, ...)
+MAYBE_INLINE void	render_dimmed_screen(t_engine *eng, unsigned char dim)
 {
-	va_list	args;
-	
-	va_start(args, format);
-	ft_fprintf(STDERR_FILENO, RED"ERROR"RESET": ");
-	ft_vfprintf(STDERR_FILENO, format, args);
-	va_end(args);
-	return (FAILURE);
+	unsigned int	*pixel_addr;
+	int				x;
+	int				y;
+
+	y = -1;
+	while (++y < eng->window.height)
+	{
+		x = -1;
+		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + y * eng->main_buffer.line_size);
+		while (++x < eng->window.width)
+			pixel_addr[x] = blend_brightness(pixel_addr[x], dim);
+	}
 }

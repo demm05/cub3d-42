@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flash.c                                            :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 17:04:23 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/28 17:04:23 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/06/23 13:29:19 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/23 13:29:19 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render_private.h"
-#include <string.h>
+#include "cube.h"
 
-MAYBE_INLINE void	buffer_flash(t_frame_buf *buf, t_window *win, int x, int y)
+void	render_menu(t_engine *eng)
 {
-	mlx_put_image_to_window(win->mlx, win->win, buf->img, x, y);
-}
+	t_menu	*m;
+	int		i;
 
-MAYBE_INLINE void	buffer_clear(t_frame_buf *buf)
-{
-	memset(buf->buffer, 0, buf->height * buf->line_size);
+	m = &eng->menu;
+	eng->draw_new_frame = 0;
+	text_set_font_size(eng, m->bs.y * 0.6, 0);
+	i = -1;
+	while (++i < m->size)
+	{
+		render_rectangle_blend(eng, m->main[i].draw_start, m->bs, MENU_BUTTON_COLOR);
+		text_put_str(eng, m->main[i].draw_start, m->main[i].text, MENU_TEXT_COLOR);
+	}
 }

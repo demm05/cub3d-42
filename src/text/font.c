@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   font.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 13:30:40 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:30:40 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/06/23 13:30:13 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/23 13:30:13 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils_private.h"
-#include <stdarg.h>
+#include "text_private.h"
 
-int	error_log(const char *format, ...)
+void	text_set_font_size(t_engine *eng, int size, int font)
 {
-	va_list	args;
-	
-	va_start(args, format);
-	ft_fprintf(STDERR_FILENO, RED"ERROR"RESET": ");
-	ft_vfprintf(STDERR_FILENO, format, args);
-	va_end(args);
-	return (FAILURE);
+    FT_Set_Pixel_Sizes(eng->freetype->matrix[font], 0, size);
 }

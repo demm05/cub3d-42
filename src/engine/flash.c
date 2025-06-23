@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   flash.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 13:30:40 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:30:40 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/05/28 17:04:23 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/05/28 17:04:23 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils_private.h"
-#include <stdarg.h>
+#include "engine_private.h"
 
-int	error_log(const char *format, ...)
+MAYBE_INLINE void	buffer_flash(t_frame_buf *buf, t_window *win, int x, int y)
 {
-	va_list	args;
-	
-	va_start(args, format);
-	ft_fprintf(STDERR_FILENO, RED"ERROR"RESET": ");
-	ft_vfprintf(STDERR_FILENO, format, args);
-	va_end(args);
-	return (FAILURE);
+	mlx_put_image_to_window(win->mlx, win->win, buf->img, x, y);
+}
+
+MAYBE_INLINE void	buffer_clear(t_frame_buf *buf)
+{
+	ft_memset(buf->buffer, 0, buf->height * buf->line_size);
 }
