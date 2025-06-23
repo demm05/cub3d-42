@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flash.c                                            :+:      :+:    :+:   */
+/*   press.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 17:04:23 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/28 17:04:23 by dmelnyk          ###   ########.fr       */
+/*   Created: 2025/06/23 13:29:16 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/23 13:29:16 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render_private.h"
-#include <string.h>
+#include "cube.h"
 
-MAYBE_INLINE void	buffer_flash(t_frame_buf *buf, t_window *win, int x, int y)
+MAYBE_INLINE void	menu_mouse_press(t_engine *eng, int keycode, int x, int y)
 {
-	mlx_put_image_to_window(win->mlx, win->win, buf->img, x, y);
-}
+	t_mi_prop	*p;
+	t_menu		*m;
+	int			item;
 
-MAYBE_INLINE void	buffer_clear(t_frame_buf *buf)
-{
-	memset(buf->buffer, 0, buf->height * buf->line_size);
+	(void)keycode;
+	eng->draw_new_frame = 1;
+	m = &eng->menu;
+	item = -1;
+	while (++item < m->size)
+	{
+		p = &m->main[item];
+		if (x > p->draw_start.x && x < p->draw_end.x && y > p->draw_start.y && y < p->draw_end.y)
+			return (p->caller(eng));
+	}
+	eng->draw_new_frame = 0;
 }

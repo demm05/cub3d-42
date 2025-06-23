@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rectangle.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/23 13:30:04 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/23 13:30:05 by dmelnyk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "render_private.h"
 
 MAYBE_INLINE void	draw_rectangle(t_engine *eng, t_point start, t_point size, unsigned int color)

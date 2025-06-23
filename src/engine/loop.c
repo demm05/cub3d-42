@@ -25,7 +25,7 @@ int	engine_loop(t_engine *eng)
 	}
 	eng_new_frame(eng);
 	if (!eng->draw_new_frame)
-		return (0);
+		return (usleep(20000), 0);
 	camera_keyboard_move_event(eng, &eng->camera);
 	camera_keyboard_rotate_event(eng);
 	camera_mouse_move_event(eng);

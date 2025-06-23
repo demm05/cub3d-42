@@ -24,6 +24,7 @@ void	engine_destroy(t_engine *eng)
 	destroy_rays(eng);
 	text_destroy(eng);
 	free(eng->table.y);
+	free(eng->menu.main);
 }
 
 void	mlx_destroy(t_engine *eng)

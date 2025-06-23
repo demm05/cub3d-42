@@ -30,10 +30,8 @@ static void	mouse_move_game(int x, int y, t_engine *eng)
 
 int	input_mouse_press(int key, int x, int y, t_engine *eng)
 {
-	(void) eng;
-	(void) key;
-	(void) x;
-	(void) y;
+	if (eng->state == MENU)
+		menu_mouse_press(eng, key, x, y);
 	return (0);
 }
 

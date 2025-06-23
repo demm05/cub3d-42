@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_glyph.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/23 13:30:26 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/23 13:30:26 by dmelnyk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "text_private.h"
 
 MAYBE_INLINE void	text_render_glyph(t_engine *eng, FT_Face face, t_point baseline, t_ui color)
