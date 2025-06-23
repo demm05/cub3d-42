@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/16 12:15:17 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/18 13:13:56 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	fill_line(t_map *map, t_string *str, size_t j)
 	while (str->str[i] != '\0')
 	{
 		if (str->str[i] == '\n')
-			map->matrix[j][i] = '\0';
+			map->matrix[j][i] = '0';
 		else if (str->str[i] == ' ')
 		{
 		}
@@ -44,7 +44,6 @@ static void	fill_line(t_map *map, t_string *str, size_t j)
 			map->matrix[j][i] = str->str[i];
 		i++;
 	}
-	map->matrix[j][i] = '\0';
 }
 
 static void	fill_matrix(t_map *map, t_list *lst)
@@ -85,7 +84,10 @@ t_map	*init_map(t_list *lst)
 
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
+	{
+		ft_putendl_fd(RED "Error" RESET MEM_ALLOCATE_ERR, STDERR_FILENO);
 		return (NULL);
+	}
 	map->width = find_max_len(lst);
 	map->height = ft_lstsize(lst);
 	map->matrix = (char **)malloc(sizeof(char *) * (map->height + 1));

@@ -52,6 +52,7 @@ typedef struct s_engine
 	t_state		state;
 	t_menu		menu;
 	bool		draw_new_frame;
+	t_doors		doors;
 }	t_engine;
 
 bool	engine_init(t_engine *eng, char *map_path);
