@@ -30,6 +30,9 @@ static void	mouse_move_game(int x, int y, t_engine *eng)
 
 int	input_mouse_press(int key, int x, int y, t_engine *eng)
 {
+#if DEBUG
+	printf("mouse_press: %d %dx%d\n", key, x, y);
+#endif
 	if (eng->state == MENU)
 		menu_mouse_press(eng, key, x, y);
 	return (0);

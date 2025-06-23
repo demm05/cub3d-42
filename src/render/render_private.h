@@ -15,4 +15,6 @@
 
 # include "cube.h"
 
+void	render_crosshair(t_engine *eng);
+
 #endif
