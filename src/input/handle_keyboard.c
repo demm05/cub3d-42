@@ -28,12 +28,11 @@ MAYBE_INLINE void	keyboard_press_game(int keycode, t_engine *eng)
 	else if (keycode == XK_Right)
 		eng->input.look_right = 1;
 	else if (keycode == XK_Shift_L)
-		eng->camera.move_speed *= 1.5;
+		eng->player.move_speed *= 1.5;
 	else if (keycode == XK_m)
 		minimap_toggle(eng);
 	else if (keycode == XK_e)
 		eng->input.opening_door = 1;
-	return (0);
 }
 
 MAYBE_INLINE void	keyboard_release_game(int keycode, t_engine *eng)
@@ -51,13 +50,13 @@ MAYBE_INLINE void	keyboard_release_game(int keycode, t_engine *eng)
 	else if (keycode == XK_Right)
 		eng->input.look_right = 0;
 	else if (keycode == XK_Shift_L)
-		eng->camera.move_speed /= 1.5;
+		eng->player.move_speed /= 1.5;
 }
 
 int	input_keyboard_press(int keycode, t_engine *eng)
 {
 #if DEBUG
-	printf("press: %d\tup: %d\tdown: %d\n", keycode, eng->input.moving_up, eng->input.moving_down);
+	printf("keyboard_press: %d\n", keycode);
 #endif
 	if (eng->state == MENU)
 		;
@@ -69,7 +68,7 @@ int	input_keyboard_press(int keycode, t_engine *eng)
 int	input_keyboard_release(int keycode, t_engine *eng)
 {
 #if DEBUG
-	printf("release: %d\tup: %d\tdown: %d\n", keycode, eng->input.moving_up, eng->input.moving_down);
+	printf("keyboard_release: %d\n", keycode);
 #endif
 	if (keycode == XK_Escape)
 		menu_switch_state(eng);

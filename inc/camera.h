@@ -20,7 +20,6 @@ typedef struct s_camera
 	t_vec2_double	pos;
 	t_vec2_double	dir;
 	t_vec2_double	plane;
-	double			move_speed;
 	double			rotation_speed;
 	float			mouse_speed;
 }	t_camera;

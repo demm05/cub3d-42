@@ -59,7 +59,7 @@ MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
 	double			move_amount;
 	t_vec2_double	new;
 
-	move_amount = cam->move_speed * eng->timing.delta_time;
+	move_amount = eng->player.move_speed * eng->timing.delta_time;
 	if ((eng->input.moving_left || eng->input.moving_right) &&
 		(eng->input.moving_up || eng->input.moving_down))
 		move_amount *= 0.8;

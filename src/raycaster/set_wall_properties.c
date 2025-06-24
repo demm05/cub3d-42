@@ -83,11 +83,7 @@ MAYBE_INLINE void	ray_set_wall_prop(t_engine *eng, t_ray *ray)
 		ray->texture = &eng->textures.door.img_arr[frame];
 	}
 	else
-	{
-		// --- 3. Інакше — звичайна стіна
-		char tile = map_get(eng->map, ray->map.x, ray->map.y);
-		ray->texture = sprite_get_img(&eng->textures.walls, tile);
-	}
+		ray->texture = sprite_get_img(&eng->textures.walls, map_get(eng->map, ray->map.x, ray->map.y) - 1);
 
 	// --- 4. Обчислюємо x-координату на текстурі
 	ray->x_on_tex = (int)(ray->wall_hit * ray->texture->width);

@@ -26,5 +26,7 @@ void	text_put_char(t_engine *eng, t_point p, char c, unsigned int color);
 void	text_put_str(t_engine *eng, t_point start, const char *str, unsigned int color);
 void	text_put_int(t_engine *eng, t_point start, t_ui num, unsigned int color);
 void	text_set_font_size(t_engine *eng, int size, int font);
+t_point	text_ui_get_size(t_engine *eng, t_ui num, int font);
+t_point	text_str_get_size(t_engine *eng, const char *str, int font);
 
 #endif

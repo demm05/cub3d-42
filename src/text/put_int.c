@@ -12,7 +12,7 @@
 
 #include "text_private.h"
 
-MAYBE_INLINE char	*static_str_from_int(unsigned int num)
+static MAYBE_INLINE char	*static_str_from_int(unsigned int num)
 {
 	static char		s[12];
 	char			*ptr;

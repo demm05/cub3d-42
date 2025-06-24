@@ -33,11 +33,11 @@ void	set_defaults(t_engine *eng)
 	eng->window.height = INITIAL_WINDOW_HEIGHT;
 	eng->window.width = INITIAL_WINDOW_WIDTH;
 	eng->window.title = WINDOW_TITLE;
-	eng->camera.move_speed = 3;
 	eng->camera.rotation_speed = 2;
 	eng->camera.mouse_speed = 0.2;
 	eng->state = MENU;
 	eng->draw_new_frame = 1;
-	eng->health = 100;
+	eng->player.health = 100;
+	eng->player.move_speed = 3;
 	eng->setting.ui_scale = 0.6;
 }
