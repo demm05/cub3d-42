@@ -24,7 +24,7 @@ int	input_event_resize(t_engine *eng)
 	XGetWindowAttributes(xvar->display, *win, &attr);
 	eng->window.width = attr.width;
 	eng->window.height = attr.height;
-	eng->input.resizing = 1;
+	eng->window.resizing = 1;
 	minimap_update_properties(eng);
 	menu_update_properties(eng);
 #if DEBUG

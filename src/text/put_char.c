@@ -53,3 +53,27 @@ MAYBE_INLINE void	text_put_str(t_engine *eng, t_point start, const char *str, un
 	}
 }
 
+MAYBE_INLINE t_point	text_str_get_size(t_engine *eng, const char *str, int font)
+{
+	FT_Face	face;
+	t_point	res;
+
+	res.x = 0;
+	res.y = 0;
+	if (!str || !eng || !eng->freetype || !eng->freetype->faces_loaded)
+		return (res);
+	face = eng->freetype->matrix[font];
+	if (!face)
+		return (res);
+	while (*str)
+	{
+		if (!FT_Load_Char(face, *str++, FT_LOAD_RENDER))
+		{
+			res.x += face->glyph->advance.x >> 6;
+			if ((int)face->glyph->bitmap.rows > res.y)
+				res.y = face->glyph->bitmap.rows;
+		}
+	}
+	return (res);
+}
+
