@@ -33,7 +33,6 @@ MAYBE_INLINE void	keyboard_press_game(int keycode, t_engine *eng)
 		minimap_toggle(eng);
 	else if (keycode == XK_e)
 		eng->input.opening_door = 1;
-	return (0);
 }
 
 MAYBE_INLINE void	keyboard_release_game(int keycode, t_engine *eng)
