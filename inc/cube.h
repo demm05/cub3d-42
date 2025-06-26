@@ -42,6 +42,7 @@
 # include "../lib/minilibx/mlx.h"
 
 # include "types.h"
+# include "entity.h"
 # include "menu.h"
 # include "minimap.h"
 # include "render.h"

@@ -25,14 +25,10 @@ int	input_focus_in(t_engine *eng)
 
 int	input_focus_out(t_engine *eng)
 {
-	t_input	copy;
-
 #if DEBUG
 	printf("Focus change: out\n");
 #endif
-	copy = eng->input;
 	ft_bzero(&eng->input, sizeof(t_input));
-	eng->input.minimap_toggle = copy.minimap_toggle;
 	return (0);
 }
 

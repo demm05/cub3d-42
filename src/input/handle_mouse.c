@@ -12,14 +12,26 @@
 
 #include "input_private.h"
 
-// TODO: if in menu this function should return 0
-// TODO: if there was a change of focus we should do nothing
 static void	mouse_move_game(int x, int y, t_engine *eng)
 {
-	if (!eng->input.prev_mouse_pos.x)
+	const int	offset = 150;
+	t_point		*p;
+
+	p = &eng->input.prev_mouse_pos;
+	if (!p->x)
 	{
-		eng->input.prev_mouse_pos.x = (int [2]){100, x}[x > 100];
-		eng->input.prev_mouse_pos.y = (int [2]){100, y}[y > 100];
+		if (x < offset)
+			p->x = offset;
+		else if (x > eng->window.width - offset)
+			p->x = eng->window.width - offset;
+		else
+			p->x = x;
+		if (y < offset)
+			p->y = offset;
+		else if (y > eng->window.height - offset)
+			p->y = eng->window.height - offset;
+		else
+			p->y = y;
 	}
 	if (x - eng->input.prev_mouse_pos.x == 0)
 		return ;
@@ -30,8 +42,13 @@ static void	mouse_move_game(int x, int y, t_engine *eng)
 
 int	input_mouse_press(int key, int x, int y, t_engine *eng)
 {
+#if DEBUG
+	printf("mouse_press: %d %dx%d\n", key, x, y);
+#endif
 	if (eng->state == MENU)
 		menu_mouse_press(eng, key, x, y);
+	else
+		eng->player.health--;
 	return (0);
 }
 

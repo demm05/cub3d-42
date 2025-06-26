@@ -15,6 +15,11 @@
 
 # include "cube.h"
 
+typedef struct s_settings
+{
+	float	ui_scale;
+}	t_settings;
+
 typedef struct s_lookup
 {
 	struct s_cord_y
@@ -33,26 +38,29 @@ typedef struct s_window
 	int		max_width;
 	int		max_height;
 	char	*title;
+	bool	resizing;
 }	t_window;
 
 typedef struct s_engine
 {
+	bool		draw_new_frame;
 	void		*mlx;
-	t_window	window;
-	t_input		input;
-	t_frame_buf	main_buffer;
-	t_textures	textures;
 	t_map		*map;
-	t_camera	camera;
 	t_ray		*rays;
+	t_freetype	*freetype;
+	t_window	window;
+	t_frame_buf	main_buffer;
+	t_input		input;
+	t_textures	textures;
+	t_camera	camera;
 	t_timing	timing;
 	t_minimap	minimap;
 	t_lookup	table;
-	t_freetype	*freetype;
 	t_state		state;
 	t_menu		menu;
-	bool		draw_new_frame;
 	t_doors		doors;
+	t_entity	player;
+	t_settings	setting;
 }	t_engine;
 
 bool	engine_init(t_engine *eng, char *map_path);

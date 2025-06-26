@@ -14,10 +14,10 @@
 
 int	engine_loop(t_engine *eng)
 {
-	if (eng->input.resizing)
+	if (eng->window.resizing)
 	{
 		usleep(50000);
-		eng->input.resizing = 0;
+		eng->window.resizing = 0;
 		eng->draw_new_frame = 1;
 		if (!update_lookup_table(eng))
 			enging_loop_stop(eng);
@@ -26,9 +26,12 @@ int	engine_loop(t_engine *eng)
 	eng_new_frame(eng);
 	if (!eng->draw_new_frame)
 		return (usleep(20000), 0);
-	camera_keyboard_move_event(eng, &eng->camera);
-	camera_keyboard_rotate_event(eng);
-	camera_mouse_move_event(eng);
+	if (eng->state == PLAYING)
+	{
+		camera_keyboard_move_event(eng, &eng->camera);
+		camera_keyboard_rotate_event(eng);
+		camera_mouse_move_event(eng);
+	}
 	render_frame(eng);
 	buffer_flash(&eng->main_buffer, &eng->window, 0, 0);
 	usleep(1000);

@@ -26,8 +26,6 @@ typedef struct s_input
 	bool		moving_right;
 	bool		look_left;
 	bool		look_right;
-	bool		minimap_toggle;
-	bool		resizing;
 	bool		opening_door;
 	t_vec2_int	prev_mouse_pos;
 }	t_input;
