@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:34:09 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/30 16:25:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/25 13:49:12 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,6 @@ static bool	check_line(t_map *map, int j)
 			map->player_pos.y = j;
 			map->player_dir = map->matrix[j][i];
 			map->matrix[j][i] = '0';
-#if DEBUG
-			printf("Player pos on map: %dx%d\n", map->player_pos.x, map->player_pos.y);
-#endif
 		}
 		i++;
 	}
