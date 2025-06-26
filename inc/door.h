@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:35:40 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/20 13:10:44 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/26 16:42:35 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,16 @@
 # include "cube.h"
 # include "math.h"
 
-typedef enum e_door_dir
-{
-	DOOR_DIR_H,
-	DOOR_DIR_V
-}	t_door_dir;
-
 typedef struct s_door
 {
 	int			x;
 	int			y;
-	int			sprite_pos;
 	double		animation;
 	bool		ready_to_open;
 	bool		is_open;
-	double		timer;
-	t_door_dir	dir;
+	bool		is_closing;
+	size_t		start_time;
 }	t_door;
-
 
 typedef struct s_doors
 {
@@ -43,8 +35,7 @@ typedef struct s_doors
 
 t_door	*get_nearby_closed_door(t_camera *player, t_doors *doors);
 
-void	handle_door_interaction(t_camera *player, t_door *door,
-			bool *opening_door);
+void	handle_door_interaction(t_door *door, bool *opening_door);
 
 void	update_doors(t_doors *doors, t_map **map, t_camera *player, double dt);
 

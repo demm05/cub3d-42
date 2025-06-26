@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/17 15:36:27 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/26 12:21:39 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ int			map_get(t_map *map, int x, int y);
 void		map_set(t_map *map, int x, int y, int c);
 t_image		*sprite_get_img(t_images *sp, int i);
 
-int	error_log(const char *format, ...);
+int			error_log(const char *format, ...);
+int			skip_space(char *str);
+
+size_t		get_time_ms(void);
 
 #endif

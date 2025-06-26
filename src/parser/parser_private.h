@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 15:51:00 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/16 12:27:36 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/24 16:47:29 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,10 @@ int		init_texture_pointers(t_textures *textures, bool mode);
 
 int		init_sprites_arr(t_sprite **sprites, t_textures *textures, bool mode);
 int		init_sprites_dir_names_arr(char **dir_path);
+
+int		parse_texture(void *mlx_ptr, t_textures *textures, t_raw_textrure *rt);
+int		parse_textures(void *mlx_ptr, t_textures *textures, t_list **lst);
+
+int		parse_sprite(void *mlx_ptr, t_textures *textures, t_raw_textrure *rt);
 
 #endif
