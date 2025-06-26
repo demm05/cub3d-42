@@ -30,6 +30,8 @@ void	eng_new_frame(t_engine *eng)
 	tm = &eng->timing;
 	tm->delta_time = (double)(current_time - tm->frame_start) / 1000000.0;
 	tm->frame_start = current_time;
+	if (tm->delta_time > MAX_DELTA_TIME)
+		tm->delta_time = MAX_DELTA_TIME;
 	tm->frame_count++;
 	if (tm->frame_start - tm->last_frame_time_us < 1000000)
 		return ;
