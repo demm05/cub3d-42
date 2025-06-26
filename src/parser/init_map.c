@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/18 13:13:56 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/25 13:50:16 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	fill_line(t_map *map, t_string *str, size_t j)
 			map->matrix[j][i] = str->str[i];
 		i++;
 	}
+	map->matrix[j][i] = '\0';
 }
 
 static void	fill_matrix(t_map *map, t_list *lst)
@@ -66,17 +67,18 @@ static void	fill_matrix(t_map *map, t_list *lst)
 	map->matrix[j] = NULL;
 }
 
-static void print_matrix(t_map *map)
-{
-	int	i;
+// static void	print_matrix(t_map *map)
+// {
+// 	int	i;
 
-	if (!map)
-		return;
-	i = -1;
-	while (++i < map->height)
-		printf("%s\n", map->matrix[i]);
-	printf("print_matrix: Map properties: width(%d)  height(%d)\n", map->width, map->height);
-}
+// 	if (!map)
+// 		return ;
+// 	i = -1;
+// 	while (++i < map->height)
+// 		printf("%s\n", map->matrix[i]);
+// 	printf("print_matrix: Map properties: width(%d)  height(%d)\n",
+// 		map->width, map->height);
+// }
 
 t_map	*init_map(t_list *lst)
 {
@@ -94,9 +96,6 @@ t_map	*init_map(t_list *lst)
 	if (!map->matrix)
 		return (NULL);
 	fill_matrix(map, lst);
-#if DEBUG
-	print_matrix(map);
-#endif
 	if (!check_map(map))
 		return (NULL);
 	return (map);

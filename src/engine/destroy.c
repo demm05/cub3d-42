@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:25:37 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/10 12:38:50 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:19:33 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	engine_destroy(t_engine *eng)
 	text_destroy(eng);
 	free(eng->table.y);
 	free(eng->menu.main);
+	free(eng->doors.doors);
 }
 
 void	mlx_destroy(t_engine *eng)
