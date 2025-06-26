@@ -44,6 +44,10 @@ static void	mouse_press_game(int key, int x, int y, t_engine *eng)
 {
 	if (key == 1)
 		animation_start(eng->player.weapon);
+	else if (key == 5)
+		eng->player.health--;
+	else if (key == 4)
+		eng->player.health++;
 }
 
 int	input_mouse_press(int key, int x, int y, t_engine *eng)
@@ -64,3 +68,4 @@ int	input_mouse_move(int x, int y, t_engine *eng)
 		mouse_move_game(x, y, eng);
 	return (0);
 }
+

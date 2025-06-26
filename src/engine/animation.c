@@ -66,9 +66,9 @@ MAYBE_INLINE void	animation_set_time(t_animation *anim, float time)
 MAYBE_INLINE void	animations_init(t_engine *eng)
 {
 	eng->player.weapon = &eng->player.weapons[0];
-	animation_set_sprite(&eng->player.weapons[0], &eng->textures.weapons[0], 0.1);
-	animation_set_sprite(&eng->player.weapons[1], &eng->textures.weapons[1], 0.7);
-	animation_set_sprite(&eng->player.weapons[2], &eng->textures.weapons[2], 1.1);
+	animation_set_sprite(&eng->player.weapons[0], &eng->textures.weapons[0], 0.2);
+	animation_set_sprite(&eng->player.weapons[1], &eng->textures.weapons[1], 0.6);
+	animation_set_sprite(&eng->player.weapons[2], &eng->textures.weapons[2], 0.9);
 }
 
 MAYBE_INLINE void	animations_update_all(t_engine *eng)
