@@ -30,6 +30,7 @@ MAYBE_INLINE void	render_frame(t_engine *eng)
 	render_minimap(eng);
 	render_crosshair(eng);
 	render_health_bar(eng);
+	render_weapon(eng);
 	if (eng->state == MENU)
 	{
 		render_dimmed_screen(eng, MENU_DIM);
@@ -79,7 +80,7 @@ MAYBE_INLINE t_ui	color_wall(t_ray *ray, int h, int y)
 	if (ray->line_height <= 0)
 		return (get_pixel_color(tex, tex_x, 0));
 	else
-        tex_y = (((y * 256 - h * 128 + ray->line_height * 128) * tex->height) / ray->line_height) >> 8;
+        tex_y = (((y * 128 - h * 64+ ray->line_height * 64) * tex->height) / ray->line_height) >> 7;
 	if (tex_y < 0)
 		tex_y = 0;
 	if (tex_y >= tex->height)

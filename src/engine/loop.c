@@ -32,6 +32,7 @@ int	engine_loop(t_engine *eng)
 		camera_keyboard_rotate_event(eng);
 		camera_mouse_move_event(eng);
 	}
+	animations_update_all(eng);
 	render_frame(eng);
 	buffer_flash(&eng->main_buffer, &eng->window, 0, 0);
 	usleep(1000);

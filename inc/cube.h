@@ -42,11 +42,11 @@
 # include "../lib/minilibx/mlx.h"
 
 # include "types.h"
+# include "assets.h"
 # include "entity.h"
 # include "menu.h"
 # include "minimap.h"
 # include "render.h"
-# include "assets.h"
 # include "parser.h"
 # include "input.h"
 # include "camera.h"

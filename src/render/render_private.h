@@ -17,5 +17,6 @@
 
 void	render_crosshair(t_engine *eng);
 void	render_health_bar(t_engine *eng);
+void	render_weapon(t_engine *eng);
 
 #endif

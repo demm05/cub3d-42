@@ -1,7 +1,10 @@
 WALLS   ./assets/walls/
 F       ./assets/floor/0.xpm
 C       ./assets/ceiling/0.xpm
-DOOR    ./assets/door1/
+DOOR    ./assets/door/
+PISTOL  ./assets/weapon/pistol/
+SHOTGUN ./assets/weapon/shotgun/
+ARM     ./assets/weapon/arm/
 
         1111111111124343434343431
         1000000000130000000000004
