@@ -51,6 +51,8 @@ MAYBE_INLINE void	keyboard_release_game(int keycode, t_engine *eng)
 		eng->input.look_right = 0;
 	else if (keycode == XK_Shift_L)
 		eng->player.move_speed /= 1.5;
+	else if (keycode >= XK_1 && keycode <= XK_3)
+		eng->player.weapon = &eng->player.weapons[keycode - XK_1];
 }
 
 int	input_keyboard_press(int keycode, t_engine *eng)

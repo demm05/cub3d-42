@@ -18,8 +18,8 @@ int	input_focus_in(t_engine *eng)
 #if DEBUG
 	printf("Focus change: in\n");
 #endif
-	if (eng->state == PLAYING)
-		mlx_mouse_hide(eng->mlx, eng->window.win);
+	// if (eng->state == PLAYING)
+	// 	mlx_mouse_hide(eng->mlx, eng->window.win);
 	return (0);
 }
 

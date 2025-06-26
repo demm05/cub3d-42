@@ -24,21 +24,6 @@ typedef struct s_rgb
 	unsigned int	blue;
 }	t_rgb;
 
-typedef struct s_image
-{
-	void	*mlx;	// Pointer to mlx instance
-	void	*img;
-	char	*buffer;
-	int		depth;
-	int		line_size;
-	int		width;
-	int		height;
-	int		endian;
-	int		depth8;
-}	t_image;
-
-typedef struct s_image	t_frame_buf;
-
 typedef struct s_timing
 {
 	size_t	last_frame_time_us;

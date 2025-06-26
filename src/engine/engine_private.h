@@ -15,4 +15,8 @@
 
 # include "cube.h"
 
+void	animation_update(t_animation *anim, double delta);
+void	animations_update_all(t_engine *eng);
+void	animations_init(t_engine *eng);
+
 #endif

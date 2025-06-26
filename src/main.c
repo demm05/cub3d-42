@@ -39,5 +39,5 @@ void	set_defaults(t_engine *eng)
 	eng->draw_new_frame = 1;
 	eng->player.health = 100;
 	eng->player.move_speed = 3;
-	eng->setting.ui_scale = 0.6;
+	eng->setting.ui_scale = 1;
 }

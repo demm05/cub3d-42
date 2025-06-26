@@ -29,7 +29,7 @@ n norm:
 		| grep -v "PREPOC_ONLY_GLOBAL" | grep -v "NL_AFTER_PREPROC" | grep -v "PREPROC_CONSTANT" \
 		| grep -v "WRONG_SCOPE_COMMENT" | grep -v "LINE_TOO_LONG" | grep -v "TOO_MANY_ARGS"
 
-v: $(NAME)
+v: all
 	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) map1.cub
 
 .PHONY: gprof gt gdbtui gdb g debug n norm v 

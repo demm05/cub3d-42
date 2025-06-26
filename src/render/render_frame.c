@@ -30,6 +30,7 @@ MAYBE_INLINE void	render_frame(t_engine *eng)
 	render_minimap(eng);
 	render_crosshair(eng);
 	render_health_bar(eng);
+	render_weapon(eng);
 	if (eng->state == MENU)
 	{
 		render_dimmed_screen(eng, MENU_DIM);
