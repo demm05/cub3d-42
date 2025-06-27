@@ -15,20 +15,26 @@
 int	init_sprites_arr(t_sprite **sprites, t_textures *textures, bool mode)
 {
 	(void)mode;
-	if (_SPRITE_COUNT < 3)
+	if (_SPRITE_COUNT < 6)
 		return (-1);
 	sprites[_E_DOOR] = &textures->door;
 	sprites[_E_WALLS] = &textures->walls;
+	sprites[_E_ARM] = &textures->weapons[0];
+	sprites[_E_PISTOL] = &textures->weapons[1];
+	sprites[_E_SHOTGUN] = &textures->weapons[2];
 	sprites[_E_NULL] = NULL;
 	return (0);
 }
 
 int	init_sprites_dir_names_arr(char **dir_path)
 {
-	if (_SPRITE_COUNT < 3)
+	if (_SPRITE_COUNT < 6)
 		return (-1);
 	dir_path[_E_DOOR] = _DOOR_DIR_NAME;
 	dir_path[_E_WALLS] = _WALLS_DIR_NAME;
+	dir_path[_E_SHOTGUN] = _SHOTGUN_DIR_NAME;
+	dir_path[_E_PISTOL] = _PISTOL_DIR_NAME;
+	dir_path[_E_ARM] = _ARM_DIR_NAME;
 	dir_path[_E_NULL] = NULL;
 	return (0);
 }

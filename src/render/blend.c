@@ -103,3 +103,11 @@ MAYBE_INLINE void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned c
 	r.blue = blend_channel_fast(d.blue, s.blue, alpha) & 0xFF;
 	*source = r.red << 16 | r.green << 8 | r.blue;
 }
+
+MAYBE_INLINE void	blend_normal_at(t_engine *eng, int x, int y, t_ui dest)
+{
+	t_ui	*source;
+
+	source = get_pixel_address(&eng->main_buffer, x, y);
+	*source = blend_normal(*source, dest);
+}

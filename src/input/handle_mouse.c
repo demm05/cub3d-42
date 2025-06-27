@@ -40,6 +40,16 @@ static void	mouse_move_game(int x, int y, t_engine *eng)
 	mlx_mouse_move(eng->mlx, eng->window.win, x, eng->input.prev_mouse_pos.y);
 }
 
+static void	mouse_press_game(int key, int x, int y, t_engine *eng)
+{
+	if (key == 1)
+		animation_start(eng->player.weapon);
+	else if (key == 5)
+		eng->player.health--;
+	else if (key == 4)
+		eng->player.health++;
+}
+
 int	input_mouse_press(int key, int x, int y, t_engine *eng)
 {
 #if DEBUG
@@ -48,7 +58,7 @@ int	input_mouse_press(int key, int x, int y, t_engine *eng)
 	if (eng->state == MENU)
 		menu_mouse_press(eng, key, x, y);
 	else
-		eng->player.health--;
+		mouse_press_game(key, x, y, eng);
 	return (0);
 }
 
@@ -58,3 +68,4 @@ int	input_mouse_move(int x, int y, t_engine *eng)
 		mouse_move_game(x, y, eng);
 	return (0);
 }
+

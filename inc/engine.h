@@ -69,5 +69,8 @@ void	engine_destroy(t_engine *eng);
 void	eng_new_frame(t_engine *eng);
 bool	update_lookup_table(t_engine *eng);
 void	enging_loop_stop(t_engine *eng);
+void	animation_start(t_animation *anim);
+t_image	*animation_get_image(t_animation *anim);
+void	animation_change_sprite(t_animation *anim, t_sprite *sp);
 
 #endif
