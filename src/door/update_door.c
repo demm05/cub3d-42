@@ -6,13 +6,19 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 12:21:00 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/26 16:37:05 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "door_private.h"
 
-static MAYBE_INLINE void	open_door(t_door *door, t_map **map, size_t now)
+static void	set_bool(bool *is_open, bool *ready_to_open, bool val1, bool val2)
+{
+	*is_open = val1;
+	*ready_to_open = val2;
+}
+
+static inline void	open_door(t_door *door, t_map **map, size_t now)
 {
 	double	elapsed;
 
@@ -29,14 +35,29 @@ static MAYBE_INLINE void	open_door(t_door *door, t_map **map, size_t now)
 	if (door->animation >= 1.0)
 	{
 		door->animation = 1.0;
-		door->is_open = true;
-		door->ready_to_open = false;
+		set_bool(&door->is_open, &door->ready_to_open, true, false);
 		door->is_closing = false;
 		door->start_time = now;
 	}
 }
 
-static MAYBE_INLINE void	close_door(t_door *door, t_map **map,
+static inline void	closing_door(t_door *door, t_map **map,
+		double elapsed)
+{
+	elapsed = (elapsed - DOOR_OPEN_DURATION) / DOOR_ANIMATION_DURATION;
+	if (elapsed > 1.0)
+		elapsed = 1.0;
+	door->animation = 1.0 - elapsed;
+	if (door->animation <= 0.5)
+		(*map)->matrix[door->y][door->x] = 'd';
+	if (door->animation <= 0.0)
+	{
+		set_bool(&door->is_open, &door->is_closing, false, false);
+		door->animation = 0.0;
+	}
+}
+
+static inline void	close_door(t_door *door, t_map **map,
 		t_camera *player, size_t now)
 {
 	const double	block_radius = 1.5;
@@ -48,28 +69,16 @@ static MAYBE_INLINE void	close_door(t_door *door, t_map **map,
 	if (dist < block_radius && door->animation > 0.5)
 	{
 		door->is_closing = true;
-		door->is_open = false;
-		door->ready_to_open = true;
+		set_bool(&door->is_open, &door->ready_to_open, false, true);
 		return ;
 	}
 	elapsed = now - door->start_time;
 	if (elapsed < DOOR_OPEN_DURATION)
 		return ;
-	elapsed = (elapsed - DOOR_OPEN_DURATION) / DOOR_ANIMATION_DURATION;
-	if (elapsed > 1.0)
-		elapsed = 1.0;
-	door->animation = 1.0 - elapsed;
-	if (door->animation <= 0.5)
-		(*map)->matrix[door->y][door->x] = 'd';
-	if (door->animation <= 0.0)
-	{
-		door->is_open = false;
-		door->animation = 0.0;
-		door->is_closing = false;
-	}
+	closing_door(door, map, elapsed);
 }
 
-MAYBE_INLINE void	update_doors(t_doors *doors, t_map **map,
+inline void	update_doors(t_doors *doors, t_map **map,
 		t_camera *player, double dt)
 {
 	t_door	*door;

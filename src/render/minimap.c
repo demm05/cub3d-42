@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:01 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:30:02 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
-MAYBE_INLINE t_ui	minimap_draw(t_engine *eng, int x, int y, t_ui color)
+inline t_ui	minimap_draw(t_engine *eng, int x, int y, t_ui color)
 {
 	t_minimap	*m;
 
@@ -29,7 +29,7 @@ MAYBE_INLINE t_ui	minimap_draw(t_engine *eng, int x, int y, t_ui color)
 	return (MAP_CUBE_FULL_COLOR);
 }
 
-MAYBE_INLINE void	minimap_draw_borders(t_engine *eng, t_minimap *m)
+inline void	minimap_draw_borders(t_engine *eng, t_minimap *m)
 {
 	// LEFT
 	draw_rectangle(eng,
@@ -51,7 +51,7 @@ MAYBE_INLINE void	minimap_draw_borders(t_engine *eng, t_minimap *m)
 		(t_point){m->draw_size.x + MAP_BORDER_SIZE * 2, MAP_BORDER_SIZE}, MAP_BORDER_COLOR);
 }
 
-MAYBE_INLINE void	minimap_draw_player(t_engine *eng, t_minimap *map)
+inline void	minimap_draw_player(t_engine *eng, t_minimap *map)
 {
 	t_point	player;
 
@@ -64,7 +64,7 @@ MAYBE_INLINE void	minimap_draw_player(t_engine *eng, t_minimap *map)
 		(t_point){map->entity_size.x, map->entity_size.y}, MAP_PLAYER_COLOR);
 }
 
-MAYBE_INLINE void	render_minimap(t_engine *eng)
+inline void	render_minimap(t_engine *eng)
 {
 	if (!eng->minimap.display_minimap || !eng->minimap.is_player_displayable)
 		return ;

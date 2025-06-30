@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_mouse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:28:35 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 12:29:59 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/27 09:31:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	mouse_move_game(int x, int y, t_engine *eng)
 
 static void	mouse_press_game(int key, int x, int y, t_engine *eng)
 {
+	(void)x;
+	(void)y;
 	if (key == 1)
 		animation_start(eng->player.weapon);
 	else if (key == 5)

@@ -6,14 +6,14 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 12:20:29 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/26 16:23:53 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils_private.h"
 #include <sys/time.h>
 
-MAYBE_INLINE size_t	get_time_ms(void)
+inline size_t	get_time_ms(void)
 {
 	struct timeval	tv;
 

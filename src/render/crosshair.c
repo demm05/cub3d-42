@@ -1,6 +1,6 @@
 #include "render_private.h"
 
-MAYBE_INLINE void	render_crosshair(t_engine *eng)
+inline void	render_crosshair(t_engine *eng)
 {
 	t_point	start;
 	int		size;

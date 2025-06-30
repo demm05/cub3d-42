@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dim.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:56 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:29:57 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
-MAYBE_INLINE void	render_dimmed_screen(t_engine *eng, unsigned char dim)
+inline void	render_dimmed_screen(t_engine *eng, unsigned char dim)
 {
 	unsigned int	*pixel_addr;
 	int				x;

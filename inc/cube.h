@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:17:02 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 12:54:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 11:54:28 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,5 @@
 # include "ft_color_utils.h"
 
 void	set_defaults(t_engine *eng);
-
-# ifdef ENABLE_CUSTOM_INLINING
-#  ifdef __GNUC__ // For GCC/Clang
-#   define MAYBE_INLINE __attribute__((always_inline)) inline
-#  elif defined(_MSC_VER) // For MSVC
-#   define MAYBE_INLINE __forceinline
-#  else // Standard C inline hint
-#   define MAYBE_INLINE inline
-#  endif
-# else
-#  define MAYBE_INLINE // Expands to nothing, so function is "normal"
-# endif
 
 #endif

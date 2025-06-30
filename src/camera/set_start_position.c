@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_start_position.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:37:48 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/02 13:37:48 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 11:59:02 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ static inline bool	set_pos(t_camera *cam, int d)
 	}
 	else
 		return (0);
-#if DEBUG
-	printf("camera_set_start_pos: Camera start info: "
-		"%fx%f\tplane: %fx%f\tdir: %fx%f\n",
-		cam->pos.x, cam->pos.y, cam->plane.x, cam->plane.y,
-		cam->dir.x, cam->dir.y);
-#endif
 	return (1);
 }
 
@@ -49,11 +43,8 @@ bool	camera_set_start_pos(t_engine *eng)
 {
 	t_camera	*cam;
 	int			x;
-	int 		y;
+	int			y;
 
-#if DEBUG
-	puts("Setting start position of camera");
-#endif
 	cam = &eng->camera;
 	x = eng->map->player_pos.x;
 	y = eng->map->player_pos.y;
