@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blend.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:52 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:29:52 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static inline t_ui	blend_channel_fast(t_ui fg_channel, t_ui bg_channel, t_ui alp
 	return (((fg_channel * alpha + bg_channel * (255 - alpha)) * 257U) >> 16);
 }
 
-MAYBE_INLINE t_ui	blend_normal(t_ui source, t_ui dest)
+inline t_ui	blend_normal(t_ui source, t_ui dest)
 {
 	t_rgb	s;
 	t_rgb	d;
@@ -47,7 +47,7 @@ MAYBE_INLINE t_ui	blend_normal(t_ui source, t_ui dest)
 	return (((r.red & 0xFF) << 16) | ((r.green & 0xFF) << 8) | (r.blue & 0xFF));
 }
 
-MAYBE_INLINE t_ui	blend_brightness_f(t_ui color, float brightness)
+inline t_ui	blend_brightness_f(t_ui color, float brightness)
 {
 	int	r;
 	int	g;
@@ -69,7 +69,7 @@ MAYBE_INLINE t_ui	blend_brightness_f(t_ui color, float brightness)
 	return ((r << 16) | (g << 8) | b);
 }
 
-MAYBE_INLINE t_ui	blend_brightness(t_ui color, unsigned char brightness)
+inline t_ui	blend_brightness(t_ui color, unsigned char brightness)
 {
 	int	r;
 	int	g;
@@ -84,7 +84,7 @@ MAYBE_INLINE t_ui	blend_brightness(t_ui color, unsigned char brightness)
 	return ((r << 16) | (g << 8) | b);
 }
 
-MAYBE_INLINE void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned char alpha)
+inline void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned char alpha)
 {
 	t_ui	*source;
 	t_rgb	s;
@@ -104,7 +104,7 @@ MAYBE_INLINE void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned c
 	*source = r.red << 16 | r.green << 8 | r.blue;
 }
 
-MAYBE_INLINE void	blend_normal_at(t_engine *eng, int x, int y, t_ui dest)
+inline void	blend_normal_at(t_engine *eng, int x, int y, t_ui dest)
 {
 	t_ui	*source;
 

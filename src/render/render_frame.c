@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:08 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:30:08 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_ui	color_background(t_engine *eng, int x, int y, unsigned int color);
 
-MAYBE_INLINE void	render_frame(t_engine *eng)
+inline void	render_frame(t_engine *eng)
 {
 	int	w;
 	int	h;
@@ -39,7 +39,7 @@ MAYBE_INLINE void	render_frame(t_engine *eng)
 	display_fps_counter(&eng->timing, eng);
 }
 
-MAYBE_INLINE t_ui	color_c(t_ray *ray, t_engine *eng, int h, int y)
+inline t_ui	color_c(t_ray *ray, t_engine *eng, int h, int y)
 {
 	t_vec2_double	floor_pos;
 	t_point			floor_tex;
@@ -54,7 +54,7 @@ MAYBE_INLINE t_ui	color_c(t_ray *ray, t_engine *eng, int h, int y)
 	return (get_pixel_color(&eng->textures.ceiling, floor_tex.x, floor_tex.y));
 }
 
-MAYBE_INLINE t_ui	color_f(t_ray *ray, t_engine *eng, int h, int y)
+inline t_ui	color_f(t_ray *ray, t_engine *eng, int h, int y)
 {
 	t_vec2_double	floor_pos;
 	t_point			floor_tex;
@@ -69,7 +69,7 @@ MAYBE_INLINE t_ui	color_f(t_ray *ray, t_engine *eng, int h, int y)
 	return (get_pixel_color(&eng->textures.floor, floor_tex.x, floor_tex.y));
 }
 
-MAYBE_INLINE t_ui	color_wall(t_ray *ray, int h, int y)
+inline t_ui	color_wall(t_ray *ray, int h, int y)
 {
 	t_image		*tex; 
 	int			tex_x;
@@ -88,7 +88,7 @@ MAYBE_INLINE t_ui	color_wall(t_ray *ray, int h, int y)
 	return (get_pixel_color(tex, tex_x, tex_y));
 }
 
-MAYBE_INLINE t_ui	color_background(t_engine *eng, int x, int y, t_ui color)
+inline t_ui	color_background(t_engine *eng, int x, int y, t_ui color)
 {
 	t_ray	*ray;
 
