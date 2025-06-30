@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:34:18 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/30 11:54:52 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:53:54 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "cube.h"
 
-# define DOOR_ANIMATION_DURATION 1500.0
+# define DOOR_ANIMATION_DURATION 1000.0
 # define DOOR_OPEN_DURATION 5000.0
 
 typedef struct s_door_private_state

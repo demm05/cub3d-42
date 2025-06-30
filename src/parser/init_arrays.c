@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 11:23:06 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/16 15:28:23 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:50:34 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	init_sprites_arr(t_sprite **sprites, t_textures *textures, bool mode)
 {
-	(void)mode;
+	int	i;
+
 	if (_SPRITE_COUNT < 6)
 		return (-1);
 	sprites[_E_DOOR] = &textures->door;
@@ -23,6 +24,12 @@ int	init_sprites_arr(t_sprite **sprites, t_textures *textures, bool mode)
 	sprites[_E_PISTOL] = &textures->weapons[1];
 	sprites[_E_SHOTGUN] = &textures->weapons[2];
 	sprites[_E_NULL] = NULL;
+	if (mode == true)
+	{
+		i = 0;
+		while (i < _SPRITE_COUNT - 1)
+			ft_bzero(sprites[i++], sizeof(t_sprite));
+	}
 	return (0);
 }
 
@@ -41,25 +48,28 @@ int	init_sprites_dir_names_arr(char **dir_path)
 
 int	init_texture_arr(t_image **textures_arr, t_textures *textures, bool mode)
 {
-	(void)mode;
-	if (_TEXTURE_COUNT < 5)
+	int	i;
+
+	if (_TEXTURE_COUNT < 3)
 		return (-1);
 	textures_arr[_E_CEILING] = &textures->ceiling;
 	textures_arr[_E_FLOOR] = &textures->floor;
-	textures_arr[_E_PORTAL_IN] = &textures->portal_in;
-	textures_arr[_E_PORTAL_OUT] = &textures->portal_out;
 	textures_arr[_E_NULL_T] = NULL;
+	if (mode == true)
+	{
+		i = 0;
+		while (i < _TEXTURE_COUNT - 1)
+			ft_bzero(textures_arr[i++], sizeof(t_sprite));
+	}
 	return (0);
 }
 
 int	init_texture_names_arr(char **textures_path)
 {
-	if (_TEXTURE_COUNT < 5)
+	if (_TEXTURE_COUNT < 3)
 		return (-1);
 	textures_path[_E_CEILING] = _CEILING_NAME;
 	textures_path[_E_FLOOR] = _FLOOR_NAME;
-	textures_path[_E_PORTAL_IN] = _PORTAL_IN_NAME;
-	textures_path[_E_PORTAL_OUT] = _PORTAL_OUT_NAME;
 	textures_path[_E_NULL_T] = NULL;
 	return (0);
 }

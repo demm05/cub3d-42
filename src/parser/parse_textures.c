@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/24 17:32:17 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:45:27 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	parse_textures(void *mlx_ptr, t_textures *textures, t_list **lst)
 	}
 	free_rt(&rt);
 	if (status == -1)
+		return (-1);
+	if (check_textures(textures) == -1)
 		return (-1);
 	return (0);
 }
