@@ -1,24 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmelnyk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 15:30:36 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/30 15:30:37 by dmelnyk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "raycaster_private.h"
 
-inline int	get_pixel_color(t_image *img, int x, int y)
+inline t_ui	color_vertical(t_engine *eng, int x, int y, t_ui color)
 {
-	char	*pixel_addr;
-	int		color;
-
-	pixel_addr = img->buffer + (y * img->line_size) + (x * (img->depth / 8));
-	color = *(int *)pixel_addr;
-	return (color);
-}
-
-inline int	color_vertical(int x, int y, void *param)
-{
-	t_engine	*eng;
 	t_image		*tex;
 	int			tex_x;
 	int			tex_y;
 	t_ray		*ray;
 
-	eng = param;
+	(void)color;
 	ray = &eng->rays[x];
 	if (y < ray->draw_start)
 		return (eng->world.c);
@@ -29,8 +30,8 @@ inline int	color_vertical(int x, int y, void *param)
 	if (ray->line_height <= 0)
 		return (get_pixel_color(tex, tex_x, 0));
 	else
-		tex_y = (((y * 512 - eng->window.height * 256 + ray->line_height * 256)
-					* tex->height) / ray->line_height) / 512;
+		tex_y = (((y * 128 - eng->window.height * 64 + ray->line_height * 64)
+					* tex->height) / ray->line_height) >> 7;
 	if (tex_y < 0)
 		tex_y = 0;
 	if (tex_y >= tex->height)
@@ -49,5 +50,5 @@ void	render(t_engine *eng)
 	x = -1;
 	while (++x < w)
 		cast_ray(eng, &eng->rays[x], h, w);
-	draw_for_each_pixel(&eng->main_buffer, eng, w, h, color_vertical);
+	draw_for_each_pixel(eng, (t_point){w, h}, color_vertical);
 }

@@ -27,6 +27,5 @@ typedef struct s_camera
 
 void	camera_keyboard_move_event(t_engine *eng, t_camera *cam);
 void	camera_keyboard_rotate_event(t_engine *eng);
-void	camera_mouse_move_event(t_engine *eng);
 
 #endif

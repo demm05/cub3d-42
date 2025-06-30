@@ -15,7 +15,6 @@
 int	input_focus_in(t_engine *eng)
 {
 	(void)eng;
-	mlx_mouse_hide(eng->mlx, eng->window.win);
 	return (0);
 }
 

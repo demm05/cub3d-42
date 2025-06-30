@@ -22,10 +22,10 @@ static inline void	rotate(t_camera *cam, double move_amount)
 	cam->dir.x = cam->dir.x * cos(move_amount) - cam->dir.y * sin(move_amount);
 	cam->dir.y = old_dir_x * sin(move_amount) + cam->dir.y * cos(move_amount);
 	old_plane_x = cam->plane.x;
-	cam->plane.x = cam->plane.x * cos(move_amount)
-		- cam->plane.y * sin(move_amount);
-	cam->plane.y = old_plane_x * sin(move_amount)
-		+ cam->plane.y * cos(move_amount);
+	cam->plane.x = cam->plane.x * cos(move_amount) - cam->plane.y * \
+		sin(move_amount);
+	cam->plane.y = old_plane_x * sin(move_amount) + cam->plane.y * \
+		cos(move_amount);
 }
 
 inline void	camera_keyboard_rotate_event(t_engine *eng)
@@ -34,19 +34,7 @@ inline void	camera_keyboard_rotate_event(t_engine *eng)
 
 	move_amount = eng->camera.rotation_speed * eng->timing.delta_time;
 	if (eng->input.look_left)
-		rotate(&eng->camera, move_amount);
-	if (eng->input.look_right)
 		rotate(&eng->camera, -move_amount);
-}
-
-inline void	camera_mouse_move_event(t_engine *eng)
-{
-	double	move_amount;
-
-	if (!eng->input.mouse_move)
-		return ;
-	move_amount = eng->camera.mouse_speed
-		* eng->timing.delta_time * eng->input.mouse_move;
-	rotate(&eng->camera, move_amount);
-	eng->input.mouse_move = 0;
+	if (eng->input.look_right)
+		rotate(&eng->camera, move_amount);
 }

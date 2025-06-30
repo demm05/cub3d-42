@@ -18,7 +18,6 @@
 # define WINDOW_TITLE "CUBE 3D"
 # define MAX_DELTA_TIME 0.06f
 
-# define ENABLE_RESIZE 1
 # define DISABLE_AUTOREPEAT_KEY 1
 
 # ifndef DEBUG

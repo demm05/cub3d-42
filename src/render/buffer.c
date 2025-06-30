@@ -23,6 +23,7 @@ bool	buffer_create(void *mlx, t_frame_buf *buf, int width, int height)
 		return (0);
 	buf->width = width;
 	buf->height = height;
+	buf->depth8 = buf->depth / 8;
 	return (1);
 }
 

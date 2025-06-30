@@ -37,22 +37,15 @@ bool	engine_init(t_engine *eng, char *map_path)
 
 void	hook_inputs(t_engine *eng)
 {
-	if (ENABLE_RESIZE)
-		mlx_enable_window_resize(eng->mlx, &eng->window);
 	if (DISABLE_AUTOREPEAT_KEY)
 		mlx_do_key_autorepeatoff(eng->mlx);
 	mlx_loop_hook(eng->mlx, engine_loop, eng);
-	mlx_mouse_hook(eng->window.win, input_mouse_press, eng);
 	mlx_hook(eng->window.win, DestroyNotify,
 		NoEventMask, mlx_loop_end, eng->mlx);
-	mlx_hook(eng->window.win, MotionNotify,
-		PointerMotionMask, input_mouse_move, eng);
 	mlx_hook(eng->window.win, KeyPress,
 		KeyPressMask, input_keyboard_press, eng);
 	mlx_hook(eng->window.win, KeyRelease,
 		KeyReleaseMask, input_keyboard_release, eng);
-	mlx_hook(eng->window.win, ConfigureNotify,
-		StructureNotifyMask, input_event_resize, eng);
 	mlx_hook(eng->window.win, FocusIn,
 		FocusChangeMask, input_focus_in, eng);
 	mlx_hook(eng->window.win, FocusOut,

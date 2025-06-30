@@ -43,6 +43,7 @@ int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)
 			&img->line_size, &img->endian);
 	img->height = IMG_HEIGHT;
 	img->width = IMG_WIDTH;
+	img->depth8 = img->depth / 8;
 	return (0);
 }
 

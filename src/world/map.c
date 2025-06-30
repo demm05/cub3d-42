@@ -14,5 +14,5 @@
 
 inline char	map_get(t_world *wrd, int x, int y)
 {
-	return (wrd->map->matrix[y][x]);
+	return (wrd->map->matrix[y % wrd->map->height][x % wrd->map->width]);
 }
