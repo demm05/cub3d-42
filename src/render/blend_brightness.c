@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   blend_brightness.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:58:11 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 13:58:11 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
-MAYBE_INLINE t_ui	blend_brightness_f(t_ui color, float brightness)
+inline t_ui	blend_brightness_f(t_ui color, float brightness)
 {
 	int	r;
 	int	g;
@@ -33,7 +33,7 @@ MAYBE_INLINE t_ui	blend_brightness_f(t_ui color, float brightness)
 	return ((r << 16) | (g << 8) | b);
 }
 
-MAYBE_INLINE t_ui	blend_brightness(t_ui color, unsigned char brightness)
+inline t_ui	blend_brightness(t_ui color, unsigned char brightness)
 {
 	int	r;
 	int	g;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:36:53 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 13:36:55 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine_private.h"
 
-MAYBE_INLINE void	animation_update(t_animation *anim, double delta)
+inline void	animation_update(t_animation *anim, double delta)
 {
 	if (!anim || !anim->is_playing)
 		return ;
@@ -32,7 +32,7 @@ MAYBE_INLINE void	animation_update(t_animation *anim, double delta)
 	}
 }
 
-MAYBE_INLINE void	animation_start(t_animation *anim)
+inline void	animation_start(t_animation *anim)
 {
 	if (!anim || anim->is_playing)
 		return ;
@@ -41,12 +41,12 @@ MAYBE_INLINE void	animation_start(t_animation *anim)
 	anim->is_playing = true;
 }
 
-MAYBE_INLINE void	animations_update_all(t_engine *eng)
+inline void	animations_update_all(t_engine *eng)
 {
 	animation_update(eng->player.weapon, eng->timing.delta_time);
 }
 
-MAYBE_INLINE t_image	*animation_get_image(t_animation *anim)
+inline t_image	*animation_get_image(t_animation *anim)
 {
 	return (&anim->sprite->img_arr[anim->current_frame]);
 }

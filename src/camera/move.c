@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:37:37 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/10 14:19:01 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static inline void	set_new(t_input *input, t_vec2_double *new,
 	}
 }
 
-MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
+inline void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
 {
 	double			move_amount;
 	t_vec2_double	new;

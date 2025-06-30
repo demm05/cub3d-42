@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   put_char.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:21 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:30:21 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "text_private.h"
 
-MAYBE_INLINE void	text_put_char(t_engine *eng, t_point start,
+inline void	text_put_char(t_engine *eng, t_point start,
 	char c, t_ui color)
 {
 	FT_Face	face;
@@ -25,7 +25,7 @@ MAYBE_INLINE void	text_put_char(t_engine *eng, t_point start,
 	text_render_glyph(eng, face, start, color);
 }
 
-MAYBE_INLINE void	text_put_str(t_engine *eng, t_point start,
+inline void	text_put_str(t_engine *eng, t_point start,
 	const char *str, t_ui color)
 {
 	FT_Face		face;
@@ -55,7 +55,7 @@ MAYBE_INLINE void	text_put_str(t_engine *eng, t_point start,
 	}
 }
 
-MAYBE_INLINE t_point	text_str_get_size(t_engine *eng, const char *str,
+inline t_point	text_str_get_size(t_engine *eng, const char *str,
 	int font)
 {
 	FT_Face	face;

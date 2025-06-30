@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   set_floor_prop.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:43 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:29:43 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster_private.h"
 
-MAYBE_INLINE void	ray_set_floor_prop(t_engine *eng, t_ray *ray)
+inline void	ray_set_floor_prop(t_engine *eng, t_ray *ray)
 {
 	(void)eng;
 	if (ray->side == 0 && ray->direction.x > 0)

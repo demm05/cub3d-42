@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:37:40 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/10 14:18:24 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static inline void	rotate(t_camera *cam, double move_amount)
 		cos(move_amount);
 }
 
-MAYBE_INLINE void	camera_keyboard_rotate_event(t_engine *eng)
+inline void	camera_keyboard_rotate_event(t_engine *eng)
 {
 	double	move_amount;
 
@@ -39,7 +39,7 @@ MAYBE_INLINE void	camera_keyboard_rotate_event(t_engine *eng)
 		rotate(&eng->camera, move_amount);
 }
 
-MAYBE_INLINE void	camera_mouse_move_event(t_engine *eng)
+inline void	camera_mouse_move_event(t_engine *eng)
 {
 	double	move_amount;
 

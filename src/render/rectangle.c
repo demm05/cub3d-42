@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rectangle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:04 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:30:05 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
-MAYBE_INLINE void	draw_rectangle(t_engine *eng, t_point start, t_point size,
+inline void	draw_rectangle(t_engine *eng, t_point start, t_point size,
 	t_ui color)
 {
 	unsigned int	*pixel_addr;
@@ -38,7 +38,7 @@ MAYBE_INLINE void	draw_rectangle(t_engine *eng, t_point start, t_point size,
 	}
 }
 
-MAYBE_INLINE void	render_rectangle_blend(t_engine *eng, t_point start,
+inline void	render_rectangle_blend(t_engine *eng, t_point start,
 	t_point size, t_ui color)
 {
 	unsigned int	*pixel_addr;

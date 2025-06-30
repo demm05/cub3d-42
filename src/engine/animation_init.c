@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   animation_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:46:07 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 13:46:08 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine_private.h"
 
-MAYBE_INLINE void	animation_init_sprite(t_animation *anim)
+inline void	animation_init_sprite(t_animation *anim)
 {
 	anim->current_frame = 0;
 	anim->animation_timer = 0;
@@ -21,7 +21,7 @@ MAYBE_INLINE void	animation_init_sprite(t_animation *anim)
 	anim->tp_frame = anim->time / (float)anim->frame_count;
 }
 
-MAYBE_INLINE void	animation_change_sprite(t_animation *anim, t_sprite *sp)
+inline void	animation_change_sprite(t_animation *anim, t_sprite *sp)
 {
 	if (!anim)
 		return ;
@@ -29,7 +29,7 @@ MAYBE_INLINE void	animation_change_sprite(t_animation *anim, t_sprite *sp)
 	animation_init_sprite(anim);
 }
 
-MAYBE_INLINE void	animation_set_sprite(t_animation *anim, t_sprite *sp,
+inline void	animation_set_sprite(t_animation *anim, t_sprite *sp,
 						double time)
 {
 	if (!anim)
@@ -39,7 +39,7 @@ MAYBE_INLINE void	animation_set_sprite(t_animation *anim, t_sprite *sp,
 	animation_init_sprite(anim);
 }
 
-MAYBE_INLINE void	animation_set_time(t_animation *anim, float time)
+inline void	animation_set_time(t_animation *anim, float time)
 {
 	if (!anim)
 		return ;
@@ -47,7 +47,7 @@ MAYBE_INLINE void	animation_set_time(t_animation *anim, float time)
 	animation_init_sprite(anim);
 }
 
-MAYBE_INLINE void	animations_init(t_engine *eng)
+inline void	animations_init(t_engine *eng)
 {
 	eng->player.weapon = &eng->player.weapons[0];
 	animation_set_sprite(&eng->player.weapons[0],
