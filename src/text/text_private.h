@@ -16,7 +16,7 @@
 # include "cube.h"
 
 # include <ft2build.h>
-# include FT_FREETYPE_H
+# include <freetype2/freetype/freetype.h>
 
 typedef struct s_freetype
 {
@@ -26,6 +26,7 @@ typedef struct s_freetype
 }	t_freetype;
 
 void	text_free_fonts(t_freetype *fr);
-void	text_render_glyph(t_engine *eng, FT_Face face, t_point baseline, t_ui color);
+void	text_render_glyph(t_engine *eng, FT_Face face, t_point baseline,
+			t_ui color);
 
 #endif
