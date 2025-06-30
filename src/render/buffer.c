@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:32:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 12:47:12 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:17:15 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ bool	buffer_create(void *mlx, t_frame_buf *buf, int width, int height)
 		return (0);
 	buf->width = width;
 	buf->height = height;
-#if DEBUG
-	printf("New buffer was created: w:%d\th:%d\td:%d\tl:%d\n",
-		width, height, buf->depth, buf->line_size);
-#endif
 	return (1);
 }
 

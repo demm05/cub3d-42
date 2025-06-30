@@ -1,6 +1,6 @@
 #include "raycaster_private.h"
 
-MAYBE_INLINE int	get_pixel_color(t_image *img, int x, int y)
+inline int	get_pixel_color(t_image *img, int x, int y)
 {
 	char	*pixel_addr;
 	int		color;
@@ -25,11 +25,12 @@ inline int	color_vertical(int x, int y, void *param)
 	if (y >= ray->draw_end)
 		return (eng->world.f);
 	tex = ray->texture;
-    tex_x = ray->x_on_tex;
+	tex_x = ray->x_on_tex;
 	if (ray->line_height <= 0)
 		return (get_pixel_color(tex, tex_x, 0));
 	else
-        tex_y = (((y * 512 - eng->window.height * 256 + ray->line_height * 256) * tex->height) / ray->line_height) / 512;
+		tex_y = (((y * 512 - eng->window.height * 256 + ray->line_height * 256)
+					* tex->height) / ray->line_height) / 512;
 	if (tex_y < 0)
 		tex_y = 0;
 	if (tex_y >= tex->height)

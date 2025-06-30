@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:56:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 16:25:42 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:08:32 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_map
 	int			height;
 	t_point		player_pos;
 }	t_map;
-
 
 /**
  * @param no path to the north texture

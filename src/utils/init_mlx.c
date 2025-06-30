@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:26:24 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/24 11:17:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:18:04 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ bool	init_mlx_and_window(t_engine *eng)
 		return (0);
 	mlx_get_screen_size(eng->mlx, &eng->window.max_width,
 		&eng->window.max_height);
-	if (!buffer_create(eng->mlx, &eng->main_buffer, eng->window.max_width, eng->window.max_height))
+	if (!buffer_create(eng->mlx, &eng->main_buffer,
+			eng->window.max_width, eng->window.max_height))
 		return (0);
 	return (1);
 }
