@@ -1,6 +1,6 @@
 #include "render_private.h"
 
-inline void	render_weapon(t_engine *eng)
+MAYBE_INLINE void	render_weapon(t_engine *eng)
 {	
 	t_image	*texture;
 	t_point	scaled_size;

@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:37:37 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 11:56:17 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:19:01 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static inline void	move_camera(t_camera *cam, t_map *map,
 		cam->pos.y = new_y;
 }
 
-static inline void	set_new(t_input *input,
-	t_vec2_double *new, t_vec2_double dir)
+static inline void	set_new(t_input *input, t_vec2_double *new,
+	t_vec2_double dir)
 {
 	if (input->moving_up)
 	{
@@ -55,14 +55,14 @@ static inline void	set_new(t_input *input,
 	}
 }
 
-inline void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
+MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
 {
 	double			move_amount;
 	t_vec2_double	new;
 
 	move_amount = eng->player.move_speed * eng->timing.delta_time;
-	if ((eng->input.moving_left || eng->input.moving_right)
-		&& (eng->input.moving_up || eng->input.moving_down))
+	if ((eng->input.moving_left || eng->input.moving_right) && \
+		(eng->input.moving_up || eng->input.moving_down))
 		move_amount *= 0.8;
 	new.x = cam->pos.x;
 	new.y = cam->pos.y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_rays.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:38 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 11:11:27 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 13:29:39 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ bool	allocate_rays(t_engine *eng)
 	while (++x < eng->window.max_width)
 		rays[x].index = x;
 	eng->rays = rays;
+#if DEBUG
+	puts("allocate_rays: Successfully allocated\n");
+#endif
 	return (1);
 }
 
