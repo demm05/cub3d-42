@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   put_char.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:21 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 13:30:21 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "text_private.h"
 
-inline void	text_put_char(t_engine *eng, t_point start, const char c, unsigned int color)
+MAYBE_INLINE void	text_put_char(t_engine *eng, t_point start, const char c, unsigned int color)
 {
 	FT_Face	face;
 
@@ -24,7 +24,7 @@ inline void	text_put_char(t_engine *eng, t_point start, const char c, unsigned i
 	text_render_glyph(eng, face, start, color);
 }
 
-inline void	text_put_str(t_engine *eng, t_point start, const char *str, unsigned int color)
+MAYBE_INLINE void	text_put_str(t_engine *eng, t_point start, const char *str, unsigned int color)
 {
 	FT_Face		face;
 	t_point		pen;
@@ -53,7 +53,7 @@ inline void	text_put_str(t_engine *eng, t_point start, const char *str, unsigned
 	}
 }
 
-inline t_point	text_str_get_size(t_engine *eng, const char *str, int font)
+MAYBE_INLINE t_point	text_str_get_size(t_engine *eng, const char *str, int font)
 {
 	FT_Face	face;
 	t_point	res;

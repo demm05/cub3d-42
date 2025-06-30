@@ -1,6 +1,6 @@
 #include "render_private.h"
 
-inline void	render_health_bar(t_engine *eng)
+MAYBE_INLINE void	render_health_bar(t_engine *eng)
 {
 	t_point	bar_size;
 	t_point	offset;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:28:56 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 13:28:57 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine_private.h"
 
-inline void	minimap_update_properties(t_engine *eng)
+MAYBE_INLINE void	minimap_update_properties(t_engine *eng)
 {
 	t_minimap	*map;
 
@@ -40,7 +40,7 @@ inline void	minimap_update_properties(t_engine *eng)
 #endif
 }
 
-inline void	minimap_toggle(t_engine *eng)
+MAYBE_INLINE void	minimap_toggle(t_engine *eng)
 {
 	eng->minimap.display_minimap = !eng->minimap.display_minimap;
 }
