@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   put_int.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:23 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 13:30:23 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "text_private.h"
 
-static inline char	*static_str_from_int(unsigned int num)
+static MAYBE_INLINE char	*static_str_from_int(unsigned int num)
 {
 	static char		s[12];
 	char			*ptr;
@@ -29,14 +29,14 @@ static inline char	*static_str_from_int(unsigned int num)
 	return (ptr);
 }
 
-inline void	text_put_int(t_engine *eng, t_point start, t_ui num, t_ui color)
+MAYBE_INLINE void	text_put_int(t_engine *eng, t_point start, t_ui num, t_ui color)
 {
 	if (!eng)
 		return ;
 	text_put_str(eng, start, static_str_from_int(num), color);
 }
 
-inline t_point	text_ui_get_size(t_engine *eng, t_ui num, int font)
+MAYBE_INLINE t_point	text_ui_get_size(t_engine *eng, t_ui num, int font)
 {
 	return (text_str_get_size(eng, static_str_from_int(num), font));
 }

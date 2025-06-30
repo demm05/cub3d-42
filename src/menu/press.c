@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   press.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:16 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 13:29:16 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-inline void	menu_mouse_press(t_engine *eng, int keycode, int x, int y)
+MAYBE_INLINE void	menu_mouse_press(t_engine *eng, int keycode, int x, int y)
 {
 	t_mi_prop	*p;
 	t_menu		*m;

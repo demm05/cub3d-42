@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render_glyph.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
+/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:26 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 11:36:38 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/23 13:30:26 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "text_private.h"
 
-inline void	text_render_glyph(t_engine *eng, FT_Face face, t_point baseline, t_ui color)
+MAYBE_INLINE void	text_render_glyph(t_engine *eng, FT_Face face, t_point baseline, t_ui color)
 {
 	FT_GlyphSlot	slot;
 	FT_Bitmap		*bitmap;
