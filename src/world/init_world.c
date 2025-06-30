@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:45:24 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/02 10:58:02 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:14:27 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	check_path(const char *path)
 		ft_putendl_fd(RED "Error" RESET ": Path is NULL", STDERR_FILENO);
 		return (0);
 	}
-	str = ft_strchr(path, '.');
+	str = ft_strrchr(path, '.');
 	if (str && !ft_strcmp(str, ".cub"))
 		return (1);
 	ft_putendl_fd(RED "Error" RESET
