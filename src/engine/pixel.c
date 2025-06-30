@@ -6,23 +6,23 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:00 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:55:42 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine_private.h"
 
- t_ui	*get_pixel_address(t_image *img, int x, int y)
+t_ui	*get_pixel_address(t_image *img, int x, int y)
 {
 	return ((t_ui *)(img->buffer + (y * img->line_size) + (x * img->depth8)));
 }
 
- int	get_pixel_color(t_image *img, int x, int y)
+int	get_pixel_color(t_image *img, int x, int y)
 {
 	return (*get_pixel_address(img, x, y));
 }
 
- void	draw_pixel(t_frame_buf *buf, int x, int y, int color)
+void	draw_pixel(t_frame_buf *buf, int x, int y, int color)
 {
 	*get_pixel_address(buf, x, y) = color;
 }

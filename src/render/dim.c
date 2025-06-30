@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:56 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:58:06 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
- void	render_dimmed_screen(t_engine *eng, unsigned char dim)
+void	render_dimmed_screen(t_engine *eng, unsigned char dim)
 {
 	unsigned int	*pixel_addr;
 	int				x;

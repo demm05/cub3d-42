@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 14:00:15 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:59:02 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
- void	render_health_bar(t_engine *eng)
+void	render_health_bar(t_engine *eng)
 {
 	t_point	bar_size;
 	t_point	offset;

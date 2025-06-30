@@ -32,7 +32,7 @@ $(DIRS):
 
 r run: all
 	@clear
-	$(Q)./$(NAME) map1.cub
+	$(Q)./$(NAME) ./maps/valid/map2.cub
 
 c clean:
 	$(Q)rm -rf $(ODIR)

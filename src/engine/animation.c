@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:36:53 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:54:48 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine_private.h"
 
- void	animation_update(t_animation *anim, double delta)
+void	animation_update(t_animation *anim, double delta)
 {
 	if (!anim || !anim->is_playing)
 		return ;
@@ -32,7 +32,7 @@
 	}
 }
 
- void	animation_start(t_animation *anim)
+void	animation_start(t_animation *anim)
 {
 	if (!anim || anim->is_playing)
 		return ;
@@ -41,12 +41,12 @@
 	anim->is_playing = true;
 }
 
- void	animations_update_all(t_engine *eng)
+void	animations_update_all(t_engine *eng)
 {
 	animation_update(eng->player.weapon, eng->timing.delta_time);
 }
 
- t_image	*animation_get_image(t_animation *anim)
+t_image	*animation_get_image(t_animation *anim)
 {
 	return (&anim->sprite->img_arr[anim->current_frame]);
 }

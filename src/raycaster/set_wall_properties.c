@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:46 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:57:21 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	set_door_texture(t_engine *eng, t_ray *ray)
 	ray->texture = &eng->textures.door.img_arr[frame];
 }
 
- void	ray_set_wall_prop(t_engine *eng, t_ray *ray)
+void	ray_set_wall_prop(t_engine *eng, t_ray *ray)
 {
 	if (ray->side == 0)
 		ray->wall_hit = eng->camera.pos.y + ray->wall_dist * ray->direction.y;

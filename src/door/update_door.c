@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 12:21:00 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 17:03:33 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	set_bool(bool *is_open, bool *ready_to_open, bool val1, bool val2)
 	*ready_to_open = val2;
 }
 
-static  void	open_door(t_door *door, t_map **map, size_t now)
+static void	open_door(t_door *door, t_map **map, size_t now)
 {
 	double	elapsed;
 
@@ -41,7 +41,7 @@ static  void	open_door(t_door *door, t_map **map, size_t now)
 	}
 }
 
-static  void	closing_door(t_door *door, t_map **map,
+static void	closing_door(t_door *door, t_map **map,
 		double elapsed)
 {
 	elapsed = (elapsed - DOOR_OPEN_DURATION) / DOOR_ANIMATION_DURATION;
@@ -57,7 +57,7 @@ static  void	closing_door(t_door *door, t_map **map,
 	}
 }
 
-static  void	close_door(t_door *door, t_map **map,
+static void	close_door(t_door *door, t_map **map,
 		t_camera *player, size_t now)
 {
 	const double	block_radius = 1.5;
@@ -78,7 +78,7 @@ static  void	close_door(t_door *door, t_map **map,
 	closing_door(door, map, elapsed);
 }
 
- void	update_doors(t_doors *doors, t_map **map,
+void	update_doors(t_doors *doors, t_map **map,
 		t_camera *player, double dt)
 {
 	t_door	*door;

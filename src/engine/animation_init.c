@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:46:07 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:55:08 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine_private.h"
 
- void	animation_init_sprite(t_animation *anim)
+void	animation_init_sprite(t_animation *anim)
 {
 	anim->current_frame = 0;
 	anim->animation_timer = 0;
@@ -21,7 +21,7 @@
 	anim->tp_frame = anim->time / (float)anim->frame_count;
 }
 
- void	animation_change_sprite(t_animation *anim, t_sprite *sp)
+void	animation_change_sprite(t_animation *anim, t_sprite *sp)
 {
 	if (!anim)
 		return ;
@@ -29,7 +29,7 @@
 	animation_init_sprite(anim);
 }
 
- void	animation_set_sprite(t_animation *anim, t_sprite *sp,
+void	animation_set_sprite(t_animation *anim, t_sprite *sp,
 						double time)
 {
 	if (!anim)
@@ -39,7 +39,7 @@
 	animation_init_sprite(anim);
 }
 
- void	animation_set_time(t_animation *anim, float time)
+void	animation_set_time(t_animation *anim, float time)
 {
 	if (!anim)
 		return ;
@@ -47,7 +47,7 @@
 	animation_init_sprite(anim);
 }
 
- void	animations_init(t_engine *eng)
+void	animations_init(t_engine *eng)
 {
 	eng->player.weapon = &eng->player.weapons[0];
 	animation_set_sprite(&eng->player.weapons[0],

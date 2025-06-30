@@ -30,6 +30,6 @@ n norm:
 		| grep -v "WRONG_SCOPE_COMMENT" | grep -v "LINE_TOO_LONG" | grep -v "TOO_MANY_ARGS"
 
 v: all
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) map1.cub
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) ./maps/valid/map2.cub
 
 .PHONY: gprof gt gdbtui gdb g debug n norm v 

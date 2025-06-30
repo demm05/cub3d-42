@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:43 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:57:15 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster_private.h"
 
- void	ray_set_floor_prop(t_engine *eng, t_ray *ray)
+void	ray_set_floor_prop(t_engine *eng, t_ray *ray)
 {
 	(void)eng;
 	if (ray->side == 0 && ray->direction.x > 0)

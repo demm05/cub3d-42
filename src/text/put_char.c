@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:21 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 17:04:23 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "text_private.h"
 
- void	text_put_char(t_engine *eng, t_point start,
+void	text_put_char(t_engine *eng, t_point start,
 	char c, t_ui color)
 {
 	FT_Face	face;
@@ -25,7 +25,7 @@
 	text_render_glyph(eng, face, start, color);
 }
 
- void	text_put_str(t_engine *eng, t_point start,
+void	text_put_str(t_engine *eng, t_point start,
 	const char *str, t_ui color)
 {
 	FT_Face		face;
@@ -55,8 +55,7 @@
 	}
 }
 
- t_point	text_str_get_size(t_engine *eng, const char *str,
-	int font)
+t_point	text_str_get_size(t_engine *eng, const char *str, int font)
 {
 	FT_Face	face;
 	t_point	res;

@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:28:56 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:55:30 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine_private.h"
 
- void	minimap_update_properties(t_engine *eng)
+void	minimap_update_properties(t_engine *eng)
 {
 	t_minimap	*map;
 
@@ -34,7 +34,7 @@
 		map->is_player_displayable = 1;
 }
 
- void	minimap_toggle(t_engine *eng)
+void	minimap_toggle(t_engine *eng)
 {
 	eng->minimap.display_minimap = !eng->minimap.display_minimap;
 }

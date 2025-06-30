@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:08 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 17:00:02 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_ui	color_background(t_engine *eng, int x, int y, unsigned int color);
 
- void	render_frame(t_engine *eng)
+void	render_frame(t_engine *eng)
 {
 	int	w;
 	int	h;
@@ -39,7 +39,7 @@ t_ui	color_background(t_engine *eng, int x, int y, unsigned int color);
 	display_fps_counter(&eng->timing, eng);
 }
 
- t_ui	color_cf(t_ray *ray, t_engine *eng, t_image *tex, int y)
+t_ui	color_cf(t_ray *ray, t_engine *eng, t_image *tex, int y)
 {
 	t_vec2_double	floor_pos;
 	t_point			floor_tex;
@@ -55,7 +55,7 @@ t_ui	color_background(t_engine *eng, int x, int y, unsigned int color);
 	return (get_pixel_color(tex, floor_tex.x, floor_tex.y));
 }
 
- t_ui	color_wall(t_ray *ray, int h, int y)
+t_ui	color_wall(t_ray *ray, int h, int y)
 {
 	t_image	*tex;
 	int		tex_x;
@@ -75,7 +75,7 @@ t_ui	color_background(t_engine *eng, int x, int y, unsigned int color);
 	return (get_pixel_color(tex, tex_x, tex_y));
 }
 
- t_ui	color_background(t_engine *eng, int x, int y, t_ui color)
+t_ui	color_background(t_engine *eng, int x, int y, t_ui color)
 {
 	t_ray	*ray;
 

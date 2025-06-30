@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:04 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:59:18 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
- void	draw_rectangle(t_engine *eng, t_point start, t_point size,
+void	draw_rectangle(t_engine *eng, t_point start, t_point size,
 	t_ui color)
 {
 	unsigned int	*pixel_addr;
@@ -38,7 +38,7 @@
 	}
 }
 
- void	render_rectangle_blend(t_engine *eng, t_point start,
+void	render_rectangle_blend(t_engine *eng, t_point start,
 	t_point size, t_ui color)
 {
 	unsigned int	*pixel_addr;

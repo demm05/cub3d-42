@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:52 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:57:39 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
  * alpha is for the foreground channel (0-255).
  * (Source_Color × Source_Alpha) + (Destination_Color × (1 - Source_Alpha))
 */
-static  t_ui	blend_channel_fast(t_ui fg_channel, t_ui bg_channel,
+static t_ui	blend_channel_fast(t_ui fg_channel, t_ui bg_channel,
 						t_ui alpha)
 {
 	return (((fg_channel * alpha + bg_channel * (255 - alpha)) * 257U) >> 16);
 }
 
- t_ui	blend_normal(t_ui source, t_ui dest)
+t_ui	blend_normal(t_ui source, t_ui dest)
 {
 	t_rgb	s;
 	t_rgb	d;
@@ -48,7 +48,7 @@ static  t_ui	blend_channel_fast(t_ui fg_channel, t_ui bg_channel,
 	return (((r.red & 0xFF) << 16) | ((r.green & 0xFF) << 8) | (r.blue & 0xFF));
 }
 
- void	blend_normal_a(t_engine *eng, t_point p, t_ui dest,
+void	blend_normal_a(t_engine *eng, t_point p, t_ui dest,
 						unsigned char alpha)
 {
 	t_ui	*source;
@@ -69,7 +69,7 @@ static  t_ui	blend_channel_fast(t_ui fg_channel, t_ui bg_channel,
 	*source = r.red << 16 | r.green << 8 | r.blue;
 }
 
- void	blend_normal_at(t_engine *eng, int x, int y, t_ui dest)
+void	blend_normal_at(t_engine *eng, int x, int y, t_ui dest)
 {
 	t_ui	*source;
 

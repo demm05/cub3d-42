@@ -1,0 +1,13 @@
+WALLS   ./assets/walls/
+F       ./assets/floor/0.xpm
+C       ./assets/ceiling/0.xpm
+DOOR    ./assets/door/
+PISTOL  ./assets/weapon/pistol/
+SHOTGUN ./assets/weapon/shotgun/
+ARM     ./assets/weapon/arm/
+
+111111
+100001
+10N001
+100001
+111101
