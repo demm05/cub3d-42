@@ -38,7 +38,6 @@ bool	buffer_create(void *mlx, t_image *buf, int width, int height);
 void	buffer_flash(t_frame_buf *buf, t_window *win, int x, int y);
 void	buffer_clear(t_frame_buf *buf);
 
-
 t_image	*xpm_new_image(void *mlx_ptr, char *path);
 int		xpm_image_init(void *mlx_ptr, char *path, t_image *img);
 
@@ -47,14 +46,14 @@ void	destroy_image(t_image *img);
 // DRAWING
 int		get_pixel_color(t_image *img, int x, int y);
 t_ui	*get_pixel_address(t_image *img, int x, int y);
-void	draw_vert_line(t_frame_buf *buf, int x, int start, int end, int color);
-void	draw_rectangle(t_engine *eng, t_point start, t_point size, unsigned int color);
+void	draw_vert_line(t_frame_buf *buf, t_point p, int end, int color);
+void	draw_rectangle(t_engine *eng, t_point start, t_point size, t_ui color);
 void	draw_pixel(t_frame_buf *buf, int x, int y, int color);
 
 void	draw_for_each_pixel(t_engine *eng, t_point end,
-				unsigned int foo(t_engine *eng, int x, int y, unsigned int color));
+			t_ui foo(t_engine *eng, int x, int y, t_ui color));
 void	draw_from_to_each(t_engine *eng, t_point start, t_point size,
-				unsigned int foo(t_engine *eng, int x, int y, unsigned int color));
+			t_ui foo(t_engine *eng, int x, int y, t_ui color));
 void	display_fps_counter(t_timing *tm, t_engine *eng);
 // DRAWING
 
@@ -63,10 +62,12 @@ t_ui	blend_normal(t_ui source, t_ui dest);
 void	render_frame(t_engine *eng);
 t_ui	blend_brightness_f(t_ui color, float br);
 t_ui	blend_brightness(t_ui color, unsigned char brightness);
-void	blend_normal_a(t_engine *eng, t_point p, t_ui dest, unsigned char alpha);
+void	blend_normal_a(t_engine *eng, t_point p, t_ui dest,
+			unsigned char alpha);
 void	blend_normal_at(t_engine *eng, int x, int y, t_ui dest);
 
-void	render_rectangle_blend(t_engine *eng, t_point start, t_point size, unsigned int color);
+void	render_rectangle_blend(t_engine *eng, t_point start,
+			t_point size, t_ui color);
 void	render_dimmed_screen(t_engine *eng, unsigned char dim);
 
 #endif

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 15:08:07 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/05/30 15:19:13 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:28:36 by dmelnyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#ifndef TYPES_H
+# define TYPES_H
 
 # include <stdio.h>
 # include <stdlib.h>

@@ -12,20 +12,20 @@
 
 #include "render_private.h"
 
-MAYBE_INLINE void	draw_vert_line(t_frame_buf *buf, int x, int start, int end,
+MAYBE_INLINE void	draw_vert_line(t_frame_buf *buf, t_point p, int end,
 						int color)
 {
-	if (start > end)
+	if (p.y > end)
 		return ;
-	if (start < 0)
+	if (p.y < 0)
 	{
-		end += start;
-		start = 0;
+		end += p.y;
+		p.y = 0;
 	}
 	if (end > buf->height)
 		end = buf->height;
-	while (start < end)
-		draw_pixel(buf, x, start++, color);
+	while (p.y < end)
+		draw_pixel(buf, p.x, p.y++, color);
 }
 
 MAYBE_INLINE void	draw_for_each_pixel(t_engine *eng, t_point end,
