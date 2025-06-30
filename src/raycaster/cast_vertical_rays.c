@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cast_vertical_rays.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmelnyk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 15:37:58 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/30 15:37:59 by dmelnyk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "raycaster_private.h"
 #include <math.h>
 
@@ -5,7 +17,7 @@ static inline void	set_values(t_ray *ray, t_camera *cam, double w)
 {
 	double	camera_x;
 
-	camera_x = 2 * ray->index / w - 1;
+	camera_x = 2 * (w - ray->index) / w - 1;
 	ray->direction.x = cam->dir.x + cam->plane.x * camera_x;
 	ray->direction.y = cam->dir.y + cam->plane.y * camera_x;
 	ray->map.x = cam->pos.x;

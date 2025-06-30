@@ -17,7 +17,6 @@ int	engine_loop(t_engine *eng)
 	eng_new_frame(&eng->timing);
 	camera_keyboard_move_event(eng, &eng->camera);
 	camera_keyboard_rotate_event(eng);
-	camera_mouse_move_event(eng);
 	render(eng);
 	buffer_flash(&eng->main_buffer, &eng->window, 0, 0);
 	draw_fps_counter(&eng->timing, &eng->window);

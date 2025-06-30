@@ -46,7 +46,5 @@ bool		check_world(t_world *world);
 bool		check_map(t_map *map);
 
 bool		init_mlx_and_window(t_engine *eng);
-void		mlx_enable_window_resize(void *mlx, t_window *window);
-int			input_event_resize(t_engine *eng);
 
 #endif
