@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:37:37 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 14:37:38 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:11:34 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camera_private.h"
 
 // This is not good because player becomes a square
-static inline void	move_camera(t_camera *cam, t_world *world, double new_x, double new_y)
+static inline void	move_camera(t_camera *cam, t_world *world, double new_x,
+	double new_y)
 {
 	const double	padding = 0.1;
 
@@ -25,11 +26,11 @@ static inline void	move_camera(t_camera *cam, t_world *world, double new_x, doub
 	if (map_get(world, cam->pos.x - padding, new_y - padding) <= '0' && \
 		map_get(world, cam->pos.x - padding, new_y + padding) <= '0' && \
 		map_get(world, cam->pos.x + padding, new_y - padding) <= '0' && \
-		map_get(world, cam->pos.x + padding, new_y  + padding) <= '0')
+		map_get(world, cam->pos.x + padding, new_y + padding) <= '0')
 		cam->pos.y = new_y;
 }
 
-MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
+inline void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
 {
 	double	move_amount;
 	double	dir_x;
@@ -47,4 +48,3 @@ MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
 	if (eng->input.moving_right)
 		move_camera(cam, &eng->world, cam->pos.x + dir_y, cam->pos.y - dir_x);
 }
-

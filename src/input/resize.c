@@ -20,4 +20,3 @@ int	input_event_resize(t_engine *eng)
 		eng->window.height = eng->window.max_height;
 	return (0);
 }
-

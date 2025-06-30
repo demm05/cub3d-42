@@ -1,19 +1,15 @@
 #include "raycaster_private.h"
 #include <math.h>
 
-static MAYBE_INLINE void	set_values(t_ray *ray, t_camera *cam, double w)
+static inline void	set_values(t_ray *ray, t_camera *cam, double w)
 {
 	double	camera_x;
 
 	camera_x = 2 * ray->index / w - 1;
-	// Calculates a direction of ray
 	ray->direction.x = cam->dir.x + cam->plane.x * camera_x;
 	ray->direction.y = cam->dir.y + cam->plane.y * camera_x;
-	// Which box of map we're in
 	ray->map.x = cam->pos.x;
 	ray->map.y = cam->pos.y;
-	// Length of ray from one x or y-side to next x or y-side
-	// Prevents division by zero as well
 	if (ray->direction.x == 0)
 		ray->delta.x = 1e30;
 	else
@@ -24,7 +20,7 @@ static MAYBE_INLINE void	set_values(t_ray *ray, t_camera *cam, double w)
 		ray->delta.y = fabs(1 / ray->direction.y);
 }
 
-static MAYBE_INLINE void	set_direction(t_ray *ray, t_camera *cam)
+static inline void	set_direction(t_ray *ray, t_camera *cam)
 {
 	if (ray->direction.x < 0)
 	{
@@ -48,7 +44,7 @@ static MAYBE_INLINE void	set_direction(t_ray *ray, t_camera *cam)
 	}
 }
 
-static MAYBE_INLINE void	perform_dda(t_ray *ray, t_world *wrd)
+static inline void	perform_dda(t_ray *ray, t_world *wrd)
 {
 	while (1)
 	{
@@ -69,7 +65,7 @@ static MAYBE_INLINE void	perform_dda(t_ray *ray, t_world *wrd)
 	}
 }
 
-static MAYBE_INLINE void	set_ray_prop(t_engine *eng, t_ray *ray)
+static inline void	set_ray_prop(t_engine *eng, t_ray *ray)
 {
 	double	wall_hit;
 
@@ -87,15 +83,16 @@ static MAYBE_INLINE void	set_ray_prop(t_engine *eng, t_ray *ray)
 		wall_hit = eng->camera.pos.x + ray->wall_dist * ray->direction.x;
 	wall_hit -= floor(wall_hit);
 	ray->x_on_tex = (int)(wall_hit * (double)ray->texture->width);
-    if ((ray->side == 0 && ray->direction.x < 0) || (ray->side == 1 && ray->direction.y > 0))
-        ray->x_on_tex = ray->texture->width - ray->x_on_tex - 1;
-    if (ray->x_on_tex < 0)
-    	ray->x_on_tex = 0;
-    if (ray->x_on_tex >= ray->texture->width)
-    	ray->x_on_tex = ray->texture->width - 1;
+	if ((ray->side == 0 && ray->direction.x < 0)
+		|| (ray->side == 1 && ray->direction.y > 0))
+		ray->x_on_tex = ray->texture->width - ray->x_on_tex - 1;
+	if (ray->x_on_tex < 0)
+		ray->x_on_tex = 0;
+	if (ray->x_on_tex >= ray->texture->width)
+		ray->x_on_tex = ray->texture->width - 1;
 }
 
-MAYBE_INLINE void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
+inline void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
 {
 	set_values(ray, &eng->camera, w);
 	set_direction(ray, &eng->camera);

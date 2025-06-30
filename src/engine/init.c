@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:14:48 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/27 12:54:55 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:12:32 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,18 @@ void	hook_inputs(t_engine *eng)
 		mlx_do_key_autorepeatoff(eng->mlx);
 	mlx_loop_hook(eng->mlx, engine_loop, eng);
 	mlx_mouse_hook(eng->window.win, input_mouse_press, eng);
-	mlx_hook(eng->window.win, DestroyNotify, NoEventMask, mlx_loop_end, eng->mlx);
-	mlx_hook(eng->window.win, MotionNotify, PointerMotionMask, input_mouse_move, eng);
-	mlx_hook(eng->window.win, KeyPress, KeyPressMask, input_keyboard_press, eng);
-	mlx_hook(eng->window.win, KeyRelease, KeyReleaseMask, input_keyboard_release, eng);
-	mlx_hook(eng->window.win, ConfigureNotify, StructureNotifyMask, input_event_resize, eng);
-	mlx_hook(eng->window.win, FocusIn, FocusChangeMask, input_focus_in, eng);
-	mlx_hook(eng->window.win, FocusOut, FocusChangeMask, input_focus_out, eng);
+	mlx_hook(eng->window.win, DestroyNotify,
+		NoEventMask, mlx_loop_end, eng->mlx);
+	mlx_hook(eng->window.win, MotionNotify,
+		PointerMotionMask, input_mouse_move, eng);
+	mlx_hook(eng->window.win, KeyPress,
+		KeyPressMask, input_keyboard_press, eng);
+	mlx_hook(eng->window.win, KeyRelease,
+		KeyReleaseMask, input_keyboard_release, eng);
+	mlx_hook(eng->window.win, ConfigureNotify,
+		StructureNotifyMask, input_event_resize, eng);
+	mlx_hook(eng->window.win, FocusIn,
+		FocusChangeMask, input_focus_in, eng);
+	mlx_hook(eng->window.win, FocusOut,
+		FocusChangeMask, input_focus_out, eng);
 }

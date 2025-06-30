@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_mouse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:28:35 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/22 12:29:59 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:14:24 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ int	input_mouse_move(int x, int y, t_engine *eng)
 {
 	static t_vec2_int	prev;
 
-#if DEBUG
-	printf("mouse_move: %dx%d\n", x, y);
-#endif
 	y = eng->window.height / 2;
 	if (!prev.x && !prev.y)
 	{
