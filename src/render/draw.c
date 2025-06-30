@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:04:26 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/03 15:33:18 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 17:12:29 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
-inline void	draw_vert_line(t_frame_buf *buf, t_point p, int end,
+void	draw_vert_line(t_frame_buf *buf, t_point p, int end,
 						int color)
 {
 	if (p.y > end)
@@ -28,7 +28,7 @@ inline void	draw_vert_line(t_frame_buf *buf, t_point p, int end,
 		draw_pixel(buf, p.x, p.y++, color);
 }
 
-inline void	draw_for_each_pixel(t_engine *eng, t_point end,
+void	draw_for_each_pixel(t_engine *eng, t_point end,
 				unsigned int foo(t_engine *eng, int x, int y,
 					unsigned int color))
 {
@@ -47,7 +47,7 @@ inline void	draw_for_each_pixel(t_engine *eng, t_point end,
 	}
 }
 
-inline void	draw_from_to_each(t_engine *eng, t_point start,
+void	draw_from_to_each(t_engine *eng, t_point start,
 	t_point size, t_ui foo(t_engine *eng, int x, int y, t_ui color))
 {
 	unsigned int	*pixel_addr;

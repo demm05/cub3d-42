@@ -6,14 +6,14 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:37:40 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 14:11:52 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 17:12:29 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camera_private.h"
 #include <math.h>
 
-static inline void	rotate(t_camera *cam, double move_amount)
+static void	rotate(t_camera *cam, double move_amount)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -28,7 +28,7 @@ static inline void	rotate(t_camera *cam, double move_amount)
 		cos(move_amount);
 }
 
-inline void	camera_keyboard_rotate_event(t_engine *eng)
+void	camera_keyboard_rotate_event(t_engine *eng)
 {
 	double	move_amount;
 

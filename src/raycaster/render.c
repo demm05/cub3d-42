@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:30:36 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:30:37 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 17:12:29 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster_private.h"
 
-inline t_ui	color_vertical(t_engine *eng, int x, int y, t_ui color)
+t_ui	color_vertical(t_engine *eng, int x, int y, t_ui color)
 {
 	t_image		*tex;
 	int			tex_x;

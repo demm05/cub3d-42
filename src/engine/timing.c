@@ -6,14 +6,14 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:05:21 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 14:13:23 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 17:12:29 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine_private.h"
 #include "sys/time.h"
 
-static inline size_t	get_current_time_microseconds(void)
+static size_t	get_current_time_microseconds(void)
 {
 	struct timeval	tv;
 

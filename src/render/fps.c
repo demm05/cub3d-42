@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fps.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:04:29 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/28 17:04:29 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 17:12:29 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
-static inline char	*int_to_static_s(unsigned int num)
+static char	*int_to_static_s(unsigned int num)
 {
 	static char		s[11];
 	unsigned int	temp;
