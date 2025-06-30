@@ -41,7 +41,6 @@ MAYBE_INLINE void	render_weapon(t_engine *eng)
 	t_image	*texture;
 	t_point	scaled_size;
 	t_point	screen_pos;
-	int		color;
 
 	texture = animation_get_image(eng->player.weapon);
 	if (!texture || !texture->img)

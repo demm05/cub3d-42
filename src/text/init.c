@@ -25,7 +25,7 @@ bool	text_init(t_engine *eng)
 		return (0);
 	if (text_load_fonts(eng->freetype, FONTS_DIR) == FAILURE)
 		return (0);
-    FT_Set_Pixel_Sizes(eng->freetype->matrix[0], 0, 28);
+	FT_Set_Pixel_Sizes(eng->freetype->matrix[0], 0, 28);
 	return (1);
 }
 
@@ -49,9 +49,9 @@ void	text_destroy(t_engine *eng)
 	if (!eng || !eng->freetype)
 		return ;
 	fr = eng->freetype;
-    text_free_fonts(fr);
+	text_free_fonts(fr);
 	if (fr->library)
-    	FT_Done_FreeType(fr->library);
+		FT_Done_FreeType(fr->library);
 	free(fr);
 	eng->freetype = NULL;
 }

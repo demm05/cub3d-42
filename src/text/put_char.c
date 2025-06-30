@@ -12,7 +12,8 @@
 
 #include "text_private.h"
 
-MAYBE_INLINE void	text_put_char(t_engine *eng, t_point start, const char c, unsigned int color)
+MAYBE_INLINE void	text_put_char(t_engine *eng, t_point start,
+	char c, t_ui color)
 {
 	FT_Face	face;
 
@@ -24,7 +25,8 @@ MAYBE_INLINE void	text_put_char(t_engine *eng, t_point start, const char c, unsi
 	text_render_glyph(eng, face, start, color);
 }
 
-MAYBE_INLINE void	text_put_str(t_engine *eng, t_point start, const char *str, unsigned int color)
+MAYBE_INLINE void	text_put_str(t_engine *eng, t_point start,
+	const char *str, t_ui color)
 {
 	FT_Face		face;
 	t_point		pen;
@@ -53,7 +55,8 @@ MAYBE_INLINE void	text_put_str(t_engine *eng, t_point start, const char *str, un
 	}
 }
 
-MAYBE_INLINE t_point	text_str_get_size(t_engine *eng, const char *str, int font)
+MAYBE_INLINE t_point	text_str_get_size(t_engine *eng, const char *str,
+	int font)
 {
 	FT_Face	face;
 	t_point	res;
@@ -76,4 +79,3 @@ MAYBE_INLINE t_point	text_str_get_size(t_engine *eng, const char *str, int font)
 	}
 	return (res);
 }
-

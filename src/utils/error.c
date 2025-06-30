@@ -16,7 +16,7 @@
 int	error_log(const char *format, ...)
 {
 	va_list	args;
-	
+
 	va_start(args, format);
 	ft_fprintf(STDERR_FILENO, RED"ERROR"RESET": ");
 	ft_vfprintf(STDERR_FILENO, format, args);

@@ -24,13 +24,14 @@ static inline bool	load_font(t_freetype *fr, FT_Face *dest,
 
 static inline void	load_fonts(t_freetype *fr, char **names, int len)
 {
-	int i;
+	int	i;
 
 	if (!fr || !names)
 		return ;
 	i = 0;
 	while (i < len)
-		if (load_font(fr, &fr->matrix[fr->faces_loaded], names[i++], 0) == SUCCESS)
+		if (load_font(fr, &fr->matrix[fr->faces_loaded],
+				names[i++], 0) == SUCCESS)
 			fr->faces_loaded++;
 	return ;
 }
@@ -59,17 +60,18 @@ bool	text_load_fonts(t_freetype *fr, const char *dir)
 	if (!fr || !fr->library)
 		return (error_log("text_load_font: freetype is missing or not"
 				"initialized\n"));
-	names = get_files_from_dir(dir, ".ttf"); 
+	names = get_files_from_dir(dir, ".ttf");
 	if (!names)
 		return (FAILURE);
 	len = split_len(names);
 	fr->matrix = ft_realloc(fr->matrix,
-		sizeof(FT_Face) * (len + fr->faces_loaded + 1));
+			sizeof(FT_Face) * (len + fr->faces_loaded + 1));
 	if (!fr->matrix)
 		return (free_str_arr(names), error_log("malloc error\n"));
 	load_fonts(fr, names, len);
 	if (EXPECTED_NUM_OF_FONTS > fr->faces_loaded)
-		return (free_str_arr(names), error_log("expected %d fonts at %s\n", dir));
+		return (free_str_arr(names),
+			error_log("expected %d fonts at %s\n", dir));
 	free_str_arr(names);
 	fr->matrix[len] = NULL;
 	return (SUCCESS);

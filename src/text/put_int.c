@@ -29,7 +29,8 @@ static MAYBE_INLINE char	*static_str_from_int(unsigned int num)
 	return (ptr);
 }
 
-MAYBE_INLINE void	text_put_int(t_engine *eng, t_point start, t_ui num, t_ui color)
+MAYBE_INLINE void	text_put_int(t_engine *eng, t_point start, t_ui num,
+	t_ui color)
 {
 	if (!eng)
 		return ;
