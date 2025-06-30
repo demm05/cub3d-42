@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/26 12:21:39 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:44:49 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ int			error_log(const char *format, ...);
 int			skip_space(char *str);
 
 size_t		get_time_ms(void);
+
+int			check_textures(t_textures *textures);
 
 #endif

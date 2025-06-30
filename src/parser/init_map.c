@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:37:21 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/25 13:50:16 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:54:16 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,6 @@ static void	fill_matrix(t_map *map, t_list *lst)
 	}
 	map->matrix[j] = NULL;
 }
-
-// static void	print_matrix(t_map *map)
-// {
-// 	int	i;
-
-// 	if (!map)
-// 		return ;
-// 	i = -1;
-// 	while (++i < map->height)
-// 		printf("%s\n", map->matrix[i]);
-// 	printf("print_matrix: Map properties: width(%d)  height(%d)\n",
-// 		map->width, map->height);
-// }
 
 t_map	*init_map(t_list *lst)
 {

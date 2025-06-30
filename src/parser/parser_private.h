@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 15:51:00 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/24 16:47:29 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:55:02 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ typedef struct s_raw_texture
 }	t_raw_textrure;
 
 t_list	*read_file(const char *path);
-
-// int		init_world(void *mlx_ptr, t_world *world, const char *path);
 
 char	**get_names(t_list *lst);
 
