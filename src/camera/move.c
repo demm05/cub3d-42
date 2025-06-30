@@ -6,14 +6,14 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:37:37 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camera_private.h"
 
 // This is not good because player becomes a square
-static inline void	move_camera(t_camera *cam, t_map *map,
+static  void	move_camera(t_camera *cam, t_map *map,
 	double new_x, double new_y)
 {
 	const double	padding = 0.1;
@@ -30,7 +30,7 @@ static inline void	move_camera(t_camera *cam, t_map *map,
 		cam->pos.y = new_y;
 }
 
-static inline void	set_new(t_input *input, t_vec2_double *new,
+static  void	set_new(t_input *input, t_vec2_double *new,
 	t_vec2_double dir)
 {
 	if (input->moving_up)
@@ -55,7 +55,7 @@ static inline void	set_new(t_input *input, t_vec2_double *new,
 	}
 }
 
-inline void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
+ void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
 {
 	double			move_amount;
 	t_vec2_double	new;

@@ -6,14 +6,14 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:20:00 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "input_private.h"
 #include <X11/keysym.h>
 
-inline void	keyboard_press_game(int keycode, t_engine *eng)
+ void	keyboard_press_game(int keycode, t_engine *eng)
 {
 	if (keycode == XK_w || keycode == XK_Up)
 		eng->input.moving_up++;
@@ -35,7 +35,7 @@ inline void	keyboard_press_game(int keycode, t_engine *eng)
 		eng->input.opening_door = 1;
 }
 
-inline void	keyboard_release_game(int keycode, t_engine *eng)
+ void	keyboard_release_game(int keycode, t_engine *eng)
 {
 	if ((keycode == XK_w || keycode == XK_Up) && eng->input.moving_up > 0)
 		eng->input.moving_up--;

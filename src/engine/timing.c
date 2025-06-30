@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   timing.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:05:21 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:29:03 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine_private.h"
 #include "sys/time.h"
 
-static inline size_t	get_current_time_microseconds(void)
+static  size_t	get_current_time_microseconds(void)
 {
 	struct timeval	tv;
 

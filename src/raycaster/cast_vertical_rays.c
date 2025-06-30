@@ -6,14 +6,14 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:29:32 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster_private.h"
 #include <math.h>
 
-static inline void	set_values(t_ray *ray, t_camera *cam, double w)
+static  void	set_values(t_ray *ray, t_camera *cam, double w)
 {
 	double	camera_x;
 
@@ -34,7 +34,7 @@ static inline void	set_values(t_ray *ray, t_camera *cam, double w)
 		ray->delta.y = fabs(1 / ray->direction.y);
 }
 
-static inline void	set_direction(t_ray *ray, t_camera *cam)
+static  void	set_direction(t_ray *ray, t_camera *cam)
 {
 	if (ray->direction.x < 0)
 	{
@@ -58,7 +58,7 @@ static inline void	set_direction(t_ray *ray, t_camera *cam)
 	}
 }
 
-inline void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
+ void	cast_ray(t_engine *eng, t_ray *ray, int h, int w)
 {
 	set_values(ray, &eng->camera, w);
 	set_direction(ray, &eng->camera);

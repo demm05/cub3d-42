@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:26 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "text_private.h"
 
-static inline void	text_loop(t_engine *eng, FT_Bitmap *bitmap,
+static  void	text_loop(t_engine *eng, FT_Bitmap *bitmap,
 	t_point offset, int color)
 {
 	t_point			bmp;
@@ -40,7 +40,7 @@ static inline void	text_loop(t_engine *eng, FT_Bitmap *bitmap,
 	}
 }
 
-inline void	text_render_glyph(t_engine *eng, FT_Face face,
+ void	text_render_glyph(t_engine *eng, FT_Face face,
 	t_point baseline, t_ui color)
 {
 	FT_GlyphSlot	slot;

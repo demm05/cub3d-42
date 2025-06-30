@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:01 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
-inline t_ui	minimap_draw(t_engine *eng, int x, int y, t_ui color)
+ t_ui	minimap_draw(t_engine *eng, int x, int y, t_ui color)
 {
 	t_minimap	*m;
 
@@ -29,7 +29,7 @@ inline t_ui	minimap_draw(t_engine *eng, int x, int y, t_ui color)
 	return (MAP_CUBE_FULL_COLOR);
 }
 
-inline void	minimap_draw_borders(t_engine *eng, t_minimap *m)
+ void	minimap_draw_borders(t_engine *eng, t_minimap *m)
 {
 	draw_rectangle(eng,
 		(t_point){m->draw_start.x - MAP_BORDER_SIZE, m->draw_start.y},
@@ -51,7 +51,7 @@ inline void	minimap_draw_borders(t_engine *eng, t_minimap *m)
 		MAP_BORDER_COLOR);
 }
 
-inline void	minimap_draw_player(t_engine *eng, t_minimap *map)
+ void	minimap_draw_player(t_engine *eng, t_minimap *map)
 {
 	t_point	player;
 
@@ -64,7 +64,7 @@ inline void	minimap_draw_player(t_engine *eng, t_minimap *map)
 		(t_point){map->entity_size.x, map->entity_size.y}, MAP_PLAYER_COLOR);
 }
 
-inline void	render_minimap(t_engine *eng)
+ void	render_minimap(t_engine *eng)
 {
 	if (!eng->minimap.display_minimap || !eng->minimap.is_player_displayable)
 		return ;

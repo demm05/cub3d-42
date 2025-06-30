@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 12:49:44 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster_private.h"
 
-static inline void	dda(t_ray *ray)
+static  void	dda(t_ray *ray)
 {
 	if (ray->side_dist.x < ray->side_dist.y)
 	{
@@ -28,7 +28,7 @@ static inline void	dda(t_ray *ray)
 	}
 }
 
-static inline bool	is_door(t_ray *ray, t_engine *eng, t_door *hit_door)
+static  bool	is_door(t_ray *ray, t_engine *eng, t_door *hit_door)
 {
 	double	open_side;
 	double	left;
@@ -57,7 +57,7 @@ static inline bool	is_door(t_ray *ray, t_engine *eng, t_door *hit_door)
 		return (0);
 }
 
-static inline bool	handle_door_hit(t_ray *ray,
+static  bool	handle_door_hit(t_ray *ray,
 	t_engine *eng, t_door *door)
 {
 	t_door	*nearby;
@@ -76,7 +76,7 @@ static inline bool	handle_door_hit(t_ray *ray,
 		return (false);
 }
 
-inline void	perform_dda(t_ray *ray, t_engine *eng)
+ void	perform_dda(t_ray *ray, t_engine *eng)
 {
 	char	tile;
 	t_door	*hit_door;

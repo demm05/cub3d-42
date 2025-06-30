@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   set_start_position.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:37:48 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/02 13:37:48 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camera_private.h"
 
-static inline bool	set_pos(t_camera *cam, int d)
+static  bool	set_pos(t_camera *cam, int d)
 {
 	if (d == 'S')
 	{

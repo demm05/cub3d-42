@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 14:17:53 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
-static inline void	weapon_loop(t_engine *eng, t_image *texture,
+static  void	weapon_loop(t_engine *eng, t_image *texture,
 	t_point scaled_size, t_point screen_pos)
 {
 	t_point	tex;
@@ -36,7 +36,7 @@ static inline void	weapon_loop(t_engine *eng, t_image *texture,
 	}
 }
 
-inline void	render_weapon(t_engine *eng)
+ void	render_weapon(t_engine *eng)
 {
 	t_image	*texture;
 	t_point	scaled_size;

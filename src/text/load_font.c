@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_font.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmelnyk <dmelnyk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:30:18 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 13:30:18 by dmelnyk          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "text_private.h"
 
-static inline bool	load_font(t_freetype *fr, FT_Face *dest,
+static  bool	load_font(t_freetype *fr, FT_Face *dest,
 						const char *path, int face_index)
 {
 	if (!dest || !path)
@@ -22,7 +22,7 @@ static inline bool	load_font(t_freetype *fr, FT_Face *dest,
 	return (SUCCESS);
 }
 
-static inline void	load_fonts(t_freetype *fr, char **names, int len)
+static  void	load_fonts(t_freetype *fr, char **names, int len)
 {
 	int	i;
 

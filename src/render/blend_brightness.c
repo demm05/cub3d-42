@@ -6,13 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:58:11 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 15:17:07 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:26 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_private.h"
 
-inline t_ui	blend_brightness_f(t_ui color, float brightness)
+ t_ui	blend_brightness_f(t_ui color, float brightness)
 {
 	int	r;
 	int	g;
@@ -33,7 +33,7 @@ inline t_ui	blend_brightness_f(t_ui color, float brightness)
 	return ((r << 16) | (g << 8) | b);
 }
 
-inline t_ui	blend_brightness(t_ui color, unsigned char brightness)
+ t_ui	blend_brightness(t_ui color, unsigned char brightness)
 {
 	int	r;
 	int	g;
