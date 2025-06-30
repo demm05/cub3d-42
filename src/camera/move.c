@@ -30,7 +30,8 @@ static inline void	move_camera(t_camera *cam, t_map *map,
 		cam->pos.y = new_y;
 }
 
-static inline void	set_new(t_input *input, t_vec2_double *new, t_vec2_double dir)
+static inline void	set_new(t_input *input, t_vec2_double *new,
+	t_vec2_double dir)
 {
 	if (input->moving_up)
 	{
@@ -60,7 +61,7 @@ MAYBE_INLINE void	camera_keyboard_move_event(t_engine *eng, t_camera *cam)
 	t_vec2_double	new;
 
 	move_amount = eng->player.move_speed * eng->timing.delta_time;
-	if ((eng->input.moving_left || eng->input.moving_right) &&
+	if ((eng->input.moving_left || eng->input.moving_right) && \
 		(eng->input.moving_up || eng->input.moving_down))
 		move_amount *= 0.8;
 	new.x = cam->pos.x;
