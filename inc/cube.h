@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:17:02 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/23 12:54:26 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:59:52 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define INITIAL_WINDOW_WIDTH 1580
 # define INITIAL_WINDOW_HEIGHT 1000
 # define WINDOW_TITLE "CUBE 3D"
-# define MAX_DELTA_TIME 1.0 / 15.0 // 60 limit movement to FPS
+# define MAX_DELTA_TIME 0.06f
 
 # define ENABLE_RESIZE 1
 # define DISABLE_AUTOREPEAT_KEY 1
@@ -59,17 +59,5 @@
 # include "ft_color_utils.h"
 
 void	set_defaults(t_engine *eng);
-
-# ifdef ENABLE_CUSTOM_INLINING
-#  ifdef __GNUC__ // For GCC/Clang
-#   define MAYBE_INLINE __attribute__((always_inline)) inline
-#  elif defined(_MSC_VER) // For MSVC
-#   define MAYBE_INLINE __forceinline
-#  else // Standard C inline hint
-#   define MAYBE_INLINE inline
-#  endif
-# else
-#  define MAYBE_INLINE // Expands to nothing, so function is "normal"
-# endif
 
 #endif

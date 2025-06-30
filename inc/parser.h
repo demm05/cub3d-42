@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 15:54:05 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/18 13:31:49 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:59:22 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void	destroy_textures(void *mlx_ptr, t_textures *textures);
 t_list	*readdirectory(DIR *dir, const char *path, const char *ext);
 
 int		parse_file(void *mlx_ptr, t_engine *eng, char *path);
-// int		parse_file(void *mlx_ptr, t_textures *textures, t_map **map, char *path);
-// int		parse_file(void *mlx_ptr, t_textures *textures, t_map *map, char *path);
 
 int		parse_doors(t_doors *doors, t_map *map);
 
