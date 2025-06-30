@@ -6,26 +6,13 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:28:23 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/30 14:17:36 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:23:04 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world_private.h"
 #include <sys/stat.h>
 #include <fcntl.h>
-
-static void	print_lst(t_list *lst)
-{
-	t_string	*str;
-
-	while (lst)
-	{
-		str = (t_string *)lst->content;
-		printf("%s\n", str->str);
-		lst = lst->next;
-	}
-	printf("\n\n\n");
-}
 
 char	*get_line_without_endl(int fd)
 {
