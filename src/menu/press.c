@@ -25,7 +25,8 @@ MAYBE_INLINE void	menu_mouse_press(t_engine *eng, int keycode, int x, int y)
 	while (++item < m->size)
 	{
 		p = &m->main[item];
-		if (x > p->draw_start.x && x < p->draw_end.x && y > p->draw_start.y && y < p->draw_end.y)
+		if (x > p->draw_start.x && x < p->draw_end.x && \
+				y > p->draw_start.y && y < p->draw_end.y)
 			return (p->caller(eng));
 	}
 	eng->draw_new_frame = 0;

@@ -16,9 +16,6 @@ void	menu_switch_state(t_engine *eng)
 {
 	if (!eng)
 		return ;
-#if DEBUG
-	printf("Switching from state %d\n", eng->state);
-#endif
 	ft_bzero(&eng->input, sizeof(t_input));
 	if (eng->state == MENU)
 	{

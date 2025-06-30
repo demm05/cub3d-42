@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   health_bar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmelnyk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 14:00:15 by dmelnyk           #+#    #+#             */
+/*   Updated: 2025/06/30 14:00:16 by dmelnyk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "render_private.h"
 
 MAYBE_INLINE void	render_health_bar(t_engine *eng)
@@ -9,18 +21,22 @@ MAYBE_INLINE void	render_health_bar(t_engine *eng)
 	int		border_size;
 
 	border_size = 3;
-	if (eng->player.health < 0)
-		eng->player.health = 100;
 	bar_size.x = (eng->window.width >> 3) * eng->setting.ui_scale;
 	bar_size.y = (eng->window.height >> 5) * eng->setting.ui_scale;
 	column_size = bar_size.x / 100.0;
 	text_size = bar_size.y * 0.7;
 	offset.x = 20;
 	offset.y = eng->window.height - bar_size.y - 20;
-	render_rectangle_blend(eng, (t_point){offset.x - border_size, offset.y - border_size},
-		(t_point){column_size * 100 + border_size * 2, bar_size.y + border_size * 2}, 0x99000001);
-	draw_rectangle(eng, offset, (t_point){eng->player.health * column_size, bar_size.y}, 0xFF0000);
+	render_rectangle_blend(eng,
+		(t_point){offset.x - border_size, offset.y - border_size},
+		(t_point){column_size * 100 + border_size * 2, bar_size.y + \
+			border_size * 2}, 0x99000001);
+	draw_rectangle(eng, offset,
+		(t_point){eng->player.health * column_size, bar_size.y},
+		0xFF0000);
 	text_set_font_size(eng, text_size, 0);
 	bar_size = text_ui_get_size(eng, eng->player.health, 0);
-	text_put_int(eng, (t_point){offset.x + 10, offset.y + bar_size.y * 0.35}, eng->player.health, 0);
+	text_put_int(eng,
+		(t_point){offset.x + 10, offset.y + bar_size.y * 0.35},
+		eng->player.health, 0);
 }

@@ -39,7 +39,8 @@ MAYBE_INLINE void	keyboard_release_game(int keycode, t_engine *eng)
 {
 	if ((keycode == XK_w || keycode == XK_Up) && eng->input.moving_up > 0)
 		eng->input.moving_up--;
-	else if ((keycode == XK_s || keycode == XK_Down) && eng->input.moving_down > 0)
+	else if ((keycode == XK_s || keycode == XK_Down) && \
+			eng->input.moving_down > 0)
 		eng->input.moving_down--;
 	else if (keycode == XK_a)
 		eng->input.moving_left = 0;
@@ -57,9 +58,6 @@ MAYBE_INLINE void	keyboard_release_game(int keycode, t_engine *eng)
 
 int	input_keyboard_press(int keycode, t_engine *eng)
 {
-#if DEBUG
-	printf("keyboard_press: %d\n", keycode);
-#endif
 	if (eng->state == MENU)
 		;
 	else if (eng->state == PLAYING)
@@ -69,9 +67,6 @@ int	input_keyboard_press(int keycode, t_engine *eng)
 
 int	input_keyboard_release(int keycode, t_engine *eng)
 {
-#if DEBUG
-	printf("keyboard_release: %d\n", keycode);
-#endif
 	if (keycode == XK_Escape)
 		menu_switch_state(eng);
 	else if (eng->state == MENU)

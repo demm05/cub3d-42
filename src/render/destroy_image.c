@@ -16,8 +16,6 @@ void	destroy_image(t_image *img)
 {
 	if (!img)
 		return ;
-	// if (img->buffer)
-	// 	free(img->buffer);
 	if (img->img)
 		mlx_destroy_image(img->mlx, img->img);
 	free(img);

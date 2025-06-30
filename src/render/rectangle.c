@@ -12,7 +12,8 @@
 
 #include "render_private.h"
 
-MAYBE_INLINE void	draw_rectangle(t_engine *eng, t_point start, t_point size, unsigned int color)
+MAYBE_INLINE void	draw_rectangle(t_engine *eng, t_point start, t_point size,
+	t_ui color)
 {
 	unsigned int	*pixel_addr;
 	int				x;
@@ -30,14 +31,15 @@ MAYBE_INLINE void	draw_rectangle(t_engine *eng, t_point start, t_point size, uns
 	while (++y < size.y)
 	{
 		x = -1;
-		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + (y + start.y) *
-			eng->main_buffer.line_size + (start.x * 4));
+		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + \
+			(y + start.y) * eng->main_buffer.line_size + (start.x * 4));
 		while (++x < size.x)
 			pixel_addr[x] = color;
 	}
 }
 
-MAYBE_INLINE void	render_rectangle_blend(t_engine *eng, t_point start, t_point size, unsigned int color)
+MAYBE_INLINE void	render_rectangle_blend(t_engine *eng, t_point start,
+	t_point size, t_ui color)
 {
 	unsigned int	*pixel_addr;
 	int				x;
@@ -55,8 +57,8 @@ MAYBE_INLINE void	render_rectangle_blend(t_engine *eng, t_point start, t_point s
 	while (++y < size.y)
 	{
 		x = -1;
-		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + (y + start.y) *
-			eng->main_buffer.line_size + (start.x * 4));
+		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + \
+			(y + start.y) * eng->main_buffer.line_size + (start.x * 4));
 		while (++x < size.x)
 			pixel_addr[x] = blend_normal(pixel_addr[x], color);
 	}

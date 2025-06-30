@@ -27,9 +27,5 @@ int	input_event_resize(t_engine *eng)
 	eng->window.resizing = 1;
 	minimap_update_properties(eng);
 	menu_update_properties(eng);
-#if DEBUG
-	printf("New window dimensions: %dx%d\n", attr.width, attr.height);
-#endif
 	return (0);
 }
-

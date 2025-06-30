@@ -15,10 +15,10 @@
 
 static inline size_t	get_current_time_microseconds(void)
 {
-    struct timeval tv;
+	struct timeval	tv;
 
-    gettimeofday(&tv, NULL);
-    return (tv.tv_sec * 1000000 + tv.tv_usec);
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000000 + tv.tv_usec);
 }
 
 void	eng_new_frame(t_engine *eng)

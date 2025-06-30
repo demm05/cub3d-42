@@ -23,7 +23,9 @@ void	render_menu(t_engine *eng)
 	i = -1;
 	while (++i < m->size)
 	{
-		render_rectangle_blend(eng, m->main[i].draw_start, m->bs, MENU_BUTTON_COLOR);
-		text_put_str(eng, m->main[i].draw_start, m->main[i].text, MENU_TEXT_COLOR);
+		render_rectangle_blend(eng, m->main[i].draw_start, m->bs,
+			MENU_BUTTON_COLOR);
+		text_put_str(eng, m->main[i].draw_start, m->main[i].text,
+			MENU_TEXT_COLOR);
 	}
 }

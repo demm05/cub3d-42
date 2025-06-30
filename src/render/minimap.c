@@ -31,24 +31,24 @@ MAYBE_INLINE t_ui	minimap_draw(t_engine *eng, int x, int y, t_ui color)
 
 MAYBE_INLINE void	minimap_draw_borders(t_engine *eng, t_minimap *m)
 {
-	// LEFT
 	draw_rectangle(eng,
 		(t_point){m->draw_start.x - MAP_BORDER_SIZE, m->draw_start.y},
 		(t_point){MAP_BORDER_SIZE, m->draw_size.y},
 		MAP_BORDER_COLOR);
-	// RIGHT
 	draw_rectangle(eng,
-		(t_point){m->draw_start.x + m->draw_size.x - MAP_CUBE_GAP, m->draw_start.y - MAP_BORDER_SIZE},
-		(t_point){MAP_BORDER_SIZE, m->draw_size.y - MAP_CUBE_GAP + MAP_BORDER_SIZE},
+		(t_point){m->draw_start.x + m->draw_size.x - MAP_CUBE_GAP,
+		m->draw_start.y - MAP_BORDER_SIZE},
+		(t_point){MAP_BORDER_SIZE, m->draw_size.y - MAP_CUBE_GAP + \
+			MAP_BORDER_SIZE}, MAP_BORDER_COLOR);
+	draw_rectangle(eng, (t_point){m->draw_start.x - MAP_BORDER_SIZE, \
+		m->draw_start.y - MAP_BORDER_SIZE},
+		(t_point){m->draw_size.x + MAP_BORDER_SIZE, MAP_BORDER_SIZE},
 		MAP_BORDER_COLOR);
-	// TOP
 	draw_rectangle(eng,
-		(t_point){m->draw_start.x - MAP_BORDER_SIZE, m->draw_start.y - MAP_BORDER_SIZE},
-		(t_point){m->draw_size.x + MAP_BORDER_SIZE, MAP_BORDER_SIZE}, MAP_BORDER_COLOR);
-	// DOWN
-	draw_rectangle(eng,
-		(t_point){m->draw_start.x - MAP_BORDER_SIZE, m->draw_start.y + m->draw_size.y - MAP_CUBE_GAP},
-		(t_point){m->draw_size.x + MAP_BORDER_SIZE * 2, MAP_BORDER_SIZE}, MAP_BORDER_COLOR);
+		(t_point){m->draw_start.x - MAP_BORDER_SIZE, m->draw_start.y + \
+		m->draw_size.y - MAP_CUBE_GAP},
+		(t_point){m->draw_size.x + MAP_BORDER_SIZE * 2, MAP_BORDER_SIZE},
+		MAP_BORDER_COLOR);
 }
 
 MAYBE_INLINE void	minimap_draw_player(t_engine *eng, t_minimap *map)

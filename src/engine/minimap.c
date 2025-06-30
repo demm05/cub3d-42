@@ -32,12 +32,6 @@ MAYBE_INLINE void	minimap_update_properties(t_engine *eng)
 		map->is_player_displayable = 0;
 	else
 		map->is_player_displayable = 1;
-#if DEBUG
-	printf("Minimap new properties: cub: %dx%d\tentity: %dx%d\ts: %dx%d\te: %dx%d\n",
-		map->cub_size.x, map->cub_size.y, map->entity_size.x,
-		map->entity_size.y, map->draw_start.x, map->draw_start.y,
-		map->draw_size.x, map->draw_size.y);
-#endif
 }
 
 MAYBE_INLINE void	minimap_toggle(t_engine *eng)

@@ -17,9 +17,10 @@ static t_mi_prop	*menu_create_stack(t_menu_item items[], int size);
 bool	menu_set_items(t_engine *eng)
 {
 	static t_menu_item	items[] = {
-		{"Start Game", menu_switch_state},
-		{"Quit", enging_loop_stop}
+	{"Start Game", menu_switch_state},
+	{"Quit", enging_loop_stop}
 	};
+
 	eng->menu.size = sizeof(items) / sizeof(items[0]);
 	eng->menu.main = menu_create_stack(items, eng->menu.size);
 	if (!eng->menu.main)

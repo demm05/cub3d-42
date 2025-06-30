@@ -42,19 +42,18 @@ static void	mouse_move_game(int x, int y, t_engine *eng)
 
 static void	mouse_press_game(int key, int x, int y, t_engine *eng)
 {
+	(void)x;
+	(void)y;
 	if (key == 1)
 		animation_start(eng->player.weapon);
-	else if (key == 5)
+	else if (key == 5 && eng->player.health > 0)
 		eng->player.health--;
-	else if (key == 4)
+	else if (key == 4 && eng->player.health < 100)
 		eng->player.health++;
 }
 
 int	input_mouse_press(int key, int x, int y, t_engine *eng)
 {
-#if DEBUG
-	printf("mouse_press: %d %dx%d\n", key, x, y);
-#endif
 	if (eng->state == MENU)
 		menu_mouse_press(eng, key, x, y);
 	else
@@ -68,4 +67,3 @@ int	input_mouse_move(int x, int y, t_engine *eng)
 		mouse_move_game(x, y, eng);
 	return (0);
 }
-

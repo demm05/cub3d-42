@@ -47,8 +47,8 @@ MAYBE_INLINE void	draw_for_each_pixel(t_engine *eng, t_point end,
 	}
 }
 
-MAYBE_INLINE void	draw_from_to_each(t_engine *eng, t_point start, t_point size,
-							t_ui foo(t_engine *eng, int x, int y, t_ui color))
+MAYBE_INLINE void	draw_from_to_each(t_engine *eng, t_point start,
+	t_point size, t_ui foo(t_engine *eng, int x, int y, t_ui color))
 {
 	unsigned int	*pixel_addr;
 	int				x;
@@ -58,10 +58,9 @@ MAYBE_INLINE void	draw_from_to_each(t_engine *eng, t_point start, t_point size,
 	while (++y < size.y)
 	{
 		x = -1;
-		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + (y + start.y) *
-			eng->main_buffer.line_size + (start.x * 4));
+		pixel_addr = (unsigned int *)(eng->main_buffer.buffer + \
+			(y + start.y) * eng->main_buffer.line_size + (start.x * 4));
 		while (++x < size.x)
 			pixel_addr[x] = foo(eng, x, y, pixel_addr[x]);
 	}
 }
-
