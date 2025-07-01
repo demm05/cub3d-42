@@ -1,4 +1,4 @@
-NAME		=	cub3d
+NAME		=	cub3D
 BUILD_MODE ?=	release
 # =============================== DIRECTORIES =============================== #
 HDIR		=	inc
