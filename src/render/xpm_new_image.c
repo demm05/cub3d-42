@@ -35,7 +35,7 @@ int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)
 		return (0);
 	img->mlx = mlx_ptr;
 	img->img = mlx_xpm_file_to_image(mlx_ptr, path,
-			&img->depth, &img->line_size);
+			&img->width, &img->height);
 	if (!img->img)
 	{
 		print_err(path);
@@ -43,8 +43,6 @@ int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)
 	}
 	img->buffer = mlx_get_data_addr(img->img, &img->depth,
 			&img->line_size, &img->endian);
-	img->height = IMG_HEIGHT;
-	img->width = IMG_WIDTH;
 	img->depth8 = img->depth / 8;
 	return (0);
 }
