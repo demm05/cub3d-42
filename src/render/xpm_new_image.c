@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:41:48 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/30 14:18:51 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:08:25 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	xpm_image_init(void *mlx_ptr, char *path, t_image *img)
 {
 	if (!img || !path)
 		return (-1);
+	if (img->img)
+		return (0);
 	img->mlx = mlx_ptr;
 	img->img = mlx_xpm_file_to_image(mlx_ptr, path,
 			&img->depth, &img->line_size);
