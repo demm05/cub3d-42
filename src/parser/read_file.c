@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:28:23 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/06/30 13:54:43 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:26:13 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_list	*read_file(const char *path)
 	char		*str;
 	int			fd;
 
-	if (!path)
+	if (!path || !check_file_ext(path, ".cub", 1))
 		return (NULL);
 	lst = NULL;
 	fd = open(path, O_RDONLY);
