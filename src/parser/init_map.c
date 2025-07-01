@@ -44,7 +44,6 @@ static void	fill_line(t_map *map, t_string *str, size_t j)
 			map->matrix[j][i] = str->str[i];
 		i++;
 	}
-	map->matrix[j][i] = '\0';
 }
 
 static void	fill_matrix(t_map *map, t_list *lst)
@@ -52,8 +51,8 @@ static void	fill_matrix(t_map *map, t_list *lst)
 	t_string	*str;
 	int			j;
 
-	j = 0;
-	while (j < map->height)
+	j = -1;
+	while (++j < map->height)
 	{
 		str = (t_string *)lst->content;
 		map->matrix[j] = malloc(map->width + 1);
@@ -61,7 +60,7 @@ static void	fill_matrix(t_map *map, t_list *lst)
 			return (free_str_arr(map->matrix));
 		ft_memset(map->matrix[j], '0', map->width);
 		fill_line(map, str, j);
-		j++;
+		map->matrix[j][map->width] = 0;
 		lst = lst->next;
 	}
 	map->matrix[j] = NULL;
@@ -81,9 +80,9 @@ t_map	*init_map(t_list *lst)
 	map->height = ft_lstsize(lst);
 	map->matrix = (char **)malloc(sizeof(char *) * (map->height + 1));
 	if (!map->matrix)
-		return (NULL);
+		return (destroy_map(map), NULL);
 	fill_matrix(map, lst);
 	if (!check_map(map))
-		return (NULL);
+		return (destroy_map(map), NULL);
 	return (map);
 }
