@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:56:33 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 12:32:48 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:48:30 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int		parse_textures(void *mlx_ptr, t_world *world, t_list **lst);
  * @return Pointer to a t_map structure allocated with malloc.
  */
 t_map	*init_map(t_list *lst);
+
+int		parse_color(const char *path);
 
 #endif

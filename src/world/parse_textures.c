@@ -6,49 +6,11 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:15:54 by ogrativ           #+#    #+#             */
-/*   Updated: 2025/07/01 12:03:39 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:51:55 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world_private.h"
-
-bool	is_rgb(int color)
-{
-	if (color >= 0 && color < 256)
-	{
-		return (1);
-	}
-	return (0);
-}
-
-static int	parse_color(const char *path)
-{
-	char	**numbers;
-	t_rgb	rgb;
-	size_t	len;
-
-	numbers = ft_split((char *)path, ",");
-	if (!numbers)
-		return (-1);
-	len = split_len(numbers);
-	if (len != 3)
-	{
-		free_str_arr(numbers);
-		ft_putstr_fd(RED "Error" RESET
-			": Incorrect RGB format\n", STDERR_FILENO);
-		return (-1);
-	}
-	rgb.red = ft_atoi(numbers[0]);
-	rgb.green = ft_atoi(numbers[1]);
-	rgb.blue = ft_atoi(numbers[2]);
-	free_str_arr(numbers);
-	if (is_rgb(rgb.blue) && is_rgb(rgb.green) && is_rgb(rgb.red))
-		return ((rgb.red << 16) | (rgb.green << 8) | rgb.blue);
-	ft_putstr_fd(RED "Error" RESET
-		": Incorrect RGB format: Values must be beetwen 0-255\n",
-		STDERR_FILENO);
-	return (-1);
-}
 
 static int	assigne_texture(void *mlx_ptr, t_world *world,
 	const char *path, const char *tex_name)
