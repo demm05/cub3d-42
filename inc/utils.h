@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:55:39 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/05/30 11:30:29 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:06:01 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void		t_str_free(void *t_str);
 /*----------------End string----------------*/
 
 size_t		split_len(char **split);
+
+int			skip_space(char *str);
 
 void		free_str_arr(char **arr);
 void		lstdell_front(t_list **lst, void (*del)(void *));
