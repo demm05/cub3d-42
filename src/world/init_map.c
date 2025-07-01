@@ -83,7 +83,6 @@ t_map	*init_map(t_list *lst)
 	if (!map->matrix)
 		return (destroy_map(map), NULL);
 	fill_matrix(map, lst);
-	print_matrix(map);
 	if (!check_map(map))
 		return (destroy_map(map), NULL);
 	return (map);

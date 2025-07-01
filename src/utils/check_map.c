@@ -34,6 +34,8 @@ static bool	check_line(t_map *map, int j)
 						": To many players", STDERR_FILENO), 0);
 			map->player_pos.x = i;
 			map->player_pos.y = j;
+			map->player_dir = map->matrix[j][i];
+			map->matrix[j][i] = '0';
 		}
 		if (!is_avaible_char(map->matrix[j][i]))
 			return (ft_putendl_fd(RED "Error" RESET

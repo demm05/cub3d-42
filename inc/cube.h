@@ -19,6 +19,7 @@
 # define MAX_DELTA_TIME 0.06f
 
 # define DISABLE_AUTOREPEAT_KEY 1
+# define FOV 0.66
 
 # ifndef DEBUG
 #  define DEBUG 0
