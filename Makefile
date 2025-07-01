@@ -2,7 +2,7 @@ HDIR				=	inc
 SDIR				=	src
 ODIR				=	obj
 LDIR				=	lib
-NAME				=	cub3d
+NAME				=	cub3D
 
 CC					=	gcc
 CFLAGS				=	-g -O3 -Wall -Wextra -Werror -I$(HDIR) -flto
