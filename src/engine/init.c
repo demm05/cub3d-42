@@ -6,7 +6,7 @@
 /*   By: ogrativ <ogrativ@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:14:48 by dmelnyk           #+#    #+#             */
-/*   Updated: 2025/06/30 14:12:32 by ogrativ          ###   ########.fr       */
+/*   Updated: 2025/07/01 11:41:07 by ogrativ          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ bool	engine_init(t_engine *eng, char *map_path)
 	eng->mlx = mlx_init();
 	if (!eng->mlx)
 		return (0);
-	if (world_init(eng->mlx, &eng->world, map_path) == -1 || !camera_set_start_pos(eng))
+	if (world_init(eng->mlx, &eng->world, map_path) == -1
+		|| !camera_set_start_pos(eng))
 		return (0);
 	if (!init_mlx_and_window(eng))
 		return (0);
