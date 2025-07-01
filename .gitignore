@@ -3,7 +3,7 @@ obj
 .*cache*
 .vscode
 compile_commands.json
-cub3d
+cub3D
 .direnv
 prof.pdf
 gmon.out
